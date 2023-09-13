@@ -1,0 +1,14 @@
+//
+// Software Version :  ispLEVER Classic 2.0.00.17.20.15  
+// Project Name	    :  test
+// Targeted Device  :  LC4032V-10T44I
+// Date             :  Tue Apr 07 00:08:47 2020
+//
+                   GNDIO0          SYS           5
+                   VCCIO0          SYS           6
+                      VCC          SYS           11
+                      GND          SYS           12
+                   GNDIO1          SYS           27
+                   VCCIO1          SYS           28
+                      VCC          SYS           33
+                      GND          SYS           34

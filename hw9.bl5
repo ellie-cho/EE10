@@ -1,0 +1,325 @@
+#$ TOOL  ispLEVER Classic 2.0.00.17.20.15
+#$ DATE  Tue Apr 07 00:08:23 2020
+#$ JEDECFILE  pau
+#$ MODULE  PAU
+#$ TITLE  Program Address Module for the Caltech10 CPU.
+#$ PINS 54 Offset7 Offset6 Offset5 Offset4 Offset3 Offset2 Offset1 Offset0
+ Direct12 Direct11 Direct10 Direct9 Direct8 Direct7 Direct6 Direct5 Direct4
+ Direct3 Direct2 Direct1 Direct0 Clock Reset HoldPC Load AddBSel2 AddBSel1
+ AddBSel0 PC12 PC11 PC10 PC9 PC8 PC7 PC6 PC5 PC4 PC3 PC2 PC1 PC0 ProgAddr12
+ ProgAddr11 ProgAddr10 ProgAddr9 ProgAddr8 ProgAddr7 ProgAddr6 ProgAddr5
+ ProgAddr4 ProgAddr3 ProgAddr2 ProgAddr1 ProgAddr0
+#$ NODES 22 Carry9 Carry8 Carry7 Carry6 Carry5 Carry4 Carry3 Carry2 Carry1
+ AddendB12 AddendB11 AddendB10 AddendB9 AddendB8 AddendB7 AddendB6 AddendB5
+ AddendB4 AddendB3 AddendB2 AddendB1 AddendB0
+.model pau 
+.inputs Clock.BLIF Reset.BLIF PC12.Q Load.BLIF PC11.Q PC10.Q PC9.Q PC8.Q PC7.Q \
+ PC6.Q PC5.Q PC4.Q PC3.Q PC2.Q PC1.Q PC0.Q AddBSel2.BLIF Offset7.BLIF \
+ AddBSel1.BLIF AddBSel0.BLIF Direct12.BLIF Offset4.BLIF Direct11.BLIF \
+ Offset3.BLIF Direct10.BLIF Offset2.BLIF Direct9.BLIF Offset1.BLIF Direct8.BLIF \
+ Offset0.BLIF Direct7.BLIF Offset6.BLIF Direct6.BLIF Offset5.BLIF Direct5.BLIF \
+ Direct4.BLIF Direct3.BLIF Direct2.BLIF Direct1.BLIF Direct0.BLIF AddendB12.BLIF \
+ AddendB11.BLIF AddendB10.BLIF Carry9.BLIF AddendB9.BLIF Carry8.BLIF \
+ AddendB8.BLIF Carry7.BLIF AddendB7.BLIF Carry6.BLIF AddendB6.BLIF Carry5.BLIF \
+ AddendB5.BLIF Carry4.BLIF AddendB4.BLIF Carry3.BLIF AddendB3.BLIF Carry2.BLIF \
+ AddendB2.BLIF Carry1.BLIF AddendB1.BLIF AddendB0.BLIF HoldPC.BLIF
+.outputs PC12.T PC12.C PC11.T.X1 PC11.T.X2 PC11.C PC10.D.X1 PC10.D.X2 PC10.C \
+ PC9.D.X1 PC9.D.X2 PC9.C PC8.D.X1 PC8.D.X2 PC8.C PC7.D.X1 PC7.D.X2 PC7.C PC6.D.X1 \
+ PC6.D.X2 PC6.C PC5.D.X1 PC5.D.X2 PC5.C PC4.D.X1 PC4.D.X2 PC4.C PC3.D.X1 PC3.D.X2 \
+ PC3.C PC2.D.X1 PC2.D.X2 PC2.C PC1.D.X1 PC1.D.X2 PC1.C PC0.D PC0.C ProgAddr12 \
+ ProgAddr11 ProgAddr10 ProgAddr9 ProgAddr8 ProgAddr7 ProgAddr6 ProgAddr5 \
+ ProgAddr4 ProgAddr3 ProgAddr2 ProgAddr1 ProgAddr0 Carry9.X1 Carry9.X2 Carry8 \
+ Carry7 Carry6.X1 Carry6.X2 Carry5 Carry4 Carry3.X1 Carry3.X2 Carry2.X1 Carry2.X2 \
+ Carry1 AddendB12 AddendB11 AddendB10 AddendB9 AddendB8 AddendB7 AddendB6 \
+ AddendB5 AddendB4 AddendB3 AddendB2 AddendB1 AddendB0
+.names Reset.BLIF PC12.Q Load.BLIF PC11.Q PC10.Q AddendB12.BLIF AddendB11.BLIF AddendB10.BLIF Carry9.BLIF HoldPC.BLIF PC12.T
+0-0--01110 1
+0-0-010-00 1
+0-0-0100-0 1
+0-0001--00 1
+0-0001-0-0 1
+0-0--10000 1
+0-00-1-000 1
+0-00-10--0 1
+-11--11110 1
+00---01110 1
+0-0110--10 1
+0-0110-1-0 1
+0-01-0-110 1
+0-0-101-10 1
+0-0-1011-0 1
+001--1--00 1
+001--1-0-0 1
+001--10--0 1
+0-01-01--0 1
+-11--0--00 1
+-11--0-0-0 1
+-11--00--0 1
+11-------- 1
+.names Clock.BLIF PC12.C
+1 1
+.names Reset.BLIF Load.BLIF PC11.Q PC10.Q AddendB11.BLIF AddendB10.BLIF Carry9.BLIF HoldPC.BLIF PC11.T.X1
+1-1----- 1
+0-0--110 1
+00---110 1
+00-1-1-0 1
+011--0-0 1
+011--100 1
+00-1-010 1
+.names Reset.BLIF Load.BLIF PC11.Q PC10.Q AddendB11.BLIF AddendB10.BLIF Carry9.BLIF HoldPC.BLIF PC11.T.X2
+0---1--0 1
+.names Clock.BLIF PC11.C
+1 1
+.names Reset.BLIF Load.BLIF PC10.Q AddendB10.BLIF Carry9.BLIF HoldPC.BLIF PC10.D.X1
+0-1--1 1
+0-0-10 1
+001-0- 1
+01--10 1
+.names Reset.BLIF Load.BLIF PC10.Q AddendB10.BLIF Carry9.BLIF HoldPC.BLIF PC10.D.X2
+0--1-0 1
+.names Clock.BLIF PC10.C
+1 1
+.names Reset.BLIF Load.BLIF PC9.Q AddendB9.BLIF Carry8.BLIF HoldPC.BLIF PC9.D.X1
+0-1--1 1
+0-0-10 1
+001-0- 1
+01--10 1
+.names Reset.BLIF Load.BLIF PC9.Q AddendB9.BLIF Carry8.BLIF HoldPC.BLIF PC9.D.X2
+0--1-0 1
+.names Clock.BLIF PC9.C
+1 1
+.names Reset.BLIF Load.BLIF PC8.Q AddendB8.BLIF Carry7.BLIF HoldPC.BLIF PC8.D.X1
+0-1--1 1
+0-0-10 1
+001-0- 1
+01--10 1
+.names Reset.BLIF Load.BLIF PC8.Q AddendB8.BLIF Carry7.BLIF HoldPC.BLIF PC8.D.X2
+0--1-0 1
+.names Clock.BLIF PC8.C
+1 1
+.names Reset.BLIF Load.BLIF PC7.Q AddendB7.BLIF Carry6.BLIF HoldPC.BLIF PC7.D.X1
+0-1--1 1
+0-0-10 1
+001-0- 1
+01--10 1
+.names Reset.BLIF Load.BLIF PC7.Q AddendB7.BLIF Carry6.BLIF HoldPC.BLIF PC7.D.X2
+0--1-0 1
+.names Clock.BLIF PC7.C
+1 1
+.names Reset.BLIF Load.BLIF PC6.Q AddendB6.BLIF Carry5.BLIF HoldPC.BLIF PC6.D.X1
+0-1--1 1
+0-0-10 1
+001-0- 1
+01--10 1
+.names Reset.BLIF Load.BLIF PC6.Q AddendB6.BLIF Carry5.BLIF HoldPC.BLIF PC6.D.X2
+0--1-0 1
+.names Clock.BLIF PC6.C
+1 1
+.names Reset.BLIF Load.BLIF PC5.Q AddendB5.BLIF Carry4.BLIF HoldPC.BLIF PC5.D.X1
+0-1--1 1
+0-0-10 1
+001-0- 1
+01--10 1
+.names Reset.BLIF Load.BLIF PC5.Q AddendB5.BLIF Carry4.BLIF HoldPC.BLIF PC5.D.X2
+0--1-0 1
+.names Clock.BLIF PC5.C
+1 1
+.names Reset.BLIF Load.BLIF PC4.Q AddendB4.BLIF Carry3.BLIF HoldPC.BLIF PC4.D.X1
+0-1--1 1
+0-0-10 1
+001-0- 1
+01--10 1
+.names Reset.BLIF Load.BLIF PC4.Q AddendB4.BLIF Carry3.BLIF HoldPC.BLIF PC4.D.X2
+0--1-0 1
+.names Clock.BLIF PC4.C
+1 1
+.names Reset.BLIF Load.BLIF PC3.Q AddendB3.BLIF Carry2.BLIF HoldPC.BLIF PC3.D.X1
+0-1--1 1
+0-0-10 1
+001-0- 1
+01--10 1
+.names Reset.BLIF Load.BLIF PC3.Q AddendB3.BLIF Carry2.BLIF HoldPC.BLIF PC3.D.X2
+0--1-0 1
+.names Clock.BLIF PC3.C
+1 1
+.names Reset.BLIF Load.BLIF PC2.Q AddendB2.BLIF Carry1.BLIF HoldPC.BLIF PC2.D.X1
+0-1--1 1
+0-0-10 1
+001-0- 1
+01--10 1
+.names Reset.BLIF Load.BLIF PC2.Q AddendB2.BLIF Carry1.BLIF HoldPC.BLIF PC2.D.X2
+0--1-0 1
+.names Clock.BLIF PC2.C
+1 1
+.names Reset.BLIF Load.BLIF PC1.Q PC0.Q AddendB1.BLIF AddendB0.BLIF HoldPC.BLIF PC1.D.X1
+0-1---1 1
+0-0-1-0 1
+001-0-- 1
+01--1-0 1
+.names Reset.BLIF Load.BLIF PC1.Q PC0.Q AddendB1.BLIF AddendB0.BLIF HoldPC.BLIF PC1.D.X2
+00-1-10 1
+.names Clock.BLIF PC1.C
+1 1
+.names Reset.BLIF Load.BLIF PC0.Q AddendB0.BLIF HoldPC.BLIF PC0.D
+01-10 1
+0010- 1
+0-010 1
+0-1-1 1
+.names Clock.BLIF PC0.C
+1 1
+.names PC12.Q ProgAddr12
+1 1
+.names PC11.Q ProgAddr11
+1 1
+.names PC10.Q ProgAddr10
+1 1
+.names PC9.Q ProgAddr9
+1 1
+.names PC8.Q ProgAddr8
+1 1
+.names PC7.Q ProgAddr7
+1 1
+.names PC6.Q ProgAddr6
+1 1
+.names PC5.Q ProgAddr5
+1 1
+.names PC4.Q ProgAddr4
+1 1
+.names PC3.Q ProgAddr3
+1 1
+.names PC2.Q ProgAddr2
+1 1
+.names PC1.Q ProgAddr1
+1 1
+.names PC0.Q ProgAddr0
+1 1
+.names Load.BLIF PC9.Q PC8.Q PC7.Q AddendB9.BLIF AddendB8.BLIF AddendB7.BLIF Carry6.BLIF Carry9.X1
+-0--0--- 1
+0-1--1-- 1
+-0---111 1
+0-11--1- 1
+0--1-11- 1
+0-11---1 1
+0--1-1-1 1
+0-1---11 1
+01--1--- 1
+0----111 1
+----1111 1
+.names PC9.Q AddendB9.BLIF Carry9.X2
+00 1
+.names Load.BLIF PC8.Q PC7.Q AddendB8.BLIF AddendB7.BLIF Carry6.BLIF Carry8
+0-111- 1
+011-1- 1
+01-1-- 1
+01--11 1
+0-11-1 1
+011--1 1
+---111 1
+.names Load.BLIF PC7.Q AddendB7.BLIF Carry6.BLIF Carry7
+011- 1
+01-1 1
+--11 1
+.names Load.BLIF PC6.Q PC5.Q PC4.Q AddendB6.BLIF AddendB5.BLIF AddendB4.BLIF Carry3.BLIF Carry6.X1
+-0--0--- 1
+0-1--1-- 1
+-0---111 1
+0-11--1- 1
+0--1-11- 1
+0-11---1 1
+0--1-1-1 1
+0-1---11 1
+01--1--- 1
+0----111 1
+----1111 1
+.names PC6.Q AddendB6.BLIF Carry6.X2
+00 1
+.names Load.BLIF PC5.Q PC4.Q AddendB5.BLIF AddendB4.BLIF Carry3.BLIF Carry5
+0-111- 1
+011-1- 1
+01-1-- 1
+01--11 1
+0-11-1 1
+011--1 1
+---111 1
+.names Load.BLIF PC4.Q AddendB4.BLIF Carry3.BLIF Carry4
+011- 1
+01-1 1
+--11 1
+.names Load.BLIF PC3.Q PC2.Q PC1.Q PC0.Q AddendB3.BLIF AddendB2.BLIF AddendB1.BLIF AddendB0.BLIF Carry3.X1
+-0---0--- 1
+0-1---1-- 1
+0-11---1- 1
+0--1--11- 1
+0-111---1 1
+0--11-1-1 1
+0-1-1--11 1
+0---1-111 1
+01---1--- 1
+.names PC3.Q AddendB3.BLIF Carry3.X2
+00 1
+.names Load.BLIF PC2.Q PC1.Q PC0.Q AddendB2.BLIF AddendB1.BLIF AddendB0.BLIF Carry2.X1
+-0--0-- 1
+0-1--1- 1
+0-11--1 1
+0--1-11 1
+01--1-- 1
+.names PC2.Q AddendB2.BLIF Carry2.X2
+00 1
+.names Load.BLIF PC1.Q PC0.Q AddendB1.BLIF AddendB0.BLIF Carry1
+01-1- 1
+0-111 1
+011-1 1
+.names AddBSel2.BLIF Offset7.BLIF AddBSel1.BLIF AddBSel0.BLIF Direct12.BLIF Offset4.BLIF AddendB12
+0-111- 1
+0-10-1 1
+11---- 1
+.names AddBSel2.BLIF Offset7.BLIF AddBSel1.BLIF AddBSel0.BLIF Direct11.BLIF Offset3.BLIF AddendB11
+0-111- 1
+0-10-1 1
+11---- 1
+.names AddBSel2.BLIF Offset7.BLIF AddBSel1.BLIF AddBSel0.BLIF Direct10.BLIF Offset2.BLIF AddendB10
+0-111- 1
+0-10-1 1
+11---- 1
+.names AddBSel2.BLIF Offset7.BLIF AddBSel1.BLIF AddBSel0.BLIF Direct9.BLIF Offset1.BLIF AddendB9
+0-111- 1
+0-10-1 1
+11---- 1
+.names AddBSel2.BLIF Offset7.BLIF AddBSel1.BLIF AddBSel0.BLIF Direct8.BLIF Offset0.BLIF AddendB8
+0-111- 1
+0-10-1 1
+11---- 1
+.names AddBSel2.BLIF Offset7.BLIF AddBSel1.BLIF AddBSel0.BLIF Direct7.BLIF AddendB7
+-101- 1
+0-111 1
+11--- 1
+.names AddBSel2.BLIF AddBSel1.BLIF AddBSel0.BLIF Offset6.BLIF Direct6.BLIF AddendB6
+-011- 1
+011-1 1
+1--1- 1
+.names AddBSel2.BLIF AddBSel1.BLIF AddBSel0.BLIF Offset5.BLIF Direct5.BLIF AddendB5
+-011- 1
+011-1 1
+1--1- 1
+.names AddBSel2.BLIF AddBSel1.BLIF AddBSel0.BLIF Offset4.BLIF Direct4.BLIF AddendB4
+-011- 1
+011-1 1
+1--1- 1
+.names AddBSel2.BLIF AddBSel1.BLIF AddBSel0.BLIF Offset3.BLIF Direct3.BLIF AddendB3
+-011- 1
+011-1 1
+1--1- 1
+.names AddBSel2.BLIF AddBSel1.BLIF AddBSel0.BLIF Offset2.BLIF Direct2.BLIF AddendB2
+-011- 1
+011-1 1
+1--1- 1
+.names AddBSel2.BLIF AddBSel1.BLIF AddBSel0.BLIF Offset1.BLIF Direct1.BLIF AddendB1
+-011- 1
+011-1 1
+1--1- 1
+.names AddBSel2.BLIF AddBSel1.BLIF AddBSel0.BLIF Offset0.BLIF Direct0.BLIF AddendB0
+-0-1- 1
+011-1 1
+000-- 1
+1--1- 1
+.end

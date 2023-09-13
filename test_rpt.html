@@ -1,0 +1,2687 @@
+<HTML>
+<HEAD><TITLE>HTML_REPORT_FILE</TITLE>
+<STYLE TYPE="text/css">
+<!--
+.blink {text-decoration:blink}
+.ms  {font-size: 10pt; font-family: monospace; font-weight: normal}
+.msb {font-size: 10pt; font-family: monospace; font-weight: bold  }
+-->
+</STYLE>
+</HEAD>
+<PRE>
+<A name="Top"></A><H2 align=center> ispLEVER Classic 2.0.00.17.20.15 Fitter Report File </H2>
+<H2 align=center>Copyright(C), 1992-2012, Lattice Semiconductor Corporation</H2>
+<H2 align=center>All Rights Reserved</H2>
+
+
+The Basic/Detailed Report Format can be selected in the dialog box
+Tools->Fitter Report File Format...
+
+<A name="Project_Summary"></A><FONT COLOR=maroon><U><B><big>Project_Summary</big></B></U></FONT>
+<BR>
+Project Name         :  test
+Project Path         :  C:\Users\ellie\OneDrive\Documents\Caltech\EE 10
+Project Fitted on    :  Tue Apr 07 00:08:47 2020
+
+Device               :  M4032_30
+Package              :  44
+GLB Input Mux Size   :  6
+Available Blocks     :  2
+Speed                :  -10
+Part Number          :  LC4032V-10T44I
+Source Format        :  ABEL_Schematic
+
+
+<font color=red size=4><span class=blink><strong><B>&lt;Error&gt; Project 'test' failed during design rules check!
+&lt;Error&gt;  F38020:  Design requires a minimum of 319 clusters: the device limit is 32 clusters.</B></strong></span></font>
+
+<A name="Compilation_Times"></A><FONT COLOR=maroon><U><B><big>Compilation_Times</big></B></U></FONT>
+<BR>
+Prefit Time                     0 secs
+Load Design Time                0.11 secs
+Partition Time                  0.00 secs
+Place Time                      0.00 secs
+Route Time                      0.00 secs
+Total Fit Time                  00:00:01
+
+
+<A name="Design_Summary"></A><FONT COLOR=maroon><U><B><big>Design_Summary</big></B></U></FONT>
+<BR>
+Total Input Pins                18
+Total Logic Functions           212
+  Total Output Pins             0
+  Total Bidir I/O Pins          64
+  Total Buried Nodes            148
+Total Flip-Flops                65
+  Total D Flip-Flops            65
+  Total T Flip-Flops            0
+  Total Latches                 0
+Total Product Terms             1452
+
+Total Reserved Pins             0
+Total Locked Pins               0
+Total Locked Nodes              0
+
+Total Unique Output Enables     2
+Total Unique Clocks             1
+Total Unique Clock Enables      0
+Total Unique Resets             0
+Total Unique Presets            0
+
+<A name="Device_Resource_Summary"></A><FONT COLOR=maroon><U><B><big>Device_Resource_Summary</big></B></U></FONT>
+<BR>
+<B>                                 Device
+                                 Total    Used   Not Used   Utilization
+-----------------------------------------------------------------------
+</B>Dedicated Pins
+  Clock/Input Pins                  2        0      2    -->     0
+  I/O / Enable Pins                 2        0      2    -->     0
+I/O Pins                           28        0     28    -->     0
+Logic Functions              <FONT COLOR=red>      32      212      0    -->   662
+</FONT>  Input Registers                  30        0     30    -->     0
+
+GLB Inputs                         72        0     72    -->     0
+Logical Product Terms        <FONT COLOR=red>     160     1461      0    -->   913
+</FONT>Occupied GLBs                       2        0      2    -->     0
+Macrocells                         32        0     32    -->     0
+
+Control Product Terms:
+  GLB Clock/Clock Enables           2        0      2    -->     0
+  GLB Reset/Presets                 2        0      2    -->     0
+  Macrocell Clocks           <FONT COLOR=red>      32       65      0    -->   203
+</FONT>  Macrocell Clock Enables          32        0     32    -->     0
+  Macrocell Enables                32        8     24    -->    25
+  Macrocell Resets                 32        0     32    -->     0
+  Macrocell Presets                32        0     32    -->     0
+
+Global Routing Pool                64        0     64    -->     0
+  GRP from IFB                     ..        0     ..    -->    ..
+    (from input signals)           ..        0     ..    -->    ..
+    (from output signals)          ..        0     ..    -->    ..
+    (from bidir signals)           ..        0     ..    -->    ..
+  GRP from MFB                     ..        0     ..    -->    ..
+----------------------------------------------------------------------
+
+&lt;Note&gt; 1 : The available PT is the product term that has not been used.
+&lt;Note&gt; 2 : IFB is I/O feedback.
+&lt;Note&gt; 3 : MFB is macrocell feedback.
+&lt;Note&gt; 4 : The Product Term Cluster and the Biput Product Term Cluster counts
+           are estimates only if the design failed during partitioning.
+
+
+<A name="GLB_Resource_Summary"></A><FONT COLOR=maroon><U><B><big>GLB_Resource_Summary</big></B></U></FONT>
+<BR>
+<B>                                                                                     # of PT
+               ---  Fanin  ---    I/O    Input  Macrocells       Macrocells   Logic  clusters
+             Unique Shared Total  Pins    Regs Used Inaccessible  available    PTs   used
+-------------------------------------------------------------------------------------------
+Maximum
+  GLB                      36      *(1)     8   --     --             16       80       16
+</B>-------------------------------------------------------------------------------------------
+  GLB    A      0     0     0      0/15     0    0      0             16        0        0
+  GLB    B      0     0     0      0/15     0    0      0             16        0        0
+-------------------------------------------------------------------------------------------
+TOTALS:         0     0     0      0/30     0    0      0             32        0        0
+
+&lt;Note&gt; 1 : For ispMACH 4000 devices, the number of IOs depends on the GLB.
+&lt;Note&gt; 2 : Four rightmost columns above reflect last status of the placement process.
+
+
+<A name="GLB_Control_Summary"></A><FONT COLOR=maroon><U><B><big>GLB_Control_Summary</big></B></U></FONT>
+<BR>
+<B>           Shared Shared | Mcell  Mcell  Mcell  Mcell  Mcell 
+           Clk/CE Rst/Pr | Clock  CE     Enable Reset  Preset
+------------------------------------------------------------------------------
+Maximum
+  GLB        1      1        16     16     16     16     16  
+==============================================================================
+</B>  GLB    A   0      0         0      0      0      0      0
+  GLB    B   0      0         0      0      0      0      0
+------------------------------------------------------------------------------
+
+&lt;Note&gt; 1 : For ispMACH 4000 devices, the number of output enables depends on the GLB.
+
+
+<A name="Optimizer_and_Fitter_Options"></A><FONT COLOR=maroon><U><B><big>Optimizer_and_Fitter_Options</big></B></U></FONT>
+<BR>
+Pin Assignment :                       No
+Group Assignment :                     No
+Pin Reservation :                      No
+
+@Ignore_Project_Constraints :
+  Pin Assignments :                    No
+      Keep Block Assignment            --
+      Keep Segment Assignment          --
+  Group Assignments :                  No
+  Macrocell Assignment :               No
+      Keep Block Assignment            --
+      Keep Segment Assignment          --
+
+@Backannotate_Project_Constraints
+  Pin Assignments :                    No
+  Pin And Block Assignments :          No
+  Pin, Macrocell and Block :           No
+
+@Timing_Constraints :                  No
+
+@Global_Project_Optimization :
+  Balanced Partitioning :              No
+  Spread Placement :                   Yes
+
+  Note :
+    Pack Design :
+       Balanced Partitioning = No
+       Spread Placement      = No
+    Spread Design :
+       Balanced Partitioning = Yes
+       Spread Placement      = Yes
+
+
+@Logic_Synthesis :
+  Logic Reduction :                    Yes
+  Node Collapsing :                    FMAX
+  Fmax_Logic_Level :                   1
+  D/T Synthesis :                      Yes
+  XOR Synthesis :                      Yes
+  Max. P-Term for Collapsing :         16
+  Max. P-Term for Splitting :          80
+  Max Symbols :                        24
+
+@Utilization_options
+  Max. % of Macrocells used :          100
+@Usercode                               (HEX)
+@IO_Types                              Default = LVCMOS18 (2)
+@Output_Slew_Rate                      Default = FAST (2)
+@Power                                 Default = HIGH (2)
+@Pull                                  Default = PULLUP_UP (2)
+@Fast_Bypass                           Default = None (2)
+@ORP_Bypass                            Default = None
+@Input_Registers                       Default = None (2)
+@Register_Powerup                      Default = None
+
+Device Options:
+&lt;Note&gt; 1 : Reserved unused I/Os can be independently driven to Low or High, and does not
+           follow the drive level set for the Global Configure Unused I/O Option.
+&lt;Note&gt; 2 : For user-specified constraints on individual signals, refer to the Output,
+           Bidir and Buried Signal Lists.
+
+
+<A name="Pinout_Listing"></A><FONT COLOR=maroon><U><B><big>Pinout_Listing</big></B></U></FONT>
+<BR>
+<B>      | Pin   | Bank |GLB |Assigned|                 | Signal|
+Pin No| Type  |Number|Pad |Pin     |     I/O Type    | Type  | Signal name
+</B>-----------------------------------------------------------------------------------
+1     | TDI   |   -  |    |        |                 |       |
+2     |  I_O  |   0  | A5 |        |                 |       |
+3     |  I_O  |   0  | A6 |        |                 |       |
+4     |  I_O  |   0  | A7 |        |                 |       |
+5     |GNDIO0 |   -  |    |        |                 |       |
+6     |VCCIO0 |   -  |    |        |                 |       |
+7     |  I_O  |   0  | A8 |        |                 |       |
+8     |  I_O  |   0  | A9 |        |                 |       |
+9     |  I_O  |   0  | A10|        |                 |       |
+10    | TCK   |   -  |    |        |                 |       |
+11    | VCC   |   -  |    |        |                 |       |
+12    | GND   |   -  |    |        |                 |       |
+13    |  I_O  |   0  | A12|        |                 |       |
+14    |  I_O  |   0  | A13|        |                 |       |
+15    |  I_O  |   0  | A14|        |                 |       |
+16    |  I_O  |   0  | A15|        |                 |       |
+17    |INCLK2 |   1  |    |        |                 |       |
+18    |  I_O  |   1  | B0 |        |                 |       |
+19    |  I_O  |   1  | B1 |        |                 |       |
+20    |  I_O  |   1  | B2 |        |                 |       |
+21    |  I_O  |   1  | B3 |        |                 |       |
+22    |  I_O  |   1  | B4 |        |                 |       |
+23    | TMS   |   -  |    |        |                 |       |
+24    |  I_O  |   1  | B5 |        |                 |       |
+25    |  I_O  |   1  | B6 |        |                 |       |
+26    |  I_O  |   1  | B7 |        |                 |       |
+27    |GNDIO1 |   -  |    |        |                 |       |
+28    |VCCIO1 |   -  |    |        |                 |       |
+29    |  I_O  |   1  | B8 |        |                 |       |
+30    |  I_O  |   1  | B9 |        |                 |       |
+31    |  I_O  |   1  | B10|        |                 |       |
+32    | TDO   |   -  |    |        |                 |       |
+33    | VCC   |   -  |    |        |                 |       |
+34    | GND   |   -  |    |        |                 |       |
+35    |  I_O  |   1  | B12|        |                 |       |
+36    |  I_O  |   1  | B13|        |                 |       |
+37    |  I_O  |   1  | B14|        |                 |       |
+38    | I_O/OE|   1  | B15|        |                 |       |
+39    |INCLK0 |   0  |    |        |                 |       |
+40    | I_O/OE|   0  | A0 |        |                 |       |
+41    |  I_O  |   0  | A1 |        |                 |       |
+42    |  I_O  |   0  | A2 |        |                 |       |
+43    |  I_O  |   0  | A3 |        |                 |       |
+44    |  I_O  |   0  | A4 |        |                 |       |
+-----------------------------------------------------------------------------------
+
+&lt;Note&gt; GLB Pad : This notation refers to the GLB I/O pad number in the device.
+&lt;Note&gt; Assigned Pin : user or dedicated input assignment (E.g. Clock pins).
+&lt;Note&gt; Pin Type : 
+          ClkIn : Dedicated input or clock pin 
+           CLK  : Dedicated clock pin
+           I_O  : Input/Output pin
+           INP  : Dedicated input pin
+           JTAG : JTAG Control and test pin
+           NC   : No connected
+
+
+<A name="Input_Signal_List"></A><FONT COLOR=maroon><U><B><big>Input_Signal_List</big></B></U></FONT>
+<BR>
+<B>                Input
+         Pin    Fanout
+ Pin GLB Type         Pullup Signal
+</B>----------------------------------------
+  --  --          --      Up <A name=23>Clock</A>
+  --  --          --      Up <A name=21>ProgramDB0</A>
+  --  --          --      Up <A name=20>ProgramDB1</A>
+  --  --          --      Up <A name=11>ProgramDB10</A>
+  --  --          --      Up <A name=10>ProgramDB11</A>
+  --  --          --      Up <A name=9>ProgramDB12</A>
+  --  --          --      Up <A name=8>ProgramDB13</A>
+  --  --          --      Up <A name=7>ProgramDB14</A>
+  --  --          --      Up <A name=6>ProgramDB15</A>
+  --  --          --      Up <A name=19>ProgramDB2</A>
+  --  --          --      Up <A name=18>ProgramDB3</A>
+  --  --          --      Up <A name=17>ProgramDB4</A>
+  --  --          --      Up <A name=16>ProgramDB5</A>
+  --  --          --      Up <A name=15>ProgramDB6</A>
+  --  --          --      Up <A name=14>ProgramDB7</A>
+  --  --          --      Up <A name=13>ProgramDB8</A>
+  --  --          --      Up <A name=12>ProgramDB9</A>
+  --  --          --      Up <A name=22>Reset</A>
+----------------------------------------
+
+
+<A name="Output_Signal_List"></A><FONT COLOR=maroon><U><B><big>Output_Signal_List</big></B></U></FONT>
+<BR>
+<B>          I         C      P R P       O Output
+          N         L Mc   R E U C O F B Fanout
+ Pin GLB  P LL PTs  S Type E S P E E P P       Slew Pullup Signal
+</B>----------------------------------------------------------------------
+  --  --  5  -   4  0 DFF      R   *       --  Fast     Up <A href=#63>Accum0</A>
+  --  --  5  -   4  0 DFF      R   *       --  Fast     Up <A href=#62>Accum1</A>
+  --  --  9  -   7  0 DFF      R   *       --  Fast     Up <A href=#61>Accum2</A>
+  --  -- 11  -  11  0 DFF      R   *       --  Fast     Up <A href=#60>Accum3</A>
+  --  --  9  -   7  0 DFF      R   *       --  Fast     Up <A href=#59>Accum4</A>
+  --  --  9  -   7  0 DFF      R   *       --  Fast     Up <A href=#58>Accum5</A>
+  --  -- 11  -  11  0 DFF      R   *       --  Fast     Up <A href=#57>Accum6</A>
+  --  -- 12  -   9  0 DFF      R   *       --  Fast     Up <A href=#56>Accum7</A>
+  --  --  3  -   3  0 COM          *       --  Fast     Up <A href=#39>DataAB0</A>
+  --  --  5  -   4  0 COM          *       --  Fast     Up <A href=#38>DataAB1</A>
+  --  --  4  -   4  0 COM          *       --  Fast     Up <A href=#37>DataAB2</A>
+  --  --  4  -   4  0 COM          *       --  Fast     Up <A href=#36>DataAB3</A>
+  --  --  4  -   4  0 COM          *       --  Fast     Up <A href=#35>DataAB4</A>
+  --  --  4  -   4  0 COM          *       --  Fast     Up <A href=#34>DataAB5</A>
+  --  --  4  -   4  0 COM          *       --  Fast     Up <A href=#33>DataAB6</A>
+  --  --  6  -   8  0 COM          *       --  Fast     Up <A href=#32>DataAB7</A>
+  --  -- 29  -  34  0 DFF      R   *       --  Fast     Up <A href=#71>Flags0</A>
+  --  -- 15  -  10  0 DFF      R   *       --  Fast     Up <A href=#70>Flags1</A>
+  --  -- 16  -  35  0 DFF      R   *       --  Fast     Up <A href=#69>Flags2</A>
+  --  -- 20  -  36  0 DFF      R   *       --  Fast     Up <A href=#68>Flags3</A>
+  --  --  1  -   2  0 DFF      R   *       --  Fast     Up <A href=#67>Flags4</A>
+  --  --  7  -   6  0 DFF      R   *       --  Fast     Up <A href=#66>Flags5</A>
+  --  --  1  -   2  0 DFF      R   *       --  Fast     Up <A href=#65>Flags6</A>
+  --  --  7  -   6  0 DFF      R   *       --  Fast     Up <A href=#64>Flags7</A>
+  --  --  8  -   1  0 COM          *       --  Fast     Up <A href=#42>IO</A>
+  --  --  6  -   5  0 DFF      R   *       --  Fast     Up <A href=#55>ProgramAB0</A>
+  --  --  8  -   7  0 DFF      R   *       --  Fast     Up <A href=#54>ProgramAB1</A>
+  --  -- 13  -  63  0 DFF      R   *       --  Fast     Up <A href=#45>ProgramAB10</A>
+  --  --  9  -  10  0 DFF      R   *       --  Fast     Up <A href=#44>ProgramAB11</A>
+  --  --  7  -   6  0 DFF      R   *       --  Fast     Up <A href=#43>ProgramAB12</A>
+  --  --  7  -   6  0 DFF      R   *       --  Fast     Up <A href=#53>ProgramAB2</A>
+  --  --  7  -   6  0 DFF      R   *       --  Fast     Up <A href=#52>ProgramAB3</A>
+  --  --  7  -   6  0 DFF      R   *       --  Fast     Up <A href=#51>ProgramAB4</A>
+  --  --  7  -   6  0 DFF      R   *       --  Fast     Up <A href=#50>ProgramAB5</A>
+  --  --  7  -   6  0 DFF      R   *       --  Fast     Up <A href=#49>ProgramAB6</A>
+  --  --  7  -   6  0 DFF      R   *       --  Fast     Up <A href=#48>ProgramAB7</A>
+  --  --  9  -  10  0 DFF      R   *       --  Fast     Up <A href=#47>ProgramAB8</A>
+  --  --  7  -   6  0 DFF      R   *       --  Fast     Up <A href=#46>ProgramAB9</A>
+  --  -- 17  -  13  0 COM          *       --  Fast     Up <A href=#40>RD</A>
+  --  --  6  -   5  0 DFF      R   *       --  Fast     Up <A href=#87>SReg0</A>
+  --  --  5  -   4  0 DFF      R   *       --  Fast     Up <A href=#86>SReg1</A>
+  --  --  7  -   6  0 DFF      R   *       --  Fast     Up <A href=#85>SReg2</A>
+  --  --  5  -   4  0 DFF      R   *       --  Fast     Up <A href=#84>SReg3</A>
+  --  --  7  -   6  0 DFF      R   *       --  Fast     Up <A href=#83>SReg4</A>
+  --  --  5  -   4  0 DFF      R   *       --  Fast     Up <A href=#82>SReg5</A>
+  --  --  7  -   6  0 DFF      R   *       --  Fast     Up <A href=#81>SReg6</A>
+  --  --  5  -   4  0 DFF      R   *       --  Fast     Up <A href=#80>SReg7</A>
+  --  --  1  -   1  0 COM          *       --  Fast     Up <A href=#41>WR</A>
+  --  --  6  -   5  0 DFF      R   *       --  Fast     Up <A href=#79>XReg0</A>
+  --  --  5  -   4  0 DFF      R   *       --  Fast     Up <A href=#78>XReg1</A>
+  --  --  7  -   6  0 DFF      R   *       --  Fast     Up <A href=#77>XReg2</A>
+  --  --  5  -   4  0 DFF      R   *       --  Fast     Up <A href=#76>XReg3</A>
+  --  --  7  -   6  0 DFF      R   *       --  Fast     Up <A href=#75>XReg4</A>
+  --  --  5  -   4  0 DFF      R   *       --  Fast     Up <A href=#74>XReg5</A>
+  --  --  7  -   6  0 DFF      R   *       --  Fast     Up <A href=#73>XReg6</A>
+  --  --  5  -   4  0 DFF      R   *       --  Fast     Up <A href=#72>XReg7</A>
+----------------------------------------------------------------------
+
+&lt;Note&gt; CLS = Number of clusters used
+       INP = Number of input signals
+       PTs = Number of product terms
+        LL = Number of logic levels
+       PRE = Has preset equation
+       RES = Has reset equation
+       PUP = Power-Up initial state: R=Reset, S=Set
+        CE = Has clock enable equation
+        OE = Has output enable equation
+        FP = Fast path used
+       OBP = ORP bypass used
+
+
+<A name="Bidir_Signal_List"></A><FONT COLOR=maroon><U><B><big>Bidir_Signal_List</big></B></U></FONT>
+<BR>
+<B>          I         C      P R P       O Bidir
+          N         L Mc   R E U C O F B Fanout
+ Pin GLB  P LL PTs  S Type E S P E E P P       Slew Pullup Signal
+</B>------------------------------------------------------------------
+  --  --  7  -   5  0 COM          *       --  Fast     Up <A href=#31>DataDB0</A>
+  --  --  7  -   5  0 COM          *       --  Fast     Up <A href=#30>DataDB1</A>
+  --  --  7  -   5  0 COM          *       --  Fast     Up <A href=#29>DataDB2</A>
+  --  --  7  -   5  0 COM          *       --  Fast     Up <A href=#28>DataDB3</A>
+  --  --  7  -   5  0 COM          *       --  Fast     Up <A href=#27>DataDB4</A>
+  --  --  6  -   4  0 COM          *       --  Fast     Up <A href=#26>DataDB5</A>
+  --  --  6  -   4  0 COM          *       --  Fast     Up <A href=#25>DataDB6</A>
+  --  --  6  -   4  0 COM          *       --  Fast     Up <A href=#24>DataDB7</A>
+------------------------------------------------------------------
+
+&lt;Note&gt; CLS = Number of clusters used
+       INP = Number of input signals
+       PTs = Number of product terms
+        LL = Number of logic levels
+       PRE = Has preset equation
+       RES = Has reset equation
+       PUP = Power-Up initial state: R=Reset, S=Set
+        CE = Has clock enable equation
+        OE = Has output enable equation
+        FP = Fast path used
+       OBP = ORP bypass used
+
+
+<A name="Buried_Signal_List"></A><FONT COLOR=maroon><U><B><big>Buried_Signal_List</big></B></U></FONT>
+<BR>
+<B>        I         C      P R P       Node
+        N         L Mc   R E U C I F Fanout
+Mc GLB  P LL PTs  S Type E S P E R P       Signal
+</B>---------------------------------------------------------------
+--  -- 11  -  12  0 COM                --  <A href=#96>J0_AEnableAccumWrite</A>
+--  --  9  -   3  0 COM                --  <A href=#97>J0_AEnableSZFlags</A>
+--  --  8  -   5  0 COM                --  <A href=#98>J0_AFControl1</A>
+--  --  8  -   4  0 COM                --  <A href=#99>J0_AFControl3</A>
+--  -- 11  -   4  0 COM                --  <A href=#100>J0_AFlagMod0</A>
+--  -- 11  -   4  0 COM                --  <A href=#101>J0_AFlagMod1</A>
+--  --  9  -   5  0 COM                --  <A href=#102>J0_ALUDSel0</A>
+--  --  8  -   1  0 COM                --  <A href=#103>J0_AShiftRight</A>
+--  --  9  -   5  0 COM                --  <A href=#104>J0_DAddressMux0</A>
+--  -- 11  -   1  0 COM                --  <A href=#105>J0_DAddressMux1</A>
+--  --  9  -   4  0 COM                --  <A href=#106>J0_DDecrement</A>
+--  -- 13  -   6  0 COM                --  <A href=#107>J0_DEnableIncDec</A>
+--  -- 12  -   3  0 COM                --  <A href=#108>J0_DPost</A>
+--  -- 12  -   2  0 COM                --  <A href=#109>J0_DataDBSel0</A>
+--  --  3  -   2  0 COM                --  <A href=#110>J0_DataDBSel1</A>
+--  -- 18  -  24  0 COM                --  <A href=#111>J0_PAddBSel0</A>
+--  -- 16  -  24  0 COM                --  <A href=#112>J0_PAddBSel1</A>
+--  --  6  -   2  0 COM                --  <A href=#113>J0_PAddBSel2</A>
+--  --  5  -   2  0 COM                --  <A href=#114>J0_PHoldPC</A>
+--  -- 13  -   6  0 COM                --  <A href=#115>J0_WR</A>
+--  --  3  -   1  0 COM                --  <A href=#233>J1_Call</A>
+--  --  9  -  11  0 COM                --  <A href=#235>J1_ConditionalJump</A>
+--  --  8  -   4  0 DFF      R         --  <A href=#226>J1_FSM0</A>
+--  --  6  -   3  0 DFF      R         --  <A href=#225>J1_FSM1</A>
+--  --  8  -   3  0 DFF      R         --  <A href=#224>J1_FSM2</A>
+--  --  6  -   4  0 DFF      R         --  <A href=#223>J1_FSM3</A>
+--  --  7  -   6  0 DFF      R         --  <A href=#222>J1_IR0</A>
+--  --  7  -   6  0 DFF      R         --  <A href=#221>J1_IR1</A>
+--  --  7  -   6  0 DFF      R         --  <A href=#212>J1_IR10</A>
+--  --  7  -   6  0 DFF      R         --  <A href=#211>J1_IR11</A>
+--  --  7  -   6  0 DFF      R         --  <A href=#210>J1_IR12</A>
+--  --  7  -   6  0 DFF      R         --  <A href=#209>J1_IR13</A>
+--  --  7  -   6  0 DFF      R         --  <A href=#208>J1_IR14</A>
+--  --  7  -   6  0 DFF      R         --  <A href=#207>J1_IR15</A>
+--  --  7  -   6  0 DFF      R         --  <A href=#220>J1_IR2</A>
+--  --  7  -   6  0 DFF      R         --  <A href=#219>J1_IR3</A>
+--  --  7  -   6  0 DFF      R         --  <A href=#218>J1_IR4</A>
+--  --  7  -   6  0 DFF      R         --  <A href=#217>J1_IR5</A>
+--  --  7  -   6  0 DFF      R         --  <A href=#216>J1_IR6</A>
+--  --  7  -   6  0 DFF      R         --  <A href=#215>J1_IR7</A>
+--  --  7  -   6  0 DFF      R         --  <A href=#214>J1_IR8</A>
+--  --  7  -   6  0 DFF      R         --  <A href=#213>J1_IR9</A>
+--  --  6  -   1  0 COM                --  <A href=#232>J1_LDI</A>
+--  --  4  -   1  0 COM                --  <A href=#231>J1_LeftShift</A>
+--  --  6  -   3  0 COM                --  <A href=#229>J1_Load</A>
+--  --  8  -   3  0 COM                --  <A href=#230>J1_LogicOp</A>
+--  --  8  -   1  0 COM                --  <A href=#227>J1_Popf</A>
+--  --  9  -   1  0 COM                --  <A href=#234>J1_Rts</A>
+--  --  8  -   1  0 COM                --  <A href=#228>J1_TSATXA</A>
+--  -- 14  -   4  0 COM                --  <A href=#165>P0_AddendA0</A>
+--  -- 14  -   4  0 COM                --  <A href=#164>P0_AddendA1</A>
+--  --  9  -   4  0 COM                --  <A href=#155>P0_AddendA10</A>
+--  --  9  -   4  0 COM                --  <A href=#154>P0_AddendA11</A>
+--  --  9  -   4  0 COM                --  <A href=#153>P0_AddendA12</A>
+--  -- 14  -   4  0 COM                --  <A href=#163>P0_AddendA2</A>
+--  -- 14  -   4  0 COM                --  <A href=#162>P0_AddendA3</A>
+--  --  9  -   4  0 COM                --  <A href=#161>P0_AddendA4</A>
+--  --  9  -   4  0 COM                --  <A href=#160>P0_AddendA5</A>
+--  --  9  -   4  0 COM                --  <A href=#159>P0_AddendA6</A>
+--  --  9  -   4  0 COM                --  <A href=#158>P0_AddendA7</A>
+--  --  9  -   4  0 COM                --  <A href=#157>P0_AddendA8</A>
+--  --  9  -   4  0 COM                --  <A href=#156>P0_AddendA9</A>
+--  -- 11  -  18  0 COM                --  <A href=#178>P0_AddendB0</A>
+--  -- 11  -  12  0 COM                --  <A href=#177>P0_AddendB1</A>
+--  --  9  -   5  0 COM                --  <A href=#168>P0_AddendB10</A>
+--  --  9  -   5  0 COM                --  <A href=#167>P0_AddendB11</A>
+--  --  9  -   5  0 COM                --  <A href=#166>P0_AddendB12</A>
+--  -- 11  -  12  0 COM                --  <A href=#176>P0_AddendB2</A>
+--  -- 11  -  12  0 COM                --  <A href=#175>P0_AddendB3</A>
+--  --  6  -   5  0 COM                --  <A href=#174>P0_AddendB4</A>
+--  --  6  -   5  0 COM                --  <A href=#173>P0_AddendB5</A>
+--  --  6  -   5  0 COM                --  <A href=#172>P0_AddendB6</A>
+--  --  6  -   5  0 COM                --  <A href=#171>P0_AddendB7</A>
+--  --  9  -   5  0 COM                --  <A href=#170>P0_AddendB8</A>
+--  --  9  -   5  0 COM                --  <A href=#169>P0_AddendB9</A>
+--  --  4  -   3  0 COM                --  <A href=#152>P0_Carry1</A>
+--  -- 11  -  34  0 COM                --  <A href=#144>P0_Carry11</A>
+--  --  6  -   6  0 COM                --  <A href=#151>P0_Carry2</A>
+--  --  8  -  10  0 COM                --  <A href=#150>P0_Carry3</A>
+--  --  3  -   3  0 COM                --  <A href=#149>P0_Carry4</A>
+--  --  5  -   6  0 COM                --  <A href=#148>P0_Carry5</A>
+--  --  7  -  10  0 COM                --  <A href=#147>P0_Carry6</A>
+--  -- 11  -  34  0 COM                --  <A href=#146>P0_Carry8</A>
+--  --  7  -  10  0 COM                --  <A href=#145>P0_Carry9</A>
+--  --  7  -   4  0 COM                --  <A href=#201>V0_AddendA0</A>
+--  --  7  -   3  0 COM                --  <A href=#200>V0_AddendA1</A>
+--  --  8  -   6  0 COM                --  <A href=#199>V0_AddendA2</A>
+--  --  7  -   3  0 COM                --  <A href=#198>V0_AddendA3</A>
+--  --  8  -   6  0 COM                --  <A href=#197>V0_AddendA4</A>
+--  --  7  -   3  0 COM                --  <A href=#196>V0_AddendA5</A>
+--  --  8  -   6  0 COM                --  <A href=#195>V0_AddendA6</A>
+--  --  7  -   3  0 COM                --  <A href=#194>V0_AddendA7</A>
+--  --  5  -   3  0 COM                --  <A href=#206>V0_AdderCarry1</A>
+--  --  4  -   3  0 COM                --  <A href=#205>V0_AdderCarry2</A>
+--  --  4  -   3  0 COM                --  <A href=#204>V0_AdderCarry3</A>
+--  --  4  -   3  0 COM                --  <A href=#203>V0_AdderCarry4</A>
+--  --  4  -   3  0 COM                --  <A href=#202>V0_AdderCarry5</A>
+--  --  5  -   3  0 COM                --  <A href=#186>V0_AddrMuxOut0</A>
+--  --  5  -   3  0 COM                --  <A href=#185>V0_AddrMuxOut1</A>
+--  --  5  -   3  0 COM                --  <A href=#184>V0_AddrMuxOut2</A>
+--  --  5  -   3  0 COM                --  <A href=#183>V0_AddrMuxOut3</A>
+--  --  5  -   3  0 COM                --  <A href=#182>V0_AddrMuxOut4</A>
+--  --  5  -   3  0 COM                --  <A href=#181>V0_AddrMuxOut5</A>
+--  --  5  -   3  0 COM                --  <A href=#180>V0_AddrMuxOut6</A>
+--  --  5  -   3  0 COM                --  <A href=#179>V0_AddrMuxOut7</A>
+--  -- 10  -   8  0 COM                --  <A href=#193>V0_IncDecCarry1</A>
+--  -- 10  -   8  0 COM                --  <A href=#192>V0_IncDecCarry3</A>
+--  -- 12  -   8  0 COM                --  <A href=#191>V0_IncDecCarry5</A>
+--  --  4  -   3  0 COM                --  <A href=#190>V0_IncDecOut1</A>
+--  --  4  -   3  0 COM                --  <A href=#189>V0_IncDecOut3</A>
+--  --  4  -   3  0 COM                --  <A href=#188>V0_IncDecOut5</A>
+--  --  4  -   3  0 COM                --  <A href=#187>V0_IncDecOut7</A>
+--  -- 12  -  10  0 COM                --  <A href=#88>X0_Data0</A>
+--  -- 13  -  12  0 COM                --  <A href=#89>X0_Data1</A>
+--  -- 13  -  12  0 COM                --  <A href=#90>X0_Data2</A>
+--  -- 13  -  12  0 COM                --  <A href=#91>X0_Data3</A>
+--  -- 13  -  12  0 COM                --  <A href=#92>X0_Data4</A>
+--  -- 13  -  12  0 COM                --  <A href=#93>X0_Data5</A>
+--  -- 13  -  12  0 COM                --  <A href=#94>X0_Data6</A>
+--  --  6  -   4  0 COM                --  <A href=#95>X0_Data7</A>
+--  -- 10  -   8  0 COM                --  <A href=#130>X1_Carry0</A>
+--  -- 14  -  19  0 COM                --  <A href=#129>X1_Carry1</A>
+--  -- 10  -   9  0 COM                --  <A href=#128>X1_Carry2</A>
+--  -- 14  -  30  0 COM                --  <A href=#127>X1_Carry4</A>
+--  --  7  -  10  0 COM                --  <A href=#126>X1_Carry5</A>
+--  -- 11  -  34  0 COM                --  <A href=#125>X1_Carry7</A>
+--  --  7  -  10  0 COM                --  <A href=#124>X1_Carry8</A>
+--  --  8  -   5  0 COM                --  <A href=#123>X1_FOutput0</A>
+--  --  8  -   5  0 COM                --  <A href=#122>X1_FOutput1</A>
+--  --  8  -   5  0 COM                --  <A href=#121>X1_FOutput2</A>
+--  --  8  -   5  0 COM                --  <A href=#120>X1_FOutput3</A>
+--  --  8  -   5  0 COM                --  <A href=#119>X1_FOutput4</A>
+--  --  8  -   5  0 COM                --  <A href=#118>X1_FOutput5</A>
+--  --  8  -   5  0 COM                --  <A href=#117>X1_FOutput6</A>
+--  --  8  -   5  0 COM                --  <A href=#116>X1_FOutput7</A>
+--  --  9  -   8  0 COM                --  <A href=#138>X1_MaskAccum0</A>
+--  --  8  -   4  0 COM                --  <A href=#137>X1_MaskAccum1</A>
+--  --  8  -   4  0 COM                --  <A href=#136>X1_MaskAccum2</A>
+--  --  8  -   4  0 COM                --  <A href=#135>X1_MaskAccum3</A>
+--  --  8  -   4  0 COM                --  <A href=#134>X1_MaskAccum4</A>
+--  --  8  -   4  0 COM                --  <A href=#133>X1_MaskAccum5</A>
+--  --  8  -   4  0 COM                --  <A href=#132>X1_MaskAccum6</A>
+--  --  8  -   4  0 COM                --  <A href=#131>X1_MaskAccum7</A>
+--  --  5  -   4  0 COM                --  <A href=#143>X1_NewAccum0</A>
+--  --  5  -   4  0 COM                --  <A href=#142>X1_NewAccum1</A>
+--  --  7  -   8  0 COM                --  <A href=#141>X1_NewAccum3</A>
+--  --  5  -   4  0 COM                --  <A href=#140>X1_NewAccum4</A>
+--  -- 11  -  32  0 COM                --  <A href=#139>X1_NewAccum5</A>
+--  --  1   1  0 PTOE             --     <A href=#243>DataDB0.OE</A>
+--  --  0   1  0 PTOE             --     <A href=#299>SReg0.OE</A>
+---------------------------------------------------------------
+
+&lt;Note&gt; CLS = Number of clusters used
+       INP = Number of input signals
+       PTs = Number of product terms
+        LL = Number of logic levels
+       PRE = Has preset equation
+       RES = Has reset equation
+       PUP = Power-Up initial state: R=Reset, S=Set
+        CE = Has clock enable equation
+        OE = Has output enable equation
+        IR = Input register
+        FP = Fast path used
+       OBP = ORP bypass used
+
+
+<A name="PostFit_Equations"></A><FONT COLOR=maroon><U><B><big>PostFit_Equations</big></B></U></FONT>
+<BR>
+<A name=63>Accum0.D</A> = !<A href=#22>Reset</A> & <A href=#63>Accum0.Q</A> & !<A href=#96>J0_AEnableAccumWrite</A>
+    # !Reset & J0_AEnableAccumWrite & <A href=#143>X1_NewAccum0</A> ; (2 pterms, 4 signals)
+Accum0.OE = 1 ; (1 pterm, 0 signal)
+Accum0.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=62>Accum1.D</A> = !<A href=#22>Reset</A> & <A href=#62>Accum1.Q</A> & !<A href=#96>J0_AEnableAccumWrite</A>
+    # !Reset & J0_AEnableAccumWrite & <A href=#142>X1_NewAccum1</A> ; (2 pterms, 4 signals)
+Accum1.OE = 1 ; (1 pterm, 0 signal)
+Accum1.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=61>Accum2.D.X1</A> = !<A href=#22>Reset</A> & <A href=#61>Accum2.Q</A> & !<A href=#96>J0_AEnableAccumWrite</A>
+    # !Reset & <A href=#60>Accum3.Q</A> & J0_AEnableAccumWrite & <A href=#103>J0_AShiftRight</A>
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & !<A href=#128>X1_Carry2</A>
+       & !<A href=#136>X1_MaskAccum2</A>
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & X1_Carry2
+       & X1_MaskAccum2 ; (4 pterms, 7 signals)
+Accum2.D.X2 = !<A href=#22>Reset</A> & <A href=#96>J0_AEnableAccumWrite</A> & !<A href=#103>J0_AShiftRight</A> & !<A href=#121>X1_FOutput2</A> ; (1 pterm, 4 signals)
+Accum2.OE = 1 ; (1 pterm, 0 signal)
+Accum2.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=60>Accum3.D.X1</A> = !<A href=#22>Reset</A> & <A href=#60>Accum3.Q</A> & !<A href=#96>J0_AEnableAccumWrite</A>
+    # !Reset & <A href=#59>Accum4.Q</A> & J0_AEnableAccumWrite & <A href=#103>J0_AShiftRight</A>
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & !<A href=#128>X1_Carry2</A>
+       & !<A href=#135>X1_MaskAccum3</A> & !<A href=#136>X1_MaskAccum2</A>
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & !<A href=#121>X1_FOutput2</A>
+       & !X1_Carry2 & !X1_MaskAccum3
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & !X1_FOutput2
+       & !X1_MaskAccum3 & !X1_MaskAccum2
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & X1_Carry2
+       & X1_MaskAccum3 & X1_MaskAccum2
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & X1_FOutput2
+       & X1_MaskAccum3 & X1_MaskAccum2
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & X1_FOutput2
+       & X1_Carry2 & X1_MaskAccum3 & !X1_MaskAccum2 ; (8 pterms, 9 signals)
+Accum3.D.X2 = !<A href=#22>Reset</A> & <A href=#96>J0_AEnableAccumWrite</A> & !<A href=#103>J0_AShiftRight</A> & !<A href=#120>X1_FOutput3</A> ; (1 pterm, 4 signals)
+Accum3.OE = 1 ; (1 pterm, 0 signal)
+Accum3.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=59>Accum4.D.X1</A> = !<A href=#22>Reset</A> & <A href=#59>Accum4.Q</A> & !<A href=#96>J0_AEnableAccumWrite</A>
+    # !Reset & <A href=#58>Accum5.Q</A> & J0_AEnableAccumWrite & <A href=#103>J0_AShiftRight</A>
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & !<A href=#127>X1_Carry4</A>
+       & !<A href=#134>X1_MaskAccum4</A>
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & X1_Carry4
+       & X1_MaskAccum4 ; (4 pterms, 7 signals)
+Accum4.D.X2 = !<A href=#22>Reset</A> & <A href=#96>J0_AEnableAccumWrite</A> & !<A href=#103>J0_AShiftRight</A> & !<A href=#119>X1_FOutput4</A> ; (1 pterm, 4 signals)
+Accum4.OE = 1 ; (1 pterm, 0 signal)
+Accum4.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=58>Accum5.D.X1</A> = !<A href=#22>Reset</A> & <A href=#58>Accum5.Q</A> & !<A href=#96>J0_AEnableAccumWrite</A>
+    # !Reset & <A href=#57>Accum6.Q</A> & J0_AEnableAccumWrite & <A href=#103>J0_AShiftRight</A>
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & !<A href=#126>X1_Carry5</A>
+       & !<A href=#133>X1_MaskAccum5</A>
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & X1_Carry5
+       & X1_MaskAccum5 ; (4 pterms, 7 signals)
+Accum5.D.X2 = !<A href=#22>Reset</A> & <A href=#96>J0_AEnableAccumWrite</A> & !<A href=#103>J0_AShiftRight</A> & !<A href=#118>X1_FOutput5</A> ; (1 pterm, 4 signals)
+Accum5.OE = 1 ; (1 pterm, 0 signal)
+Accum5.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=57>Accum6.D.X1</A> = !<A href=#22>Reset</A> & <A href=#57>Accum6.Q</A> & !<A href=#96>J0_AEnableAccumWrite</A>
+    # !Reset & <A href=#56>Accum7.Q</A> & J0_AEnableAccumWrite & <A href=#103>J0_AShiftRight</A>
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & !<A href=#126>X1_Carry5</A>
+       & !<A href=#132>X1_MaskAccum6</A> & !<A href=#133>X1_MaskAccum5</A>
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & !<A href=#118>X1_FOutput5</A>
+       & !X1_Carry5 & !X1_MaskAccum6
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & !X1_FOutput5
+       & !X1_MaskAccum6 & !X1_MaskAccum5
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & X1_Carry5
+       & X1_MaskAccum6 & X1_MaskAccum5
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & X1_FOutput5
+       & X1_MaskAccum6 & X1_MaskAccum5
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & X1_FOutput5
+       & X1_Carry5 & X1_MaskAccum6 & !X1_MaskAccum5 ; (8 pterms, 9 signals)
+Accum6.D.X2 = !<A href=#22>Reset</A> & <A href=#96>J0_AEnableAccumWrite</A> & !<A href=#103>J0_AShiftRight</A> & !<A href=#117>X1_FOutput6</A> ; (1 pterm, 4 signals)
+Accum6.OE = 1 ; (1 pterm, 0 signal)
+Accum6.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=56>Accum7.D.X1</A> = !<A href=#22>Reset</A> & <A href=#56>Accum7.Q</A> & !<A href=#96>J0_AEnableAccumWrite</A>
+    # !Reset & J0_AEnableAccumWrite & !<A href=#103>J0_AShiftRight</A> & !<A href=#125>X1_Carry7</A>
+       & !<A href=#131>X1_MaskAccum7</A>
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & X1_Carry7
+       & X1_MaskAccum7
+    # !Reset & Accum7.Q & J0_AEnableAccumWrite & J0_AShiftRight & !<A href=#221>J1_IR1.Q</A>
+       & <A href=#222>J1_IR0.Q</A>
+    # !Reset & <A href=#63>Accum0.Q</A> & J0_AEnableAccumWrite & J0_AShiftRight & J1_IR1.Q
+       & !J1_IR0.Q
+    # !Reset & <A href=#68>Flags3.Q</A> & J0_AEnableAccumWrite & J0_AShiftRight & J1_IR1.Q
+       & J1_IR0.Q ; (6 pterms, 10 signals)
+Accum7.D.X2 = !<A href=#22>Reset</A> & <A href=#96>J0_AEnableAccumWrite</A> & !<A href=#103>J0_AShiftRight</A> & !<A href=#116>X1_FOutput7</A> ; (1 pterm, 4 signals)
+Accum7.OE = 1 ; (1 pterm, 0 signal)
+Accum7.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=39>DataAB0</A> = !<A href=#201>V0_AddendA0</A> & <A href=#222>J1_IR0.Q</A> & !<A href=#233>J1_Call</A>
+    # V0_AddendA0 & !J1_IR0.Q
+    # V0_AddendA0 & J1_Call ; (3 pterms, 3 signals)
+DataAB0.OE = 1 ; (1 pterm, 0 signal)
+
+<A name=38>DataAB1.X1</A> = <A href=#201>V0_AddendA0</A> & !<A href=#221>J1_IR1.Q</A> & <A href=#222>J1_IR0.Q</A> & !<A href=#233>J1_Call</A>
+    # !V0_AddendA0 & J1_IR1.Q & !J1_Call
+    # J1_IR1.Q & !J1_IR0.Q & !J1_Call ; (3 pterms, 4 signals)
+DataAB1.X2 = <A href=#200>V0_AddendA1</A> ; (1 pterm, 1 signal)
+DataAB1.OE = 1 ; (1 pterm, 0 signal)
+
+<A name=37>DataAB2.X1</A> = !<A href=#206>V0_AdderCarry1</A> & !<A href=#220>J1_IR2.Q</A>
+    # !V0_AdderCarry1 & <A href=#233>J1_Call</A>
+    # V0_AdderCarry1 & J1_IR2.Q & !J1_Call ; (3 pterms, 3 signals)
+DataAB2.X2 = !<A href=#199>V0_AddendA2</A> ; (1 pterm, 1 signal)
+DataAB2.OE = 1 ; (1 pterm, 0 signal)
+
+<A name=36>DataAB3.X1</A> = !<A href=#205>V0_AdderCarry2</A> & !<A href=#219>J1_IR3.Q</A>
+    # !V0_AdderCarry2 & <A href=#233>J1_Call</A>
+    # V0_AdderCarry2 & J1_IR3.Q & !J1_Call ; (3 pterms, 3 signals)
+DataAB3.X2 = !<A href=#198>V0_AddendA3</A> ; (1 pterm, 1 signal)
+DataAB3.OE = 1 ; (1 pterm, 0 signal)
+
+<A name=35>DataAB4.X1</A> = !<A href=#204>V0_AdderCarry3</A> & !<A href=#218>J1_IR4.Q</A>
+    # !V0_AdderCarry3 & <A href=#233>J1_Call</A>
+    # V0_AdderCarry3 & J1_IR4.Q & !J1_Call ; (3 pterms, 3 signals)
+DataAB4.X2 = !<A href=#197>V0_AddendA4</A> ; (1 pterm, 1 signal)
+DataAB4.OE = 1 ; (1 pterm, 0 signal)
+
+<A name=34>DataAB5.X1</A> = !<A href=#203>V0_AdderCarry4</A> & !<A href=#217>J1_IR5.Q</A>
+    # !V0_AdderCarry4 & <A href=#233>J1_Call</A>
+    # V0_AdderCarry4 & J1_IR5.Q & !J1_Call ; (3 pterms, 3 signals)
+DataAB5.X2 = !<A href=#196>V0_AddendA5</A> ; (1 pterm, 1 signal)
+DataAB5.OE = 1 ; (1 pterm, 0 signal)
+
+<A name=33>DataAB6.X1</A> = !<A href=#202>V0_AdderCarry5</A> & !<A href=#216>J1_IR6.Q</A>
+    # !V0_AdderCarry5 & <A href=#233>J1_Call</A>
+    # V0_AdderCarry5 & J1_IR6.Q & !J1_Call ; (3 pterms, 3 signals)
+DataAB6.X2 = !<A href=#195>V0_AddendA6</A> ; (1 pterm, 1 signal)
+DataAB6.OE = 1 ; (1 pterm, 0 signal)
+
+<A name=32>DataAB7.X1</A> = <A href=#195>V0_AddendA6</A> & <A href=#202>V0_AdderCarry5</A> & !<A href=#215>J1_IR7.Q</A>
+    # V0_AddendA6 & !J1_IR7.Q & <A href=#216>J1_IR6.Q</A> & !<A href=#233>J1_Call</A>
+    # V0_AdderCarry5 & !J1_IR7.Q & J1_IR6.Q & !J1_Call
+    # !V0_AddendA6 & !V0_AdderCarry5 & J1_IR7.Q & !J1_Call
+    # !V0_AddendA6 & J1_IR7.Q & !J1_IR6.Q & !J1_Call
+    # !V0_AdderCarry5 & J1_IR7.Q & !J1_IR6.Q & !J1_Call
+    # V0_AddendA6 & V0_AdderCarry5 & J1_Call ; (7 pterms, 5 signals)
+DataAB7.X2 = <A href=#194>V0_AddendA7</A> ; (1 pterm, 1 signal)
+DataAB7.OE = 1 ; (1 pterm, 0 signal)
+
+<A name=31>DataDB0</A> = <A href=#55>ProgramAB0.Q</A> & !<A href=#109>J0_DataDBSel0</A> & <A href=#110>J0_DataDBSel1</A>
+    # <A href=#71>Flags0.Q</A> & J0_DataDBSel0 & !J0_DataDBSel1
+    # <A href=#63>Accum0.Q</A> & !J0_DataDBSel0 & !J0_DataDBSel1
+    # <A href=#47>ProgramAB8.Q</A> & J0_DataDBSel0 & J0_DataDBSel1 ; (4 pterms, 6 signals)
+DataDB0.OE = <A href=#115>J0_WR</A> ; (1 pterm, 1 signal)
+
+<A name=30>DataDB1</A> = <A href=#54>ProgramAB1.Q</A> & !<A href=#109>J0_DataDBSel0</A> & <A href=#110>J0_DataDBSel1</A>
+    # <A href=#70>Flags1.Q</A> & J0_DataDBSel0 & !J0_DataDBSel1
+    # <A href=#62>Accum1.Q</A> & !J0_DataDBSel0 & !J0_DataDBSel1
+    # <A href=#46>ProgramAB9.Q</A> & J0_DataDBSel0 & J0_DataDBSel1 ; (4 pterms, 6 signals)
+DataDB1.OE = <A href=#115>J0_WR</A> ; (1 pterm, 1 signal)
+
+<A name=29>DataDB2</A> = <A href=#53>ProgramAB2.Q</A> & !<A href=#109>J0_DataDBSel0</A> & <A href=#110>J0_DataDBSel1</A>
+    # <A href=#69>Flags2.Q</A> & J0_DataDBSel0 & !J0_DataDBSel1
+    # <A href=#61>Accum2.Q</A> & !J0_DataDBSel0 & !J0_DataDBSel1
+    # <A href=#45>ProgramAB10.Q</A> & J0_DataDBSel0 & J0_DataDBSel1 ; (4 pterms, 6 signals)
+DataDB2.OE = <A href=#115>J0_WR</A> ; (1 pterm, 1 signal)
+
+<A name=28>DataDB3</A> = <A href=#52>ProgramAB3.Q</A> & !<A href=#109>J0_DataDBSel0</A> & <A href=#110>J0_DataDBSel1</A>
+    # <A href=#68>Flags3.Q</A> & J0_DataDBSel0 & !J0_DataDBSel1
+    # <A href=#60>Accum3.Q</A> & !J0_DataDBSel0 & !J0_DataDBSel1
+    # <A href=#44>ProgramAB11.Q</A> & J0_DataDBSel0 & J0_DataDBSel1 ; (4 pterms, 6 signals)
+DataDB3.OE = <A href=#115>J0_WR</A> ; (1 pterm, 1 signal)
+
+<A name=27>DataDB4</A> = <A href=#51>ProgramAB4.Q</A> & !<A href=#109>J0_DataDBSel0</A> & <A href=#110>J0_DataDBSel1</A>
+    # <A href=#67>Flags4.Q</A> & J0_DataDBSel0 & !J0_DataDBSel1
+    # <A href=#59>Accum4.Q</A> & !J0_DataDBSel0 & !J0_DataDBSel1
+    # <A href=#43>ProgramAB12.Q</A> & J0_DataDBSel0 & J0_DataDBSel1 ; (4 pterms, 6 signals)
+DataDB4.OE = <A href=#115>J0_WR</A> ; (1 pterm, 1 signal)
+
+<A name=26>DataDB5</A> = <A href=#66>Flags5.Q</A> & <A href=#109>J0_DataDBSel0</A> & !<A href=#110>J0_DataDBSel1</A>
+    # <A href=#58>Accum5.Q</A> & !J0_DataDBSel0 & !J0_DataDBSel1
+    # <A href=#50>ProgramAB5.Q</A> & !J0_DataDBSel0 & J0_DataDBSel1 ; (3 pterms, 5 signals)
+DataDB5.OE = <A href=#115>J0_WR</A> ; (1 pterm, 1 signal)
+
+<A name=25>DataDB6</A> = <A href=#65>Flags6.Q</A> & <A href=#109>J0_DataDBSel0</A> & !<A href=#110>J0_DataDBSel1</A>
+    # <A href=#57>Accum6.Q</A> & !J0_DataDBSel0 & !J0_DataDBSel1
+    # <A href=#49>ProgramAB6.Q</A> & !J0_DataDBSel0 & J0_DataDBSel1 ; (3 pterms, 5 signals)
+DataDB6.OE = <A href=#115>J0_WR</A> ; (1 pterm, 1 signal)
+
+<A name=24>DataDB7</A> = <A href=#64>Flags7.Q</A> & <A href=#109>J0_DataDBSel0</A> & !<A href=#110>J0_DataDBSel1</A>
+    # <A href=#56>Accum7.Q</A> & !J0_DataDBSel0 & !J0_DataDBSel1
+    # <A href=#48>ProgramAB7.Q</A> & !J0_DataDBSel0 & J0_DataDBSel1 ; (3 pterms, 5 signals)
+DataDB7.OE = <A href=#115>J0_WR</A> ; (1 pterm, 1 signal)
+
+<A name=71>Flags0.D</A> = !( <A href=#22>Reset</A>
+    # !<A href=#88>X0_Data0</A> & <A href=#227>J1_Popf</A>
+    # !<A href=#71>Flags0.Q</A> & !<A href=#97>J0_AEnableSZFlags</A> & !J1_Popf
+    # J0_AEnableSZFlags & <A href=#139>X1_NewAccum5</A> & !J1_Popf
+    # J0_AEnableSZFlags & <A href=#140>X1_NewAccum4</A> & !J1_Popf
+    # J0_AEnableSZFlags & <A href=#141>X1_NewAccum3</A> & !J1_Popf
+    # J0_AEnableSZFlags & <A href=#142>X1_NewAccum1</A> & !J1_Popf
+    # J0_AEnableSZFlags & <A href=#143>X1_NewAccum0</A> & !J1_Popf
+    # <A href=#56>Accum7.Q</A> & J0_AEnableSZFlags & <A href=#103>J0_AShiftRight</A> & !J1_Popf
+    # <A href=#60>Accum3.Q</A> & J0_AEnableSZFlags & J0_AShiftRight & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & <A href=#116>X1_FOutput7</A> & <A href=#125>X1_Carry7</A>
+       & <A href=#131>X1_MaskAccum7</A> & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput7 & !X1_Carry7
+       & X1_MaskAccum7 & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput7 & X1_Carry7
+       & !X1_MaskAccum7 & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput7 & !X1_Carry7
+       & !X1_MaskAccum7 & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & <A href=#121>X1_FOutput2</A> & <A href=#128>X1_Carry2</A>
+       & <A href=#136>X1_MaskAccum2</A> & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput2 & !X1_Carry2
+       & X1_MaskAccum2 & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput2 & X1_Carry2
+       & !X1_MaskAccum2 & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput2 & !X1_Carry2
+       & !X1_MaskAccum2 & !J1_Popf
+    # <A href=#68>Flags3.Q</A> & J0_AEnableSZFlags & J0_AShiftRight & <A href=#221>J1_IR1.Q</A> & <A href=#222>J1_IR0.Q</A>
+       & !J1_Popf
+    # <A href=#63>Accum0.Q</A> & J0_AEnableSZFlags & J0_AShiftRight & J1_IR1.Q & !J1_IR0.Q
+       & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & <A href=#117>X1_FOutput6</A> & <A href=#118>X1_FOutput5</A>
+       & <A href=#126>X1_Carry5</A> & <A href=#132>X1_MaskAccum6</A> & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput6 & !X1_FOutput5
+       & !X1_Carry5 & X1_MaskAccum6 & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput6 & X1_FOutput5
+       & X1_Carry5 & !X1_MaskAccum6 & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput6 & !X1_FOutput5
+       & !X1_Carry5 & !X1_MaskAccum6 & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput6 & X1_FOutput5
+       & X1_MaskAccum6 & <A href=#133>X1_MaskAccum5</A> & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput6 & X1_Carry5
+       & X1_MaskAccum6 & X1_MaskAccum5 & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput6 & X1_FOutput5
+       & !X1_MaskAccum6 & X1_MaskAccum5 & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput6 & X1_Carry5
+       & !X1_MaskAccum6 & X1_MaskAccum5 & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput6 & !X1_FOutput5
+       & X1_MaskAccum6 & !X1_MaskAccum5 & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput6 & !X1_Carry5
+       & X1_MaskAccum6 & !X1_MaskAccum5 & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput6 & !X1_FOutput5
+       & !X1_MaskAccum6 & !X1_MaskAccum5 & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput6 & !X1_Carry5
+       & !X1_MaskAccum6 & !X1_MaskAccum5 & !J1_Popf ) ; (32 pterms, 28 signals)
+Flags0.OE = 1 ; (1 pterm, 0 signal)
+Flags0.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=70>Flags1.D.X1</A> = !<A href=#22>Reset</A> & <A href=#89>X0_Data1</A> & <A href=#227>J1_Popf</A>
+    # !Reset & <A href=#70>Flags1.Q</A> & !<A href=#97>J0_AEnableSZFlags</A> & !J1_Popf
+    # !Reset & J0_AEnableSZFlags & !<A href=#103>J0_AShiftRight</A> & !<A href=#125>X1_Carry7</A>
+       & !<A href=#131>X1_MaskAccum7</A> & !J1_Popf
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & X1_Carry7 & X1_MaskAccum7
+       & !J1_Popf
+    # !Reset & <A href=#68>Flags3.Q</A> & J0_AEnableSZFlags & J0_AShiftRight & <A href=#221>J1_IR1.Q</A>
+       & <A href=#222>J1_IR0.Q</A> & !J1_Popf
+    # !Reset & <A href=#63>Accum0.Q</A> & J0_AEnableSZFlags & J0_AShiftRight & J1_IR1.Q
+       & !J1_IR0.Q & !J1_Popf
+    # !Reset & <A href=#56>Accum7.Q</A> & J0_AEnableSZFlags & J0_AShiftRight & !J1_IR1.Q
+       & J1_IR0.Q & !J1_Popf ; (7 pterms, 13 signals)
+Flags1.D.X2 = !<A href=#22>Reset</A> & <A href=#97>J0_AEnableSZFlags</A> & !<A href=#103>J0_AShiftRight</A> & !<A href=#116>X1_FOutput7</A>
+       & !<A href=#227>J1_Popf</A> ; (1 pterm, 5 signals)
+Flags1.OE = 1 ; (1 pterm, 0 signal)
+Flags1.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=69>Flags2.D</A> = !<A href=#22>Reset</A> & <A href=#97>J0_AEnableSZFlags</A> & !<A href=#103>J0_AShiftRight</A> & <A href=#125>X1_Carry7</A>
+       & !<A href=#126>X1_Carry5</A> & !<A href=#131>X1_MaskAccum7</A> & !<A href=#132>X1_MaskAccum6</A> & !<A href=#133>X1_MaskAccum5</A>
+       & !<A href=#227>J1_Popf</A> & !<A href=#230>J1_LogicOp</A>
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & !<A href=#118>X1_FOutput5</A> & X1_Carry7
+       & !X1_MaskAccum7 & !X1_MaskAccum6 & !X1_MaskAccum5 & !J1_Popf
+       & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & !<A href=#116>X1_FOutput7</A> & X1_Carry7
+       & !X1_Carry5 & !X1_MaskAccum6 & !X1_MaskAccum5 & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput7
+       & !X1_FOutput5 & X1_Carry7 & !X1_MaskAccum6 & !X1_MaskAccum5 & !J1_Popf
+       & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & !<A href=#117>X1_FOutput6</A> & X1_Carry7
+       & !X1_Carry5 & !X1_MaskAccum7 & !X1_MaskAccum5 & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput6
+       & !X1_FOutput5 & X1_Carry7 & !X1_MaskAccum7 & !X1_MaskAccum5 & !J1_Popf
+       & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput7
+       & !X1_FOutput6 & X1_Carry7 & !X1_Carry5 & !X1_MaskAccum5 & !J1_Popf
+       & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput7
+       & !X1_FOutput6 & !X1_FOutput5 & X1_Carry7 & !X1_MaskAccum5 & !J1_Popf
+       & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & !X1_Carry7 & X1_Carry5
+       & X1_MaskAccum7 & X1_MaskAccum6 & X1_MaskAccum5 & !J1_Popf
+       & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput5 & !X1_Carry7
+       & X1_MaskAccum7 & X1_MaskAccum6 & X1_MaskAccum5 & !J1_Popf
+       & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput7 & !X1_Carry7
+       & X1_Carry5 & X1_MaskAccum6 & X1_MaskAccum5 & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput7 & X1_FOutput5
+       & !X1_Carry7 & X1_MaskAccum6 & X1_MaskAccum5 & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput6 & !X1_Carry7
+       & X1_Carry5 & X1_MaskAccum7 & X1_MaskAccum5 & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput6 & X1_FOutput5
+       & !X1_Carry7 & X1_MaskAccum7 & X1_MaskAccum5 & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput7 & X1_FOutput6
+       & !X1_Carry7 & X1_Carry5 & X1_MaskAccum5 & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput7 & X1_FOutput6
+       & X1_FOutput5 & !X1_Carry7 & X1_MaskAccum5 & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput5 & X1_Carry7
+       & !X1_Carry5 & !X1_MaskAccum7 & !X1_MaskAccum6 & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput7
+       & !X1_FOutput5 & X1_Carry7 & !X1_Carry5 & !X1_MaskAccum6 & !J1_Popf
+       & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput5 & !X1_Carry7
+       & X1_Carry5 & X1_MaskAccum7 & X1_MaskAccum6 & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput7 & X1_FOutput5
+       & !X1_Carry7 & X1_Carry5 & X1_MaskAccum6 & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput6
+       & !X1_FOutput5 & X1_Carry7 & !X1_Carry5 & !X1_MaskAccum7 & !J1_Popf
+       & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput6 & X1_FOutput5
+       & !X1_Carry7 & X1_Carry5 & X1_MaskAccum7 & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput7
+       & !X1_FOutput6 & !X1_FOutput5 & X1_Carry7 & !X1_Carry5 & !J1_Popf
+       & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput7 & X1_FOutput6
+       & X1_FOutput5 & !X1_Carry7 & X1_Carry5 & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput6 & X1_Carry7
+       & !X1_MaskAccum7 & !X1_MaskAccum6 & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput7
+       & !X1_FOutput6 & X1_Carry7 & !X1_MaskAccum6 & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput6 & !X1_Carry7
+       & X1_MaskAccum7 & X1_MaskAccum6 & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput7 & X1_FOutput6
+       & !X1_Carry7 & X1_MaskAccum6 & !J1_Popf & !J1_LogicOp
+    # !Reset & <A href=#90>X0_Data2</A> & J1_Popf
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput7 & X1_Carry7
+       & !X1_MaskAccum7 & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput7 & !X1_Carry7
+       & X1_MaskAccum7 & !J1_Popf & !J1_LogicOp
+    # !Reset & <A href=#69>Flags2.Q</A> & !J0_AEnableSZFlags & !J1_Popf
+    # !Reset & Flags2.Q & !J1_Popf & J1_LogicOp ; (33 pterms, 15 signals)
+Flags2.OE = 1 ; (1 pterm, 0 signal)
+Flags2.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=68>Flags3.D</A> = !<A href=#22>Reset</A> & <A href=#97>J0_AEnableSZFlags</A> & <A href=#101>J0_AFlagMod1</A> & !<A href=#103>J0_AShiftRight</A>
+       & !<A href=#124>X1_Carry8</A> & !<A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & <A href=#209>J1_IR13.Q</A> & !<A href=#211>J1_IR11.Q</A>
+       & !<A href=#212>J1_IR10.Q</A> & !<A href=#227>J1_Popf</A> & !<A href=#230>J1_LogicOp</A>
+    # !Reset & J0_AEnableSZFlags & <A href=#100>J0_AFlagMod0</A> & !J0_AShiftRight & !X1_Carry8
+       & !J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR11.Q & !J1_IR10.Q
+       & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod1 & !J0_AShiftRight & X1_Carry8
+       & J1_IR14.Q & !<A href=#210>J1_IR12.Q</A> & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod0 & !J0_AShiftRight & X1_Carry8
+       & J1_IR14.Q & !J1_IR12.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod1 & !J0_AShiftRight & X1_Carry8
+       & J1_IR14.Q & !<A href=#213>J1_IR9.Q</A> & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod1 & !J0_AShiftRight & X1_Carry8
+       & J1_IR14.Q & !<A href=#214>J1_IR8.Q</A> & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod0 & !J0_AShiftRight & X1_Carry8
+       & J1_IR14.Q & !J1_IR9.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod0 & !J0_AShiftRight & X1_Carry8
+       & J1_IR14.Q & !J1_IR8.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod0 & !J0_AShiftRight & !X1_Carry8
+       & !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & J1_IR12.Q & J1_IR11.Q
+       & !J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod1 & !J0_AShiftRight & !X1_Carry8
+       & !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & J1_IR12.Q & J1_IR11.Q
+       & !J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod0 & !J0_AShiftRight & !X1_Carry8
+       & !J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q
+       & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod1 & !J0_AShiftRight & !X1_Carry8
+       & !J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q
+       & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod0 & !J0_AShiftRight & !X1_Carry8
+       & !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & J1_IR12.Q & !J1_Popf
+       & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod1 & !J0_AShiftRight & !X1_Carry8
+       & !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & J1_IR12.Q & !J1_Popf
+       & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod0 & !J0_AShiftRight & X1_Carry8
+       & J1_IR13.Q & J1_IR12.Q & J1_IR10.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod1 & !J0_AShiftRight & X1_Carry8
+       & J1_IR13.Q & J1_IR12.Q & J1_IR10.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod0 & !J0_AShiftRight & X1_Carry8
+       & !J1_IR14.Q & J1_IR13.Q & J1_IR11.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod1 & !J0_AShiftRight & X1_Carry8
+       & !J1_IR14.Q & J1_IR13.Q & J1_IR11.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & <A href=#91>X0_Data3</A> & !J0_AFlagMod0 & !J0_AFlagMod1
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod0 & !J0_AShiftRight & X1_Carry8
+       & !J1_IR13.Q & !J1_IR12.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod1 & !J0_AShiftRight & X1_Carry8
+       & !J1_IR13.Q & !J1_IR12.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod0 & !J0_AShiftRight & X1_Carry8
+       & J1_IR14.Q & !J1_IR11.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod1 & !J0_AShiftRight & X1_Carry8
+       & J1_IR14.Q & !J1_IR11.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod0 & !J0_AShiftRight & X1_Carry8
+       & J1_IR14.Q & !J1_IR13.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod1 & !J0_AShiftRight & X1_Carry8
+       & J1_IR14.Q & !J1_IR13.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & <A href=#63>Accum0.Q</A> & J0_AEnableSZFlags & J0_AFlagMod0 & J0_AShiftRight
+       & !J1_Popf & !J1_LogicOp
+    # !Reset & Accum0.Q & J0_AEnableSZFlags & J0_AFlagMod1 & J0_AShiftRight
+       & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod0 & !J0_AShiftRight & X1_Carry8
+       & J1_IR15.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod1 & !J0_AShiftRight & X1_Carry8
+       & J1_IR15.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & X0_Data3 & J1_Popf
+    # !Reset & <A href=#68>Flags3.Q</A> & !J0_AEnableSZFlags & J0_AFlagMod0 & !J1_Popf
+    # !Reset & Flags3.Q & !J0_AEnableSZFlags & J0_AFlagMod1 & !J1_Popf
+    # !Reset & Flags3.Q & J0_AFlagMod0 & !J1_Popf & J1_LogicOp
+    # !Reset & Flags3.Q & J0_AFlagMod1 & !J1_Popf & J1_LogicOp ; (34 pterms, 19 signals)
+Flags3.OE = 1 ; (1 pterm, 0 signal)
+Flags3.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=67>Flags4.D</A> = 0 ; (0 pterm, 0 signal)
+Flags4.OE = 1 ; (1 pterm, 0 signal)
+Flags4.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=66>Flags5.D</A> = !<A href=#22>Reset</A> & <A href=#93>X0_Data5</A> & !<A href=#100>J0_AFlagMod0</A> & <A href=#101>J0_AFlagMod1</A>
+    # !Reset & <A href=#66>Flags5.Q</A> & J0_AFlagMod0 & !<A href=#227>J1_Popf</A>
+    # !Reset & Flags5.Q & !J0_AFlagMod1 & !J1_Popf
+    # !Reset & X0_Data5 & J1_Popf ; (4 pterms, 6 signals)
+Flags5.OE = 1 ; (1 pterm, 0 signal)
+Flags5.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=65>Flags6.D</A> = 0 ; (0 pterm, 0 signal)
+Flags6.OE = 1 ; (1 pterm, 0 signal)
+Flags6.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=64>Flags7.D</A> = !<A href=#22>Reset</A> & <A href=#95>X0_Data7</A> & <A href=#100>J0_AFlagMod0</A> & !<A href=#101>J0_AFlagMod1</A>
+    # !Reset & <A href=#64>Flags7.Q</A> & !J0_AFlagMod0 & !<A href=#227>J1_Popf</A>
+    # !Reset & Flags7.Q & J0_AFlagMod1 & !J1_Popf
+    # !Reset & X0_Data7 & J1_Popf ; (4 pterms, 6 signals)
+Flags7.OE = 1 ; (1 pterm, 0 signal)
+Flags7.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=42>IO</A> = !<A href=#22>Reset</A> & <A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & <A href=#210>J1_IR12.Q</A> & !<A href=#211>J1_IR11.Q</A> & !<A href=#212>J1_IR10.Q</A>
+       & !<A href=#213>J1_IR9.Q</A> & !<A href=#214>J1_IR8.Q</A> ; (1 pterm, 8 signals)
+IO.OE = 1 ; (1 pterm, 0 signal)
+
+<A name=96>J0_AEnableAccumWrite</A> = !<A href=#207>J1_IR15.Q</A> & <A href=#210>J1_IR12.Q</A> & !<A href=#211>J1_IR11.Q</A> & <A href=#212>J1_IR10.Q</A>
+       & !<A href=#234>J1_Rts</A>
+    # !J1_IR15.Q & !<A href=#208>J1_IR14.Q</A> & J1_IR12.Q & J1_IR10.Q & !<A href=#215>J1_IR7.Q</A> & !J1_Rts
+    # !J1_IR15.Q & !<A href=#209>J1_IR13.Q</A> & J1_IR12.Q & !J1_IR10.Q & !J1_Rts
+    # !J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & J1_IR11.Q & !J1_Rts
+    # !J1_IR15.Q & J1_IR12.Q & J1_IR10.Q & !<A href=#213>J1_IR9.Q</A> & !J1_Rts
+    # !J1_IR15.Q & J1_IR12.Q & J1_IR10.Q & !<A href=#214>J1_IR8.Q</A> & !J1_Rts
+    # !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q
+       & !J1_IR10.Q & !J1_IR9.Q & !J1_IR8.Q
+    # !J1_IR15.Q & J1_IR14.Q & !J1_IR13.Q & J1_IR12.Q & !J1_Rts
+    # !J1_IR15.Q & J1_IR13.Q & !J1_IR12.Q & !J1_Rts
+    # !J1_IR15.Q & J1_IR14.Q & !J1_IR10.Q & !J1_Rts
+    # !J1_IR15.Q & J1_IR14.Q & !J1_IR11.Q & !J1_Rts
+    # <A href=#229>J1_Load</A> ; (12 pterms, 11 signals)
+
+<A name=97>J0_AEnableSZFlags</A> = !<A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & <A href=#209>J1_IR13.Q</A> & <A href=#210>J1_IR12.Q</A>
+       & !<A href=#211>J1_IR11.Q</A> & !<A href=#212>J1_IR10.Q</A> & !<A href=#228>J1_TSATXA</A> & !<A href=#229>J1_Load</A>
+    # !J1_IR15.Q & J1_IR14.Q & !J1_IR13.Q & !J1_IR12.Q & J1_IR11.Q & J1_IR10.Q
+       & !J1_TSATXA & !J1_Load
+    # <A href=#96>J0_AEnableAccumWrite</A> & !J1_TSATXA & !J1_Load ; (3 pterms, 9 signals)
+
+<A name=98>J0_AFControl1</A> = !( !<A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & <A href=#210>J1_IR12.Q</A> & !<A href=#211>J1_IR11.Q</A>
+       & !<A href=#212>J1_IR10.Q</A>
+    # !<A href=#209>J1_IR13.Q</A> & J1_IR11.Q & !<A href=#213>J1_IR9.Q</A> & !<A href=#214>J1_IR8.Q</A>
+    # !J1_IR13.Q & J1_IR11.Q & J1_IR9.Q & J1_IR8.Q
+    # J1_IR14.Q & !J1_IR13.Q
+    # !J1_IR15.Q & !J1_IR13.Q ) ; (5 pterms, 8 signals)
+
+<A name=99>J0_AFControl3</A> = !<A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & <A href=#210>J1_IR12.Q</A> & !<A href=#211>J1_IR11.Q</A> & !<A href=#212>J1_IR10.Q</A>
+    # !J1_IR15.Q & J1_IR14.Q & <A href=#209>J1_IR13.Q</A> & J1_IR12.Q & J1_IR11.Q & !J1_IR10.Q
+       & <A href=#213>J1_IR9.Q</A> & <A href=#214>J1_IR8.Q</A>
+    # !J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q
+    # !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & J1_IR12.Q ; (4 pterms, 8 signals)
+
+<A name=100>J0_AFlagMod0</A> = !( !<A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & !<A href=#209>J1_IR13.Q</A> & !<A href=#210>J1_IR12.Q</A>
+       & !<A href=#211>J1_IR11.Q</A> & <A href=#212>J1_IR10.Q</A> & <A href=#213>J1_IR9.Q</A> & <A href=#214>J1_IR8.Q</A> & <A href=#221>J1_IR1.Q</A> & !<A href=#222>J1_IR0.Q</A>
+    # !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & J1_IR12.Q & J1_IR11.Q & J1_IR10.Q
+       & J1_IR9.Q & J1_IR8.Q & J1_IR1.Q & !J1_IR0.Q
+    # !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & <A href=#220>J1_IR2.Q</A> & !J1_IR0.Q
+    # !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & J1_IR12.Q & J1_IR11.Q & J1_IR10.Q
+       & J1_IR9.Q & J1_IR8.Q & J1_IR2.Q & !J1_IR0.Q ) ; (4 pterms, 11 signals)
+
+<A name=101>J0_AFlagMod1</A> = !( !<A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & !<A href=#209>J1_IR13.Q</A> & !<A href=#210>J1_IR12.Q</A>
+       & !<A href=#211>J1_IR11.Q</A> & <A href=#212>J1_IR10.Q</A> & <A href=#213>J1_IR9.Q</A> & <A href=#214>J1_IR8.Q</A> & <A href=#220>J1_IR2.Q</A> & !<A href=#221>J1_IR1.Q</A>
+    # !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & J1_IR12.Q & J1_IR11.Q & J1_IR10.Q
+       & J1_IR9.Q & J1_IR8.Q & J1_IR2.Q & !J1_IR1.Q
+    # !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & !J1_IR1.Q & <A href=#222>J1_IR0.Q</A>
+    # !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & J1_IR12.Q & J1_IR11.Q & J1_IR10.Q
+       & J1_IR9.Q & J1_IR8.Q & !J1_IR1.Q & J1_IR0.Q ) ; (4 pterms, 11 signals)
+
+<A name=102>J0_ALUDSel0.X1</A> = !<A href=#207>J1_IR15.Q</A> & !<A href=#213>J1_IR9.Q</A>
+    # !J1_IR15.Q & !<A href=#214>J1_IR8.Q</A>
+    # !J1_IR15.Q & <A href=#208>J1_IR14.Q</A> & <A href=#209>J1_IR13.Q</A> & !<A href=#210>J1_IR12.Q</A> & !<A href=#211>J1_IR11.Q</A> & <A href=#212>J1_IR10.Q</A>
+       & !<A href=#222>J1_IR0.Q</A>
+    # !J1_IR14.Q & J1_IR11.Q & !J1_IR10.Q & !J1_IR9.Q & J1_IR8.Q ; (4 pterms, 9 signals)
+J0_ALUDSel0.X2 = !<A href=#207>J1_IR15.Q</A> ; (1 pterm, 1 signal)
+
+<A name=103>J0_AShiftRight</A> = !<A href=#207>J1_IR15.Q</A> & <A href=#208>J1_IR14.Q</A> & <A href=#209>J1_IR13.Q</A> & <A href=#210>J1_IR12.Q</A> & !<A href=#211>J1_IR11.Q</A>
+       & !<A href=#212>J1_IR10.Q</A> & !<A href=#213>J1_IR9.Q</A> & <A href=#214>J1_IR8.Q</A> ; (1 pterm, 8 signals)
+
+<A name=104>J0_DAddressMux0</A> = !( !<A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & !<A href=#209>J1_IR13.Q</A> & !<A href=#210>J1_IR12.Q</A>
+       & !<A href=#211>J1_IR11.Q</A> & <A href=#212>J1_IR10.Q</A> & <A href=#213>J1_IR9.Q</A> & !<A href=#215>J1_IR7.Q</A>
+    # !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & J1_IR12.Q & J1_IR11.Q & J1_IR10.Q
+       & J1_IR9.Q & !J1_IR7.Q
+    # J1_IR15.Q & J1_IR14.Q & J1_IR13.Q
+    # !J1_IR15.Q & !<A href=#214>J1_IR8.Q</A>
+    # J1_IR15.Q & !J1_IR10.Q ) ; (5 pterms, 9 signals)
+
+<A name=105>J0_DAddressMux1</A> = !<A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & !<A href=#209>J1_IR13.Q</A> & !<A href=#210>J1_IR12.Q</A>
+       & !<A href=#211>J1_IR11.Q</A> & <A href=#212>J1_IR10.Q</A> & <A href=#213>J1_IR9.Q</A> & <A href=#214>J1_IR8.Q</A> & !<A href=#220>J1_IR2.Q</A> & !<A href=#221>J1_IR1.Q</A>
+       & !<A href=#222>J1_IR0.Q</A> ; (1 pterm, 11 signals)
+
+<A name=106>J0_DDecrement</A> = !( !<A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & !<A href=#209>J1_IR13.Q</A> & <A href=#210>J1_IR12.Q</A>
+       & <A href=#212>J1_IR10.Q</A> & <A href=#213>J1_IR9.Q</A> & <A href=#214>J1_IR8.Q</A> & !<A href=#215>J1_IR7.Q</A>
+    # !J1_IR13.Q & !<A href=#211>J1_IR11.Q</A>
+    # !J1_IR14.Q & !J1_IR11.Q
+    # !J1_IR15.Q & !J1_IR11.Q ) ; (4 pterms, 9 signals)
+
+<A name=107>J0_DEnableIncDec</A> = !<A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & !<A href=#209>J1_IR13.Q</A> & <A href=#210>J1_IR12.Q</A>
+       & <A href=#211>J1_IR11.Q</A> & <A href=#212>J1_IR10.Q</A> & <A href=#213>J1_IR9.Q</A> & <A href=#214>J1_IR8.Q</A> & !<A href=#215>J1_IR7.Q</A> & !<A href=#223>J1_FSM3.Q</A>
+       & !<A href=#224>J1_FSM2.Q</A> & !<A href=#226>J1_FSM0.Q</A>
+    # !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & !J1_IR12.Q & !J1_IR9.Q & J1_IR8.Q
+    # !J1_IR14.Q & !J1_IR13.Q & !J1_IR12.Q & J1_IR9.Q & !J1_IR8.Q
+    # J1_IR15.Q & !J1_IR14.Q & J1_IR9.Q & !J1_IR8.Q
+    # !J1_FSM2.Q & <A href=#225>J1_FSM1.Q</A> & !J1_FSM0.Q
+    # !J1_FSM1.Q & J1_FSM0.Q ; (6 pterms, 13 signals)
+
+<A name=108>J0_DPost</A> = !( !<A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & !<A href=#209>J1_IR13.Q</A> & !<A href=#210>J1_IR12.Q</A> & <A href=#211>J1_IR11.Q</A>
+       & <A href=#212>J1_IR10.Q</A> & <A href=#213>J1_IR9.Q</A> & !<A href=#214>J1_IR8.Q</A> & !<A href=#216>J1_IR6.Q</A>
+    # !J1_IR12.Q & !<A href=#227>J1_Popf</A> & !<A href=#234>J1_Rts</A>
+    # <A href=#233>J1_Call</A> ) ; (3 pterms, 12 signals)
+
+<A name=109>J0_DataDBSel0</A> = !<A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & !<A href=#209>J1_IR13.Q</A> & !<A href=#210>J1_IR12.Q</A> & <A href=#211>J1_IR11.Q</A>
+       & <A href=#212>J1_IR10.Q</A> & <A href=#213>J1_IR9.Q</A> & !<A href=#214>J1_IR8.Q</A> & !<A href=#216>J1_IR6.Q</A>
+    # !<A href=#224>J1_FSM2.Q</A> & !<A href=#225>J1_FSM1.Q</A> & <A href=#226>J1_FSM0.Q</A> ; (2 pterms, 12 signals)
+
+<A name=110>J0_DataDBSel1</A> = !<A href=#224>J1_FSM2.Q</A> & <A href=#225>J1_FSM1.Q</A> & !<A href=#226>J1_FSM0.Q</A>
+    # !J1_FSM2.Q & !J1_FSM1.Q & J1_FSM0.Q ; (2 pterms, 3 signals)
+
+<A name=111>J0_PAddBSel0</A> = <A href=#69>Flags2.Q</A> & <A href=#70>Flags1.Q</A> & <A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & <A href=#210>J1_IR12.Q</A>
+       & <A href=#211>J1_IR11.Q</A> & !<A href=#212>J1_IR10.Q</A> & <A href=#213>J1_IR9.Q</A> & <A href=#214>J1_IR8.Q</A>
+    # !<A href=#68>Flags3.Q</A> & J1_IR15.Q & !<A href=#209>J1_IR13.Q</A> & !J1_IR12.Q & J1_IR11.Q & J1_IR10.Q
+       & !J1_IR9.Q & !J1_IR8.Q
+    # !<A href=#66>Flags5.Q</A> & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & J1_IR12.Q & J1_IR11.Q
+       & J1_IR10.Q & !J1_IR9.Q & !J1_IR8.Q
+    # !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & J1_IR12.Q & J1_IR11.Q & J1_IR10.Q
+       & J1_IR9.Q & J1_IR8.Q & !<A href=#215>J1_IR7.Q</A> & !<A href=#223>J1_FSM3.Q</A> & !<A href=#224>J1_FSM2.Q</A>
+       & !<A href=#226>J1_FSM0.Q</A>
+    # !Flags2.Q & !Flags1.Q & !<A href=#71>Flags0.Q</A> & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q
+       & !J1_IR12.Q & J1_IR11.Q & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q
+    # Flags2.Q & Flags1.Q & !Flags0.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q
+       & !J1_IR12.Q & J1_IR11.Q & J1_IR9.Q & J1_IR8.Q
+    # !Flags3.Q & !Flags0.Q & J1_IR15.Q & !J1_IR13.Q & !J1_IR12.Q & J1_IR11.Q
+       & !J1_IR9.Q & !J1_IR8.Q
+    # !Flags2.Q & !Flags1.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & J1_IR12.Q
+       & J1_IR11.Q & !J1_IR10.Q & J1_IR9.Q & J1_IR8.Q
+    # Flags2.Q & !Flags1.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR12.Q & J1_IR11.Q
+       & !J1_IR10.Q & !J1_IR9.Q & !J1_IR8.Q
+    # !Flags2.Q & Flags1.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & J1_IR11.Q
+       & !J1_IR10.Q & !J1_IR9.Q & !J1_IR8.Q
+    # Flags2.Q & !Flags1.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q
+       & J1_IR11.Q & J1_IR10.Q & !J1_IR9.Q & !J1_IR8.Q
+    # !Flags2.Q & Flags1.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q
+       & J1_IR11.Q & !J1_IR9.Q & !J1_IR8.Q
+    # Flags0.Q & J1_IR15.Q & !J1_IR13.Q & J1_IR12.Q & J1_IR11.Q & J1_IR10.Q
+       & J1_IR9.Q & J1_IR8.Q
+    # Flags5.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & J1_IR12.Q & J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q
+    # Flags0.Q & J1_IR15.Q & !J1_IR13.Q & !J1_IR12.Q & J1_IR11.Q & !J1_IR10.Q
+       & J1_IR9.Q & J1_IR8.Q
+    # !Flags0.Q & J1_IR15.Q & !J1_IR13.Q & J1_IR12.Q & J1_IR11.Q & J1_IR10.Q
+       & !J1_IR9.Q & !J1_IR8.Q
+    # Flags1.Q & J1_IR15.Q & !J1_IR13.Q & J1_IR12.Q & J1_IR11.Q & !J1_IR10.Q
+       & J1_IR9.Q & J1_IR8.Q
+    # !Flags1.Q & J1_IR15.Q & !J1_IR13.Q & J1_IR12.Q & J1_IR11.Q & !J1_IR10.Q
+       & !J1_IR9.Q & !J1_IR8.Q
+    # Flags0.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & J1_IR11.Q
+       & J1_IR10.Q & !J1_IR9.Q & !J1_IR8.Q
+    # Flags2.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & J1_IR11.Q
+       & !J1_IR10.Q & J1_IR9.Q & J1_IR8.Q
+    # !Flags2.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & J1_IR11.Q
+       & !J1_IR10.Q & !J1_IR9.Q & !J1_IR8.Q
+    # Flags3.Q & J1_IR15.Q & !J1_IR13.Q & !J1_IR12.Q & J1_IR11.Q & J1_IR9.Q
+       & J1_IR8.Q
+    # !J1_FSM2.Q & <A href=#225>J1_FSM1.Q</A> & !J1_FSM0.Q
+    # J1_IR15.Q & J1_IR14.Q & !J1_IR13.Q ; (24 pterms, 18 signals)
+
+<A name=112>J0_PAddBSel1</A> = <A href=#69>Flags2.Q</A> & <A href=#70>Flags1.Q</A> & <A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & <A href=#209>J1_IR13.Q</A>
+       & <A href=#211>J1_IR11.Q</A> & !<A href=#212>J1_IR10.Q</A> & <A href=#213>J1_IR9.Q</A> & <A href=#214>J1_IR8.Q</A>
+    # !<A href=#68>Flags3.Q</A> & J1_IR15.Q & !J1_IR13.Q & !<A href=#210>J1_IR12.Q</A> & J1_IR11.Q & J1_IR10.Q
+       & !J1_IR9.Q & !J1_IR8.Q
+    # !<A href=#66>Flags5.Q</A> & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & J1_IR12.Q & J1_IR11.Q
+       & J1_IR10.Q & !J1_IR9.Q & !J1_IR8.Q
+    # !Flags2.Q & !Flags1.Q & !<A href=#71>Flags0.Q</A> & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q
+       & !J1_IR12.Q & J1_IR11.Q & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q
+    # Flags2.Q & Flags1.Q & !Flags0.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q
+       & !J1_IR12.Q & J1_IR11.Q & J1_IR9.Q & J1_IR8.Q
+    # !Flags3.Q & !Flags0.Q & J1_IR15.Q & !J1_IR13.Q & !J1_IR12.Q & J1_IR11.Q
+       & !J1_IR9.Q & !J1_IR8.Q
+    # !Flags2.Q & !Flags1.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & J1_IR12.Q
+       & J1_IR11.Q & !J1_IR10.Q & J1_IR9.Q & J1_IR8.Q
+    # Flags2.Q & !Flags1.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR12.Q & J1_IR11.Q
+       & !J1_IR10.Q & !J1_IR9.Q & !J1_IR8.Q
+    # !Flags2.Q & Flags1.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & J1_IR11.Q
+       & !J1_IR10.Q & !J1_IR9.Q & !J1_IR8.Q
+    # Flags2.Q & !Flags1.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q
+       & J1_IR11.Q & J1_IR10.Q & !J1_IR9.Q & !J1_IR8.Q
+    # !Flags2.Q & Flags1.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q
+       & J1_IR11.Q & !J1_IR9.Q & !J1_IR8.Q
+    # Flags0.Q & J1_IR15.Q & !J1_IR13.Q & J1_IR12.Q & J1_IR11.Q & J1_IR10.Q
+       & J1_IR9.Q & J1_IR8.Q
+    # Flags5.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & J1_IR12.Q & J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q
+    # Flags0.Q & J1_IR15.Q & !J1_IR13.Q & !J1_IR12.Q & J1_IR11.Q & !J1_IR10.Q
+       & J1_IR9.Q & J1_IR8.Q
+    # !Flags0.Q & J1_IR15.Q & !J1_IR13.Q & J1_IR12.Q & J1_IR11.Q & J1_IR10.Q
+       & !J1_IR9.Q & !J1_IR8.Q
+    # Flags1.Q & J1_IR15.Q & !J1_IR13.Q & J1_IR12.Q & J1_IR11.Q & !J1_IR10.Q
+       & J1_IR9.Q & J1_IR8.Q
+    # !Flags1.Q & J1_IR15.Q & !J1_IR13.Q & J1_IR12.Q & J1_IR11.Q & !J1_IR10.Q
+       & !J1_IR9.Q & !J1_IR8.Q
+    # Flags0.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & J1_IR11.Q
+       & J1_IR10.Q & !J1_IR9.Q & !J1_IR8.Q
+    # Flags2.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & J1_IR11.Q
+       & !J1_IR10.Q & J1_IR9.Q & J1_IR8.Q
+    # !Flags2.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & J1_IR11.Q
+       & !J1_IR10.Q & !J1_IR9.Q & !J1_IR8.Q
+    # Flags3.Q & J1_IR15.Q & !J1_IR13.Q & !J1_IR12.Q & J1_IR11.Q & J1_IR9.Q
+       & J1_IR8.Q
+    # !<A href=#224>J1_FSM2.Q</A> & <A href=#225>J1_FSM1.Q</A> & !<A href=#226>J1_FSM0.Q</A>
+    # J1_FSM2.Q & !J1_FSM1.Q & J1_FSM0.Q
+    # J1_IR15.Q & J1_IR14.Q & !J1_IR13.Q ; (24 pterms, 16 signals)
+
+<A name=113>J0_PAddBSel2</A> = <A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & <A href=#211>J1_IR11.Q</A> & !<A href=#213>J1_IR9.Q</A> & !<A href=#214>J1_IR8.Q</A>
+       & <A href=#235>J1_ConditionalJump</A>
+    # J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & J1_IR9.Q & J1_IR8.Q
+       & J1_ConditionalJump ; (2 pterms, 6 signals)
+
+<A name=114>J0_PHoldPC</A> = !<A href=#223>J1_FSM3.Q</A> & !<A href=#224>J1_FSM2.Q</A> & !<A href=#225>J1_FSM1.Q</A> & <A href=#233>J1_Call</A>
+    # !J1_FSM2.Q & !J1_FSM1.Q & <A href=#226>J1_FSM0.Q</A> ; (2 pterms, 5 signals)
+
+<A name=115>J0_WR</A> = !<A href=#22>Reset</A> & !<A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & !<A href=#209>J1_IR13.Q</A> & !<A href=#210>J1_IR12.Q</A> & <A href=#211>J1_IR11.Q</A>
+       & <A href=#212>J1_IR10.Q</A> & <A href=#213>J1_IR9.Q</A> & !<A href=#214>J1_IR8.Q</A> & !<A href=#216>J1_IR6.Q</A>
+    # !Reset & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR9.Q & J1_IR8.Q
+    # !Reset & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & J1_IR9.Q & !J1_IR8.Q
+    # !Reset & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR11.Q
+    # !Reset & !<A href=#224>J1_FSM2.Q</A> & <A href=#225>J1_FSM1.Q</A> & !<A href=#226>J1_FSM0.Q</A>
+    # !Reset & !J1_FSM2.Q & !J1_FSM1.Q & J1_FSM0.Q ; (6 pterms, 13 signals)
+
+<A name=233>J1_Call</A> = <A href=#207>J1_IR15.Q</A> & <A href=#208>J1_IR14.Q</A> & <A href=#209>J1_IR13.Q</A> ; (1 pterm, 3 signals)
+
+<A name=235>J1_ConditionalJump.X1</A> = <A href=#68>Flags3.Q</A> & !<A href=#209>J1_IR13.Q</A> & !<A href=#210>J1_IR12.Q</A>
+    # <A href=#71>Flags0.Q</A> & !J1_IR13.Q & !J1_IR12.Q & !<A href=#212>J1_IR10.Q</A>
+    # !<A href=#69>Flags2.Q</A> & !<A href=#70>Flags1.Q</A> & !Flags0.Q & J1_IR13.Q & !J1_IR12.Q & J1_IR10.Q
+    # Flags2.Q & J1_IR13.Q & !J1_IR12.Q & !J1_IR10.Q
+    # Flags2.Q & Flags1.Q & !Flags0.Q & J1_IR13.Q & !J1_IR12.Q
+    # !Flags2.Q & !Flags1.Q & J1_IR13.Q & J1_IR12.Q & !J1_IR10.Q
+    # Flags2.Q & Flags1.Q & J1_IR12.Q & !J1_IR10.Q
+    # Flags1.Q & !J1_IR13.Q & J1_IR12.Q & !J1_IR10.Q
+    # Flags0.Q & !J1_IR13.Q & J1_IR12.Q & J1_IR10.Q
+    # <A href=#66>Flags5.Q</A> & J1_IR13.Q & J1_IR12.Q & J1_IR10.Q ; (10 pterms, 8 signals)
+J1_ConditionalJump.X2 = !<A href=#213>J1_IR9.Q</A> ; (1 pterm, 1 signal)
+
+<A name=226>J1_FSM0.D</A> = !<A href=#22>Reset</A> & !<A href=#223>J1_FSM3.Q</A> & !<A href=#224>J1_FSM2.Q</A> & !<A href=#225>J1_FSM1.Q</A> & !<A href=#226>J1_FSM0.Q</A>
+       & <A href=#233>J1_Call</A>
+    # !Reset & !J1_FSM3.Q & !J1_FSM2.Q & !J1_FSM1.Q & !J1_FSM0.Q & <A href=#234>J1_Rts</A> ; (2 pterms, 7 signals)
+J1_FSM0.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=225>J1_FSM1.D</A> = !<A href=#22>Reset</A> & !<A href=#223>J1_FSM3.Q</A> & !<A href=#224>J1_FSM2.Q</A> & !<A href=#225>J1_FSM1.Q</A> & <A href=#226>J1_FSM0.Q</A> ; (1 pterm, 5 signals)
+J1_FSM1.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=224>J1_FSM2.D</A> = !<A href=#22>Reset</A> & !<A href=#223>J1_FSM3.Q</A> & !<A href=#224>J1_FSM2.Q</A> & !<A href=#225>J1_FSM1.Q</A> & !<A href=#226>J1_FSM0.Q</A>
+       & !<A href=#233>J1_Call</A> & <A href=#234>J1_Rts</A> ; (1 pterm, 7 signals)
+J1_FSM2.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=223>J1_FSM3.D</A> = !<A href=#22>Reset</A> & !<A href=#223>J1_FSM3.Q</A> & !<A href=#224>J1_FSM2.Q</A> & <A href=#225>J1_FSM1.Q</A> & !<A href=#226>J1_FSM0.Q</A>
+    # !Reset & !J1_FSM3.Q & J1_FSM2.Q & !J1_FSM1.Q & J1_FSM0.Q ; (2 pterms, 5 signals)
+J1_FSM3.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=222>J1_IR0.D</A> = !<A href=#22>Reset</A> & <A href=#222>J1_IR0.Q</A> & !<A href=#223>J1_FSM3.Q</A> & <A href=#233>J1_Call</A>
+    # !Reset & J1_IR0.Q & !J1_FSM3.Q & <A href=#234>J1_Rts</A>
+    # <A href=#21>ProgramDB0</A> & !Reset & !J1_Call & !J1_Rts
+    # ProgramDB0 & !Reset & J1_FSM3.Q ; (4 pterms, 6 signals)
+J1_IR0.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=221>J1_IR1.D</A> = !<A href=#22>Reset</A> & <A href=#221>J1_IR1.Q</A> & !<A href=#223>J1_FSM3.Q</A> & <A href=#233>J1_Call</A>
+    # !Reset & J1_IR1.Q & !J1_FSM3.Q & <A href=#234>J1_Rts</A>
+    # <A href=#20>ProgramDB1</A> & !Reset & !J1_Call & !J1_Rts
+    # ProgramDB1 & !Reset & J1_FSM3.Q ; (4 pterms, 6 signals)
+J1_IR1.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=212>J1_IR10.D</A> = !<A href=#22>Reset</A> & <A href=#212>J1_IR10.Q</A> & !<A href=#223>J1_FSM3.Q</A> & <A href=#233>J1_Call</A>
+    # !Reset & J1_IR10.Q & !J1_FSM3.Q & <A href=#234>J1_Rts</A>
+    # <A href=#11>ProgramDB10</A> & !Reset & !J1_Call & !J1_Rts
+    # ProgramDB10 & !Reset & J1_FSM3.Q ; (4 pterms, 6 signals)
+J1_IR10.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=211>J1_IR11.D</A> = !<A href=#22>Reset</A> & <A href=#211>J1_IR11.Q</A> & !<A href=#223>J1_FSM3.Q</A> & <A href=#233>J1_Call</A>
+    # !Reset & J1_IR11.Q & !J1_FSM3.Q & <A href=#234>J1_Rts</A>
+    # <A href=#10>ProgramDB11</A> & !Reset & !J1_Call & !J1_Rts
+    # ProgramDB11 & !Reset & J1_FSM3.Q ; (4 pterms, 6 signals)
+J1_IR11.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=210>J1_IR12.D</A> = !<A href=#22>Reset</A> & <A href=#210>J1_IR12.Q</A> & !<A href=#223>J1_FSM3.Q</A> & <A href=#233>J1_Call</A>
+    # !Reset & J1_IR12.Q & !J1_FSM3.Q & <A href=#234>J1_Rts</A>
+    # <A href=#9>ProgramDB12</A> & !Reset & !J1_Call & !J1_Rts
+    # ProgramDB12 & !Reset & J1_FSM3.Q ; (4 pterms, 6 signals)
+J1_IR12.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=209>J1_IR13.D</A> = !<A href=#22>Reset</A> & <A href=#209>J1_IR13.Q</A> & !<A href=#223>J1_FSM3.Q</A> & <A href=#233>J1_Call</A>
+    # !Reset & J1_IR13.Q & !J1_FSM3.Q & <A href=#234>J1_Rts</A>
+    # <A href=#8>ProgramDB13</A> & !Reset & !J1_Call & !J1_Rts
+    # ProgramDB13 & !Reset & J1_FSM3.Q ; (4 pterms, 6 signals)
+J1_IR13.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=208>J1_IR14.D</A> = !<A href=#22>Reset</A> & <A href=#208>J1_IR14.Q</A> & !<A href=#223>J1_FSM3.Q</A> & <A href=#233>J1_Call</A>
+    # !Reset & J1_IR14.Q & !J1_FSM3.Q & <A href=#234>J1_Rts</A>
+    # <A href=#7>ProgramDB14</A> & !Reset & !J1_Call & !J1_Rts
+    # ProgramDB14 & !Reset & J1_FSM3.Q ; (4 pterms, 6 signals)
+J1_IR14.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=207>J1_IR15.D</A> = !<A href=#22>Reset</A> & <A href=#207>J1_IR15.Q</A> & !<A href=#223>J1_FSM3.Q</A> & <A href=#233>J1_Call</A>
+    # !Reset & J1_IR15.Q & !J1_FSM3.Q & <A href=#234>J1_Rts</A>
+    # <A href=#6>ProgramDB15</A> & !Reset & !J1_Call & !J1_Rts
+    # ProgramDB15 & !Reset & J1_FSM3.Q ; (4 pterms, 6 signals)
+J1_IR15.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=220>J1_IR2.D</A> = !<A href=#22>Reset</A> & <A href=#220>J1_IR2.Q</A> & !<A href=#223>J1_FSM3.Q</A> & <A href=#233>J1_Call</A>
+    # !Reset & J1_IR2.Q & !J1_FSM3.Q & <A href=#234>J1_Rts</A>
+    # <A href=#19>ProgramDB2</A> & !Reset & !J1_Call & !J1_Rts
+    # ProgramDB2 & !Reset & J1_FSM3.Q ; (4 pterms, 6 signals)
+J1_IR2.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=219>J1_IR3.D</A> = !<A href=#22>Reset</A> & <A href=#219>J1_IR3.Q</A> & !<A href=#223>J1_FSM3.Q</A> & <A href=#233>J1_Call</A>
+    # !Reset & J1_IR3.Q & !J1_FSM3.Q & <A href=#234>J1_Rts</A>
+    # <A href=#18>ProgramDB3</A> & !Reset & !J1_Call & !J1_Rts
+    # ProgramDB3 & !Reset & J1_FSM3.Q ; (4 pterms, 6 signals)
+J1_IR3.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=218>J1_IR4.D</A> = !<A href=#22>Reset</A> & <A href=#218>J1_IR4.Q</A> & !<A href=#223>J1_FSM3.Q</A> & <A href=#233>J1_Call</A>
+    # !Reset & J1_IR4.Q & !J1_FSM3.Q & <A href=#234>J1_Rts</A>
+    # <A href=#17>ProgramDB4</A> & !Reset & !J1_Call & !J1_Rts
+    # ProgramDB4 & !Reset & J1_FSM3.Q ; (4 pterms, 6 signals)
+J1_IR4.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=217>J1_IR5.D</A> = !<A href=#22>Reset</A> & <A href=#217>J1_IR5.Q</A> & !<A href=#223>J1_FSM3.Q</A> & <A href=#233>J1_Call</A>
+    # !Reset & J1_IR5.Q & !J1_FSM3.Q & <A href=#234>J1_Rts</A>
+    # <A href=#16>ProgramDB5</A> & !Reset & !J1_Call & !J1_Rts
+    # ProgramDB5 & !Reset & J1_FSM3.Q ; (4 pterms, 6 signals)
+J1_IR5.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=216>J1_IR6.D</A> = !<A href=#22>Reset</A> & <A href=#216>J1_IR6.Q</A> & !<A href=#223>J1_FSM3.Q</A> & <A href=#233>J1_Call</A>
+    # !Reset & J1_IR6.Q & !J1_FSM3.Q & <A href=#234>J1_Rts</A>
+    # <A href=#15>ProgramDB6</A> & !Reset & !J1_Call & !J1_Rts
+    # ProgramDB6 & !Reset & J1_FSM3.Q ; (4 pterms, 6 signals)
+J1_IR6.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=215>J1_IR7.D</A> = !<A href=#22>Reset</A> & <A href=#215>J1_IR7.Q</A> & !<A href=#223>J1_FSM3.Q</A> & <A href=#233>J1_Call</A>
+    # !Reset & J1_IR7.Q & !J1_FSM3.Q & <A href=#234>J1_Rts</A>
+    # <A href=#14>ProgramDB7</A> & !Reset & !J1_Call & !J1_Rts
+    # ProgramDB7 & !Reset & J1_FSM3.Q ; (4 pterms, 6 signals)
+J1_IR7.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=214>J1_IR8.D</A> = !<A href=#22>Reset</A> & <A href=#214>J1_IR8.Q</A> & !<A href=#223>J1_FSM3.Q</A> & <A href=#233>J1_Call</A>
+    # !Reset & J1_IR8.Q & !J1_FSM3.Q & <A href=#234>J1_Rts</A>
+    # <A href=#13>ProgramDB8</A> & !Reset & !J1_Call & !J1_Rts
+    # ProgramDB8 & !Reset & J1_FSM3.Q ; (4 pterms, 6 signals)
+J1_IR8.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=213>J1_IR9.D</A> = !<A href=#22>Reset</A> & <A href=#213>J1_IR9.Q</A> & !<A href=#223>J1_FSM3.Q</A> & <A href=#233>J1_Call</A>
+    # !Reset & J1_IR9.Q & !J1_FSM3.Q & <A href=#234>J1_Rts</A>
+    # <A href=#12>ProgramDB9</A> & !Reset & !J1_Call & !J1_Rts
+    # ProgramDB9 & !Reset & J1_FSM3.Q ; (4 pterms, 6 signals)
+J1_IR9.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=232>J1_LDI</A> = <A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & <A href=#211>J1_IR11.Q</A> & !<A href=#212>J1_IR10.Q</A> & !<A href=#213>J1_IR9.Q</A>
+       & <A href=#214>J1_IR8.Q</A> ; (1 pterm, 6 signals)
+
+<A name=231>J1_LeftShift</A> = !<A href=#207>J1_IR15.Q</A> & <A href=#208>J1_IR14.Q</A> & !<A href=#209>J1_IR13.Q</A> & <A href=#210>J1_IR12.Q</A> ; (1 pterm, 4 signals)
+
+<A name=229>J1_Load</A> = <A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & !<A href=#209>J1_IR13.Q</A> & <A href=#213>J1_IR9.Q</A> & !<A href=#214>J1_IR8.Q</A>
+    # J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & !J1_IR9.Q & J1_IR8.Q
+    # J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & !<A href=#211>J1_IR11.Q</A> ; (3 pterms, 6 signals)
+
+<A name=230>J1_LogicOp</A> = !<A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & <A href=#209>J1_IR13.Q</A> & !<A href=#210>J1_IR12.Q</A> & <A href=#211>J1_IR11.Q</A>
+       & <A href=#212>J1_IR10.Q</A> & !<A href=#213>J1_IR9.Q</A> & <A href=#214>J1_IR8.Q</A>
+    # !J1_IR15.Q & J1_IR13.Q & J1_IR12.Q & !J1_IR11.Q & J1_IR10.Q
+    # !J1_IR15.Q & J1_IR14.Q & !J1_IR13.Q & !J1_IR12.Q ; (3 pterms, 8 signals)
+
+<A name=227>J1_Popf</A> = !<A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & !<A href=#209>J1_IR13.Q</A> & !<A href=#210>J1_IR12.Q</A> & !<A href=#211>J1_IR11.Q</A>
+       & !<A href=#212>J1_IR10.Q</A> & <A href=#213>J1_IR9.Q</A> & !<A href=#214>J1_IR8.Q</A> ; (1 pterm, 8 signals)
+
+<A name=234>J1_Rts</A> = !<A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & !<A href=#209>J1_IR13.Q</A> & <A href=#210>J1_IR12.Q</A> & <A href=#211>J1_IR11.Q</A>
+       & <A href=#212>J1_IR10.Q</A> & <A href=#213>J1_IR9.Q</A> & <A href=#214>J1_IR8.Q</A> & !<A href=#215>J1_IR7.Q</A> ; (1 pterm, 9 signals)
+
+<A name=228>J1_TSATXA</A> = !<A href=#207>J1_IR15.Q</A> & <A href=#208>J1_IR14.Q</A> & <A href=#209>J1_IR13.Q</A> & !<A href=#210>J1_IR12.Q</A> & !<A href=#211>J1_IR11.Q</A>
+       & <A href=#212>J1_IR10.Q</A> & <A href=#213>J1_IR9.Q</A> & <A href=#214>J1_IR8.Q</A> ; (1 pterm, 8 signals)
+
+<A name=165>P0_AddendA0</A> = !( !<A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & !<A href=#209>J1_IR13.Q</A> & <A href=#210>J1_IR12.Q</A> & <A href=#211>J1_IR11.Q</A>
+       & <A href=#212>J1_IR10.Q</A> & <A href=#213>J1_IR9.Q</A> & <A href=#214>J1_IR8.Q</A> & !<A href=#215>J1_IR7.Q</A> & !<A href=#223>J1_FSM3.Q</A> & !<A href=#224>J1_FSM2.Q</A>
+       & !<A href=#226>J1_FSM0.Q</A>
+    # J1_IR15.Q & J1_IR14.Q & !J1_IR13.Q
+    # !J1_FSM2.Q & <A href=#225>J1_FSM1.Q</A> & !J1_FSM0.Q
+    # !<A href=#55>ProgramAB0.Q</A> ) ; (4 pterms, 14 signals)
+
+<A name=164>P0_AddendA1</A> = !( !<A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & !<A href=#209>J1_IR13.Q</A> & <A href=#210>J1_IR12.Q</A> & <A href=#211>J1_IR11.Q</A>
+       & <A href=#212>J1_IR10.Q</A> & <A href=#213>J1_IR9.Q</A> & <A href=#214>J1_IR8.Q</A> & !<A href=#215>J1_IR7.Q</A> & !<A href=#223>J1_FSM3.Q</A> & !<A href=#224>J1_FSM2.Q</A>
+       & !<A href=#226>J1_FSM0.Q</A>
+    # J1_IR15.Q & J1_IR14.Q & !J1_IR13.Q
+    # !J1_FSM2.Q & <A href=#225>J1_FSM1.Q</A> & !J1_FSM0.Q
+    # !<A href=#54>ProgramAB1.Q</A> ) ; (4 pterms, 14 signals)
+
+<A name=155>P0_AddendA10</A> = !( <A href=#207>J1_IR15.Q</A> & <A href=#208>J1_IR14.Q</A> & !<A href=#209>J1_IR13.Q</A>
+    # !<A href=#224>J1_FSM2.Q</A> & <A href=#225>J1_FSM1.Q</A> & !<A href=#226>J1_FSM0.Q</A>
+    # !<A href=#223>J1_FSM3.Q</A> & !J1_FSM2.Q & !J1_FSM0.Q & <A href=#234>J1_Rts</A>
+    # !<A href=#45>ProgramAB10.Q</A> ) ; (4 pterms, 9 signals)
+
+<A name=154>P0_AddendA11</A> = !( <A href=#207>J1_IR15.Q</A> & <A href=#208>J1_IR14.Q</A> & !<A href=#209>J1_IR13.Q</A>
+    # !<A href=#224>J1_FSM2.Q</A> & <A href=#225>J1_FSM1.Q</A> & !<A href=#226>J1_FSM0.Q</A>
+    # !<A href=#223>J1_FSM3.Q</A> & !J1_FSM2.Q & !J1_FSM0.Q & <A href=#234>J1_Rts</A>
+    # !<A href=#44>ProgramAB11.Q</A> ) ; (4 pterms, 9 signals)
+
+<A name=153>P0_AddendA12</A> = !( <A href=#207>J1_IR15.Q</A> & <A href=#208>J1_IR14.Q</A> & !<A href=#209>J1_IR13.Q</A>
+    # !<A href=#224>J1_FSM2.Q</A> & <A href=#225>J1_FSM1.Q</A> & !<A href=#226>J1_FSM0.Q</A>
+    # !<A href=#223>J1_FSM3.Q</A> & !J1_FSM2.Q & !J1_FSM0.Q & <A href=#234>J1_Rts</A>
+    # !<A href=#43>ProgramAB12.Q</A> ) ; (4 pterms, 9 signals)
+
+<A name=163>P0_AddendA2</A> = !( !<A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & !<A href=#209>J1_IR13.Q</A> & <A href=#210>J1_IR12.Q</A> & <A href=#211>J1_IR11.Q</A>
+       & <A href=#212>J1_IR10.Q</A> & <A href=#213>J1_IR9.Q</A> & <A href=#214>J1_IR8.Q</A> & !<A href=#215>J1_IR7.Q</A> & !<A href=#223>J1_FSM3.Q</A> & !<A href=#224>J1_FSM2.Q</A>
+       & !<A href=#226>J1_FSM0.Q</A>
+    # J1_IR15.Q & J1_IR14.Q & !J1_IR13.Q
+    # !J1_FSM2.Q & <A href=#225>J1_FSM1.Q</A> & !J1_FSM0.Q
+    # !<A href=#53>ProgramAB2.Q</A> ) ; (4 pterms, 14 signals)
+
+<A name=162>P0_AddendA3</A> = !( !<A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & !<A href=#209>J1_IR13.Q</A> & <A href=#210>J1_IR12.Q</A> & <A href=#211>J1_IR11.Q</A>
+       & <A href=#212>J1_IR10.Q</A> & <A href=#213>J1_IR9.Q</A> & <A href=#214>J1_IR8.Q</A> & !<A href=#215>J1_IR7.Q</A> & !<A href=#223>J1_FSM3.Q</A> & !<A href=#224>J1_FSM2.Q</A>
+       & !<A href=#226>J1_FSM0.Q</A>
+    # J1_IR15.Q & J1_IR14.Q & !J1_IR13.Q
+    # !J1_FSM2.Q & <A href=#225>J1_FSM1.Q</A> & !J1_FSM0.Q
+    # !<A href=#52>ProgramAB3.Q</A> ) ; (4 pterms, 14 signals)
+
+<A name=161>P0_AddendA4</A> = !( <A href=#207>J1_IR15.Q</A> & <A href=#208>J1_IR14.Q</A> & !<A href=#209>J1_IR13.Q</A>
+    # !<A href=#224>J1_FSM2.Q</A> & <A href=#225>J1_FSM1.Q</A> & !<A href=#226>J1_FSM0.Q</A>
+    # !<A href=#223>J1_FSM3.Q</A> & !J1_FSM2.Q & !J1_FSM0.Q & <A href=#234>J1_Rts</A>
+    # !<A href=#51>ProgramAB4.Q</A> ) ; (4 pterms, 9 signals)
+
+<A name=160>P0_AddendA5</A> = !( <A href=#207>J1_IR15.Q</A> & <A href=#208>J1_IR14.Q</A> & !<A href=#209>J1_IR13.Q</A>
+    # !<A href=#224>J1_FSM2.Q</A> & <A href=#225>J1_FSM1.Q</A> & !<A href=#226>J1_FSM0.Q</A>
+    # !<A href=#223>J1_FSM3.Q</A> & !J1_FSM2.Q & !J1_FSM0.Q & <A href=#234>J1_Rts</A>
+    # !<A href=#50>ProgramAB5.Q</A> ) ; (4 pterms, 9 signals)
+
+<A name=159>P0_AddendA6</A> = !( <A href=#207>J1_IR15.Q</A> & <A href=#208>J1_IR14.Q</A> & !<A href=#209>J1_IR13.Q</A>
+    # !<A href=#224>J1_FSM2.Q</A> & <A href=#225>J1_FSM1.Q</A> & !<A href=#226>J1_FSM0.Q</A>
+    # !<A href=#223>J1_FSM3.Q</A> & !J1_FSM2.Q & !J1_FSM0.Q & <A href=#234>J1_Rts</A>
+    # !<A href=#49>ProgramAB6.Q</A> ) ; (4 pterms, 9 signals)
+
+<A name=158>P0_AddendA7</A> = !( <A href=#207>J1_IR15.Q</A> & <A href=#208>J1_IR14.Q</A> & !<A href=#209>J1_IR13.Q</A>
+    # !<A href=#224>J1_FSM2.Q</A> & <A href=#225>J1_FSM1.Q</A> & !<A href=#226>J1_FSM0.Q</A>
+    # !<A href=#223>J1_FSM3.Q</A> & !J1_FSM2.Q & !J1_FSM0.Q & <A href=#234>J1_Rts</A>
+    # !<A href=#48>ProgramAB7.Q</A> ) ; (4 pterms, 9 signals)
+
+<A name=157>P0_AddendA8</A> = !( <A href=#207>J1_IR15.Q</A> & <A href=#208>J1_IR14.Q</A> & !<A href=#209>J1_IR13.Q</A>
+    # !<A href=#224>J1_FSM2.Q</A> & <A href=#225>J1_FSM1.Q</A> & !<A href=#226>J1_FSM0.Q</A>
+    # !<A href=#223>J1_FSM3.Q</A> & !J1_FSM2.Q & !J1_FSM0.Q & <A href=#234>J1_Rts</A>
+    # !<A href=#47>ProgramAB8.Q</A> ) ; (4 pterms, 9 signals)
+
+<A name=156>P0_AddendA9</A> = !( <A href=#207>J1_IR15.Q</A> & <A href=#208>J1_IR14.Q</A> & !<A href=#209>J1_IR13.Q</A>
+    # !<A href=#224>J1_FSM2.Q</A> & <A href=#225>J1_FSM1.Q</A> & !<A href=#226>J1_FSM0.Q</A>
+    # !<A href=#223>J1_FSM3.Q</A> & !J1_FSM2.Q & !J1_FSM0.Q & <A href=#234>J1_Rts</A>
+    # !<A href=#46>ProgramAB9.Q</A> ) ; (4 pterms, 9 signals)
+
+<A name=178>P0_AddendB0</A> = !<A href=#112>J0_PAddBSel1</A> & <A href=#222>J1_IR0.Q</A> & !<A href=#234>J1_Rts</A>
+    # <A href=#31>DataDB0</A> & <A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & <A href=#211>J1_IR11.Q</A> & !<A href=#213>J1_IR9.Q</A> & !<A href=#214>J1_IR8.Q</A>
+       & J1_Rts & <A href=#235>J1_ConditionalJump</A>
+    # DataDB0 & J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & J1_IR9.Q & J1_IR8.Q
+       & J1_Rts & J1_ConditionalJump
+    # J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & !J1_IR9.Q & !J1_IR8.Q & J1_IR0.Q
+       & !J1_Rts & J1_ConditionalJump
+    # J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & J1_IR9.Q & J1_IR8.Q & J1_IR0.Q
+       & !J1_Rts & J1_ConditionalJump
+    # <A href=#111>J0_PAddBSel0</A> & J0_PAddBSel1 & J1_IR9.Q & !J1_IR8.Q & J1_IR0.Q
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J1_IR9.Q & J1_IR8.Q & J1_IR0.Q
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J1_IR11.Q & J1_IR0.Q
+    # J0_PAddBSel0 & J0_PAddBSel1 & J1_IR14.Q & J1_IR0.Q
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J1_IR15.Q & J1_IR0.Q
+    # !J0_PAddBSel0 & !J0_PAddBSel1 & J1_IR9.Q & !J1_IR8.Q
+    # !J0_PAddBSel0 & !J0_PAddBSel1 & !J1_IR9.Q & J1_IR8.Q
+    # DataDB0 & !J0_PAddBSel1 & J1_Rts
+    # J0_PAddBSel0 & J0_PAddBSel1 & J1_IR0.Q & !J1_ConditionalJump
+    # !J0_PAddBSel0 & !J0_PAddBSel1 & !J1_IR11.Q
+    # !J0_PAddBSel0 & !J0_PAddBSel1 & J1_IR14.Q
+    # !J0_PAddBSel0 & !J0_PAddBSel1 & !J1_IR15.Q
+    # !J0_PAddBSel0 & !J0_PAddBSel1 & !J1_ConditionalJump ; (18 pterms, 11 signals)
+
+<A name=177>P0_AddendB1</A> = <A href=#30>DataDB1</A> & <A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & <A href=#211>J1_IR11.Q</A> & !<A href=#213>J1_IR9.Q</A>
+       & !<A href=#214>J1_IR8.Q</A> & <A href=#234>J1_Rts</A> & <A href=#235>J1_ConditionalJump</A>
+    # DataDB1 & J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & J1_IR9.Q & J1_IR8.Q
+       & J1_Rts & J1_ConditionalJump
+    # J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & !J1_IR9.Q & !J1_IR8.Q & <A href=#221>J1_IR1.Q</A>
+       & !J1_Rts & J1_ConditionalJump
+    # J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & J1_IR9.Q & J1_IR8.Q & J1_IR1.Q
+       & !J1_Rts & J1_ConditionalJump
+    # DataDB1 & <A href=#111>J0_PAddBSel0</A> & !<A href=#112>J0_PAddBSel1</A> & J1_Rts
+    # J0_PAddBSel0 & J0_PAddBSel1 & J1_IR9.Q & !J1_IR8.Q & J1_IR1.Q
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J1_IR9.Q & J1_IR8.Q & J1_IR1.Q
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J1_IR11.Q & J1_IR1.Q
+    # J0_PAddBSel0 & J0_PAddBSel1 & J1_IR14.Q & J1_IR1.Q
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J1_IR15.Q & J1_IR1.Q
+    # J0_PAddBSel0 & J1_IR1.Q & !J1_Rts
+    # J0_PAddBSel0 & J0_PAddBSel1 & J1_IR1.Q & !J1_ConditionalJump ; (12 pterms, 11 signals)
+
+<A name=168>P0_AddendB10</A> = !<A href=#111>J0_PAddBSel0</A> & <A href=#112>J0_PAddBSel1</A> & !<A href=#113>J0_PAddBSel2</A> & <A href=#220>J1_IR2.Q</A>
+       & !<A href=#234>J1_Rts</A>
+    # <A href=#29>DataDB2</A> & !J0_PAddBSel0 & J0_PAddBSel1 & !J0_PAddBSel2 & J1_Rts
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J0_PAddBSel2 & <A href=#212>J1_IR10.Q</A>
+    # J0_PAddBSel2 & <A href=#215>J1_IR7.Q</A> & !J1_Rts
+    # <A href=#24>DataDB7</A> & J0_PAddBSel2 & J1_Rts ; (5 pterms, 9 signals)
+
+<A name=167>P0_AddendB11</A> = !<A href=#111>J0_PAddBSel0</A> & <A href=#112>J0_PAddBSel1</A> & !<A href=#113>J0_PAddBSel2</A> & <A href=#219>J1_IR3.Q</A>
+       & !<A href=#234>J1_Rts</A>
+    # <A href=#28>DataDB3</A> & !J0_PAddBSel0 & J0_PAddBSel1 & !J0_PAddBSel2 & J1_Rts
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J0_PAddBSel2 & <A href=#211>J1_IR11.Q</A>
+    # J0_PAddBSel2 & <A href=#215>J1_IR7.Q</A> & !J1_Rts
+    # <A href=#24>DataDB7</A> & J0_PAddBSel2 & J1_Rts ; (5 pterms, 9 signals)
+
+<A name=166>P0_AddendB12</A> = !<A href=#111>J0_PAddBSel0</A> & <A href=#112>J0_PAddBSel1</A> & !<A href=#113>J0_PAddBSel2</A> & <A href=#218>J1_IR4.Q</A>
+       & !<A href=#234>J1_Rts</A>
+    # <A href=#27>DataDB4</A> & !J0_PAddBSel0 & J0_PAddBSel1 & !J0_PAddBSel2 & J1_Rts
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J0_PAddBSel2 & <A href=#210>J1_IR12.Q</A>
+    # J0_PAddBSel2 & <A href=#215>J1_IR7.Q</A> & !J1_Rts
+    # <A href=#24>DataDB7</A> & J0_PAddBSel2 & J1_Rts ; (5 pterms, 9 signals)
+
+<A name=176>P0_AddendB2</A> = <A href=#29>DataDB2</A> & <A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & <A href=#211>J1_IR11.Q</A> & !<A href=#213>J1_IR9.Q</A>
+       & !<A href=#214>J1_IR8.Q</A> & <A href=#234>J1_Rts</A> & <A href=#235>J1_ConditionalJump</A>
+    # DataDB2 & J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & J1_IR9.Q & J1_IR8.Q
+       & J1_Rts & J1_ConditionalJump
+    # J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & !J1_IR9.Q & !J1_IR8.Q & <A href=#220>J1_IR2.Q</A>
+       & !J1_Rts & J1_ConditionalJump
+    # J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & J1_IR9.Q & J1_IR8.Q & J1_IR2.Q
+       & !J1_Rts & J1_ConditionalJump
+    # DataDB2 & <A href=#111>J0_PAddBSel0</A> & !<A href=#112>J0_PAddBSel1</A> & J1_Rts
+    # J0_PAddBSel0 & J0_PAddBSel1 & J1_IR9.Q & !J1_IR8.Q & J1_IR2.Q
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J1_IR9.Q & J1_IR8.Q & J1_IR2.Q
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J1_IR11.Q & J1_IR2.Q
+    # J0_PAddBSel0 & J0_PAddBSel1 & J1_IR14.Q & J1_IR2.Q
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J1_IR15.Q & J1_IR2.Q
+    # J0_PAddBSel0 & J1_IR2.Q & !J1_Rts
+    # J0_PAddBSel0 & J0_PAddBSel1 & J1_IR2.Q & !J1_ConditionalJump ; (12 pterms, 11 signals)
+
+<A name=175>P0_AddendB3</A> = <A href=#28>DataDB3</A> & <A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & <A href=#211>J1_IR11.Q</A> & !<A href=#213>J1_IR9.Q</A>
+       & !<A href=#214>J1_IR8.Q</A> & <A href=#234>J1_Rts</A> & <A href=#235>J1_ConditionalJump</A>
+    # DataDB3 & J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & J1_IR9.Q & J1_IR8.Q
+       & J1_Rts & J1_ConditionalJump
+    # J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & !J1_IR9.Q & !J1_IR8.Q & <A href=#219>J1_IR3.Q</A>
+       & !J1_Rts & J1_ConditionalJump
+    # J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & J1_IR9.Q & J1_IR8.Q & J1_IR3.Q
+       & !J1_Rts & J1_ConditionalJump
+    # DataDB3 & <A href=#111>J0_PAddBSel0</A> & !<A href=#112>J0_PAddBSel1</A> & J1_Rts
+    # J0_PAddBSel0 & J0_PAddBSel1 & J1_IR9.Q & !J1_IR8.Q & J1_IR3.Q
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J1_IR9.Q & J1_IR8.Q & J1_IR3.Q
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J1_IR11.Q & J1_IR3.Q
+    # J0_PAddBSel0 & J0_PAddBSel1 & J1_IR14.Q & J1_IR3.Q
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J1_IR15.Q & J1_IR3.Q
+    # J0_PAddBSel0 & J1_IR3.Q & !J1_Rts
+    # J0_PAddBSel0 & J0_PAddBSel1 & J1_IR3.Q & !J1_ConditionalJump ; (12 pterms, 11 signals)
+
+<A name=174>P0_AddendB4</A> = <A href=#27>DataDB4</A> & <A href=#111>J0_PAddBSel0</A> & !<A href=#112>J0_PAddBSel1</A> & <A href=#234>J1_Rts</A>
+    # J0_PAddBSel0 & <A href=#218>J1_IR4.Q</A> & !J1_Rts
+    # J0_PAddBSel0 & J0_PAddBSel1 & !<A href=#113>J0_PAddBSel2</A> & J1_IR4.Q
+    # DataDB4 & J0_PAddBSel2 & J1_Rts
+    # J0_PAddBSel2 & J1_IR4.Q & !J1_Rts ; (5 pterms, 6 signals)
+
+<A name=173>P0_AddendB5</A> = <A href=#26>DataDB5</A> & <A href=#111>J0_PAddBSel0</A> & !<A href=#112>J0_PAddBSel1</A> & <A href=#234>J1_Rts</A>
+    # J0_PAddBSel0 & <A href=#217>J1_IR5.Q</A> & !J1_Rts
+    # J0_PAddBSel0 & J0_PAddBSel1 & !<A href=#113>J0_PAddBSel2</A> & J1_IR5.Q
+    # DataDB5 & J0_PAddBSel2 & J1_Rts
+    # J0_PAddBSel2 & J1_IR5.Q & !J1_Rts ; (5 pterms, 6 signals)
+
+<A name=172>P0_AddendB6</A> = <A href=#25>DataDB6</A> & <A href=#111>J0_PAddBSel0</A> & !<A href=#112>J0_PAddBSel1</A> & <A href=#234>J1_Rts</A>
+    # J0_PAddBSel0 & <A href=#216>J1_IR6.Q</A> & !J1_Rts
+    # J0_PAddBSel0 & J0_PAddBSel1 & !<A href=#113>J0_PAddBSel2</A> & J1_IR6.Q
+    # DataDB6 & J0_PAddBSel2 & J1_Rts
+    # J0_PAddBSel2 & J1_IR6.Q & !J1_Rts ; (5 pterms, 6 signals)
+
+<A name=171>P0_AddendB7</A> = <A href=#24>DataDB7</A> & <A href=#111>J0_PAddBSel0</A> & !<A href=#112>J0_PAddBSel1</A> & <A href=#234>J1_Rts</A>
+    # J0_PAddBSel0 & <A href=#215>J1_IR7.Q</A> & !J1_Rts
+    # J0_PAddBSel0 & J0_PAddBSel1 & !<A href=#113>J0_PAddBSel2</A> & J1_IR7.Q
+    # DataDB7 & J0_PAddBSel2 & J1_Rts
+    # J0_PAddBSel2 & J1_IR7.Q & !J1_Rts ; (5 pterms, 6 signals)
+
+<A name=170>P0_AddendB8</A> = !<A href=#111>J0_PAddBSel0</A> & <A href=#112>J0_PAddBSel1</A> & !<A href=#113>J0_PAddBSel2</A> & <A href=#222>J1_IR0.Q</A>
+       & !<A href=#234>J1_Rts</A>
+    # <A href=#31>DataDB0</A> & !J0_PAddBSel0 & J0_PAddBSel1 & !J0_PAddBSel2 & J1_Rts
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J0_PAddBSel2 & <A href=#214>J1_IR8.Q</A>
+    # J0_PAddBSel2 & <A href=#215>J1_IR7.Q</A> & !J1_Rts
+    # <A href=#24>DataDB7</A> & J0_PAddBSel2 & J1_Rts ; (5 pterms, 9 signals)
+
+<A name=169>P0_AddendB9</A> = !<A href=#111>J0_PAddBSel0</A> & <A href=#112>J0_PAddBSel1</A> & !<A href=#113>J0_PAddBSel2</A> & <A href=#221>J1_IR1.Q</A>
+       & !<A href=#234>J1_Rts</A>
+    # <A href=#30>DataDB1</A> & !J0_PAddBSel0 & J0_PAddBSel1 & !J0_PAddBSel2 & J1_Rts
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J0_PAddBSel2 & <A href=#213>J1_IR9.Q</A>
+    # J0_PAddBSel2 & <A href=#215>J1_IR7.Q</A> & !J1_Rts
+    # <A href=#24>DataDB7</A> & J0_PAddBSel2 & J1_Rts ; (5 pterms, 9 signals)
+
+<A name=152>P0_Carry1</A> = <A href=#164>P0_AddendA1</A> & <A href=#165>P0_AddendA0</A> & <A href=#178>P0_AddendB0</A>
+    # P0_AddendA0 & <A href=#177>P0_AddendB1</A> & P0_AddendB0
+    # P0_AddendA1 & P0_AddendB1 ; (3 pterms, 4 signals)
+
+<A name=144>P0_Carry11.X1</A> = !<A href=#154>P0_AddendA11</A> & !<A href=#167>P0_AddendB11</A>
+    # <A href=#155>P0_AddendA10</A> & <A href=#168>P0_AddendB10</A>
+    # P0_AddendA10 & <A href=#156>P0_AddendA9</A> & <A href=#169>P0_AddendB9</A>
+    # P0_AddendA9 & P0_AddendB10 & P0_AddendB9
+    # P0_AddendA10 & P0_AddendA9 & <A href=#157>P0_AddendA8</A> & <A href=#170>P0_AddendB8</A>
+    # P0_AddendA9 & P0_AddendA8 & P0_AddendB10 & P0_AddendB8
+    # P0_AddendA10 & P0_AddendA8 & P0_AddendB9 & P0_AddendB8
+    # P0_AddendA8 & P0_AddendB10 & P0_AddendB9 & P0_AddendB8
+    # <A href=#147>P0_Carry6</A> & P0_AddendA10 & P0_AddendA9 & P0_AddendA8 & <A href=#158>P0_AddendA7</A>
+    # P0_Carry6 & P0_AddendA9 & P0_AddendA8 & P0_AddendA7 & P0_AddendB10
+    # P0_Carry6 & P0_AddendA10 & P0_AddendA8 & P0_AddendA7 & P0_AddendB9
+    # P0_Carry6 & P0_AddendA8 & P0_AddendA7 & P0_AddendB10 & P0_AddendB9
+    # P0_Carry6 & P0_AddendA10 & P0_AddendA9 & P0_AddendA7 & P0_AddendB8
+    # P0_Carry6 & P0_AddendA9 & P0_AddendA7 & P0_AddendB10 & P0_AddendB8
+    # P0_Carry6 & P0_AddendA10 & P0_AddendA7 & P0_AddendB9 & P0_AddendB8
+    # P0_Carry6 & P0_AddendA7 & P0_AddendB10 & P0_AddendB9 & P0_AddendB8
+    # P0_Carry6 & P0_AddendA10 & P0_AddendA9 & P0_AddendA8 & <A href=#171>P0_AddendB7</A>
+    # P0_AddendA10 & P0_AddendA9 & P0_AddendA8 & P0_AddendA7 & P0_AddendB7
+    # P0_Carry6 & P0_AddendA9 & P0_AddendA8 & P0_AddendB10 & P0_AddendB7
+    # P0_AddendA9 & P0_AddendA8 & P0_AddendA7 & P0_AddendB10 & P0_AddendB7
+    # P0_Carry6 & P0_AddendA10 & P0_AddendA8 & P0_AddendB9 & P0_AddendB7
+    # P0_AddendA10 & P0_AddendA8 & P0_AddendA7 & P0_AddendB9 & P0_AddendB7
+    # P0_Carry6 & P0_AddendA8 & P0_AddendB10 & P0_AddendB9 & P0_AddendB7
+    # P0_AddendA8 & P0_AddendA7 & P0_AddendB10 & P0_AddendB9 & P0_AddendB7
+    # P0_Carry6 & P0_AddendA10 & P0_AddendA9 & P0_AddendB8 & P0_AddendB7
+    # P0_AddendA10 & P0_AddendA9 & P0_AddendA7 & P0_AddendB8 & P0_AddendB7
+    # P0_Carry6 & P0_AddendA9 & P0_AddendB10 & P0_AddendB8 & P0_AddendB7
+    # P0_AddendA9 & P0_AddendA7 & P0_AddendB10 & P0_AddendB8 & P0_AddendB7
+    # P0_Carry6 & P0_AddendA10 & P0_AddendB9 & P0_AddendB8 & P0_AddendB7
+    # P0_AddendA10 & P0_AddendA7 & P0_AddendB9 & P0_AddendB8 & P0_AddendB7
+    # P0_Carry6 & P0_AddendB10 & P0_AddendB9 & P0_AddendB8 & P0_AddendB7
+    # P0_AddendA7 & P0_AddendB10 & P0_AddendB9 & P0_AddendB8 & P0_AddendB7
+    # P0_AddendA11 & P0_AddendB11 ; (33 pterms, 11 signals)
+P0_Carry11.X2 = !<A href=#154>P0_AddendA11</A> & !<A href=#167>P0_AddendB11</A> ; (1 pterm, 2 signals)
+
+<A name=151>P0_Carry2.X1</A> = !<A href=#163>P0_AddendA2</A> & !<A href=#176>P0_AddendB2</A>
+    # <A href=#164>P0_AddendA1</A> & <A href=#177>P0_AddendB1</A>
+    # P0_AddendA1 & <A href=#165>P0_AddendA0</A> & <A href=#178>P0_AddendB0</A>
+    # P0_AddendA0 & P0_AddendB1 & P0_AddendB0
+    # P0_AddendA2 & P0_AddendB2 ; (5 pterms, 6 signals)
+P0_Carry2.X2 = !<A href=#163>P0_AddendA2</A> & !<A href=#176>P0_AddendB2</A> ; (1 pterm, 2 signals)
+
+<A name=150>P0_Carry3.X1</A> = !<A href=#162>P0_AddendA3</A> & !<A href=#175>P0_AddendB3</A>
+    # <A href=#163>P0_AddendA2</A> & <A href=#176>P0_AddendB2</A>
+    # P0_AddendA2 & <A href=#164>P0_AddendA1</A> & <A href=#177>P0_AddendB1</A>
+    # P0_AddendA1 & P0_AddendB2 & P0_AddendB1
+    # P0_AddendA2 & P0_AddendA1 & <A href=#165>P0_AddendA0</A> & <A href=#178>P0_AddendB0</A>
+    # P0_AddendA1 & P0_AddendA0 & P0_AddendB2 & P0_AddendB0
+    # P0_AddendA2 & P0_AddendA0 & P0_AddendB1 & P0_AddendB0
+    # P0_AddendA0 & P0_AddendB2 & P0_AddendB1 & P0_AddendB0
+    # P0_AddendA3 & P0_AddendB3 ; (9 pterms, 8 signals)
+P0_Carry3.X2 = !<A href=#162>P0_AddendA3</A> & !<A href=#175>P0_AddendB3</A> ; (1 pterm, 2 signals)
+
+<A name=149>P0_Carry4</A> = <A href=#161>P0_AddendA4</A> & <A href=#174>P0_AddendB4</A>
+    # <A href=#150>P0_Carry3</A> & P0_AddendA4
+    # P0_Carry3 & P0_AddendB4 ; (3 pterms, 3 signals)
+
+<A name=148>P0_Carry5.X1</A> = !<A href=#160>P0_AddendA5</A> & !<A href=#173>P0_AddendB5</A>
+    # <A href=#150>P0_Carry3</A> & <A href=#161>P0_AddendA4</A>
+    # P0_Carry3 & <A href=#174>P0_AddendB4</A>
+    # P0_AddendA4 & P0_AddendB4
+    # P0_AddendA5 & P0_AddendB5 ; (5 pterms, 5 signals)
+P0_Carry5.X2 = !<A href=#160>P0_AddendA5</A> & !<A href=#173>P0_AddendB5</A> ; (1 pterm, 2 signals)
+
+<A name=147>P0_Carry6.X1</A> = !<A href=#159>P0_AddendA6</A> & !<A href=#172>P0_AddendB6</A>
+    # <A href=#160>P0_AddendA5</A> & <A href=#173>P0_AddendB5</A>
+    # <A href=#150>P0_Carry3</A> & P0_AddendA5 & <A href=#161>P0_AddendA4</A>
+    # P0_Carry3 & P0_AddendA4 & P0_AddendB5
+    # P0_Carry3 & P0_AddendA5 & <A href=#174>P0_AddendB4</A>
+    # P0_AddendA5 & P0_AddendA4 & P0_AddendB4
+    # P0_Carry3 & P0_AddendB5 & P0_AddendB4
+    # P0_AddendA4 & P0_AddendB5 & P0_AddendB4
+    # P0_AddendA6 & P0_AddendB6 ; (9 pterms, 7 signals)
+P0_Carry6.X2 = !<A href=#159>P0_AddendA6</A> & !<A href=#172>P0_AddendB6</A> ; (1 pterm, 2 signals)
+
+<A name=146>P0_Carry8.X1</A> = !<A href=#157>P0_AddendA8</A> & !<A href=#170>P0_AddendB8</A>
+    # <A href=#158>P0_AddendA7</A> & <A href=#171>P0_AddendB7</A>
+    # P0_AddendA7 & <A href=#159>P0_AddendA6</A> & <A href=#172>P0_AddendB6</A>
+    # P0_AddendA6 & P0_AddendB7 & P0_AddendB6
+    # P0_AddendA7 & P0_AddendA6 & <A href=#160>P0_AddendA5</A> & <A href=#173>P0_AddendB5</A>
+    # P0_AddendA6 & P0_AddendA5 & P0_AddendB7 & P0_AddendB5
+    # P0_AddendA7 & P0_AddendA5 & P0_AddendB6 & P0_AddendB5
+    # P0_AddendA5 & P0_AddendB7 & P0_AddendB6 & P0_AddendB5
+    # <A href=#150>P0_Carry3</A> & P0_AddendA7 & P0_AddendA6 & P0_AddendA5 & <A href=#161>P0_AddendA4</A>
+    # P0_Carry3 & P0_AddendA6 & P0_AddendA5 & P0_AddendA4 & P0_AddendB7
+    # P0_Carry3 & P0_AddendA7 & P0_AddendA5 & P0_AddendA4 & P0_AddendB6
+    # P0_Carry3 & P0_AddendA5 & P0_AddendA4 & P0_AddendB7 & P0_AddendB6
+    # P0_Carry3 & P0_AddendA7 & P0_AddendA6 & P0_AddendA4 & P0_AddendB5
+    # P0_Carry3 & P0_AddendA6 & P0_AddendA4 & P0_AddendB7 & P0_AddendB5
+    # P0_Carry3 & P0_AddendA7 & P0_AddendA4 & P0_AddendB6 & P0_AddendB5
+    # P0_Carry3 & P0_AddendA4 & P0_AddendB7 & P0_AddendB6 & P0_AddendB5
+    # P0_Carry3 & P0_AddendA7 & P0_AddendA6 & P0_AddendA5 & <A href=#174>P0_AddendB4</A>
+    # P0_AddendA7 & P0_AddendA6 & P0_AddendA5 & P0_AddendA4 & P0_AddendB4
+    # P0_Carry3 & P0_AddendA6 & P0_AddendA5 & P0_AddendB7 & P0_AddendB4
+    # P0_AddendA6 & P0_AddendA5 & P0_AddendA4 & P0_AddendB7 & P0_AddendB4
+    # P0_Carry3 & P0_AddendA7 & P0_AddendA5 & P0_AddendB6 & P0_AddendB4
+    # P0_AddendA7 & P0_AddendA5 & P0_AddendA4 & P0_AddendB6 & P0_AddendB4
+    # P0_Carry3 & P0_AddendA5 & P0_AddendB7 & P0_AddendB6 & P0_AddendB4
+    # P0_AddendA5 & P0_AddendA4 & P0_AddendB7 & P0_AddendB6 & P0_AddendB4
+    # P0_Carry3 & P0_AddendA7 & P0_AddendA6 & P0_AddendB5 & P0_AddendB4
+    # P0_AddendA7 & P0_AddendA6 & P0_AddendA4 & P0_AddendB5 & P0_AddendB4
+    # P0_Carry3 & P0_AddendA6 & P0_AddendB7 & P0_AddendB5 & P0_AddendB4
+    # P0_AddendA6 & P0_AddendA4 & P0_AddendB7 & P0_AddendB5 & P0_AddendB4
+    # P0_Carry3 & P0_AddendA7 & P0_AddendB6 & P0_AddendB5 & P0_AddendB4
+    # P0_AddendA7 & P0_AddendA4 & P0_AddendB6 & P0_AddendB5 & P0_AddendB4
+    # P0_Carry3 & P0_AddendB7 & P0_AddendB6 & P0_AddendB5 & P0_AddendB4
+    # P0_AddendA4 & P0_AddendB7 & P0_AddendB6 & P0_AddendB5 & P0_AddendB4
+    # P0_AddendA8 & P0_AddendB8 ; (33 pterms, 11 signals)
+P0_Carry8.X2 = !<A href=#157>P0_AddendA8</A> & !<A href=#170>P0_AddendB8</A> ; (1 pterm, 2 signals)
+
+<A name=145>P0_Carry9.X1</A> = !<A href=#156>P0_AddendA9</A> & !<A href=#169>P0_AddendB9</A>
+    # <A href=#157>P0_AddendA8</A> & <A href=#170>P0_AddendB8</A>
+    # <A href=#147>P0_Carry6</A> & P0_AddendA8 & <A href=#158>P0_AddendA7</A>
+    # P0_Carry6 & P0_AddendA7 & P0_AddendB8
+    # P0_Carry6 & P0_AddendA8 & <A href=#171>P0_AddendB7</A>
+    # P0_AddendA8 & P0_AddendA7 & P0_AddendB7
+    # P0_Carry6 & P0_AddendB8 & P0_AddendB7
+    # P0_AddendA7 & P0_AddendB8 & P0_AddendB7
+    # P0_AddendA9 & P0_AddendB9 ; (9 pterms, 7 signals)
+P0_Carry9.X2 = !<A href=#156>P0_AddendA9</A> & !<A href=#169>P0_AddendB9</A> ; (1 pterm, 2 signals)
+
+<A name=55>ProgramAB0.D</A> = !<A href=#22>Reset</A> & !<A href=#114>J0_PHoldPC</A> & <A href=#165>P0_AddendA0</A> & !<A href=#178>P0_AddendB0</A>
+    # !Reset & !J0_PHoldPC & !P0_AddendA0 & P0_AddendB0
+    # !Reset & <A href=#55>ProgramAB0.Q</A> & J0_PHoldPC ; (3 pterms, 5 signals)
+ProgramAB0.OE = 1 ; (1 pterm, 0 signal)
+ProgramAB0.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=54>ProgramAB1.D.X1</A> = !<A href=#22>Reset</A> & <A href=#54>ProgramAB1.Q</A> & <A href=#114>J0_PHoldPC</A>
+    # !Reset & !J0_PHoldPC & !<A href=#177>P0_AddendB1</A> & !<A href=#178>P0_AddendB0</A>
+    # !Reset & !J0_PHoldPC & !<A href=#165>P0_AddendA0</A> & !P0_AddendB1
+    # !Reset & !J0_PHoldPC & P0_AddendA0 & P0_AddendB1 & P0_AddendB0 ; (4 pterms, 6 signals)
+ProgramAB1.D.X2 = !<A href=#22>Reset</A> & !<A href=#114>J0_PHoldPC</A> & !<A href=#164>P0_AddendA1</A> ; (1 pterm, 3 signals)
+ProgramAB1.OE = 1 ; (1 pterm, 0 signal)
+ProgramAB1.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=45>ProgramAB10.D</A> = !<A href=#22>Reset</A> & !<A href=#114>J0_PHoldPC</A> & <A href=#147>P0_Carry6</A> & !<A href=#155>P0_AddendA10</A> & <A href=#158>P0_AddendA7</A>
+       & !<A href=#168>P0_AddendB10</A> & <A href=#169>P0_AddendB9</A> & <A href=#170>P0_AddendB8</A>
+    # !Reset & !J0_PHoldPC & P0_Carry6 & P0_AddendA10 & P0_AddendA7
+       & P0_AddendB10 & P0_AddendB9 & P0_AddendB8
+    # !Reset & !J0_PHoldPC & P0_Carry6 & !P0_AddendA10 & <A href=#156>P0_AddendA9</A>
+       & P0_AddendA7 & !P0_AddendB10 & P0_AddendB8
+    # !Reset & !J0_PHoldPC & P0_Carry6 & P0_AddendA10 & P0_AddendA9
+       & P0_AddendA7 & P0_AddendB10 & P0_AddendB8
+    # !Reset & !J0_PHoldPC & P0_Carry6 & !P0_AddendA10 & <A href=#157>P0_AddendA8</A>
+       & P0_AddendA7 & !P0_AddendB10 & P0_AddendB9
+    # !Reset & !J0_PHoldPC & P0_Carry6 & P0_AddendA10 & P0_AddendA8
+       & P0_AddendA7 & P0_AddendB10 & P0_AddendB9
+    # !Reset & !J0_PHoldPC & P0_Carry6 & !P0_AddendA10 & P0_AddendA9
+       & P0_AddendA8 & P0_AddendA7 & !P0_AddendB10
+    # !Reset & !J0_PHoldPC & P0_Carry6 & P0_AddendA10 & P0_AddendA9
+       & P0_AddendA8 & P0_AddendA7 & P0_AddendB10
+    # !Reset & !J0_PHoldPC & !P0_Carry6 & P0_AddendA10 & !P0_AddendA7
+       & !P0_AddendB10 & !P0_AddendB9 & !P0_AddendB8
+    # !Reset & !J0_PHoldPC & !P0_Carry6 & !P0_AddendA10 & !P0_AddendA7
+       & P0_AddendB10 & !P0_AddendB9 & !P0_AddendB8
+    # !Reset & !J0_PHoldPC & !P0_Carry6 & P0_AddendA10 & !P0_AddendA9
+       & !P0_AddendA7 & !P0_AddendB10 & !P0_AddendB8
+    # !Reset & !J0_PHoldPC & !P0_Carry6 & !P0_AddendA10 & !P0_AddendA9
+       & !P0_AddendA7 & P0_AddendB10 & !P0_AddendB8
+    # !Reset & !J0_PHoldPC & !P0_Carry6 & P0_AddendA10 & !P0_AddendA8
+       & !P0_AddendA7 & !P0_AddendB10 & !P0_AddendB9
+    # !Reset & !J0_PHoldPC & !P0_Carry6 & !P0_AddendA10 & !P0_AddendA8
+       & !P0_AddendA7 & P0_AddendB10 & !P0_AddendB9
+    # !Reset & !J0_PHoldPC & !P0_Carry6 & P0_AddendA10 & !P0_AddendA9
+       & !P0_AddendA8 & !P0_AddendA7 & !P0_AddendB10
+    # !Reset & !J0_PHoldPC & !P0_Carry6 & !P0_AddendA10 & !P0_AddendA9
+       & !P0_AddendA8 & !P0_AddendA7 & P0_AddendB10
+    # !Reset & !J0_PHoldPC & P0_AddendA10 & !P0_AddendA7 & !P0_AddendB10
+       & !P0_AddendB9 & !P0_AddendB8 & !<A href=#171>P0_AddendB7</A>
+    # !Reset & !J0_PHoldPC & !P0_Carry6 & P0_AddendA10 & !P0_AddendB10
+       & !P0_AddendB9 & !P0_AddendB8 & !P0_AddendB7
+    # !Reset & !J0_PHoldPC & !P0_AddendA10 & !P0_AddendA7 & P0_AddendB10
+       & !P0_AddendB9 & !P0_AddendB8 & !P0_AddendB7
+    # !Reset & !J0_PHoldPC & !P0_Carry6 & !P0_AddendA10 & P0_AddendB10
+       & !P0_AddendB9 & !P0_AddendB8 & !P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_AddendA10 & !P0_AddendA9 & !P0_AddendA7
+       & !P0_AddendB10 & !P0_AddendB8 & !P0_AddendB7
+    # !Reset & !J0_PHoldPC & !P0_Carry6 & P0_AddendA10 & !P0_AddendA9
+       & !P0_AddendB10 & !P0_AddendB8 & !P0_AddendB7
+    # !Reset & !J0_PHoldPC & !P0_AddendA10 & !P0_AddendA9 & !P0_AddendA7
+       & P0_AddendB10 & !P0_AddendB8 & !P0_AddendB7
+    # !Reset & !J0_PHoldPC & !P0_Carry6 & !P0_AddendA10 & !P0_AddendA9
+       & P0_AddendB10 & !P0_AddendB8 & !P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_AddendA10 & !P0_AddendA8 & !P0_AddendA7
+       & !P0_AddendB10 & !P0_AddendB9 & !P0_AddendB7
+    # !Reset & !J0_PHoldPC & !P0_Carry6 & P0_AddendA10 & !P0_AddendA8
+       & !P0_AddendB10 & !P0_AddendB9 & !P0_AddendB7
+    # !Reset & !J0_PHoldPC & !P0_AddendA10 & !P0_AddendA8 & !P0_AddendA7
+       & P0_AddendB10 & !P0_AddendB9 & !P0_AddendB7
+    # !Reset & !J0_PHoldPC & !P0_Carry6 & !P0_AddendA10 & !P0_AddendA8
+       & P0_AddendB10 & !P0_AddendB9 & !P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_AddendA10 & !P0_AddendA9 & !P0_AddendA8
+       & !P0_AddendA7 & !P0_AddendB10 & !P0_AddendB7
+    # !Reset & !J0_PHoldPC & !P0_Carry6 & P0_AddendA10 & !P0_AddendA9
+       & !P0_AddendA8 & !P0_AddendB10 & !P0_AddendB7
+    # !Reset & !J0_PHoldPC & !P0_AddendA10 & !P0_AddendA9 & !P0_AddendA8
+       & !P0_AddendA7 & P0_AddendB10 & !P0_AddendB7
+    # !Reset & !J0_PHoldPC & !P0_Carry6 & !P0_AddendA10 & !P0_AddendA9
+       & !P0_AddendA8 & P0_AddendB10 & !P0_AddendB7
+    # !Reset & !J0_PHoldPC & !P0_AddendA10 & P0_AddendA7 & !P0_AddendB10
+       & P0_AddendB9 & P0_AddendB8 & P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_Carry6 & !P0_AddendA10 & !P0_AddendB10
+       & P0_AddendB9 & P0_AddendB8 & P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_AddendA10 & P0_AddendA7 & P0_AddendB10
+       & P0_AddendB9 & P0_AddendB8 & P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_Carry6 & P0_AddendA10 & P0_AddendB10
+       & P0_AddendB9 & P0_AddendB8 & P0_AddendB7
+    # !Reset & !J0_PHoldPC & !P0_AddendA10 & P0_AddendA9 & P0_AddendA7
+       & !P0_AddendB10 & P0_AddendB8 & P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_Carry6 & !P0_AddendA10 & P0_AddendA9
+       & !P0_AddendB10 & P0_AddendB8 & P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_AddendA10 & P0_AddendA9 & P0_AddendA7
+       & P0_AddendB10 & P0_AddendB8 & P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_Carry6 & P0_AddendA10 & P0_AddendA9
+       & P0_AddendB10 & P0_AddendB8 & P0_AddendB7
+    # !Reset & !J0_PHoldPC & !P0_AddendA10 & P0_AddendA8 & P0_AddendA7
+       & !P0_AddendB10 & P0_AddendB9 & P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_Carry6 & !P0_AddendA10 & P0_AddendA8
+       & !P0_AddendB10 & P0_AddendB9 & P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_AddendA10 & P0_AddendA8 & P0_AddendA7
+       & P0_AddendB10 & P0_AddendB9 & P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_Carry6 & P0_AddendA10 & P0_AddendA8
+       & P0_AddendB10 & P0_AddendB9 & P0_AddendB7
+    # !Reset & !J0_PHoldPC & !P0_AddendA10 & P0_AddendA9 & P0_AddendA8
+       & P0_AddendA7 & !P0_AddendB10 & P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_Carry6 & !P0_AddendA10 & P0_AddendA9
+       & P0_AddendA8 & !P0_AddendB10 & P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_AddendA10 & P0_AddendA9 & P0_AddendA8
+       & P0_AddendA7 & P0_AddendB10 & P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_Carry6 & P0_AddendA10 & P0_AddendA9
+       & P0_AddendA8 & P0_AddendB10 & P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_AddendA10 & !P0_AddendA8 & !P0_AddendB10
+       & !P0_AddendB9 & !P0_AddendB8
+    # !Reset & !J0_PHoldPC & !P0_AddendA10 & !P0_AddendA8 & P0_AddendB10
+       & !P0_AddendB9 & !P0_AddendB8
+    # !Reset & !J0_PHoldPC & P0_AddendA10 & !P0_AddendA9 & !P0_AddendA8
+       & !P0_AddendB10 & !P0_AddendB8
+    # !Reset & !J0_PHoldPC & !P0_AddendA10 & !P0_AddendA9 & !P0_AddendA8
+       & P0_AddendB10 & !P0_AddendB8
+    # !Reset & !J0_PHoldPC & !P0_AddendA10 & P0_AddendA8 & !P0_AddendB10
+       & P0_AddendB9 & P0_AddendB8
+    # !Reset & !J0_PHoldPC & P0_AddendA10 & P0_AddendA8 & P0_AddendB10
+       & P0_AddendB9 & P0_AddendB8
+    # !Reset & !J0_PHoldPC & !P0_AddendA10 & P0_AddendA9 & P0_AddendA8
+       & !P0_AddendB10 & P0_AddendB8
+    # !Reset & !J0_PHoldPC & P0_AddendA10 & P0_AddendA9 & P0_AddendA8
+       & P0_AddendB10 & P0_AddendB8
+    # !Reset & !J0_PHoldPC & P0_AddendA10 & !P0_AddendA9 & !P0_AddendB10
+       & !P0_AddendB9
+    # !Reset & !J0_PHoldPC & !P0_AddendA10 & !P0_AddendA9 & P0_AddendB10
+       & !P0_AddendB9
+    # !Reset & !J0_PHoldPC & !P0_AddendA10 & P0_AddendA9 & !P0_AddendB10
+       & P0_AddendB9
+    # !Reset & !J0_PHoldPC & P0_AddendA10 & P0_AddendA9 & P0_AddendB10
+       & P0_AddendB9
+    # !Reset & <A href=#45>ProgramAB10.Q</A> & J0_PHoldPC ; (61 pterms, 12 signals)
+ProgramAB10.OE = 1 ; (1 pterm, 0 signal)
+ProgramAB10.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=44>ProgramAB11.D.X1</A> = !<A href=#22>Reset</A> & <A href=#44>ProgramAB11.Q</A> & <A href=#114>J0_PHoldPC</A>
+    # !Reset & !J0_PHoldPC & !<A href=#154>P0_AddendA11</A> & !<A href=#155>P0_AddendA10</A> & !<A href=#168>P0_AddendB10</A>
+    # !Reset & !J0_PHoldPC & !<A href=#145>P0_Carry9</A> & !P0_AddendA11 & !P0_AddendA10
+    # !Reset & !J0_PHoldPC & !P0_Carry9 & !P0_AddendA11 & !P0_AddendB10
+    # !Reset & !J0_PHoldPC & P0_AddendA11 & P0_AddendA10 & P0_AddendB10
+    # !Reset & !J0_PHoldPC & P0_Carry9 & P0_AddendA11 & P0_AddendB10
+    # !Reset & !J0_PHoldPC & P0_Carry9 & P0_AddendA11 & P0_AddendA10
+       & !P0_AddendB10 ; (7 pterms, 7 signals)
+ProgramAB11.D.X2 = !<A href=#22>Reset</A> & !<A href=#114>J0_PHoldPC</A> & !<A href=#167>P0_AddendB11</A> ; (1 pterm, 3 signals)
+ProgramAB11.OE = 1 ; (1 pterm, 0 signal)
+ProgramAB11.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=43>ProgramAB12.D.X1</A> = !<A href=#22>Reset</A> & <A href=#43>ProgramAB12.Q</A> & <A href=#114>J0_PHoldPC</A>
+    # !Reset & !J0_PHoldPC & !<A href=#153>P0_AddendA12</A> & !<A href=#166>P0_AddendB12</A>
+    # !Reset & !J0_PHoldPC & P0_AddendA12 & P0_AddendB12 ; (3 pterms, 5 signals)
+ProgramAB12.D.X2 = !<A href=#22>Reset</A> & !<A href=#114>J0_PHoldPC</A> & !<A href=#144>P0_Carry11</A> ; (1 pterm, 3 signals)
+ProgramAB12.OE = 1 ; (1 pterm, 0 signal)
+ProgramAB12.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=53>ProgramAB2.D.X1</A> = !<A href=#22>Reset</A> & <A href=#53>ProgramAB2.Q</A> & <A href=#114>J0_PHoldPC</A>
+    # !Reset & !J0_PHoldPC & !<A href=#163>P0_AddendA2</A> & !<A href=#176>P0_AddendB2</A>
+    # !Reset & !J0_PHoldPC & P0_AddendA2 & P0_AddendB2 ; (3 pterms, 5 signals)
+ProgramAB2.D.X2 = !<A href=#22>Reset</A> & !<A href=#114>J0_PHoldPC</A> & !<A href=#152>P0_Carry1</A> ; (1 pterm, 3 signals)
+ProgramAB2.OE = 1 ; (1 pterm, 0 signal)
+ProgramAB2.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=52>ProgramAB3.D.X1</A> = !<A href=#22>Reset</A> & <A href=#52>ProgramAB3.Q</A> & <A href=#114>J0_PHoldPC</A>
+    # !Reset & !J0_PHoldPC & !<A href=#162>P0_AddendA3</A> & !<A href=#175>P0_AddendB3</A>
+    # !Reset & !J0_PHoldPC & P0_AddendA3 & P0_AddendB3 ; (3 pterms, 5 signals)
+ProgramAB3.D.X2 = !<A href=#22>Reset</A> & !<A href=#114>J0_PHoldPC</A> & !<A href=#151>P0_Carry2</A> ; (1 pterm, 3 signals)
+ProgramAB3.OE = 1 ; (1 pterm, 0 signal)
+ProgramAB3.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=51>ProgramAB4.D.X1</A> = !<A href=#22>Reset</A> & <A href=#51>ProgramAB4.Q</A> & <A href=#114>J0_PHoldPC</A>
+    # !Reset & !J0_PHoldPC & !<A href=#161>P0_AddendA4</A> & !<A href=#174>P0_AddendB4</A>
+    # !Reset & !J0_PHoldPC & P0_AddendA4 & P0_AddendB4 ; (3 pterms, 5 signals)
+ProgramAB4.D.X2 = !<A href=#22>Reset</A> & !<A href=#114>J0_PHoldPC</A> & !<A href=#150>P0_Carry3</A> ; (1 pterm, 3 signals)
+ProgramAB4.OE = 1 ; (1 pterm, 0 signal)
+ProgramAB4.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=50>ProgramAB5.D.X1</A> = !<A href=#22>Reset</A> & <A href=#50>ProgramAB5.Q</A> & <A href=#114>J0_PHoldPC</A>
+    # !Reset & !J0_PHoldPC & !<A href=#160>P0_AddendA5</A> & !<A href=#173>P0_AddendB5</A>
+    # !Reset & !J0_PHoldPC & P0_AddendA5 & P0_AddendB5 ; (3 pterms, 5 signals)
+ProgramAB5.D.X2 = !<A href=#22>Reset</A> & !<A href=#114>J0_PHoldPC</A> & !<A href=#149>P0_Carry4</A> ; (1 pterm, 3 signals)
+ProgramAB5.OE = 1 ; (1 pterm, 0 signal)
+ProgramAB5.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=49>ProgramAB6.D.X1</A> = !<A href=#22>Reset</A> & <A href=#49>ProgramAB6.Q</A> & <A href=#114>J0_PHoldPC</A>
+    # !Reset & !J0_PHoldPC & !<A href=#159>P0_AddendA6</A> & !<A href=#172>P0_AddendB6</A>
+    # !Reset & !J0_PHoldPC & P0_AddendA6 & P0_AddendB6 ; (3 pterms, 5 signals)
+ProgramAB6.D.X2 = !<A href=#22>Reset</A> & !<A href=#114>J0_PHoldPC</A> & !<A href=#148>P0_Carry5</A> ; (1 pterm, 3 signals)
+ProgramAB6.OE = 1 ; (1 pterm, 0 signal)
+ProgramAB6.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=48>ProgramAB7.D.X1</A> = !<A href=#22>Reset</A> & <A href=#48>ProgramAB7.Q</A> & <A href=#114>J0_PHoldPC</A>
+    # !Reset & !J0_PHoldPC & !<A href=#158>P0_AddendA7</A> & !<A href=#171>P0_AddendB7</A>
+    # !Reset & !J0_PHoldPC & P0_AddendA7 & P0_AddendB7 ; (3 pterms, 5 signals)
+ProgramAB7.D.X2 = !<A href=#22>Reset</A> & !<A href=#114>J0_PHoldPC</A> & !<A href=#147>P0_Carry6</A> ; (1 pterm, 3 signals)
+ProgramAB7.OE = 1 ; (1 pterm, 0 signal)
+ProgramAB7.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=47>ProgramAB8.D.X1</A> = !<A href=#22>Reset</A> & <A href=#47>ProgramAB8.Q</A> & <A href=#114>J0_PHoldPC</A>
+    # !Reset & !J0_PHoldPC & !<A href=#157>P0_AddendA8</A> & !<A href=#158>P0_AddendA7</A> & !<A href=#171>P0_AddendB7</A>
+    # !Reset & !J0_PHoldPC & !<A href=#147>P0_Carry6</A> & !P0_AddendA8 & !P0_AddendA7
+    # !Reset & !J0_PHoldPC & !P0_Carry6 & !P0_AddendA8 & !P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_AddendA8 & P0_AddendA7 & P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_Carry6 & P0_AddendA8 & P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_Carry6 & P0_AddendA8 & P0_AddendA7
+       & !P0_AddendB7 ; (7 pterms, 7 signals)
+ProgramAB8.D.X2 = !<A href=#22>Reset</A> & !<A href=#114>J0_PHoldPC</A> & !<A href=#170>P0_AddendB8</A> ; (1 pterm, 3 signals)
+ProgramAB8.OE = 1 ; (1 pterm, 0 signal)
+ProgramAB8.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=46>ProgramAB9.D.X1</A> = !<A href=#22>Reset</A> & <A href=#46>ProgramAB9.Q</A> & <A href=#114>J0_PHoldPC</A>
+    # !Reset & !J0_PHoldPC & !<A href=#156>P0_AddendA9</A> & !<A href=#169>P0_AddendB9</A>
+    # !Reset & !J0_PHoldPC & P0_AddendA9 & P0_AddendB9 ; (3 pterms, 5 signals)
+ProgramAB9.D.X2 = !<A href=#22>Reset</A> & !<A href=#114>J0_PHoldPC</A> & !<A href=#146>P0_Carry8</A> ; (1 pterm, 3 signals)
+ProgramAB9.OE = 1 ; (1 pterm, 0 signal)
+ProgramAB9.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=40>RD.X1</A> = !<A href=#22>Reset</A> & !<A href=#103>J0_AShiftRight</A> & !<A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & <A href=#209>J1_IR13.Q</A>
+       & !<A href=#210>J1_IR12.Q</A> & !<A href=#231>J1_LeftShift</A> & !<A href=#232>J1_LDI</A>
+    # !Reset & !J0_AShiftRight & !J1_IR15.Q & <A href=#213>J1_IR9.Q</A> & <A href=#214>J1_IR8.Q</A> & <A href=#223>J1_FSM3.Q</A>
+       & !<A href=#224>J1_FSM2.Q</A> & !J1_LeftShift & !J1_LDI
+    # !Reset & !J0_AShiftRight & !J1_IR15.Q & J1_IR9.Q & J1_IR8.Q & <A href=#225>J1_FSM1.Q</A>
+       & !J1_LeftShift & !J1_LDI
+    # !Reset & !J0_AShiftRight & !J1_IR15.Q & J1_IR9.Q & J1_IR8.Q & !J1_FSM2.Q
+       & <A href=#226>J1_FSM0.Q</A> & !J1_LeftShift & !J1_LDI
+    # !Reset & !J0_AShiftRight & !J1_IR15.Q & !J1_IR14.Q & !J1_IR12.Q
+       & !<A href=#227>J1_Popf</A> & !J1_LeftShift & !J1_LDI
+    # !Reset & !J0_AShiftRight & !J1_IR15.Q & J1_IR9.Q & J1_IR8.Q & !J1_FSM2.Q
+       & !J1_LeftShift & !J1_LDI & !<A href=#234>J1_Rts</A>
+    # !Reset & !J0_AShiftRight & !J1_IR15.Q & J1_IR9.Q & J1_IR8.Q & J1_FSM2.Q
+       & !J1_FSM0.Q & !J1_LeftShift & !J1_LDI
+    # !Reset & !J0_AShiftRight & J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q
+       & !<A href=#211>J1_IR11.Q</A> & !J1_LeftShift & !J1_LDI
+    # !Reset & !J0_AShiftRight & J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q
+       & !J1_IR9.Q & J1_IR8.Q & !J1_LeftShift & !J1_LDI
+    # !Reset & !J0_AShiftRight & J1_IR15.Q & !J1_FSM3.Q & !J1_FSM2.Q
+       & !J1_FSM1.Q & !J1_FSM0.Q & !J1_LeftShift & !J1_LDI & J1_Rts
+    # !Reset & !J0_AShiftRight & J1_IR15.Q & J1_FSM2.Q & !J1_FSM1.Q
+       & J1_FSM0.Q & !J1_LeftShift & !J1_LDI
+    # !Reset & !J0_AShiftRight & J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q
+       & J1_IR9.Q & !J1_IR8.Q & !J1_LeftShift & !J1_LDI ; (12 pterms, 17 signals)
+RD.X2 = !<A href=#22>Reset</A> & !<A href=#103>J0_AShiftRight</A> & !<A href=#207>J1_IR15.Q</A> & !<A href=#231>J1_LeftShift</A> & !<A href=#232>J1_LDI</A> ; (1 pterm, 5 signals)
+RD.OE = 1 ; (1 pterm, 0 signal)
+
+<A name=87>SReg0.D</A> = !<A href=#22>Reset</A> & !<A href=#104>J0_DAddressMux0</A> & <A href=#107>J0_DEnableIncDec</A> & !<A href=#186>V0_AddrMuxOut0</A>
+    # !Reset & !J0_DAddressMux0 & !J0_DEnableIncDec & V0_AddrMuxOut0
+    # !Reset & <A href=#87>SReg0.Q</A> & J0_DAddressMux0 ; (3 pterms, 5 signals)
+SReg0.OE = 1 ; (1 pterm, 0 signal)
+SReg0.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=86>SReg1.D</A> = !<A href=#22>Reset</A> & <A href=#86>SReg1.Q</A> & <A href=#104>J0_DAddressMux0</A>
+    # !Reset & !J0_DAddressMux0 & <A href=#190>V0_IncDecOut1</A> ; (2 pterms, 4 signals)
+SReg1.OE = 1 ; (1 pterm, 0 signal)
+SReg1.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=85>SReg2.D.X1</A> = !<A href=#22>Reset</A> & <A href=#85>SReg2.Q</A> & <A href=#104>J0_DAddressMux0</A>
+    # !Reset & !J0_DAddressMux0 & !<A href=#184>V0_AddrMuxOut2</A> & !<A href=#193>V0_IncDecCarry1</A>
+    # !Reset & !J0_DAddressMux0 & V0_AddrMuxOut2 & V0_IncDecCarry1 ; (3 pterms, 5 signals)
+SReg2.D.X2 = !<A href=#22>Reset</A> & !<A href=#104>J0_DAddressMux0</A> & !<A href=#106>J0_DDecrement</A> ; (1 pterm, 3 signals)
+SReg2.OE = 1 ; (1 pterm, 0 signal)
+SReg2.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=84>SReg3.D</A> = !<A href=#22>Reset</A> & <A href=#84>SReg3.Q</A> & <A href=#104>J0_DAddressMux0</A>
+    # !Reset & !J0_DAddressMux0 & <A href=#189>V0_IncDecOut3</A> ; (2 pterms, 4 signals)
+SReg3.OE = 1 ; (1 pterm, 0 signal)
+SReg3.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=83>SReg4.D.X1</A> = !<A href=#22>Reset</A> & <A href=#83>SReg4.Q</A> & <A href=#104>J0_DAddressMux0</A>
+    # !Reset & !J0_DAddressMux0 & !<A href=#182>V0_AddrMuxOut4</A> & !<A href=#192>V0_IncDecCarry3</A>
+    # !Reset & !J0_DAddressMux0 & V0_AddrMuxOut4 & V0_IncDecCarry3 ; (3 pterms, 5 signals)
+SReg4.D.X2 = !<A href=#22>Reset</A> & !<A href=#104>J0_DAddressMux0</A> & !<A href=#106>J0_DDecrement</A> ; (1 pterm, 3 signals)
+SReg4.OE = 1 ; (1 pterm, 0 signal)
+SReg4.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=82>SReg5.D</A> = !<A href=#22>Reset</A> & <A href=#82>SReg5.Q</A> & <A href=#104>J0_DAddressMux0</A>
+    # !Reset & !J0_DAddressMux0 & <A href=#188>V0_IncDecOut5</A> ; (2 pterms, 4 signals)
+SReg5.OE = 1 ; (1 pterm, 0 signal)
+SReg5.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=81>SReg6.D.X1</A> = !<A href=#22>Reset</A> & <A href=#81>SReg6.Q</A> & <A href=#104>J0_DAddressMux0</A>
+    # !Reset & !J0_DAddressMux0 & !<A href=#180>V0_AddrMuxOut6</A> & !<A href=#191>V0_IncDecCarry5</A>
+    # !Reset & !J0_DAddressMux0 & V0_AddrMuxOut6 & V0_IncDecCarry5 ; (3 pterms, 5 signals)
+SReg6.D.X2 = !<A href=#22>Reset</A> & !<A href=#104>J0_DAddressMux0</A> & !<A href=#106>J0_DDecrement</A> ; (1 pterm, 3 signals)
+SReg6.OE = 1 ; (1 pterm, 0 signal)
+SReg6.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=80>SReg7.D</A> = !<A href=#22>Reset</A> & <A href=#80>SReg7.Q</A> & <A href=#104>J0_DAddressMux0</A>
+    # !Reset & !J0_DAddressMux0 & <A href=#187>V0_IncDecOut7</A> ; (2 pterms, 4 signals)
+SReg7.OE = 1 ; (1 pterm, 0 signal)
+SReg7.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=201>V0_AddendA0</A> = !( !<A href=#213>J1_IR9.Q</A> & !<A href=#214>J1_IR8.Q</A> & !<A href=#233>J1_Call</A> & !<A href=#234>J1_Rts</A>
+    # <A href=#107>J0_DEnableIncDec</A> & !<A href=#108>J0_DPost</A> & <A href=#186>V0_AddrMuxOut0</A>
+    # J0_DPost & !V0_AddrMuxOut0
+    # !J0_DEnableIncDec & !V0_AddrMuxOut0 ) ; (4 pterms, 7 signals)
+
+<A name=200>V0_AddendA1</A> = !( !<A href=#213>J1_IR9.Q</A> & !<A href=#214>J1_IR8.Q</A> & !<A href=#233>J1_Call</A> & !<A href=#234>J1_Rts</A>
+    # !<A href=#108>J0_DPost</A> & !<A href=#190>V0_IncDecOut1</A>
+    # J0_DPost & !<A href=#185>V0_AddrMuxOut1</A> ) ; (3 pterms, 7 signals)
+
+<A name=199>V0_AddendA2</A> = !( !<A href=#213>J1_IR9.Q</A> & !<A href=#214>J1_IR8.Q</A> & !<A href=#233>J1_Call</A> & !<A href=#234>J1_Rts</A>
+    # <A href=#106>J0_DDecrement</A> & !<A href=#108>J0_DPost</A> & <A href=#184>V0_AddrMuxOut2</A> & !<A href=#193>V0_IncDecCarry1</A>
+    # !J0_DDecrement & !J0_DPost & V0_AddrMuxOut2 & V0_IncDecCarry1
+    # !J0_DDecrement & !V0_AddrMuxOut2 & !V0_IncDecCarry1
+    # J0_DDecrement & !V0_AddrMuxOut2 & V0_IncDecCarry1
+    # J0_DPost & !V0_AddrMuxOut2 ) ; (6 pterms, 8 signals)
+
+<A name=198>V0_AddendA3</A> = !( !<A href=#213>J1_IR9.Q</A> & !<A href=#214>J1_IR8.Q</A> & !<A href=#233>J1_Call</A> & !<A href=#234>J1_Rts</A>
+    # !<A href=#108>J0_DPost</A> & !<A href=#189>V0_IncDecOut3</A>
+    # J0_DPost & !<A href=#183>V0_AddrMuxOut3</A> ) ; (3 pterms, 7 signals)
+
+<A name=197>V0_AddendA4</A> = !( !<A href=#213>J1_IR9.Q</A> & !<A href=#214>J1_IR8.Q</A> & !<A href=#233>J1_Call</A> & !<A href=#234>J1_Rts</A>
+    # <A href=#106>J0_DDecrement</A> & !<A href=#108>J0_DPost</A> & <A href=#182>V0_AddrMuxOut4</A> & !<A href=#192>V0_IncDecCarry3</A>
+    # !J0_DDecrement & !J0_DPost & V0_AddrMuxOut4 & V0_IncDecCarry3
+    # !J0_DDecrement & !V0_AddrMuxOut4 & !V0_IncDecCarry3
+    # J0_DDecrement & !V0_AddrMuxOut4 & V0_IncDecCarry3
+    # J0_DPost & !V0_AddrMuxOut4 ) ; (6 pterms, 8 signals)
+
+<A name=196>V0_AddendA5</A> = !( !<A href=#213>J1_IR9.Q</A> & !<A href=#214>J1_IR8.Q</A> & !<A href=#233>J1_Call</A> & !<A href=#234>J1_Rts</A>
+    # !<A href=#108>J0_DPost</A> & !<A href=#188>V0_IncDecOut5</A>
+    # J0_DPost & !<A href=#181>V0_AddrMuxOut5</A> ) ; (3 pterms, 7 signals)
+
+<A name=195>V0_AddendA6</A> = !( !<A href=#213>J1_IR9.Q</A> & !<A href=#214>J1_IR8.Q</A> & !<A href=#233>J1_Call</A> & !<A href=#234>J1_Rts</A>
+    # <A href=#106>J0_DDecrement</A> & !<A href=#108>J0_DPost</A> & <A href=#180>V0_AddrMuxOut6</A> & !<A href=#191>V0_IncDecCarry5</A>
+    # !J0_DDecrement & !J0_DPost & V0_AddrMuxOut6 & V0_IncDecCarry5
+    # !J0_DDecrement & !V0_AddrMuxOut6 & !V0_IncDecCarry5
+    # J0_DDecrement & !V0_AddrMuxOut6 & V0_IncDecCarry5
+    # J0_DPost & !V0_AddrMuxOut6 ) ; (6 pterms, 8 signals)
+
+<A name=194>V0_AddendA7</A> = !( !<A href=#213>J1_IR9.Q</A> & !<A href=#214>J1_IR8.Q</A> & !<A href=#233>J1_Call</A> & !<A href=#234>J1_Rts</A>
+    # !<A href=#108>J0_DPost</A> & !<A href=#187>V0_IncDecOut7</A>
+    # J0_DPost & !<A href=#179>V0_AddrMuxOut7</A> ) ; (3 pterms, 7 signals)
+
+<A name=206>V0_AdderCarry1</A> = <A href=#201>V0_AddendA0</A> & <A href=#221>J1_IR1.Q</A> & <A href=#222>J1_IR0.Q</A> & !<A href=#233>J1_Call</A>
+    # <A href=#200>V0_AddendA1</A> & V0_AddendA0 & J1_IR0.Q & !J1_Call
+    # V0_AddendA1 & J1_IR1.Q & !J1_Call ; (3 pterms, 5 signals)
+
+<A name=205>V0_AdderCarry2</A> = <A href=#199>V0_AddendA2</A> & <A href=#206>V0_AdderCarry1</A>
+    # V0_AdderCarry1 & <A href=#220>J1_IR2.Q</A> & !<A href=#233>J1_Call</A>
+    # V0_AddendA2 & J1_IR2.Q & !J1_Call ; (3 pterms, 4 signals)
+
+<A name=204>V0_AdderCarry3</A> = <A href=#198>V0_AddendA3</A> & <A href=#205>V0_AdderCarry2</A>
+    # V0_AdderCarry2 & <A href=#219>J1_IR3.Q</A> & !<A href=#233>J1_Call</A>
+    # V0_AddendA3 & J1_IR3.Q & !J1_Call ; (3 pterms, 4 signals)
+
+<A name=203>V0_AdderCarry4</A> = <A href=#197>V0_AddendA4</A> & <A href=#204>V0_AdderCarry3</A>
+    # V0_AdderCarry3 & <A href=#218>J1_IR4.Q</A> & !<A href=#233>J1_Call</A>
+    # V0_AddendA4 & J1_IR4.Q & !J1_Call ; (3 pterms, 4 signals)
+
+<A name=202>V0_AdderCarry5</A> = <A href=#196>V0_AddendA5</A> & <A href=#203>V0_AdderCarry4</A>
+    # V0_AdderCarry4 & <A href=#217>J1_IR5.Q</A> & !<A href=#233>J1_Call</A>
+    # V0_AddendA5 & J1_IR5.Q & !J1_Call ; (3 pterms, 4 signals)
+
+<A name=186>V0_AddrMuxOut0</A> = <A href=#87>SReg0.Q</A> & !<A href=#104>J0_DAddressMux0</A> & !<A href=#105>J0_DAddressMux1</A>
+    # <A href=#79>XReg0.Q</A> & J0_DAddressMux0 & !J0_DAddressMux1
+    # <A href=#63>Accum0.Q</A> & J0_DAddressMux1 ; (3 pterms, 5 signals)
+
+<A name=185>V0_AddrMuxOut1</A> = <A href=#86>SReg1.Q</A> & !<A href=#104>J0_DAddressMux0</A> & !<A href=#105>J0_DAddressMux1</A>
+    # <A href=#78>XReg1.Q</A> & J0_DAddressMux0 & !J0_DAddressMux1
+    # <A href=#62>Accum1.Q</A> & J0_DAddressMux1 ; (3 pterms, 5 signals)
+
+<A name=184>V0_AddrMuxOut2</A> = <A href=#85>SReg2.Q</A> & !<A href=#104>J0_DAddressMux0</A> & !<A href=#105>J0_DAddressMux1</A>
+    # <A href=#77>XReg2.Q</A> & J0_DAddressMux0 & !J0_DAddressMux1
+    # <A href=#61>Accum2.Q</A> & J0_DAddressMux1 ; (3 pterms, 5 signals)
+
+<A name=183>V0_AddrMuxOut3</A> = <A href=#84>SReg3.Q</A> & !<A href=#104>J0_DAddressMux0</A> & !<A href=#105>J0_DAddressMux1</A>
+    # <A href=#76>XReg3.Q</A> & J0_DAddressMux0 & !J0_DAddressMux1
+    # <A href=#60>Accum3.Q</A> & J0_DAddressMux1 ; (3 pterms, 5 signals)
+
+<A name=182>V0_AddrMuxOut4</A> = <A href=#83>SReg4.Q</A> & !<A href=#104>J0_DAddressMux0</A> & !<A href=#105>J0_DAddressMux1</A>
+    # <A href=#75>XReg4.Q</A> & J0_DAddressMux0 & !J0_DAddressMux1
+    # <A href=#59>Accum4.Q</A> & J0_DAddressMux1 ; (3 pterms, 5 signals)
+
+<A name=181>V0_AddrMuxOut5</A> = <A href=#82>SReg5.Q</A> & !<A href=#104>J0_DAddressMux0</A> & !<A href=#105>J0_DAddressMux1</A>
+    # <A href=#74>XReg5.Q</A> & J0_DAddressMux0 & !J0_DAddressMux1
+    # <A href=#58>Accum5.Q</A> & J0_DAddressMux1 ; (3 pterms, 5 signals)
+
+<A name=180>V0_AddrMuxOut6</A> = <A href=#81>SReg6.Q</A> & !<A href=#104>J0_DAddressMux0</A> & !<A href=#105>J0_DAddressMux1</A>
+    # <A href=#73>XReg6.Q</A> & J0_DAddressMux0 & !J0_DAddressMux1
+    # <A href=#57>Accum6.Q</A> & J0_DAddressMux1 ; (3 pterms, 5 signals)
+
+<A name=179>V0_AddrMuxOut7</A> = <A href=#80>SReg7.Q</A> & !<A href=#104>J0_DAddressMux0</A> & !<A href=#105>J0_DAddressMux1</A>
+    # <A href=#72>XReg7.Q</A> & J0_DAddressMux0 & !J0_DAddressMux1
+    # <A href=#56>Accum7.Q</A> & J0_DAddressMux1 ; (3 pterms, 5 signals)
+
+<A name=193>V0_IncDecCarry1.X1</A> = <A href=#86>SReg1.Q</A> & <A href=#87>SReg0.Q</A> & !<A href=#104>J0_DAddressMux0</A> & !<A href=#105>J0_DAddressMux1</A>
+       & !<A href=#106>J0_DDecrement</A> & <A href=#107>J0_DEnableIncDec</A>
+    # <A href=#78>XReg1.Q</A> & <A href=#79>XReg0.Q</A> & J0_DAddressMux0 & !J0_DAddressMux1 & !J0_DDecrement
+       & J0_DEnableIncDec
+    # <A href=#62>Accum1.Q</A> & <A href=#63>Accum0.Q</A> & J0_DAddressMux1 & !J0_DDecrement
+       & J0_DEnableIncDec
+    # J0_DDecrement & !J0_DEnableIncDec
+    # !SReg1.Q & !SReg0.Q & !J0_DAddressMux0 & !J0_DAddressMux1
+       & J0_DDecrement
+    # !XReg1.Q & !XReg0.Q & J0_DAddressMux0 & !J0_DAddressMux1 & J0_DDecrement
+    # !Accum1.Q & !Accum0.Q & J0_DAddressMux1 & J0_DDecrement ; (7 pterms, 10 signals)
+V0_IncDecCarry1.X2 = <A href=#106>J0_DDecrement</A> & <A href=#107>J0_DEnableIncDec</A> ; (1 pterm, 2 signals)
+
+<A name=192>V0_IncDecCarry3.X1</A> = !<A href=#84>SReg3.Q</A> & !<A href=#85>SReg2.Q</A> & !<A href=#104>J0_DAddressMux0</A> & !<A href=#105>J0_DAddressMux1</A>
+       & <A href=#106>J0_DDecrement</A>
+    # !<A href=#76>XReg3.Q</A> & !<A href=#77>XReg2.Q</A> & J0_DAddressMux0 & !J0_DAddressMux1 & J0_DDecrement
+    # !<A href=#60>Accum3.Q</A> & !<A href=#61>Accum2.Q</A> & J0_DAddressMux1 & J0_DDecrement
+    # J0_DDecrement & <A href=#193>V0_IncDecCarry1</A>
+    # SReg3.Q & SReg2.Q & !J0_DAddressMux0 & !J0_DAddressMux1
+       & V0_IncDecCarry1
+    # XReg3.Q & XReg2.Q & J0_DAddressMux0 & !J0_DAddressMux1 & V0_IncDecCarry1
+    # Accum3.Q & Accum2.Q & J0_DAddressMux1 & V0_IncDecCarry1 ; (7 pterms, 10 signals)
+V0_IncDecCarry3.X2 = <A href=#106>J0_DDecrement</A> & !<A href=#193>V0_IncDecCarry1</A> ; (1 pterm, 2 signals)
+
+<A name=191>V0_IncDecCarry5.X1</A> = !<A href=#84>SReg3.Q</A> & !<A href=#85>SReg2.Q</A> & !<A href=#104>J0_DAddressMux0</A> & !<A href=#105>J0_DAddressMux1</A>
+       & <A href=#106>J0_DDecrement</A> & !<A href=#181>V0_AddrMuxOut5</A> & !<A href=#182>V0_AddrMuxOut4</A>
+    # !<A href=#76>XReg3.Q</A> & !<A href=#77>XReg2.Q</A> & J0_DAddressMux0 & !J0_DAddressMux1 & J0_DDecrement
+       & !V0_AddrMuxOut5 & !V0_AddrMuxOut4
+    # !<A href=#60>Accum3.Q</A> & !<A href=#61>Accum2.Q</A> & J0_DAddressMux1 & J0_DDecrement
+       & !V0_AddrMuxOut5 & !V0_AddrMuxOut4
+    # J0_DDecrement & <A href=#193>V0_IncDecCarry1</A>
+    # SReg3.Q & SReg2.Q & !J0_DAddressMux0 & !J0_DAddressMux1 & V0_AddrMuxOut5
+       & V0_AddrMuxOut4 & V0_IncDecCarry1
+    # XReg3.Q & XReg2.Q & J0_DAddressMux0 & !J0_DAddressMux1 & V0_AddrMuxOut5
+       & V0_AddrMuxOut4 & V0_IncDecCarry1
+    # Accum3.Q & Accum2.Q & J0_DAddressMux1 & V0_AddrMuxOut5 & V0_AddrMuxOut4
+       & V0_IncDecCarry1 ; (7 pterms, 12 signals)
+V0_IncDecCarry5.X2 = <A href=#106>J0_DDecrement</A> & !<A href=#193>V0_IncDecCarry1</A> ; (1 pterm, 2 signals)
+
+<A name=190>V0_IncDecOut1.X1</A> = !<A href=#106>J0_DDecrement</A> & <A href=#107>J0_DEnableIncDec</A> & <A href=#186>V0_AddrMuxOut0</A>
+    # J0_DDecrement & J0_DEnableIncDec & !V0_AddrMuxOut0 ; (2 pterms, 3 signals)
+V0_IncDecOut1.X2 = <A href=#185>V0_AddrMuxOut1</A> ; (1 pterm, 1 signal)
+
+<A name=189>V0_IncDecOut3.X1</A> = !<A href=#106>J0_DDecrement</A> & <A href=#184>V0_AddrMuxOut2</A> & <A href=#193>V0_IncDecCarry1</A>
+    # J0_DDecrement & !V0_AddrMuxOut2 & !V0_IncDecCarry1 ; (2 pterms, 3 signals)
+V0_IncDecOut3.X2 = <A href=#183>V0_AddrMuxOut3</A> ; (1 pterm, 1 signal)
+
+<A name=188>V0_IncDecOut5.X1</A> = !<A href=#106>J0_DDecrement</A> & <A href=#182>V0_AddrMuxOut4</A> & <A href=#192>V0_IncDecCarry3</A>
+    # J0_DDecrement & !V0_AddrMuxOut4 & !V0_IncDecCarry3 ; (2 pterms, 3 signals)
+V0_IncDecOut5.X2 = <A href=#181>V0_AddrMuxOut5</A> ; (1 pterm, 1 signal)
+
+<A name=187>V0_IncDecOut7.X1</A> = !<A href=#106>J0_DDecrement</A> & <A href=#180>V0_AddrMuxOut6</A> & <A href=#191>V0_IncDecCarry5</A>
+    # J0_DDecrement & !V0_AddrMuxOut6 & !V0_IncDecCarry5 ; (2 pterms, 3 signals)
+V0_IncDecOut7.X2 = <A href=#179>V0_AddrMuxOut7</A> ; (1 pterm, 1 signal)
+
+<A name=41>WR</A> = <A href=#115>J0_WR</A> ; (1 pterm, 1 signal)
+WR.OE = 1 ; (1 pterm, 0 signal)
+
+<A name=88>X0_Data0.X1</A> = <A href=#31>DataDB0</A> & !<A href=#207>J1_IR15.Q</A> & !<A href=#213>J1_IR9.Q</A>
+    # DataDB0 & !<A href=#211>J1_IR11.Q</A> & !J1_IR9.Q
+    # DataDB0 & !<A href=#214>J1_IR8.Q</A>
+    # J1_IR15.Q & !<A href=#208>J1_IR14.Q</A> & J1_IR11.Q & !<A href=#212>J1_IR10.Q</A> & !J1_IR9.Q & J1_IR8.Q
+       & <A href=#222>J1_IR0.Q</A>
+    # DataDB0 & J1_IR10.Q & !J1_IR9.Q
+    # DataDB0 & J1_IR14.Q & !J1_IR9.Q
+    # <A href=#87>SReg0.Q</A> & !J1_IR15.Q & J1_IR14.Q & <A href=#209>J1_IR13.Q</A> & !<A href=#210>J1_IR12.Q</A> & !J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & !J1_IR0.Q
+    # !<A href=#79>XReg0.Q</A> & !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & J1_IR0.Q
+    # DataDB0 & J1_IR15.Q & J1_IR9.Q ; (9 pterms, 12 signals)
+X0_Data0.X2 = !<A href=#207>J1_IR15.Q</A> & <A href=#213>J1_IR9.Q</A> & <A href=#214>J1_IR8.Q</A> & <A href=#222>J1_IR0.Q</A> ; (1 pterm, 4 signals)
+
+<A name=89>X0_Data1.X1</A> = !<A href=#30>DataDB1</A> & <A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & <A href=#211>J1_IR11.Q</A> & !<A href=#212>J1_IR10.Q</A>
+       & !<A href=#213>J1_IR9.Q</A> & <A href=#214>J1_IR8.Q</A> & <A href=#221>J1_IR1.Q</A>
+    # DataDB1 & J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & !J1_IR10.Q & J1_IR8.Q
+       & !J1_IR1.Q
+    # DataDB1 & J1_IR9.Q & !J1_IR8.Q
+    # !J1_IR15.Q & !J1_IR14.Q & J1_IR9.Q & J1_IR8.Q & J1_IR1.Q
+    # !J1_IR15.Q & !<A href=#209>J1_IR13.Q</A> & J1_IR9.Q & J1_IR8.Q & J1_IR1.Q
+    # !J1_IR15.Q & !J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & J1_IR1.Q
+    # <A href=#86>SReg1.Q</A> & !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & !<A href=#210>J1_IR12.Q</A> & !J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & !<A href=#222>J1_IR0.Q</A>
+    # <A href=#78>XReg1.Q</A> & !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & J1_IR0.Q
+    # !J1_IR15.Q & J1_IR11.Q & J1_IR9.Q & J1_IR8.Q & J1_IR1.Q
+    # !J1_IR15.Q & J1_IR12.Q & J1_IR9.Q & J1_IR8.Q & J1_IR1.Q
+    # DataDB1 & J1_IR15.Q & J1_IR9.Q ; (11 pterms, 13 signals)
+X0_Data1.X2 = <A href=#30>DataDB1</A> & !<A href=#213>J1_IR9.Q</A> ; (1 pterm, 2 signals)
+
+<A name=90>X0_Data2.X1</A> = !<A href=#29>DataDB2</A> & <A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & <A href=#211>J1_IR11.Q</A> & !<A href=#212>J1_IR10.Q</A>
+       & !<A href=#213>J1_IR9.Q</A> & <A href=#214>J1_IR8.Q</A> & <A href=#220>J1_IR2.Q</A>
+    # DataDB2 & J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & !J1_IR10.Q & J1_IR8.Q
+       & !J1_IR2.Q
+    # DataDB2 & J1_IR9.Q & !J1_IR8.Q
+    # !J1_IR15.Q & !J1_IR14.Q & J1_IR9.Q & J1_IR8.Q & J1_IR2.Q
+    # !J1_IR15.Q & !<A href=#209>J1_IR13.Q</A> & J1_IR9.Q & J1_IR8.Q & J1_IR2.Q
+    # !J1_IR15.Q & !J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & J1_IR2.Q
+    # <A href=#85>SReg2.Q</A> & !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & !<A href=#210>J1_IR12.Q</A> & !J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & !<A href=#222>J1_IR0.Q</A>
+    # <A href=#77>XReg2.Q</A> & !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & J1_IR0.Q
+    # !J1_IR15.Q & J1_IR11.Q & J1_IR9.Q & J1_IR8.Q & J1_IR2.Q
+    # !J1_IR15.Q & J1_IR12.Q & J1_IR9.Q & J1_IR8.Q & J1_IR2.Q
+    # DataDB2 & J1_IR15.Q & J1_IR9.Q ; (11 pterms, 13 signals)
+X0_Data2.X2 = <A href=#29>DataDB2</A> & !<A href=#213>J1_IR9.Q</A> ; (1 pterm, 2 signals)
+
+<A name=91>X0_Data3.X1</A> = !<A href=#28>DataDB3</A> & <A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & <A href=#211>J1_IR11.Q</A> & !<A href=#212>J1_IR10.Q</A>
+       & !<A href=#213>J1_IR9.Q</A> & <A href=#214>J1_IR8.Q</A> & <A href=#219>J1_IR3.Q</A>
+    # DataDB3 & J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & !J1_IR10.Q & J1_IR8.Q
+       & !J1_IR3.Q
+    # DataDB3 & J1_IR9.Q & !J1_IR8.Q
+    # !J1_IR15.Q & !J1_IR14.Q & J1_IR9.Q & J1_IR8.Q & J1_IR3.Q
+    # !J1_IR15.Q & !<A href=#209>J1_IR13.Q</A> & J1_IR9.Q & J1_IR8.Q & J1_IR3.Q
+    # !J1_IR15.Q & !J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & J1_IR3.Q
+    # <A href=#84>SReg3.Q</A> & !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & !<A href=#210>J1_IR12.Q</A> & !J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & !<A href=#222>J1_IR0.Q</A>
+    # <A href=#76>XReg3.Q</A> & !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & J1_IR0.Q
+    # !J1_IR15.Q & J1_IR11.Q & J1_IR9.Q & J1_IR8.Q & J1_IR3.Q
+    # !J1_IR15.Q & J1_IR12.Q & J1_IR9.Q & J1_IR8.Q & J1_IR3.Q
+    # DataDB3 & J1_IR15.Q & J1_IR9.Q ; (11 pterms, 13 signals)
+X0_Data3.X2 = <A href=#28>DataDB3</A> & !<A href=#213>J1_IR9.Q</A> ; (1 pterm, 2 signals)
+
+<A name=92>X0_Data4.X1</A> = !<A href=#27>DataDB4</A> & <A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & <A href=#211>J1_IR11.Q</A> & !<A href=#212>J1_IR10.Q</A>
+       & !<A href=#213>J1_IR9.Q</A> & <A href=#214>J1_IR8.Q</A> & <A href=#218>J1_IR4.Q</A>
+    # DataDB4 & J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & !J1_IR10.Q & J1_IR8.Q
+       & !J1_IR4.Q
+    # DataDB4 & J1_IR9.Q & !J1_IR8.Q
+    # !J1_IR15.Q & !J1_IR14.Q & J1_IR9.Q & J1_IR8.Q & J1_IR4.Q
+    # !J1_IR15.Q & !<A href=#209>J1_IR13.Q</A> & J1_IR9.Q & J1_IR8.Q & J1_IR4.Q
+    # !J1_IR15.Q & !J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & J1_IR4.Q
+    # <A href=#83>SReg4.Q</A> & !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & !<A href=#210>J1_IR12.Q</A> & !J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & !<A href=#222>J1_IR0.Q</A>
+    # <A href=#75>XReg4.Q</A> & !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & J1_IR0.Q
+    # !J1_IR15.Q & J1_IR11.Q & J1_IR9.Q & J1_IR8.Q & J1_IR4.Q
+    # !J1_IR15.Q & J1_IR12.Q & J1_IR9.Q & J1_IR8.Q & J1_IR4.Q
+    # DataDB4 & J1_IR15.Q & J1_IR9.Q ; (11 pterms, 13 signals)
+X0_Data4.X2 = <A href=#27>DataDB4</A> & !<A href=#213>J1_IR9.Q</A> ; (1 pterm, 2 signals)
+
+<A name=93>X0_Data5.X1</A> = !<A href=#26>DataDB5</A> & <A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & <A href=#211>J1_IR11.Q</A> & !<A href=#212>J1_IR10.Q</A>
+       & !<A href=#213>J1_IR9.Q</A> & <A href=#214>J1_IR8.Q</A> & <A href=#217>J1_IR5.Q</A>
+    # DataDB5 & J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & !J1_IR10.Q & J1_IR8.Q
+       & !J1_IR5.Q
+    # DataDB5 & J1_IR9.Q & !J1_IR8.Q
+    # !J1_IR15.Q & !J1_IR14.Q & J1_IR9.Q & J1_IR8.Q & J1_IR5.Q
+    # !J1_IR15.Q & !<A href=#209>J1_IR13.Q</A> & J1_IR9.Q & J1_IR8.Q & J1_IR5.Q
+    # !J1_IR15.Q & !J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & J1_IR5.Q
+    # <A href=#82>SReg5.Q</A> & !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & !<A href=#210>J1_IR12.Q</A> & !J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & !<A href=#222>J1_IR0.Q</A>
+    # <A href=#74>XReg5.Q</A> & !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & J1_IR0.Q
+    # !J1_IR15.Q & J1_IR11.Q & J1_IR9.Q & J1_IR8.Q & J1_IR5.Q
+    # !J1_IR15.Q & J1_IR12.Q & J1_IR9.Q & J1_IR8.Q & J1_IR5.Q
+    # DataDB5 & J1_IR15.Q & J1_IR9.Q ; (11 pterms, 13 signals)
+X0_Data5.X2 = <A href=#26>DataDB5</A> & !<A href=#213>J1_IR9.Q</A> ; (1 pterm, 2 signals)
+
+<A name=94>X0_Data6.X1</A> = !<A href=#25>DataDB6</A> & <A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & <A href=#211>J1_IR11.Q</A> & !<A href=#212>J1_IR10.Q</A>
+       & !<A href=#213>J1_IR9.Q</A> & <A href=#214>J1_IR8.Q</A> & <A href=#216>J1_IR6.Q</A>
+    # DataDB6 & J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & !J1_IR10.Q & J1_IR8.Q
+       & !J1_IR6.Q
+    # DataDB6 & J1_IR9.Q & !J1_IR8.Q
+    # !J1_IR15.Q & !J1_IR14.Q & J1_IR9.Q & J1_IR8.Q & J1_IR6.Q
+    # !J1_IR15.Q & !<A href=#209>J1_IR13.Q</A> & J1_IR9.Q & J1_IR8.Q & J1_IR6.Q
+    # !J1_IR15.Q & !J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & J1_IR6.Q
+    # <A href=#81>SReg6.Q</A> & !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & !<A href=#210>J1_IR12.Q</A> & !J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & !<A href=#222>J1_IR0.Q</A>
+    # <A href=#73>XReg6.Q</A> & !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & J1_IR0.Q
+    # !J1_IR15.Q & J1_IR11.Q & J1_IR9.Q & J1_IR8.Q & J1_IR6.Q
+    # !J1_IR15.Q & J1_IR12.Q & J1_IR9.Q & J1_IR8.Q & J1_IR6.Q
+    # DataDB6 & J1_IR15.Q & J1_IR9.Q ; (11 pterms, 13 signals)
+X0_Data6.X2 = <A href=#25>DataDB6</A> & !<A href=#213>J1_IR9.Q</A> ; (1 pterm, 2 signals)
+
+<A name=95>X0_Data7</A> = <A href=#102>J0_ALUDSel0</A> & <A href=#215>J1_IR7.Q</A> & !<A href=#228>J1_TSATXA</A>
+    # <A href=#24>DataDB7</A> & !J0_ALUDSel0 & !J1_TSATXA
+    # <A href=#72>XReg7.Q</A> & J0_ALUDSel0 & J1_TSATXA
+    # <A href=#80>SReg7.Q</A> & !J0_ALUDSel0 & J1_TSATXA ; (4 pterms, 6 signals)
+
+<A name=130>X1_Carry0</A> = !<A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & <A href=#210>J1_IR12.Q</A> & !<A href=#211>J1_IR11.Q</A> & !<A href=#212>J1_IR10.Q</A>
+    # <A href=#56>Accum7.Q</A> & !J1_IR15.Q & !<A href=#209>J1_IR13.Q</A> & J1_IR12.Q & !J1_IR11.Q & !J1_IR10.Q
+       & <A href=#213>J1_IR9.Q</A> & !<A href=#214>J1_IR8.Q</A>
+    # <A href=#68>Flags3.Q</A> & !J1_IR15.Q & !J1_IR13.Q & J1_IR12.Q & !J1_IR11.Q & !J1_IR10.Q
+       & !J1_IR9.Q & !J1_IR8.Q
+    # Flags3.Q & !J1_IR15.Q & J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q & !J1_IR10.Q
+    # !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & J1_IR12.Q & J1_IR10.Q
+    # !Flags3.Q & !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & J1_IR12.Q
+    # !J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q
+    # !J1_IR15.Q & !J1_IR14.Q & !J1_IR11.Q & !J1_IR10.Q & !J1_IR9.Q
+       & !J1_IR8.Q ; (8 pterms, 10 signals)
+
+<A name=129>X1_Carry1.X1</A> = !<A href=#130>X1_Carry0</A> & !<A href=#138>X1_MaskAccum0</A>
+    # !<A href=#63>Accum0.Q</A> & !<A href=#88>X0_Data0</A> & !<A href=#207>J1_IR15.Q</A> & !<A href=#208>J1_IR14.Q</A> & !<A href=#209>J1_IR13.Q</A> & <A href=#210>J1_IR12.Q</A>
+    # X1_Carry0 & X1_MaskAccum0
+    # !Accum0.Q & !J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q
+    # !Accum0.Q & !X0_Data0 & !J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !<A href=#211>J1_IR11.Q</A>
+       & !<A href=#212>J1_IR10.Q</A>
+    # !Accum0.Q & !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & J1_IR12.Q & J1_IR11.Q
+       & !J1_IR10.Q & <A href=#213>J1_IR9.Q</A> & <A href=#214>J1_IR8.Q</A>
+    # !Accum0.Q & X0_Data0 & J1_IR13.Q & !J1_IR12.Q
+    # !Accum0.Q & X0_Data0 & J1_IR13.Q & J1_IR11.Q
+    # !Accum0.Q & X0_Data0 & J1_IR13.Q & J1_IR10.Q
+    # !Accum0.Q & X0_Data0 & J1_IR15.Q & !J1_IR14.Q & !J1_IR11.Q
+    # !Accum0.Q & X0_Data0 & J1_IR15.Q & J1_IR13.Q
+    # !Accum0.Q & X0_Data0 & J1_IR15.Q & !J1_IR14.Q & !J1_IR9.Q & J1_IR8.Q
+    # !Accum0.Q & X0_Data0 & J1_IR15.Q & !J1_IR14.Q & J1_IR9.Q & !J1_IR8.Q
+    # X0_Data0 & J1_IR14.Q & J1_IR13.Q
+    # Accum0.Q & <A href=#231>J1_LeftShift</A>
+    # Accum0.Q & !X0_Data0 & J1_IR12.Q & !<A href=#229>J1_Load</A>
+    # Accum0.Q & X0_Data0 & J1_IR14.Q
+    # Accum0.Q & X0_Data0 & J1_Load ; (18 pterms, 14 signals)
+X1_Carry1.X2 = !<A href=#130>X1_Carry0</A> & !<A href=#138>X1_MaskAccum0</A> ; (1 pterm, 2 signals)
+
+<A name=128>X1_Carry2.X1</A> = !<A href=#129>X1_Carry1</A> & !<A href=#137>X1_MaskAccum1</A>
+    # !<A href=#62>Accum1.Q</A> & !<A href=#89>X0_Data1</A> & <A href=#99>J0_AFControl3</A>
+    # X1_Carry1 & X1_MaskAccum1
+    # !Accum1.Q & X0_Data1 & <A href=#98>J0_AFControl1</A>
+    # Accum1.Q & <A href=#231>J1_LeftShift</A>
+    # Accum1.Q & !X0_Data1 & <A href=#210>J1_IR12.Q</A> & !<A href=#229>J1_Load</A>
+    # Accum1.Q & X0_Data1 & <A href=#208>J1_IR14.Q</A>
+    # Accum1.Q & X0_Data1 & J1_Load ; (8 pterms, 10 signals)
+X1_Carry2.X2 = !<A href=#129>X1_Carry1</A> & !<A href=#137>X1_MaskAccum1</A> ; (1 pterm, 2 signals)
+
+<A name=127>X1_Carry4.X1</A> = !<A href=#120>X1_FOutput3</A> & !<A href=#135>X1_MaskAccum3</A>
+    # <A href=#121>X1_FOutput2</A> & <A href=#136>X1_MaskAccum2</A>
+    # !<A href=#62>Accum1.Q</A> & !<A href=#89>X0_Data1</A> & <A href=#99>J0_AFControl3</A> & X1_FOutput2 & <A href=#129>X1_Carry1</A>
+    # !Accum1.Q & !X0_Data1 & J0_AFControl3 & X1_Carry1 & X1_MaskAccum2
+    # !Accum1.Q & !X0_Data1 & J0_AFControl3 & X1_FOutput2 & <A href=#137>X1_MaskAccum1</A>
+    # X1_FOutput2 & X1_Carry1 & X1_MaskAccum1
+    # !Accum1.Q & !X0_Data1 & J0_AFControl3 & X1_MaskAccum2 & X1_MaskAccum1
+    # X1_Carry1 & X1_MaskAccum2 & X1_MaskAccum1
+    # X1_FOutput3 & X1_MaskAccum3
+    # !Accum1.Q & X0_Data1 & <A href=#98>J0_AFControl1</A> & X1_FOutput2 & X1_Carry1
+    # !Accum1.Q & X0_Data1 & J0_AFControl1 & X1_Carry1 & X1_MaskAccum2
+    # !Accum1.Q & X0_Data1 & J0_AFControl1 & X1_FOutput2 & X1_MaskAccum1
+    # !Accum1.Q & X0_Data1 & J0_AFControl1 & X1_MaskAccum2 & X1_MaskAccum1
+    # Accum1.Q & X1_FOutput2 & X1_Carry1 & <A href=#231>J1_LeftShift</A>
+    # Accum1.Q & X1_Carry1 & X1_MaskAccum2 & J1_LeftShift
+    # Accum1.Q & X1_FOutput2 & X1_MaskAccum1 & J1_LeftShift
+    # Accum1.Q & X1_MaskAccum2 & X1_MaskAccum1 & J1_LeftShift
+    # Accum1.Q & !X0_Data1 & X1_FOutput2 & X1_Carry1 & <A href=#210>J1_IR12.Q</A> & !<A href=#229>J1_Load</A>
+    # Accum1.Q & !X0_Data1 & X1_Carry1 & X1_MaskAccum2 & J1_IR12.Q & !J1_Load
+    # Accum1.Q & !X0_Data1 & X1_FOutput2 & X1_MaskAccum1 & J1_IR12.Q
+       & !J1_Load
+    # Accum1.Q & !X0_Data1 & X1_MaskAccum2 & X1_MaskAccum1 & J1_IR12.Q
+       & !J1_Load
+    # Accum1.Q & X0_Data1 & X1_FOutput2 & X1_Carry1 & <A href=#208>J1_IR14.Q</A>
+    # Accum1.Q & X0_Data1 & X1_Carry1 & X1_MaskAccum2 & J1_IR14.Q
+    # Accum1.Q & X0_Data1 & X1_FOutput2 & X1_MaskAccum1 & J1_IR14.Q
+    # Accum1.Q & X0_Data1 & X1_MaskAccum2 & X1_MaskAccum1 & J1_IR14.Q
+    # Accum1.Q & X0_Data1 & X1_FOutput2 & X1_Carry1 & J1_Load
+    # Accum1.Q & X0_Data1 & X1_Carry1 & X1_MaskAccum2 & J1_Load
+    # Accum1.Q & X0_Data1 & X1_FOutput2 & X1_MaskAccum1 & J1_Load
+    # Accum1.Q & X0_Data1 & X1_MaskAccum2 & X1_MaskAccum1 & J1_Load ; (29 pterms, 14 signals)
+X1_Carry4.X2 = !<A href=#120>X1_FOutput3</A> & !<A href=#135>X1_MaskAccum3</A> ; (1 pterm, 2 signals)
+
+<A name=126>X1_Carry5.X1</A> = !<A href=#119>X1_FOutput4</A> & !<A href=#134>X1_MaskAccum4</A>
+    # <A href=#120>X1_FOutput3</A> & <A href=#135>X1_MaskAccum3</A>
+    # X1_FOutput3 & <A href=#121>X1_FOutput2</A> & <A href=#128>X1_Carry2</A>
+    # X1_FOutput2 & X1_Carry2 & X1_MaskAccum3
+    # X1_FOutput3 & X1_FOutput2 & <A href=#136>X1_MaskAccum2</A>
+    # X1_FOutput3 & X1_Carry2 & X1_MaskAccum2
+    # X1_FOutput2 & X1_MaskAccum3 & X1_MaskAccum2
+    # X1_Carry2 & X1_MaskAccum3 & X1_MaskAccum2
+    # X1_FOutput4 & X1_MaskAccum4 ; (9 pterms, 7 signals)
+X1_Carry5.X2 = !<A href=#119>X1_FOutput4</A> & !<A href=#134>X1_MaskAccum4</A> ; (1 pterm, 2 signals)
+
+<A name=125>X1_Carry7.X1</A> = !<A href=#117>X1_FOutput6</A> & !<A href=#132>X1_MaskAccum6</A>
+    # <A href=#118>X1_FOutput5</A> & <A href=#133>X1_MaskAccum5</A>
+    # X1_FOutput5 & <A href=#119>X1_FOutput4</A> & <A href=#134>X1_MaskAccum4</A>
+    # X1_FOutput4 & X1_MaskAccum5 & X1_MaskAccum4
+    # X1_FOutput5 & X1_FOutput4 & <A href=#120>X1_FOutput3</A> & <A href=#135>X1_MaskAccum3</A>
+    # X1_FOutput4 & X1_FOutput3 & X1_MaskAccum5 & X1_MaskAccum3
+    # X1_FOutput5 & X1_FOutput3 & X1_MaskAccum4 & X1_MaskAccum3
+    # X1_FOutput3 & X1_MaskAccum5 & X1_MaskAccum4 & X1_MaskAccum3
+    # X1_FOutput5 & X1_FOutput4 & X1_FOutput3 & <A href=#121>X1_FOutput2</A> & <A href=#128>X1_Carry2</A>
+    # X1_FOutput4 & X1_FOutput3 & X1_FOutput2 & X1_Carry2 & X1_MaskAccum5
+    # X1_FOutput5 & X1_FOutput3 & X1_FOutput2 & X1_Carry2 & X1_MaskAccum4
+    # X1_FOutput3 & X1_FOutput2 & X1_Carry2 & X1_MaskAccum5 & X1_MaskAccum4
+    # X1_FOutput5 & X1_FOutput4 & X1_FOutput2 & X1_Carry2 & X1_MaskAccum3
+    # X1_FOutput4 & X1_FOutput2 & X1_Carry2 & X1_MaskAccum5 & X1_MaskAccum3
+    # X1_FOutput5 & X1_FOutput2 & X1_Carry2 & X1_MaskAccum4 & X1_MaskAccum3
+    # X1_FOutput2 & X1_Carry2 & X1_MaskAccum5 & X1_MaskAccum4 & X1_MaskAccum3
+    # X1_FOutput5 & X1_FOutput4 & X1_FOutput3 & X1_FOutput2 & <A href=#136>X1_MaskAccum2</A>
+    # X1_FOutput5 & X1_FOutput4 & X1_FOutput3 & X1_Carry2 & X1_MaskAccum2
+    # X1_FOutput4 & X1_FOutput3 & X1_FOutput2 & X1_MaskAccum5 & X1_MaskAccum2
+    # X1_FOutput4 & X1_FOutput3 & X1_Carry2 & X1_MaskAccum5 & X1_MaskAccum2
+    # X1_FOutput5 & X1_FOutput3 & X1_FOutput2 & X1_MaskAccum4 & X1_MaskAccum2
+    # X1_FOutput5 & X1_FOutput3 & X1_Carry2 & X1_MaskAccum4 & X1_MaskAccum2
+    # X1_FOutput3 & X1_FOutput2 & X1_MaskAccum5 & X1_MaskAccum4
+       & X1_MaskAccum2
+    # X1_FOutput3 & X1_Carry2 & X1_MaskAccum5 & X1_MaskAccum4 & X1_MaskAccum2
+    # X1_FOutput5 & X1_FOutput4 & X1_FOutput2 & X1_MaskAccum3 & X1_MaskAccum2
+    # X1_FOutput5 & X1_FOutput4 & X1_Carry2 & X1_MaskAccum3 & X1_MaskAccum2
+    # X1_FOutput4 & X1_FOutput2 & X1_MaskAccum5 & X1_MaskAccum3
+       & X1_MaskAccum2
+    # X1_FOutput4 & X1_Carry2 & X1_MaskAccum5 & X1_MaskAccum3 & X1_MaskAccum2
+    # X1_FOutput5 & X1_FOutput2 & X1_MaskAccum4 & X1_MaskAccum3
+       & X1_MaskAccum2
+    # X1_FOutput5 & X1_Carry2 & X1_MaskAccum4 & X1_MaskAccum3 & X1_MaskAccum2
+    # X1_FOutput2 & X1_MaskAccum5 & X1_MaskAccum4 & X1_MaskAccum3
+       & X1_MaskAccum2
+    # X1_Carry2 & X1_MaskAccum5 & X1_MaskAccum4 & X1_MaskAccum3
+       & X1_MaskAccum2
+    # X1_FOutput6 & X1_MaskAccum6 ; (33 pterms, 11 signals)
+X1_Carry7.X2 = !<A href=#117>X1_FOutput6</A> & !<A href=#132>X1_MaskAccum6</A> ; (1 pterm, 2 signals)
+
+<A name=124>X1_Carry8.X1</A> = !<A href=#116>X1_FOutput7</A> & !<A href=#131>X1_MaskAccum7</A>
+    # <A href=#117>X1_FOutput6</A> & <A href=#132>X1_MaskAccum6</A>
+    # X1_FOutput6 & <A href=#118>X1_FOutput5</A> & <A href=#126>X1_Carry5</A>
+    # X1_FOutput5 & X1_Carry5 & X1_MaskAccum6
+    # X1_FOutput6 & X1_FOutput5 & <A href=#133>X1_MaskAccum5</A>
+    # X1_FOutput6 & X1_Carry5 & X1_MaskAccum5
+    # X1_FOutput5 & X1_MaskAccum6 & X1_MaskAccum5
+    # X1_Carry5 & X1_MaskAccum6 & X1_MaskAccum5
+    # X1_FOutput7 & X1_MaskAccum7 ; (9 pterms, 7 signals)
+X1_Carry8.X2 = !<A href=#116>X1_FOutput7</A> & !<A href=#131>X1_MaskAccum7</A> ; (1 pterm, 2 signals)
+
+<A name=123>X1_FOutput0</A> = !( <A href=#63>Accum0.Q</A> & <A href=#88>X0_Data0</A> & !<A href=#208>J1_IR14.Q</A> & !<A href=#229>J1_Load</A> & !<A href=#231>J1_LeftShift</A>
+    # !Accum0.Q & X0_Data0 & !<A href=#98>J0_AFControl1</A>
+    # !Accum0.Q & !X0_Data0 & !<A href=#99>J0_AFControl3</A>
+    # Accum0.Q & !X0_Data0 & J1_Load & !J1_LeftShift
+    # Accum0.Q & !X0_Data0 & !<A href=#210>J1_IR12.Q</A> & !J1_LeftShift ) ; (5 pterms, 8 signals)
+
+<A name=122>X1_FOutput1</A> = !( <A href=#62>Accum1.Q</A> & <A href=#89>X0_Data1</A> & !<A href=#208>J1_IR14.Q</A> & !<A href=#229>J1_Load</A> & !<A href=#231>J1_LeftShift</A>
+    # !Accum1.Q & X0_Data1 & !<A href=#98>J0_AFControl1</A>
+    # !Accum1.Q & !X0_Data1 & !<A href=#99>J0_AFControl3</A>
+    # Accum1.Q & !X0_Data1 & J1_Load & !J1_LeftShift
+    # Accum1.Q & !X0_Data1 & !<A href=#210>J1_IR12.Q</A> & !J1_LeftShift ) ; (5 pterms, 8 signals)
+
+<A name=121>X1_FOutput2</A> = !( <A href=#61>Accum2.Q</A> & <A href=#90>X0_Data2</A> & !<A href=#208>J1_IR14.Q</A> & !<A href=#229>J1_Load</A> & !<A href=#231>J1_LeftShift</A>
+    # !Accum2.Q & X0_Data2 & !<A href=#98>J0_AFControl1</A>
+    # !Accum2.Q & !X0_Data2 & !<A href=#99>J0_AFControl3</A>
+    # Accum2.Q & !X0_Data2 & J1_Load & !J1_LeftShift
+    # Accum2.Q & !X0_Data2 & !<A href=#210>J1_IR12.Q</A> & !J1_LeftShift ) ; (5 pterms, 8 signals)
+
+<A name=120>X1_FOutput3</A> = !( <A href=#60>Accum3.Q</A> & <A href=#91>X0_Data3</A> & !<A href=#208>J1_IR14.Q</A> & !<A href=#229>J1_Load</A> & !<A href=#231>J1_LeftShift</A>
+    # !Accum3.Q & X0_Data3 & !<A href=#98>J0_AFControl1</A>
+    # !Accum3.Q & !X0_Data3 & !<A href=#99>J0_AFControl3</A>
+    # Accum3.Q & !X0_Data3 & J1_Load & !J1_LeftShift
+    # Accum3.Q & !X0_Data3 & !<A href=#210>J1_IR12.Q</A> & !J1_LeftShift ) ; (5 pterms, 8 signals)
+
+<A name=119>X1_FOutput4</A> = !( <A href=#59>Accum4.Q</A> & <A href=#92>X0_Data4</A> & !<A href=#208>J1_IR14.Q</A> & !<A href=#229>J1_Load</A> & !<A href=#231>J1_LeftShift</A>
+    # !Accum4.Q & X0_Data4 & !<A href=#98>J0_AFControl1</A>
+    # !Accum4.Q & !X0_Data4 & !<A href=#99>J0_AFControl3</A>
+    # Accum4.Q & !X0_Data4 & J1_Load & !J1_LeftShift
+    # Accum4.Q & !X0_Data4 & !<A href=#210>J1_IR12.Q</A> & !J1_LeftShift ) ; (5 pterms, 8 signals)
+
+<A name=118>X1_FOutput5</A> = !( <A href=#58>Accum5.Q</A> & <A href=#93>X0_Data5</A> & !<A href=#208>J1_IR14.Q</A> & !<A href=#229>J1_Load</A> & !<A href=#231>J1_LeftShift</A>
+    # !Accum5.Q & X0_Data5 & !<A href=#98>J0_AFControl1</A>
+    # !Accum5.Q & !X0_Data5 & !<A href=#99>J0_AFControl3</A>
+    # Accum5.Q & !X0_Data5 & J1_Load & !J1_LeftShift
+    # Accum5.Q & !X0_Data5 & !<A href=#210>J1_IR12.Q</A> & !J1_LeftShift ) ; (5 pterms, 8 signals)
+
+<A name=117>X1_FOutput6</A> = !( <A href=#57>Accum6.Q</A> & <A href=#94>X0_Data6</A> & !<A href=#208>J1_IR14.Q</A> & !<A href=#229>J1_Load</A> & !<A href=#231>J1_LeftShift</A>
+    # !Accum6.Q & X0_Data6 & !<A href=#98>J0_AFControl1</A>
+    # !Accum6.Q & !X0_Data6 & !<A href=#99>J0_AFControl3</A>
+    # Accum6.Q & !X0_Data6 & J1_Load & !J1_LeftShift
+    # Accum6.Q & !X0_Data6 & !<A href=#210>J1_IR12.Q</A> & !J1_LeftShift ) ; (5 pterms, 8 signals)
+
+<A name=116>X1_FOutput7</A> = !( <A href=#56>Accum7.Q</A> & <A href=#95>X0_Data7</A> & !<A href=#208>J1_IR14.Q</A> & !<A href=#229>J1_Load</A> & !<A href=#231>J1_LeftShift</A>
+    # !Accum7.Q & X0_Data7 & !<A href=#98>J0_AFControl1</A>
+    # !Accum7.Q & !X0_Data7 & !<A href=#99>J0_AFControl3</A>
+    # Accum7.Q & !X0_Data7 & J1_Load & !J1_LeftShift
+    # Accum7.Q & !X0_Data7 & !<A href=#210>J1_IR12.Q</A> & !J1_LeftShift ) ; (5 pterms, 8 signals)
+
+<A name=138>X1_MaskAccum0</A> = !( !<A href=#207>J1_IR15.Q</A> & <A href=#209>J1_IR13.Q</A> & !<A href=#211>J1_IR11.Q</A> & <A href=#212>J1_IR10.Q</A> & <A href=#213>J1_IR9.Q</A>
+       & <A href=#214>J1_IR8.Q</A>
+    # !J1_IR15.Q & J1_IR13.Q & <A href=#210>J1_IR12.Q</A> & !J1_IR11.Q & J1_IR10.Q
+    # J1_IR15.Q & !<A href=#208>J1_IR14.Q</A> & !J1_IR13.Q & J1_IR9.Q & !J1_IR8.Q
+    # J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & !J1_IR9.Q & J1_IR8.Q
+    # !J1_IR15.Q & J1_IR14.Q & !J1_IR13.Q & !J1_IR12.Q
+    # J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & !J1_IR11.Q
+    # !J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q
+    # !<A href=#63>Accum0.Q</A> ) ; (8 pterms, 9 signals)
+
+<A name=137>X1_MaskAccum1</A> = <A href=#62>Accum1.Q</A> & <A href=#210>J1_IR12.Q</A> & !<A href=#228>J1_TSATXA</A> & !<A href=#229>J1_Load</A> & !<A href=#230>J1_LogicOp</A>
+    # Accum1.Q & !<A href=#209>J1_IR13.Q</A> & !J1_TSATXA & !J1_Load & !J1_LogicOp
+    # Accum1.Q & <A href=#208>J1_IR14.Q</A> & !J1_TSATXA & !J1_Load & !J1_LogicOp
+    # Accum1.Q & <A href=#207>J1_IR15.Q</A> & !J1_TSATXA & !J1_Load & !J1_LogicOp ; (4 pterms, 8 signals)
+
+<A name=136>X1_MaskAccum2</A> = <A href=#61>Accum2.Q</A> & <A href=#210>J1_IR12.Q</A> & !<A href=#228>J1_TSATXA</A> & !<A href=#229>J1_Load</A> & !<A href=#230>J1_LogicOp</A>
+    # Accum2.Q & !<A href=#209>J1_IR13.Q</A> & !J1_TSATXA & !J1_Load & !J1_LogicOp
+    # Accum2.Q & <A href=#208>J1_IR14.Q</A> & !J1_TSATXA & !J1_Load & !J1_LogicOp
+    # Accum2.Q & <A href=#207>J1_IR15.Q</A> & !J1_TSATXA & !J1_Load & !J1_LogicOp ; (4 pterms, 8 signals)
+
+<A name=135>X1_MaskAccum3</A> = <A href=#60>Accum3.Q</A> & <A href=#210>J1_IR12.Q</A> & !<A href=#228>J1_TSATXA</A> & !<A href=#229>J1_Load</A> & !<A href=#230>J1_LogicOp</A>
+    # Accum3.Q & !<A href=#209>J1_IR13.Q</A> & !J1_TSATXA & !J1_Load & !J1_LogicOp
+    # Accum3.Q & <A href=#208>J1_IR14.Q</A> & !J1_TSATXA & !J1_Load & !J1_LogicOp
+    # Accum3.Q & <A href=#207>J1_IR15.Q</A> & !J1_TSATXA & !J1_Load & !J1_LogicOp ; (4 pterms, 8 signals)
+
+<A name=134>X1_MaskAccum4</A> = <A href=#59>Accum4.Q</A> & <A href=#210>J1_IR12.Q</A> & !<A href=#228>J1_TSATXA</A> & !<A href=#229>J1_Load</A> & !<A href=#230>J1_LogicOp</A>
+    # Accum4.Q & !<A href=#209>J1_IR13.Q</A> & !J1_TSATXA & !J1_Load & !J1_LogicOp
+    # Accum4.Q & <A href=#208>J1_IR14.Q</A> & !J1_TSATXA & !J1_Load & !J1_LogicOp
+    # Accum4.Q & <A href=#207>J1_IR15.Q</A> & !J1_TSATXA & !J1_Load & !J1_LogicOp ; (4 pterms, 8 signals)
+
+<A name=133>X1_MaskAccum5</A> = <A href=#58>Accum5.Q</A> & <A href=#210>J1_IR12.Q</A> & !<A href=#228>J1_TSATXA</A> & !<A href=#229>J1_Load</A> & !<A href=#230>J1_LogicOp</A>
+    # Accum5.Q & !<A href=#209>J1_IR13.Q</A> & !J1_TSATXA & !J1_Load & !J1_LogicOp
+    # Accum5.Q & <A href=#208>J1_IR14.Q</A> & !J1_TSATXA & !J1_Load & !J1_LogicOp
+    # Accum5.Q & <A href=#207>J1_IR15.Q</A> & !J1_TSATXA & !J1_Load & !J1_LogicOp ; (4 pterms, 8 signals)
+
+<A name=132>X1_MaskAccum6</A> = <A href=#57>Accum6.Q</A> & <A href=#210>J1_IR12.Q</A> & !<A href=#228>J1_TSATXA</A> & !<A href=#229>J1_Load</A> & !<A href=#230>J1_LogicOp</A>
+    # Accum6.Q & !<A href=#209>J1_IR13.Q</A> & !J1_TSATXA & !J1_Load & !J1_LogicOp
+    # Accum6.Q & <A href=#208>J1_IR14.Q</A> & !J1_TSATXA & !J1_Load & !J1_LogicOp
+    # Accum6.Q & <A href=#207>J1_IR15.Q</A> & !J1_TSATXA & !J1_Load & !J1_LogicOp ; (4 pterms, 8 signals)
+
+<A name=131>X1_MaskAccum7</A> = <A href=#56>Accum7.Q</A> & <A href=#210>J1_IR12.Q</A> & !<A href=#228>J1_TSATXA</A> & !<A href=#229>J1_Load</A> & !<A href=#230>J1_LogicOp</A>
+    # Accum7.Q & !<A href=#209>J1_IR13.Q</A> & !J1_TSATXA & !J1_Load & !J1_LogicOp
+    # Accum7.Q & <A href=#208>J1_IR14.Q</A> & !J1_TSATXA & !J1_Load & !J1_LogicOp
+    # Accum7.Q & <A href=#207>J1_IR15.Q</A> & !J1_TSATXA & !J1_Load & !J1_LogicOp ; (4 pterms, 8 signals)
+
+<A name=143>X1_NewAccum0.X1</A> = !<A href=#103>J0_AShiftRight</A> & !<A href=#130>X1_Carry0</A> & !<A href=#138>X1_MaskAccum0</A>
+    # !J0_AShiftRight & X1_Carry0 & X1_MaskAccum0
+    # <A href=#62>Accum1.Q</A> & J0_AShiftRight ; (3 pterms, 4 signals)
+X1_NewAccum0.X2 = !<A href=#103>J0_AShiftRight</A> & !<A href=#123>X1_FOutput0</A> ; (1 pterm, 2 signals)
+
+<A name=142>X1_NewAccum1.X1</A> = !<A href=#103>J0_AShiftRight</A> & !<A href=#129>X1_Carry1</A> & !<A href=#137>X1_MaskAccum1</A>
+    # !J0_AShiftRight & X1_Carry1 & X1_MaskAccum1
+    # <A href=#61>Accum2.Q</A> & J0_AShiftRight ; (3 pterms, 4 signals)
+X1_NewAccum1.X2 = !<A href=#103>J0_AShiftRight</A> & !<A href=#122>X1_FOutput1</A> ; (1 pterm, 2 signals)
+
+<A name=141>X1_NewAccum3.X1</A> = !<A href=#103>J0_AShiftRight</A> & !<A href=#121>X1_FOutput2</A> & !<A href=#128>X1_Carry2</A> & !<A href=#135>X1_MaskAccum3</A>
+    # !J0_AShiftRight & !X1_FOutput2 & !X1_MaskAccum3 & !<A href=#136>X1_MaskAccum2</A>
+    # !J0_AShiftRight & !X1_Carry2 & !X1_MaskAccum3 & !X1_MaskAccum2
+    # !J0_AShiftRight & X1_FOutput2 & X1_Carry2 & X1_MaskAccum3
+    # !J0_AShiftRight & X1_FOutput2 & X1_MaskAccum3 & X1_MaskAccum2
+    # !J0_AShiftRight & X1_Carry2 & X1_MaskAccum3 & X1_MaskAccum2
+    # <A href=#59>Accum4.Q</A> & J0_AShiftRight ; (7 pterms, 6 signals)
+X1_NewAccum3.X2 = !<A href=#103>J0_AShiftRight</A> & !<A href=#120>X1_FOutput3</A> ; (1 pterm, 2 signals)
+
+<A name=140>X1_NewAccum4.X1</A> = !<A href=#103>J0_AShiftRight</A> & !<A href=#127>X1_Carry4</A> & !<A href=#134>X1_MaskAccum4</A>
+    # !J0_AShiftRight & X1_Carry4 & X1_MaskAccum4
+    # <A href=#58>Accum5.Q</A> & J0_AShiftRight ; (3 pterms, 4 signals)
+X1_NewAccum4.X2 = !<A href=#103>J0_AShiftRight</A> & !<A href=#119>X1_FOutput4</A> ; (1 pterm, 2 signals)
+
+<A name=139>X1_NewAccum5.X1</A> = !<A href=#103>J0_AShiftRight</A> & !<A href=#119>X1_FOutput4</A> & !<A href=#133>X1_MaskAccum5</A>
+       & !<A href=#134>X1_MaskAccum4</A>
+    # !J0_AShiftRight & !X1_FOutput4 & !<A href=#120>X1_FOutput3</A> & !X1_MaskAccum5
+       & !<A href=#135>X1_MaskAccum3</A>
+    # !J0_AShiftRight & !X1_FOutput3 & !X1_MaskAccum5 & !X1_MaskAccum4
+       & !X1_MaskAccum3
+    # !J0_AShiftRight & !X1_FOutput4 & !X1_FOutput3 & !<A href=#121>X1_FOutput2</A>
+       & !<A href=#128>X1_Carry2</A> & !X1_MaskAccum5
+    # !J0_AShiftRight & !X1_FOutput3 & !X1_FOutput2 & !X1_Carry2
+       & !X1_MaskAccum5 & !X1_MaskAccum4
+    # !J0_AShiftRight & !X1_FOutput4 & !X1_FOutput2 & !X1_Carry2
+       & !X1_MaskAccum5 & !X1_MaskAccum3
+    # !J0_AShiftRight & !X1_FOutput2 & !X1_Carry2 & !X1_MaskAccum5
+       & !X1_MaskAccum4 & !X1_MaskAccum3
+    # !J0_AShiftRight & !X1_FOutput4 & !X1_FOutput3 & !X1_FOutput2
+       & !X1_MaskAccum5 & !<A href=#136>X1_MaskAccum2</A>
+    # !J0_AShiftRight & !X1_FOutput4 & !X1_FOutput3 & !X1_Carry2
+       & !X1_MaskAccum5 & !X1_MaskAccum2
+    # !J0_AShiftRight & !X1_FOutput3 & !X1_FOutput2 & !X1_MaskAccum5
+       & !X1_MaskAccum4 & !X1_MaskAccum2
+    # !J0_AShiftRight & !X1_FOutput3 & !X1_Carry2 & !X1_MaskAccum5
+       & !X1_MaskAccum4 & !X1_MaskAccum2
+    # !J0_AShiftRight & !X1_FOutput4 & !X1_FOutput2 & !X1_MaskAccum5
+       & !X1_MaskAccum3 & !X1_MaskAccum2
+    # !J0_AShiftRight & !X1_FOutput4 & !X1_Carry2 & !X1_MaskAccum5
+       & !X1_MaskAccum3 & !X1_MaskAccum2
+    # !J0_AShiftRight & !X1_FOutput2 & !X1_MaskAccum5 & !X1_MaskAccum4
+       & !X1_MaskAccum3 & !X1_MaskAccum2
+    # !J0_AShiftRight & !X1_Carry2 & !X1_MaskAccum5 & !X1_MaskAccum4
+       & !X1_MaskAccum3 & !X1_MaskAccum2
+    # !J0_AShiftRight & X1_FOutput4 & X1_MaskAccum5 & X1_MaskAccum4
+    # !J0_AShiftRight & X1_FOutput4 & X1_FOutput3 & X1_MaskAccum5
+       & X1_MaskAccum3
+    # !J0_AShiftRight & X1_FOutput3 & X1_MaskAccum5 & X1_MaskAccum4
+       & X1_MaskAccum3
+    # !J0_AShiftRight & X1_FOutput4 & X1_FOutput3 & X1_FOutput2 & X1_Carry2
+       & X1_MaskAccum5
+    # !J0_AShiftRight & X1_FOutput3 & X1_FOutput2 & X1_Carry2 & X1_MaskAccum5
+       & X1_MaskAccum4
+    # !J0_AShiftRight & X1_FOutput4 & X1_FOutput2 & X1_Carry2 & X1_MaskAccum5
+       & X1_MaskAccum3
+    # !J0_AShiftRight & X1_FOutput2 & X1_Carry2 & X1_MaskAccum5
+       & X1_MaskAccum4 & X1_MaskAccum3
+    # !J0_AShiftRight & X1_FOutput4 & X1_FOutput3 & X1_FOutput2
+       & X1_MaskAccum5 & X1_MaskAccum2
+    # !J0_AShiftRight & X1_FOutput4 & X1_FOutput3 & X1_Carry2 & X1_MaskAccum5
+       & X1_MaskAccum2
+    # !J0_AShiftRight & X1_FOutput3 & X1_FOutput2 & X1_MaskAccum5
+       & X1_MaskAccum4 & X1_MaskAccum2
+    # !J0_AShiftRight & X1_FOutput3 & X1_Carry2 & X1_MaskAccum5
+       & X1_MaskAccum4 & X1_MaskAccum2
+    # !J0_AShiftRight & X1_FOutput4 & X1_FOutput2 & X1_MaskAccum5
+       & X1_MaskAccum3 & X1_MaskAccum2
+    # !J0_AShiftRight & X1_FOutput4 & X1_Carry2 & X1_MaskAccum5
+       & X1_MaskAccum3 & X1_MaskAccum2
+    # !J0_AShiftRight & X1_FOutput2 & X1_MaskAccum5 & X1_MaskAccum4
+       & X1_MaskAccum3 & X1_MaskAccum2
+    # !J0_AShiftRight & X1_Carry2 & X1_MaskAccum5 & X1_MaskAccum4
+       & X1_MaskAccum3 & X1_MaskAccum2
+    # <A href=#57>Accum6.Q</A> & J0_AShiftRight ; (31 pterms, 10 signals)
+X1_NewAccum5.X2 = !<A href=#103>J0_AShiftRight</A> & !<A href=#118>X1_FOutput5</A> ; (1 pterm, 2 signals)
+
+<A name=79>XReg0.D</A> = !<A href=#22>Reset</A> & <A href=#104>J0_DAddressMux0</A> & <A href=#107>J0_DEnableIncDec</A> & !<A href=#186>V0_AddrMuxOut0</A>
+    # !Reset & J0_DAddressMux0 & !J0_DEnableIncDec & V0_AddrMuxOut0
+    # !Reset & <A href=#79>XReg0.Q</A> & !J0_DAddressMux0 ; (3 pterms, 5 signals)
+XReg0.OE = 1 ; (1 pterm, 0 signal)
+XReg0.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=78>XReg1.D</A> = !<A href=#22>Reset</A> & <A href=#78>XReg1.Q</A> & !<A href=#104>J0_DAddressMux0</A>
+    # !Reset & J0_DAddressMux0 & <A href=#190>V0_IncDecOut1</A> ; (2 pterms, 4 signals)
+XReg1.OE = 1 ; (1 pterm, 0 signal)
+XReg1.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=77>XReg2.D.X1</A> = !<A href=#22>Reset</A> & <A href=#77>XReg2.Q</A> & !<A href=#104>J0_DAddressMux0</A>
+    # !Reset & J0_DAddressMux0 & !<A href=#184>V0_AddrMuxOut2</A> & !<A href=#193>V0_IncDecCarry1</A>
+    # !Reset & J0_DAddressMux0 & V0_AddrMuxOut2 & V0_IncDecCarry1 ; (3 pterms, 5 signals)
+XReg2.D.X2 = !<A href=#22>Reset</A> & <A href=#104>J0_DAddressMux0</A> & !<A href=#106>J0_DDecrement</A> ; (1 pterm, 3 signals)
+XReg2.OE = 1 ; (1 pterm, 0 signal)
+XReg2.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=76>XReg3.D</A> = !<A href=#22>Reset</A> & <A href=#76>XReg3.Q</A> & !<A href=#104>J0_DAddressMux0</A>
+    # !Reset & J0_DAddressMux0 & <A href=#189>V0_IncDecOut3</A> ; (2 pterms, 4 signals)
+XReg3.OE = 1 ; (1 pterm, 0 signal)
+XReg3.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=75>XReg4.D.X1</A> = !<A href=#22>Reset</A> & <A href=#75>XReg4.Q</A> & !<A href=#104>J0_DAddressMux0</A>
+    # !Reset & J0_DAddressMux0 & !<A href=#182>V0_AddrMuxOut4</A> & !<A href=#192>V0_IncDecCarry3</A>
+    # !Reset & J0_DAddressMux0 & V0_AddrMuxOut4 & V0_IncDecCarry3 ; (3 pterms, 5 signals)
+XReg4.D.X2 = !<A href=#22>Reset</A> & <A href=#104>J0_DAddressMux0</A> & !<A href=#106>J0_DDecrement</A> ; (1 pterm, 3 signals)
+XReg4.OE = 1 ; (1 pterm, 0 signal)
+XReg4.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=74>XReg5.D</A> = !<A href=#22>Reset</A> & <A href=#74>XReg5.Q</A> & !<A href=#104>J0_DAddressMux0</A>
+    # !Reset & J0_DAddressMux0 & <A href=#188>V0_IncDecOut5</A> ; (2 pterms, 4 signals)
+XReg5.OE = 1 ; (1 pterm, 0 signal)
+XReg5.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=73>XReg6.D.X1</A> = !<A href=#22>Reset</A> & <A href=#73>XReg6.Q</A> & !<A href=#104>J0_DAddressMux0</A>
+    # !Reset & J0_DAddressMux0 & !<A href=#180>V0_AddrMuxOut6</A> & !<A href=#191>V0_IncDecCarry5</A>
+    # !Reset & J0_DAddressMux0 & V0_AddrMuxOut6 & V0_IncDecCarry5 ; (3 pterms, 5 signals)
+XReg6.D.X2 = !<A href=#22>Reset</A> & <A href=#104>J0_DAddressMux0</A> & !<A href=#106>J0_DDecrement</A> ; (1 pterm, 3 signals)
+XReg6.OE = 1 ; (1 pterm, 0 signal)
+XReg6.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<A name=72>XReg7.D</A> = !<A href=#22>Reset</A> & <A href=#72>XReg7.Q</A> & !<A href=#104>J0_DAddressMux0</A>
+    # !Reset & J0_DAddressMux0 & <A href=#187>V0_IncDecOut7</A> ; (2 pterms, 4 signals)
+XReg7.OE = 1 ; (1 pterm, 0 signal)
+XReg7.C = <A href=#23>Clock</A> ; (1 pterm, 1 signal)
+
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+
+

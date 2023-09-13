@@ -1,0 +1,67 @@
+; This subroutine computes the GCD of two unsigned 8-bit integers stored in 
+; memory and returns the result in the accumulator using Euclid's algorithm.
+; The GCD is the greatest common divisor. 
+; The value of a is stored in memory in the variable a and the value of b is
+; stored in memory in the variable b. At the end of the function, the GCD of
+; n and k is returned in the accumulator.
+; The value of n is destroyed by the program.  Note that there is no error checking on
+; the value of n and a value of 0 or values larger than 13 (decimal) will
+; cause an overflow and generate incorrect results.
+;
+; Revision History
+;     15 February 2020 Ellie Cho	initial revision
+
+
+;                  
+;		    Start:
+0000 8002           ;LDD   b            ;check if b is zero 
+0001 0000	    ;INC   b
+0002 7B00           ;DEC   b
+0003 9F0D	    ;JZ          	;if so, go to Switch
+0004 1F80	    ;NOP
+0005 8001           ;LDD   a            ;check if a is zero
+0006 0000	    ;INC
+0007 7B00	    ;DEC
+0008 9F08	    ;JZ 		;if so, go to Switch 
+0009 1F80           ;NOP
+000A C00C           ;JMP   Comparison   ;if neither, go to comparison
+000B 1F80    	    ;NOP
+
+;		    Comparison:		;checks if a>=b
+000C 8001	    ;LDD   a
+000D 1002	    ;SUB   b		;subtract b from a and save it to a
+000E 8C10 	    ;JAE   Subtraction       ;if a >= b, jump to Subtraction
+000F 1F80           ;NOP   
+0010 C012           ;JMP   Switch  ;if not (a>=b), go to Switch
+0011 1F80	    ;NOP   
+
+;	    	    Switch:
+0012 8001	    ;LDD   b		;switch a and b values
+0013 0780	    ;TAX
+0014 8002	    ;LDD   a
+0015 A001	    ;STD   b
+0016 6701	    ;TXA   
+0017 A002	    ;STD   a
+		    
+
+;		    Check if done:      ; done when b=0, else start loop again
+0018 8002           ;LDD   b
+0019 0000	    ;INC   b
+001A 7B00           ;DEC   b
+001B 9F07	    ;JZ    Done		;branch when b = 0
+001C 1F80 	    ;NOP
+001D C00C           ;JMP   Comparison	;or go back to comparison
+001E 1F80           ;NOP
+
+;		    Subtraction Store:  ;subtract a-b and store it in a 
+001F 8001           ;LDD    a
+0020 1002           ;SUB    b
+0021 A001           ;STD    a
+0022 C00C           ;JMP    Comparison   ;jump back to comparison
+0023 1F80	    ;NOP
+
+;                   Done:		;done with the calculation
+0026 8001           ;LDD   a		;get return value into accumulator (a is GCD)
+0027 1F00           ;RTS                ;and return
+
+

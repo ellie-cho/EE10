@@ -1,0 +1,43 @@
+; This subroutine computes the GCD of two unsigned 8-bit integers stored in 
+; memory and returns the result in the accumulator using Euclid's algorithm.
+; The GCD is the greatest common divisor. 
+; The value of a is stored in memory in the variable a and the value of b is
+; stored in memory in the variable b. At the end of the function, the GCD of
+; n and k is returned in the accumulator.
+; The value of n is destroyed by the program.  Note that there is no error checking on
+; the value of n and a value of 0 or values larger than 13 (decimal) will
+; cause an overflow and generate incorrect results.
+;
+; Revision History
+;     15 February 2020 Ellie Cho	initial revision
+
+
+            start:			;initialize variables
+                LDI   $0
+                STD   k			;k = 0
+
+            Loop:			;loop, computing nth Fibonacci number
+                LDD   a
+		SUB   b			;update the Fibonacci count by 1
+                STD   a 
+		LDD   a
+		SUB   b
+                JZ    Body    		;if a is greater than or equal to b, branch
+		JNS   Body 		
+
+	    Body:
+		LDD   a			;switch a and b values
+		TAX
+		LDD   b
+		STD   a
+		TXA
+		STD   b
+                JMP   Loop		;and loop
+                LDD   b
+		JZ    Done		;branch when b = 0
+
+            Done:			;done with the calculation
+                LDD   a			;get return value into accumulator
+                RTS                     ;and return
+
+

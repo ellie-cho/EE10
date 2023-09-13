@@ -1,0 +1,51 @@
+; This subroutine computes the nth Fibonacci number.  The nth Fibonacci number
+; is defined recursively as:
+;       f[n] = f[n-1] + f[n-2] for n >= 3 and
+;       f[1] = f[2] = 1
+; The value of n is stored in memory in the variable n and at the end of the
+; function the nth Fibonacci number is returned in the accumulator.  The value
+; of n is destroyed by the program.  Note that there is no error checking on
+; the value of n and a value of 0 or values larger than 13 (decimal) will
+; cause an overflow and generate incorrect results.
+;
+; Revision History
+;     2 Feb 18  Glen George      Initial revision.
+;     8 Jan 20  Glen George      Updated comments
+
+
+;0000        start:			;initialize variables
+0000  8900;      LDI   $0
+0001  A002;      STD   f2		;f2 := f[n-2] = 0
+0002  0000;      INC
+0003  A001;      STD   f1		;f1 := f[n-1] = 1
+0004  A000;      STD   f 		;Fibonacci number (f[1]) is 1 too
+
+;0005        FibLoop:			;loop, computing nth Fibonacci number
+0005  8003;      LDD   n		;update the Fibonacci count by 1
+0006  7B00;      DEC
+0007  9F09;      JZ    Done		;if n is now 0, we're done
+                 ;JNZ  FibBody		;otherwise compute the next number
+0008  A003;      STD   n		;store the new value of n (branch slot)
+
+;0009        FibBody:			;compute the next fibonacci number
+0009  8001;      LDD   f1		;get the value of f1 in accumulator
+000A  6802;      ADD   f2		;compute new fibonacci number (f1+f2)
+000B  A000;      STD   f		;and store it
+000C  A001;      STD   f1		;also store it in f1, it is new f[n-1]
+000D  1002;      SUB   f2		;subtract f2 from f to get old f1
+000E  A002;      STD   f2		;store this in f2, it is new f[n-2]
+000F  C005;      JMP   FibLoop		;and loop
+0010  1F80;      NOP			;branch slot
+
+;0011        Done:			;done with the calculation
+0011  8000;      LDD   f		;get return value into accumulator
+0012  1F00;      RTS                    ;and return
+
+
+
+;Variables
+
+;00  ??  f       DB    ?		;the current Fibonacci number
+;01  ??  f1      DB    ?		;the Fibonacci number from last time
+;02  ??  f2      DB    ?		;the Fibonacci number from 2 times ago
+;03  ??  n       DB    ?		;the desired Fibonacci number index

@@ -1,0 +1,19 @@
+JDF B
+// Created by Version 2.0 
+PROJECT HW9
+DESIGN hw9 Normal
+DEVKIT LC4064ZE-5UMN64C
+ENTRY ABEL/Schematic
+MODULE cpu.abl
+MODSTYLE CPU Normal
+MODULE DAU.abl
+MODSTYLE DataAccess Normal
+MODULE hw6.abl
+MODSTYLE ALU Normal
+MODULE CUnit.abl
+MODSTYLE CUnit Normal
+MODULE pau.abl
+MODSTYLE ProgramAccess Normal
+SYNTHESIS_TOOL Synplify
+SIMULATOR_TOOL ActiveHDL
+TOPMODULE CPU

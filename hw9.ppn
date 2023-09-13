@@ -1,0 +1,14 @@
+//
+// Software Version :  ispLEVER Classic 2.0.00.17.20.15  
+// Project Name	    :  hw9
+// Targeted Device  :  LC4064ZE-5UMN64C
+// Date             :  Tue Apr 07 00:35:11 2020
+//
+                   GNDIO0          SYS           D4
+                   VCCIO0          SYS           C3
+                      VCC          SYS           E4
+                   VCCIO0          SYS           F3
+                   GNDIO1          SYS           E5
+                   VCCIO1          SYS           F6
+                      VCC          SYS           D5
+                   VCCIO1          SYS           A6

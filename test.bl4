@@ -1,0 +1,4791 @@
+#$ TOOL ispLEVER Classic 2.0.00.17.20.15
+#$ DATE Tue Apr 07 00:08:23 2020
+#$ TITLE Caltech10 CPU
+#$ MODULE test
+#$ JEDECFILE cpu
+#$ PINS 82 ProgramDB15 ProgramDB14 ProgramDB13 ProgramDB12 ProgramDB11 ProgramDB10 \
+#  ProgramDB9 ProgramDB8 ProgramDB7 ProgramDB6 ProgramDB5 ProgramDB4 ProgramDB3 \
+#  ProgramDB2 ProgramDB1 ProgramDB0 Reset Clock DataDB7 DataDB6 DataDB5 DataDB4 DataDB3 \
+#  DataDB2 DataDB1 DataDB0 DataAB7 DataAB6 DataAB5 DataAB4 DataAB3 DataAB2 DataAB1 DataAB0 \
+#  RD WR IO ProgramAB12'co'  ProgramAB11'co'  ProgramAB10'co'  ProgramAB9'co'  ProgramAB8'co'  \
+#  ProgramAB7'co'  ProgramAB6'co'  ProgramAB5'co'  ProgramAB4'co'  ProgramAB3'co'  ProgramAB2'co'  \
+#  ProgramAB1'co'  ProgramAB0'co'  Accum7'co'  Accum6'co'  Accum5'co'  Accum4'co'  Accum3'co'  Accum2'co'  \
+#  Accum1'co'  Accum0'co'  Flags7'co'  Flags6'co'  Flags5'co'  Flags4'co'  Flags3'co'  Flags2'co'  Flags1'co'  \
+#  Flags0'co'  XReg7'co'  XReg6'co'  XReg5'co'  XReg4'co'  XReg3'co'  XReg2'co'  XReg1'co'  XReg0'co'  SReg7'co'  SReg6'co'  \
+#  SReg5'co'  SReg4'co'  SReg3'co'  SReg2'co'  SReg1'co'  SReg0'co' 
+#$ NODES 149 X0_Data0'co'  X0_Data1'co'  X0_Data2'co'  X0_Data3'co'  X0_Data4'co'  X0_Data5'co'  \
+#  X0_Data6'co'  X0_Data7'co'  J0_AEnableAccumWrite'co,o'  J0_AEnableSZFlags'co,o'  \
+#  J0_AFControl1'co,o'  J0_AFControl3'co,o'  J0_AFlagMod0'co,o'  J0_AFlagMod1'co,o'  J0_ALUDSel0'co,o'  \
+#  J0_AShiftRight'co,o'  J0_DAddressMux0'co,o'  J0_DAddressMux1'co,o'  J0_DDecrement'co,o'  \
+#  J0_DEnableIncDec'co,o'  J0_DPost'co,o'  J0_DataDBSel0'co,o'  J0_DataDBSel1'co,o'  J0_PAddBSel0'co,o'  \
+#  J0_PAddBSel1'co,o'  J0_PAddBSel2'co,o'  J0_PHoldPC'co,o'  J0_RD'co,o'  J0_WR'co,o'  X1_FOutput7 \
+#  X1_FOutput6 X1_FOutput5 X1_FOutput4 X1_FOutput3 X1_FOutput2 X1_FOutput1 X1_FOutput0 \
+#  X1_Carry8 X1_Carry7 X1_Carry5 X1_Carry4 X1_Carry2 X1_Carry1 X1_Carry0 X1_MaskAccum7 \
+#  X1_MaskAccum6 X1_MaskAccum5 X1_MaskAccum4 X1_MaskAccum3 X1_MaskAccum2 X1_MaskAccum1 \
+#  X1_MaskAccum0 X1_NewAccum5 X1_NewAccum4 X1_NewAccum3 X1_NewAccum1 X1_NewAccum0 \
+#  P0_Carry11 P0_Carry9 P0_Carry8 P0_Carry6 P0_Carry5 P0_Carry4 P0_Carry3 P0_Carry2 \
+#  P0_Carry1 P0_AddendA12 P0_AddendA11 P0_AddendA10 P0_AddendA9 P0_AddendA8 P0_AddendA7 \
+#  P0_AddendA6 P0_AddendA5 P0_AddendA4 P0_AddendA3 P0_AddendA2 P0_AddendA1 P0_AddendA0 \
+#  P0_AddendB12 P0_AddendB11 P0_AddendB10 P0_AddendB9 P0_AddendB8 P0_AddendB7 \
+#  P0_AddendB6 P0_AddendB5 P0_AddendB4 P0_AddendB3 P0_AddendB2 P0_AddendB1 P0_AddendB0 \
+#  V0_AddrMuxOut7 V0_AddrMuxOut6 V0_AddrMuxOut5 V0_AddrMuxOut4 V0_AddrMuxOut3 \
+#  V0_AddrMuxOut2 V0_AddrMuxOut1 V0_AddrMuxOut0 V0_IncDecOut7 V0_IncDecOut5 \
+#  V0_IncDecOut3 V0_IncDecOut1 V0_IncDecCarry5 V0_IncDecCarry3 V0_IncDecCarry1 \
+#  V0_AddendA7 V0_AddendA6 V0_AddendA5 V0_AddendA4 V0_AddendA3 V0_AddendA2 V0_AddendA1 \
+#  V0_AddendA0 V0_AdderCarry5 V0_AdderCarry4 V0_AdderCarry3 V0_AdderCarry2 \
+#  V0_AdderCarry1 J1_IR15 J1_IR14 J1_IR13 J1_IR12 J1_IR11 J1_IR10 J1_IR9 J1_IR8 J1_IR7 \
+#  J1_IR6 J1_IR5 J1_IR4 J1_IR3 J1_IR2 J1_IR1 J1_IR0 J1_FSM3+ J1_FSM2+ J1_FSM1+ J1_FSM0+ \
+#  J1_Popf J1_TSATXA J1_Load J1_LogicOp J1_LeftShift J1_LDI J1_Call J1_Rts \
+#  J1_ConditionalJump
+.model cpu
+.inputs J0_WR.BLIF J0_ALUDSel0.BLIF DataDB7.BLIF SReg7.Q XReg7.Q DataDB6.BLIF \
+SReg6.Q XReg6.Q DataDB5.BLIF SReg5.Q XReg5.Q DataDB4.BLIF SReg4.Q XReg4.Q \
+DataDB3.BLIF SReg3.Q XReg3.Q DataDB2.BLIF SReg2.Q XReg2.Q DataDB1.BLIF SReg1.Q \
+XReg1.Q DataDB0.BLIF SReg0.Q XReg0.Q Reset.BLIF Clock.BLIF \
+J0_AEnableSZFlags.BLIF J0_AFControl3.BLIF J0_AFControl1.BLIF \
+J0_AShiftRight.BLIF J0_AEnableAccumWrite.BLIF J0_AFlagMod1.BLIF \
+J0_AFlagMod0.BLIF Accum7.Q Accum6.Q Accum5.Q Accum4.Q Accum3.Q Accum2.Q \
+Accum1.Q Accum0.Q J0_DAddressMux1.BLIF J0_DAddressMux0.BLIF J0_DDecrement.BLIF \
+J0_DEnableIncDec.BLIF J0_DPost.BLIF J0_PHoldPC.BLIF J0_PAddBSel2.BLIF \
+J0_PAddBSel1.BLIF J0_PAddBSel0.BLIF Flags7.Q Flags6.Q Flags5.Q Flags4.Q \
+Flags3.Q Flags2.Q Flags1.Q Flags0.Q ProgramDB15.BLIF ProgramDB14.BLIF \
+ProgramDB13.BLIF ProgramDB12.BLIF ProgramDB11.BLIF ProgramDB10.BLIF \
+ProgramDB9.BLIF ProgramDB8.BLIF ProgramDB7.BLIF ProgramDB6.BLIF \
+ProgramDB5.BLIF ProgramDB4.BLIF ProgramDB3.BLIF ProgramDB2.BLIF \
+ProgramDB1.BLIF ProgramDB0.BLIF J0_DataDBSel1.BLIF J0_DataDBSel0.BLIF \
+ProgramAB7.Q ProgramAB6.Q ProgramAB5.Q ProgramAB4.Q ProgramAB12.Q ProgramAB3.Q \
+ProgramAB11.Q ProgramAB2.Q ProgramAB10.Q ProgramAB1.Q ProgramAB9.Q \
+ProgramAB0.Q ProgramAB8.Q J0_RD.BLIF X0_Data0.BLIF X0_Data1.BLIF X0_Data2.BLIF \
+X0_Data3.BLIF X0_Data4.BLIF X0_Data5.BLIF X0_Data6.BLIF X0_Data7.BLIF \
+X1_FOutput7.BLIF X1_FOutput6.BLIF X1_FOutput5.BLIF X1_FOutput4.BLIF \
+X1_FOutput3.BLIF X1_FOutput2.BLIF X1_FOutput1.BLIF X1_FOutput0.BLIF \
+X1_Carry8.BLIF X1_Carry7.BLIF X1_Carry5.BLIF X1_Carry4.BLIF X1_Carry2.BLIF \
+X1_Carry1.BLIF X1_Carry0.BLIF X1_MaskAccum7.BLIF X1_MaskAccum6.BLIF \
+X1_MaskAccum5.BLIF X1_MaskAccum4.BLIF X1_MaskAccum3.BLIF X1_MaskAccum2.BLIF \
+X1_MaskAccum1.BLIF X1_MaskAccum0.BLIF X1_NewAccum5.BLIF X1_NewAccum4.BLIF \
+X1_NewAccum3.BLIF X1_NewAccum1.BLIF X1_NewAccum0.BLIF P0_Carry11.BLIF \
+P0_Carry9.BLIF P0_Carry8.BLIF P0_Carry6.BLIF P0_Carry5.BLIF P0_Carry4.BLIF \
+P0_Carry3.BLIF P0_Carry2.BLIF P0_Carry1.BLIF P0_AddendA12.BLIF \
+P0_AddendA11.BLIF P0_AddendA10.BLIF P0_AddendA9.BLIF P0_AddendA8.BLIF \
+P0_AddendA7.BLIF P0_AddendA6.BLIF P0_AddendA5.BLIF P0_AddendA4.BLIF \
+P0_AddendA3.BLIF P0_AddendA2.BLIF P0_AddendA1.BLIF P0_AddendA0.BLIF \
+P0_AddendB12.BLIF P0_AddendB11.BLIF P0_AddendB10.BLIF P0_AddendB9.BLIF \
+P0_AddendB8.BLIF P0_AddendB7.BLIF P0_AddendB6.BLIF P0_AddendB5.BLIF \
+P0_AddendB4.BLIF P0_AddendB3.BLIF P0_AddendB2.BLIF P0_AddendB1.BLIF \
+P0_AddendB0.BLIF V0_AddrMuxOut7.BLIF V0_AddrMuxOut6.BLIF V0_AddrMuxOut5.BLIF \
+V0_AddrMuxOut4.BLIF V0_AddrMuxOut3.BLIF V0_AddrMuxOut2.BLIF \
+V0_AddrMuxOut1.BLIF V0_AddrMuxOut0.BLIF V0_IncDecOut7.BLIF V0_IncDecOut5.BLIF \
+V0_IncDecOut3.BLIF V0_IncDecOut1.BLIF V0_IncDecCarry5.BLIF \
+V0_IncDecCarry3.BLIF V0_IncDecCarry1.BLIF V0_AddendA7.BLIF V0_AddendA6.BLIF \
+V0_AddendA5.BLIF V0_AddendA4.BLIF V0_AddendA3.BLIF V0_AddendA2.BLIF \
+V0_AddendA1.BLIF V0_AddendA0.BLIF V0_AdderCarry5.BLIF V0_AdderCarry4.BLIF \
+V0_AdderCarry3.BLIF V0_AdderCarry2.BLIF V0_AdderCarry1.BLIF J1_IR15.Q \
+J1_IR14.Q J1_IR13.Q J1_IR12.Q J1_IR11.Q J1_IR10.Q J1_IR9.Q J1_IR8.Q J1_IR7.Q \
+J1_IR6.Q J1_IR5.Q J1_IR4.Q J1_IR3.Q J1_IR2.Q J1_IR1.Q J1_IR0.Q J1_FSM3.Q \
+J1_FSM2.Q J1_FSM1.Q J1_FSM0.Q J1_Popf.BLIF J1_TSATXA.BLIF J1_Load.BLIF \
+J1_LogicOp.BLIF J1_LeftShift.BLIF J1_LDI.BLIF J1_Call.BLIF J1_Rts.BLIF \
+J1_ConditionalJump.BLIF
+.outputs DataDB7 DataDB6 DataDB5 DataDB4 DataDB3 DataDB2 DataDB1 DataDB0 \
+DataAB0 RD WR IO X0_Data7 DataDB7.OE DataDB6.OE DataDB5.OE DataDB4.OE \
+DataDB3.OE DataDB2.OE DataDB1.OE DataDB0.OE ProgramAB12.OE ProgramAB11.OE \
+ProgramAB10.OE ProgramAB9.OE ProgramAB8.OE ProgramAB7.OE ProgramAB6.OE \
+ProgramAB5.OE ProgramAB4.OE ProgramAB3.OE ProgramAB2.OE ProgramAB1.OE \
+ProgramAB0.OE DataAB7.OE DataAB6.OE DataAB5.OE DataAB4.OE DataAB3.OE \
+DataAB2.OE DataAB1.OE DataAB0.OE RD.OE WR.OE IO.OE Accum7.OE Accum6.OE \
+Accum5.OE Accum4.OE Accum3.OE Accum2.OE Accum1.OE Accum0.OE Flags7.OE \
+Flags6.OE Flags5.OE Flags4.OE Flags3.OE Flags2.OE Flags1.OE Flags0.OE XReg7.OE \
+XReg6.OE XReg5.OE XReg4.OE XReg3.OE XReg2.OE XReg1.OE XReg0.OE SReg7.OE \
+SReg6.OE SReg5.OE SReg4.OE SReg3.OE SReg2.OE SReg1.OE SReg0.OE Accum0.C \
+Accum1.C Accum2.C Accum3.C Accum4.C Accum5.C Accum6.C Accum7.C Flags0.C \
+Flags1.C Flags2.C Flags3.C Flags4.C Flags5.C Flags6.C Flags7.C X1_FOutput7 \
+X1_FOutput6 X1_FOutput5 X1_FOutput4 X1_FOutput3 X1_FOutput2 X1_FOutput1 \
+X1_FOutput0 X1_Carry0 X1_MaskAccum7 X1_MaskAccum6 X1_MaskAccum5 X1_MaskAccum4 \
+X1_MaskAccum3 X1_MaskAccum2 X1_MaskAccum1 X1_MaskAccum0 ProgramAB0.C \
+ProgramAB1.C ProgramAB10.C ProgramAB11.C ProgramAB12.C ProgramAB2.C \
+ProgramAB3.C ProgramAB4.C ProgramAB5.C ProgramAB6.C ProgramAB7.C ProgramAB8.C \
+ProgramAB9.C P0_Carry4 P0_Carry1 P0_AddendA12 P0_AddendA11 P0_AddendA10 \
+P0_AddendA9 P0_AddendA8 P0_AddendA7 P0_AddendA6 P0_AddendA5 P0_AddendA4 \
+P0_AddendA3 P0_AddendA2 P0_AddendA1 P0_AddendA0 P0_AddendB12 P0_AddendB11 \
+P0_AddendB10 P0_AddendB9 P0_AddendB8 P0_AddendB7 P0_AddendB6 P0_AddendB5 \
+P0_AddendB4 P0_AddendB3 P0_AddendB2 P0_AddendB1 P0_AddendB0 SReg0.C SReg1.C \
+SReg2.C SReg3.C SReg4.C SReg5.C SReg6.C SReg7.C XReg0.C XReg1.C XReg2.C \
+XReg3.C XReg4.C XReg5.C XReg6.C XReg7.C V0_AddrMuxOut7 V0_AddrMuxOut6 \
+V0_AddrMuxOut5 V0_AddrMuxOut4 V0_AddrMuxOut3 V0_AddrMuxOut2 V0_AddrMuxOut1 \
+V0_AddrMuxOut0 V0_AddendA7 V0_AddendA6 V0_AddendA5 V0_AddendA4 V0_AddendA3 \
+V0_AddendA2 V0_AddendA1 V0_AddendA0 V0_AdderCarry5 V0_AdderCarry4 \
+V0_AdderCarry3 V0_AdderCarry2 V0_AdderCarry1 J0_AEnableAccumWrite \
+J0_AEnableSZFlags J0_AFControl1 J0_AFControl3 J0_AFlagMod0 J0_AFlagMod1 \
+J0_AShiftRight J0_DAddressMux0 J0_DAddressMux1 J0_DDecrement J0_DEnableIncDec \
+J0_DPost J0_DataDBSel0 J0_DataDBSel1 J0_PAddBSel0 J0_PAddBSel1 J0_PAddBSel2 \
+J0_PHoldPC J0_WR J1_IR15.C J1_IR14.C J1_IR13.C J1_IR12.C J1_IR11.C J1_IR10.C \
+J1_IR9.C J1_IR8.C J1_IR7.C J1_IR6.C J1_IR5.C J1_IR4.C J1_IR3.C J1_IR2.C \
+J1_IR1.C J1_IR0.C J1_FSM3.C J1_FSM2.C J1_FSM1.C J1_FSM0.C J1_Popf J1_TSATXA \
+J1_Load J1_LogicOp J1_LeftShift J1_LDI J1_Call J1_Rts DataAB7.X1 DataAB7.X2 \
+DataAB6.X1 DataAB6.X2 DataAB5.X1 DataAB5.X2 DataAB4.X1 DataAB4.X2 DataAB3.X1 \
+DataAB3.X2 DataAB2.X1 DataAB2.X2 DataAB1.X1 DataAB1.X2 X0_Data0.X1 X0_Data0.X2 \
+X0_Data1.X1 X0_Data1.X2 X0_Data2.X1 X0_Data2.X2 X0_Data3.X1 X0_Data3.X2 \
+X0_Data4.X1 X0_Data4.X2 X0_Data5.X1 X0_Data5.X2 X0_Data6.X1 X0_Data6.X2 \
+J0_ALUDSel0.X1 J0_ALUDSel0.X2 J0_RD.X1 J0_RD.X2 X1_Carry8.X1 X1_Carry8.X2 \
+X1_Carry7.X1 X1_Carry7.X2 X1_Carry5.X1 X1_Carry5.X2 X1_Carry4.X1 X1_Carry4.X2 \
+X1_Carry2.X1 X1_Carry2.X2 X1_Carry1.X1 X1_Carry1.X2 X1_NewAccum5.X1 \
+X1_NewAccum5.X2 X1_NewAccum4.X1 X1_NewAccum4.X2 X1_NewAccum3.X1 \
+X1_NewAccum3.X2 X1_NewAccum1.X1 X1_NewAccum1.X2 X1_NewAccum0.X1 \
+X1_NewAccum0.X2 P0_Carry11.X1 P0_Carry11.X2 P0_Carry9.X1 P0_Carry9.X2 \
+P0_Carry8.X1 P0_Carry8.X2 P0_Carry6.X1 P0_Carry6.X2 P0_Carry5.X1 P0_Carry5.X2 \
+P0_Carry3.X1 P0_Carry3.X2 P0_Carry2.X1 P0_Carry2.X2 V0_IncDecOut7.X1 \
+V0_IncDecOut7.X2 V0_IncDecOut5.X1 V0_IncDecOut5.X2 V0_IncDecOut3.X1 \
+V0_IncDecOut3.X2 V0_IncDecOut1.X1 V0_IncDecOut1.X2 V0_IncDecCarry5.X1 \
+V0_IncDecCarry5.X2 V0_IncDecCarry3.X1 V0_IncDecCarry3.X2 V0_IncDecCarry1.X1 \
+V0_IncDecCarry1.X2 J1_ConditionalJump.X1 J1_ConditionalJump.X2 Accum0.D \
+Accum1.D Accum2.D Accum3.D Accum4.D Accum5.D Accum6.D Accum7.D Flags0.D \
+Flags1.D Flags2.D Flags3.D Flags4.D Flags5.D Flags6.D Flags7.D ProgramAB0.D \
+ProgramAB1.D ProgramAB10.D ProgramAB11.D ProgramAB12.D ProgramAB2.D \
+ProgramAB3.D ProgramAB4.D ProgramAB5.D ProgramAB6.D ProgramAB7.D ProgramAB8.D \
+ProgramAB9.D SReg0.D SReg1.D SReg2.D SReg3.D SReg4.D SReg5.D SReg6.D SReg7.D \
+XReg0.D XReg1.D XReg2.D XReg3.D XReg4.D XReg5.D XReg6.D XReg7.D J1_IR15.D \
+J1_IR14.D J1_IR13.D J1_IR12.D J1_IR11.D J1_IR10.D J1_IR9.D J1_IR8.D J1_IR7.D \
+J1_IR6.D J1_IR5.D J1_IR4.D J1_IR3.D J1_IR2.D J1_IR1.D J1_IR0.D J1_FSM3.D \
+J1_FSM2.D J1_FSM1.D J1_FSM0.D
+.names Accum7.Q Flags7.Q J0_DataDBSel1.BLIF J0_DataDBSel0.BLIF ProgramAB7.Q \
+DataDB7
+-101- 1
+1-00- 1
+--101 1
+0-00- 0
+-0-1- 0
+--11- 0
+--1-0 0
+.names Accum6.Q Flags6.Q J0_DataDBSel1.BLIF J0_DataDBSel0.BLIF ProgramAB6.Q \
+DataDB6
+-101- 1
+1-00- 1
+--101 1
+0-00- 0
+-0-1- 0
+--11- 0
+--1-0 0
+.names Accum5.Q Flags5.Q J0_DataDBSel1.BLIF J0_DataDBSel0.BLIF ProgramAB5.Q \
+DataDB5
+-101- 1
+1-00- 1
+--101 1
+0-00- 0
+-0-1- 0
+--11- 0
+--1-0 0
+.names Accum4.Q Flags4.Q J0_DataDBSel1.BLIF J0_DataDBSel0.BLIF ProgramAB4.Q \
+ProgramAB12.Q DataDB4
+--101- 1
+-101-- 1
+1-00-- 1
+--11-1 1
+--100- 0
+-001-- 0
+0-00-- 0
+--11-0 0
+.names Accum3.Q Flags3.Q J0_DataDBSel1.BLIF J0_DataDBSel0.BLIF ProgramAB3.Q \
+ProgramAB11.Q DataDB3
+--101- 1
+-101-- 1
+1-00-- 1
+--11-1 1
+--100- 0
+-001-- 0
+0-00-- 0
+--11-0 0
+.names Accum2.Q Flags2.Q J0_DataDBSel1.BLIF J0_DataDBSel0.BLIF ProgramAB2.Q \
+ProgramAB10.Q DataDB2
+--101- 1
+-101-- 1
+1-00-- 1
+--11-1 1
+--100- 0
+-001-- 0
+0-00-- 0
+--11-0 0
+.names Accum1.Q Flags1.Q J0_DataDBSel1.BLIF J0_DataDBSel0.BLIF ProgramAB1.Q \
+ProgramAB9.Q DataDB1
+--101- 1
+-101-- 1
+1-00-- 1
+--11-1 1
+--100- 0
+-001-- 0
+0-00-- 0
+--11-0 0
+.names Accum0.Q Flags0.Q J0_DataDBSel1.BLIF J0_DataDBSel0.BLIF ProgramAB0.Q \
+ProgramAB8.Q DataDB0
+--101- 1
+-101-- 1
+1-00-- 1
+--11-1 1
+--100- 0
+-001-- 0
+0-00-- 0
+--11-0 0
+.names V0_AddendA0.BLIF J1_IR0.Q J1_Call.BLIF DataAB0
+010 1
+10- 1
+1-1 1
+110 0
+00- 0
+0-1 0
+.names Reset.BLIF J1_IR15.Q J1_IR14.Q J1_IR12.Q J1_IR11.Q J1_IR10.Q J1_IR9.Q \
+J1_IR8.Q IO
+01010000 1
+------1- 0
+-----1-- 0
+----1--- 0
+---0---- 0
+--1----- 0
+-0------ 0
+1------- 0
+-------1 0
+.names J0_ALUDSel0.BLIF DataDB7.BLIF SReg7.Q XReg7.Q J1_IR7.Q J1_TSATXA.BLIF \
+X0_Data7
+1---10 1
+01---0 1
+1--1-1 1
+0-1--1 1
+1---00 0
+00---0 0
+1--0-1 0
+0-0--1 0
+.names ProgramAB12.OE
+ 1
+.names ProgramAB11.OE
+ 1
+.names ProgramAB10.OE
+ 1
+.names ProgramAB9.OE
+ 1
+.names ProgramAB8.OE
+ 1
+.names ProgramAB7.OE
+ 1
+.names ProgramAB6.OE
+ 1
+.names ProgramAB5.OE
+ 1
+.names ProgramAB4.OE
+ 1
+.names ProgramAB3.OE
+ 1
+.names ProgramAB2.OE
+ 1
+.names ProgramAB1.OE
+ 1
+.names ProgramAB0.OE
+ 1
+.names DataAB7.OE
+ 1
+.names DataAB6.OE
+ 1
+.names DataAB5.OE
+ 1
+.names DataAB4.OE
+ 1
+.names DataAB3.OE
+ 1
+.names DataAB2.OE
+ 1
+.names DataAB1.OE
+ 1
+.names DataAB0.OE
+ 1
+.names RD.OE
+ 1
+.names WR.OE
+ 1
+.names IO.OE
+ 1
+.names Accum7.OE
+ 1
+.names Accum6.OE
+ 1
+.names Accum5.OE
+ 1
+.names Accum4.OE
+ 1
+.names Accum3.OE
+ 1
+.names Accum2.OE
+ 1
+.names Accum1.OE
+ 1
+.names Accum0.OE
+ 1
+.names Flags7.OE
+ 1
+.names Flags6.OE
+ 1
+.names Flags5.OE
+ 1
+.names Flags4.OE
+ 1
+.names Flags3.OE
+ 1
+.names Flags2.OE
+ 1
+.names Flags1.OE
+ 1
+.names Flags0.OE
+ 1
+.names XReg7.OE
+ 1
+.names XReg6.OE
+ 1
+.names XReg5.OE
+ 1
+.names XReg4.OE
+ 1
+.names XReg3.OE
+ 1
+.names XReg2.OE
+ 1
+.names XReg1.OE
+ 1
+.names XReg0.OE
+ 1
+.names SReg7.OE
+ 1
+.names SReg6.OE
+ 1
+.names SReg5.OE
+ 1
+.names SReg4.OE
+ 1
+.names SReg3.OE
+ 1
+.names SReg2.OE
+ 1
+.names SReg1.OE
+ 1
+.names SReg0.OE
+ 1
+.names J0_AFControl3.BLIF J0_AFControl1.BLIF Accum7.Q X0_Data7.BLIF J1_IR14.Q \
+J1_IR12.Q J1_Load.BLIF J1_LeftShift.BLIF X1_FOutput7
+--10-10- 1
+1-00---- 1
+-101---- 1
+--11--1- 1
+--111--- 1
+--1----1 1
+--110-00 0
+-001---- 0
+0-00---- 0
+--10--10 0
+--10-0-0 0
+.names J0_AFControl3.BLIF J0_AFControl1.BLIF Accum6.Q X0_Data6.BLIF J1_IR14.Q \
+J1_IR12.Q J1_Load.BLIF J1_LeftShift.BLIF X1_FOutput6
+--10-10- 1
+1-00---- 1
+-101---- 1
+--11--1- 1
+--111--- 1
+--1----1 1
+--110-00 0
+-001---- 0
+0-00---- 0
+--10--10 0
+--10-0-0 0
+.names J0_AFControl3.BLIF J0_AFControl1.BLIF Accum5.Q X0_Data5.BLIF J1_IR14.Q \
+J1_IR12.Q J1_Load.BLIF J1_LeftShift.BLIF X1_FOutput5
+--10-10- 1
+1-00---- 1
+-101---- 1
+--11--1- 1
+--111--- 1
+--1----1 1
+--110-00 0
+-001---- 0
+0-00---- 0
+--10--10 0
+--10-0-0 0
+.names J0_AFControl3.BLIF J0_AFControl1.BLIF Accum4.Q X0_Data4.BLIF J1_IR14.Q \
+J1_IR12.Q J1_Load.BLIF J1_LeftShift.BLIF X1_FOutput4
+--10-10- 1
+1-00---- 1
+-101---- 1
+--11--1- 1
+--111--- 1
+--1----1 1
+--110-00 0
+-001---- 0
+0-00---- 0
+--10--10 0
+--10-0-0 0
+.names J0_AFControl3.BLIF J0_AFControl1.BLIF Accum3.Q X0_Data3.BLIF J1_IR14.Q \
+J1_IR12.Q J1_Load.BLIF J1_LeftShift.BLIF X1_FOutput3
+--10-10- 1
+1-00---- 1
+-101---- 1
+--11--1- 1
+--111--- 1
+--1----1 1
+--110-00 0
+-001---- 0
+0-00---- 0
+--10--10 0
+--10-0-0 0
+.names J0_AFControl3.BLIF J0_AFControl1.BLIF Accum2.Q X0_Data2.BLIF J1_IR14.Q \
+J1_IR12.Q J1_Load.BLIF J1_LeftShift.BLIF X1_FOutput2
+--10-10- 1
+1-00---- 1
+-101---- 1
+--11--1- 1
+--111--- 1
+--1----1 1
+--110-00 0
+-001---- 0
+0-00---- 0
+--10--10 0
+--10-0-0 0
+.names J0_AFControl3.BLIF J0_AFControl1.BLIF Accum1.Q X0_Data1.BLIF J1_IR14.Q \
+J1_IR12.Q J1_Load.BLIF J1_LeftShift.BLIF X1_FOutput1
+--10-10- 1
+1-00---- 1
+-101---- 1
+--11--1- 1
+--111--- 1
+--1----1 1
+--110-00 0
+-001---- 0
+0-00---- 0
+--10--10 0
+--10-0-0 0
+.names J0_AFControl3.BLIF J0_AFControl1.BLIF Accum0.Q X0_Data0.BLIF J1_IR14.Q \
+J1_IR12.Q J1_Load.BLIF J1_LeftShift.BLIF X1_FOutput0
+--10-10- 1
+1-00---- 1
+-101---- 1
+--11--1- 1
+--111--- 1
+--1----1 1
+--110-00 0
+-001---- 0
+0-00---- 0
+--10--10 0
+--10-0-0 0
+.names Accum7.Q Flags3.Q J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q J1_IR11.Q \
+J1_IR10.Q J1_IR9.Q J1_IR8.Q X1_Carry0
+--00-100-- 1
+1-0-010010 1
+-10-010000 1
+-10-1000-- 1
+--0001-1-- 1
+-00001---- 1
+--00100--- 1
+--00--0000 1
+0--10---1- 0
+-0-11----- 0
+---10----1 0
+-1----10-- 0
+----00--1- 0
+----11-1-- 0
+----00-1-- 0
+-0-1----0- 0
+---111---- 0
+---100---- 0
+----00---1 0
+-----01--- 0
+----1-1--- 0
+---1---1-- 0
+---1--1--- 0
+--1------- 0
+.names Accum7.Q J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q J1_TSATXA.BLIF \
+J1_Load.BLIF J1_LogicOp.BLIF X1_MaskAccum7
+1---1000 1
+1--0-000 1
+1-1--000 1
+11---000 1
+-0010--- 0
+------1- 0
+-----1-- 0
+0------- 0
+-------1 0
+.names Accum6.Q J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q J1_TSATXA.BLIF \
+J1_Load.BLIF J1_LogicOp.BLIF X1_MaskAccum6
+1---1000 1
+1--0-000 1
+1-1--000 1
+11---000 1
+-0010--- 0
+------1- 0
+-----1-- 0
+0------- 0
+-------1 0
+.names Accum5.Q J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q J1_TSATXA.BLIF \
+J1_Load.BLIF J1_LogicOp.BLIF X1_MaskAccum5
+1---1000 1
+1--0-000 1
+1-1--000 1
+11---000 1
+-0010--- 0
+------1- 0
+-----1-- 0
+0------- 0
+-------1 0
+.names Accum4.Q J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q J1_TSATXA.BLIF \
+J1_Load.BLIF J1_LogicOp.BLIF X1_MaskAccum4
+1---1000 1
+1--0-000 1
+1-1--000 1
+11---000 1
+-0010--- 0
+------1- 0
+-----1-- 0
+0------- 0
+-------1 0
+.names Accum3.Q J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q J1_TSATXA.BLIF \
+J1_Load.BLIF J1_LogicOp.BLIF X1_MaskAccum3
+1---1000 1
+1--0-000 1
+1-1--000 1
+11---000 1
+-0010--- 0
+------1- 0
+-----1-- 0
+0------- 0
+-------1 0
+.names Accum2.Q J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q J1_TSATXA.BLIF \
+J1_Load.BLIF J1_LogicOp.BLIF X1_MaskAccum2
+1---1000 1
+1--0-000 1
+1-1--000 1
+11---000 1
+-0010--- 0
+------1- 0
+-----1-- 0
+0------- 0
+-------1 0
+.names Accum1.Q J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q J1_TSATXA.BLIF \
+J1_Load.BLIF J1_LogicOp.BLIF X1_MaskAccum1
+1---1000 1
+1--0-000 1
+1-1--000 1
+11---000 1
+-0010--- 0
+------1- 0
+-----1-- 0
+0------- 0
+-------1 0
+.names Accum0.Q J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q J1_IR11.Q J1_IR10.Q \
+J1_IR9.Q J1_IR8.Q X1_MaskAccum0
+11---1-00 1
+11---1-11 1
+1--111--- 1
+1--11-0-- 1
+10-01---- 1
+1-110--0- 1
+1-11-1--- 1
+1000----- 1
+1-110---0 1
+1-11--0-- 1
+11-1----- 1
+111------ 1
+-0-1-0111 0
+-0-1101-- 0
+-100---10 0
+-100---01 0
+-0100---- 0
+-100-0--- 0
+-0010---- 0
+0-------- 0
+.names P0_AddendA4.BLIF P0_AddendB4.BLIF P0_Carry3.BLIF P0_Carry4
+11- 1
+1-1 1
+-11 1
+00- 0
+-00 0
+0-0 0
+.names P0_AddendA1.BLIF P0_AddendA0.BLIF P0_AddendB1.BLIF P0_AddendB0.BLIF \
+P0_Carry1
+11-1 1
+-111 1
+1-1- 1
+-00- 0
+00-- 0
+0-0- 0
+--00 0
+0--0 0
+.names ProgramAB12.Q J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_FSM3.Q J1_FSM2.Q \
+J1_FSM1.Q J1_FSM0.Q J1_Rts.BLIF P0_AddendA12
+1--11-0-- 1
+1-0-1-0-- 1
+10--1-0-- 1
+1--1---1- 1
+1-0----1- 1
+10-----1- 1
+1--1--0-0 1
+1-0---0-0 1
+10----0-0 1
+1--1-1--- 1
+1-0--1--- 1
+10---1--- 1
+-110----- 0
+-----010- 0
+----00-01 0
+0-------- 0
+.names ProgramAB11.Q J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_FSM3.Q J1_FSM2.Q \
+J1_FSM1.Q J1_FSM0.Q J1_Rts.BLIF P0_AddendA11
+1--11-0-- 1
+1-0-1-0-- 1
+10--1-0-- 1
+1--1---1- 1
+1-0----1- 1
+10-----1- 1
+1--1--0-0 1
+1-0---0-0 1
+10----0-0 1
+1--1-1--- 1
+1-0--1--- 1
+10---1--- 1
+-110----- 0
+-----010- 0
+----00-01 0
+0-------- 0
+.names ProgramAB10.Q J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_FSM3.Q J1_FSM2.Q \
+J1_FSM1.Q J1_FSM0.Q J1_Rts.BLIF P0_AddendA10
+1--11-0-- 1
+1-0-1-0-- 1
+10--1-0-- 1
+1--1---1- 1
+1-0----1- 1
+10-----1- 1
+1--1--0-0 1
+1-0---0-0 1
+10----0-0 1
+1--1-1--- 1
+1-0--1--- 1
+10---1--- 1
+-110----- 0
+-----010- 0
+----00-01 0
+0-------- 0
+.names ProgramAB9.Q J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_FSM3.Q J1_FSM2.Q \
+J1_FSM1.Q J1_FSM0.Q J1_Rts.BLIF P0_AddendA9
+1--11-0-- 1
+1-0-1-0-- 1
+10--1-0-- 1
+1--1---1- 1
+1-0----1- 1
+10-----1- 1
+1--1--0-0 1
+1-0---0-0 1
+10----0-0 1
+1--1-1--- 1
+1-0--1--- 1
+10---1--- 1
+-110----- 0
+-----010- 0
+----00-01 0
+0-------- 0
+.names ProgramAB8.Q J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_FSM3.Q J1_FSM2.Q \
+J1_FSM1.Q J1_FSM0.Q J1_Rts.BLIF P0_AddendA8
+1--11-0-- 1
+1-0-1-0-- 1
+10--1-0-- 1
+1--1---1- 1
+1-0----1- 1
+10-----1- 1
+1--1--0-0 1
+1-0---0-0 1
+10----0-0 1
+1--1-1--- 1
+1-0--1--- 1
+10---1--- 1
+-110----- 0
+-----010- 0
+----00-01 0
+0-------- 0
+.names ProgramAB7.Q J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_FSM3.Q J1_FSM2.Q \
+J1_FSM1.Q J1_FSM0.Q J1_Rts.BLIF P0_AddendA7
+1--11-0-- 1
+1-0-1-0-- 1
+10--1-0-- 1
+1--1---1- 1
+1-0----1- 1
+10-----1- 1
+1--1--0-0 1
+1-0---0-0 1
+10----0-0 1
+1--1-1--- 1
+1-0--1--- 1
+10---1--- 1
+-110----- 0
+-----010- 0
+----00-01 0
+0-------- 0
+.names ProgramAB6.Q J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_FSM3.Q J1_FSM2.Q \
+J1_FSM1.Q J1_FSM0.Q J1_Rts.BLIF P0_AddendA6
+1--11-0-- 1
+1-0-1-0-- 1
+10--1-0-- 1
+1--1---1- 1
+1-0----1- 1
+10-----1- 1
+1--1--0-0 1
+1-0---0-0 1
+10----0-0 1
+1--1-1--- 1
+1-0--1--- 1
+10---1--- 1
+-110----- 0
+-----010- 0
+----00-01 0
+0-------- 0
+.names ProgramAB5.Q J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_FSM3.Q J1_FSM2.Q \
+J1_FSM1.Q J1_FSM0.Q J1_Rts.BLIF P0_AddendA5
+1--11-0-- 1
+1-0-1-0-- 1
+10--1-0-- 1
+1--1---1- 1
+1-0----1- 1
+10-----1- 1
+1--1--0-0 1
+1-0---0-0 1
+10----0-0 1
+1--1-1--- 1
+1-0--1--- 1
+10---1--- 1
+-110----- 0
+-----010- 0
+----00-01 0
+0-------- 0
+.names ProgramAB4.Q J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_FSM3.Q J1_FSM2.Q \
+J1_FSM1.Q J1_FSM0.Q J1_Rts.BLIF P0_AddendA4
+1--11-0-- 1
+1-0-1-0-- 1
+10--1-0-- 1
+1--1---1- 1
+1-0----1- 1
+10-----1- 1
+1--1--0-0 1
+1-0---0-0 1
+10----0-0 1
+1--1-1--- 1
+1-0--1--- 1
+10---1--- 1
+-110----- 0
+-----010- 0
+----00-01 0
+0-------- 0
+.names ProgramAB3.Q J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q J1_IR11.Q \
+J1_IR10.Q J1_IR9.Q J1_IR8.Q J1_IR7.Q J1_FSM3.Q J1_FSM2.Q J1_FSM1.Q J1_FSM0.Q \
+P0_AddendA3
+1-0-0-------0- 1
+1-0--0------0- 1
+1-0---0-----0- 1
+1-0----0----0- 1
+1-0-----0---0- 1
+1-0------1--0- 1
+1-0-------1-0- 1
+110---------0- 1
+101---------0- 1
+1--1-------1-- 1
+1--1---------1 1
+1-0--------1-- 1
+10---------1-- 1
+1-0----------1 1
+10-----------1 1
+1--1--------0- 1
+-00011111000-0 0
+-110---------- 0
+-----------010 0
+0------------- 0
+.names ProgramAB2.Q J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q J1_IR11.Q \
+J1_IR10.Q J1_IR9.Q J1_IR8.Q J1_IR7.Q J1_FSM3.Q J1_FSM2.Q J1_FSM1.Q J1_FSM0.Q \
+P0_AddendA2
+1-0-0-------0- 1
+1-0--0------0- 1
+1-0---0-----0- 1
+1-0----0----0- 1
+1-0-----0---0- 1
+1-0------1--0- 1
+1-0-------1-0- 1
+110---------0- 1
+101---------0- 1
+1--1-------1-- 1
+1--1---------1 1
+1-0--------1-- 1
+10---------1-- 1
+1-0----------1 1
+10-----------1 1
+1--1--------0- 1
+-00011111000-0 0
+-110---------- 0
+-----------010 0
+0------------- 0
+.names ProgramAB1.Q J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q J1_IR11.Q \
+J1_IR10.Q J1_IR9.Q J1_IR8.Q J1_IR7.Q J1_FSM3.Q J1_FSM2.Q J1_FSM1.Q J1_FSM0.Q \
+P0_AddendA1
+1-0-0-------0- 1
+1-0--0------0- 1
+1-0---0-----0- 1
+1-0----0----0- 1
+1-0-----0---0- 1
+1-0------1--0- 1
+1-0-------1-0- 1
+110---------0- 1
+101---------0- 1
+1--1-------1-- 1
+1--1---------1 1
+1-0--------1-- 1
+10---------1-- 1
+1-0----------1 1
+10-----------1 1
+1--1--------0- 1
+-00011111000-0 0
+-110---------- 0
+-----------010 0
+0------------- 0
+.names ProgramAB0.Q J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q J1_IR11.Q \
+J1_IR10.Q J1_IR9.Q J1_IR8.Q J1_IR7.Q J1_FSM3.Q J1_FSM2.Q J1_FSM1.Q J1_FSM0.Q \
+P0_AddendA0
+1-0-0-------0- 1
+1-0--0------0- 1
+1-0---0-----0- 1
+1-0----0----0- 1
+1-0-----0---0- 1
+1-0------1--0- 1
+1-0-------1-0- 1
+110---------0- 1
+101---------0- 1
+1--1-------1-- 1
+1--1---------1 1
+1-0--------1-- 1
+10---------1-- 1
+1-0----------1 1
+10-----------1 1
+1--1--------0- 1
+-00011111000-0 0
+-110---------- 0
+-----------010 0
+0------------- 0
+.names DataDB7.BLIF DataDB4.BLIF J0_PAddBSel2.BLIF J0_PAddBSel1.BLIF \
+J0_PAddBSel0.BLIF J1_IR12.Q J1_IR7.Q J1_IR4.Q J1_Rts.BLIF P0_AddendB12
+--010--10 1
+-1010---1 1
+--0111--- 1
+--1---1-0 1
+1-1-----1 1
+--0-0--00 0
+-00-0---1 0
+--0-10--- 0
+--1---0-0 0
+0-1-----1 0
+--00----- 0
+.names DataDB7.BLIF DataDB3.BLIF J0_PAddBSel2.BLIF J0_PAddBSel1.BLIF \
+J0_PAddBSel0.BLIF J1_IR11.Q J1_IR7.Q J1_IR3.Q J1_Rts.BLIF P0_AddendB11
+--010--10 1
+-1010---1 1
+--0111--- 1
+--1---1-0 1
+1-1-----1 1
+--0-0--00 0
+-00-0---1 0
+--0-10--- 0
+--1---0-0 0
+0-1-----1 0
+--00----- 0
+.names DataDB7.BLIF DataDB2.BLIF J0_PAddBSel2.BLIF J0_PAddBSel1.BLIF \
+J0_PAddBSel0.BLIF J1_IR10.Q J1_IR7.Q J1_IR2.Q J1_Rts.BLIF P0_AddendB10
+--010--10 1
+-1010---1 1
+--0111--- 1
+--1---1-0 1
+1-1-----1 1
+--0-0--00 0
+-00-0---1 0
+--0-10--- 0
+--1---0-0 0
+0-1-----1 0
+--00----- 0
+.names DataDB7.BLIF DataDB1.BLIF J0_PAddBSel2.BLIF J0_PAddBSel1.BLIF \
+J0_PAddBSel0.BLIF J1_IR9.Q J1_IR7.Q J1_IR1.Q J1_Rts.BLIF P0_AddendB9
+--010--10 1
+-1010---1 1
+--0111--- 1
+--1---1-0 1
+1-1-----1 1
+--0-0--00 0
+-00-0---1 0
+--0-10--- 0
+--1---0-0 0
+0-1-----1 0
+--00----- 0
+.names DataDB7.BLIF DataDB0.BLIF J0_PAddBSel2.BLIF J0_PAddBSel1.BLIF \
+J0_PAddBSel0.BLIF J1_IR8.Q J1_IR7.Q J1_IR0.Q J1_Rts.BLIF P0_AddendB8
+--010--10 1
+-1010---1 1
+--0111--- 1
+--1---1-0 1
+1-1-----1 1
+--0-0--00 0
+-00-0---1 0
+--0-10--- 0
+--1---0-0 0
+0-1-----1 0
+--00----- 0
+.names DataDB7.BLIF J0_PAddBSel2.BLIF J0_PAddBSel1.BLIF J0_PAddBSel0.BLIF \
+J1_IR7.Q J1_Rts.BLIF P0_AddendB7
+1-01-1 1
+---110 1
+-0111- 1
+11---1 1
+-1--10 1
+-01-0- 0
+-0-0-- 0
+0-0--1 0
+01---1 0
+----00 0
+.names DataDB6.BLIF J0_PAddBSel2.BLIF J0_PAddBSel1.BLIF J0_PAddBSel0.BLIF \
+J1_IR6.Q J1_Rts.BLIF P0_AddendB6
+1-01-1 1
+---110 1
+-0111- 1
+11---1 1
+-1--10 1
+-01-0- 0
+-0-0-- 0
+0-0--1 0
+01---1 0
+----00 0
+.names DataDB5.BLIF J0_PAddBSel2.BLIF J0_PAddBSel1.BLIF J0_PAddBSel0.BLIF \
+J1_IR5.Q J1_Rts.BLIF P0_AddendB5
+1-01-1 1
+---110 1
+-0111- 1
+11---1 1
+-1--10 1
+-01-0- 0
+-0-0-- 0
+0-0--1 0
+01---1 0
+----00 0
+.names DataDB4.BLIF J0_PAddBSel2.BLIF J0_PAddBSel1.BLIF J0_PAddBSel0.BLIF \
+J1_IR4.Q J1_Rts.BLIF P0_AddendB4
+1-01-1 1
+---110 1
+-0111- 1
+11---1 1
+-1--10 1
+-01-0- 0
+-0-0-- 0
+0-0--1 0
+01---1 0
+----00 0
+.names DataDB3.BLIF J0_PAddBSel1.BLIF J0_PAddBSel0.BLIF J1_IR15.Q J1_IR14.Q \
+J1_IR11.Q J1_IR9.Q J1_IR8.Q J1_IR3.Q J1_Rts.BLIF J1_ConditionalJump.BLIF \
+P0_AddendB3
+1--10100-11 1
+1--10111-11 1
+---10100101 1
+---10111101 1
+101------1- 1
+-11---101-- 1
+-11---011-- 1
+-11--0--1-- 1
+-11-1---1-- 1
+-110----1-- 1
+--1-----10- 1
+-11-----1-0 1
+0--10100-11 0
+0--10111-11 0
+00-------1- 0
+-1----100-- 0
+-1----010-- 0
+--0---10--- 0
+--0---01--- 0
+-1---0--0-- 0
+-1--1---0-- 0
+-1-0----0-- 0
+--------00- 0
+-1------0-0 0
+--0--0----- 0
+--0-1------ 0
+--00------- 0
+--0-------0 0
+.names DataDB2.BLIF J0_PAddBSel1.BLIF J0_PAddBSel0.BLIF J1_IR15.Q J1_IR14.Q \
+J1_IR11.Q J1_IR9.Q J1_IR8.Q J1_IR2.Q J1_Rts.BLIF J1_ConditionalJump.BLIF \
+P0_AddendB2
+1--10100-11 1
+1--10111-11 1
+---10100101 1
+---10111101 1
+101------1- 1
+-11---101-- 1
+-11---011-- 1
+-11--0--1-- 1
+-11-1---1-- 1
+-110----1-- 1
+--1-----10- 1
+-11-----1-0 1
+0--10100-11 0
+0--10111-11 0
+00-------1- 0
+-1----100-- 0
+-1----010-- 0
+--0---10--- 0
+--0---01--- 0
+-1---0--0-- 0
+-1--1---0-- 0
+-1-0----0-- 0
+--------00- 0
+-1------0-0 0
+--0--0----- 0
+--0-1------ 0
+--00------- 0
+--0-------0 0
+.names DataDB1.BLIF J0_PAddBSel1.BLIF J0_PAddBSel0.BLIF J1_IR15.Q J1_IR14.Q \
+J1_IR11.Q J1_IR9.Q J1_IR8.Q J1_IR1.Q J1_Rts.BLIF J1_ConditionalJump.BLIF \
+P0_AddendB1
+1--10100-11 1
+1--10111-11 1
+---10100101 1
+---10111101 1
+101------1- 1
+-11---101-- 1
+-11---011-- 1
+-11--0--1-- 1
+-11-1---1-- 1
+-110----1-- 1
+--1-----10- 1
+-11-----1-0 1
+0--10100-11 0
+0--10111-11 0
+00-------1- 0
+-1----100-- 0
+-1----010-- 0
+--0---10--- 0
+--0---01--- 0
+-1---0--0-- 0
+-1--1---0-- 0
+-1-0----0-- 0
+--------00- 0
+-1------0-0 0
+--0--0----- 0
+--0-1------ 0
+--00------- 0
+--0-------0 0
+.names DataDB0.BLIF J0_PAddBSel1.BLIF J0_PAddBSel0.BLIF J1_IR15.Q J1_IR14.Q \
+J1_IR11.Q J1_IR9.Q J1_IR8.Q J1_IR0.Q J1_Rts.BLIF J1_ConditionalJump.BLIF \
+P0_AddendB0
+-0------10- 1
+1--10100-11 1
+1--10111-11 1
+---10100101 1
+---10111101 1
+-11---101-- 1
+-11---011-- 1
+-11--0--1-- 1
+-11-1---1-- 1
+-110----1-- 1
+-00---10--- 1
+-00---01--- 1
+10-------1- 1
+-11-----1-0 1
+-00--0----- 1
+-00-1------ 1
+-000------- 1
+-00-------0 1
+0--10100-11 0
+0--10111-11 0
+---10100001 0
+---10111001 0
+001------1- 0
+--1-----00- 0
+-10---10--- 0
+-10---01--- 0
+-1----100-- 0
+-1----010-- 0
+-10--0----- 0
+-10-1------ 0
+-100------- 0
+-1---0--0-- 0
+-1--1---0-- 0
+-1-0----0-- 0
+-10-------0 0
+-1------0-0 0
+.names SReg7.Q XReg7.Q Accum7.Q J0_DAddressMux1.BLIF J0_DAddressMux0.BLIF \
+V0_AddrMuxOut7
+1--00 1
+-1-01 1
+--11- 1
+0--00 0
+-0-01 0
+--01- 0
+.names SReg6.Q XReg6.Q Accum6.Q J0_DAddressMux1.BLIF J0_DAddressMux0.BLIF \
+V0_AddrMuxOut6
+1--00 1
+-1-01 1
+--11- 1
+0--00 0
+-0-01 0
+--01- 0
+.names SReg5.Q XReg5.Q Accum5.Q J0_DAddressMux1.BLIF J0_DAddressMux0.BLIF \
+V0_AddrMuxOut5
+1--00 1
+-1-01 1
+--11- 1
+0--00 0
+-0-01 0
+--01- 0
+.names SReg4.Q XReg4.Q Accum4.Q J0_DAddressMux1.BLIF J0_DAddressMux0.BLIF \
+V0_AddrMuxOut4
+1--00 1
+-1-01 1
+--11- 1
+0--00 0
+-0-01 0
+--01- 0
+.names SReg3.Q XReg3.Q Accum3.Q J0_DAddressMux1.BLIF J0_DAddressMux0.BLIF \
+V0_AddrMuxOut3
+1--00 1
+-1-01 1
+--11- 1
+0--00 0
+-0-01 0
+--01- 0
+.names SReg2.Q XReg2.Q Accum2.Q J0_DAddressMux1.BLIF J0_DAddressMux0.BLIF \
+V0_AddrMuxOut2
+1--00 1
+-1-01 1
+--11- 1
+0--00 0
+-0-01 0
+--01- 0
+.names SReg1.Q XReg1.Q Accum1.Q J0_DAddressMux1.BLIF J0_DAddressMux0.BLIF \
+V0_AddrMuxOut1
+1--00 1
+-1-01 1
+--11- 1
+0--00 0
+-0-01 0
+--01- 0
+.names SReg0.Q XReg0.Q Accum0.Q J0_DAddressMux1.BLIF J0_DAddressMux0.BLIF \
+V0_AddrMuxOut0
+1--00 1
+-1-01 1
+--11- 1
+0--00 0
+-0-01 0
+--01- 0
+.names J0_DPost.BLIF V0_AddrMuxOut7.BLIF V0_IncDecOut7.BLIF J1_IR9.Q J1_IR8.Q \
+J1_Call.BLIF J1_Rts.BLIF V0_AddendA7
+0-1--1- 1
+11---1- 1
+0-1-1-- 1
+11--1-- 1
+0-11--- 1
+11-1--- 1
+0-1---1 1
+11----1 1
+---0000 0
+0-0---- 0
+10----- 0
+.names J0_DDecrement.BLIF J0_DPost.BLIF V0_AddrMuxOut6.BLIF \
+V0_IncDecCarry5.BLIF J1_IR9.Q J1_IR8.Q J1_Call.BLIF J1_Rts.BLIF V0_AddendA6
+1000--1- 1
+0001--1- 1
+1000-1-- 1
+0001-1-- 1
+10001--- 1
+00011--- 1
+0-10--1- 1
+1-11--1- 1
+0-10-1-- 1
+1-11-1-- 1
+0-101--- 1
+1-111--- 1
+1000---1 1
+0001---1 1
+0-10---1 1
+1-11---1 1
+-11---1- 1
+-11--1-- 1
+-11-1--- 1
+-11----1 1
+----0000 0
+1010---- 0
+0011---- 0
+0-00---- 0
+1-01---- 0
+-10----- 0
+.names J0_DPost.BLIF V0_AddrMuxOut5.BLIF V0_IncDecOut5.BLIF J1_IR9.Q J1_IR8.Q \
+J1_Call.BLIF J1_Rts.BLIF V0_AddendA5
+0-1--1- 1
+11---1- 1
+0-1-1-- 1
+11--1-- 1
+0-11--- 1
+11-1--- 1
+0-1---1 1
+11----1 1
+---0000 0
+0-0---- 0
+10----- 0
+.names J0_DDecrement.BLIF J0_DPost.BLIF V0_AddrMuxOut4.BLIF \
+V0_IncDecCarry3.BLIF J1_IR9.Q J1_IR8.Q J1_Call.BLIF J1_Rts.BLIF V0_AddendA4
+1000--1- 1
+0001--1- 1
+1000-1-- 1
+0001-1-- 1
+10001--- 1
+00011--- 1
+0-10--1- 1
+1-11--1- 1
+0-10-1-- 1
+1-11-1-- 1
+0-101--- 1
+1-111--- 1
+1000---1 1
+0001---1 1
+0-10---1 1
+1-11---1 1
+-11---1- 1
+-11--1-- 1
+-11-1--- 1
+-11----1 1
+----0000 0
+1010---- 0
+0011---- 0
+0-00---- 0
+1-01---- 0
+-10----- 0
+.names J0_DPost.BLIF V0_AddrMuxOut3.BLIF V0_IncDecOut3.BLIF J1_IR9.Q J1_IR8.Q \
+J1_Call.BLIF J1_Rts.BLIF V0_AddendA3
+0-1--1- 1
+11---1- 1
+0-1-1-- 1
+11--1-- 1
+0-11--- 1
+11-1--- 1
+0-1---1 1
+11----1 1
+---0000 0
+0-0---- 0
+10----- 0
+.names J0_DDecrement.BLIF J0_DPost.BLIF V0_AddrMuxOut2.BLIF \
+V0_IncDecCarry1.BLIF J1_IR9.Q J1_IR8.Q J1_Call.BLIF J1_Rts.BLIF V0_AddendA2
+1000--1- 1
+0001--1- 1
+1000-1-- 1
+0001-1-- 1
+10001--- 1
+00011--- 1
+0-10--1- 1
+1-11--1- 1
+0-10-1-- 1
+1-11-1-- 1
+0-101--- 1
+1-111--- 1
+1000---1 1
+0001---1 1
+0-10---1 1
+1-11---1 1
+-11---1- 1
+-11--1-- 1
+-11-1--- 1
+-11----1 1
+----0000 0
+1010---- 0
+0011---- 0
+0-00---- 0
+1-01---- 0
+-10----- 0
+.names J0_DPost.BLIF V0_AddrMuxOut1.BLIF V0_IncDecOut1.BLIF J1_IR9.Q J1_IR8.Q \
+J1_Call.BLIF J1_Rts.BLIF V0_AddendA1
+0-1--1- 1
+11---1- 1
+0-1-1-- 1
+11--1-- 1
+0-11--- 1
+11-1--- 1
+0-1---1 1
+11----1 1
+---0000 0
+0-0---- 0
+10----- 0
+.names J0_DEnableIncDec.BLIF J0_DPost.BLIF V0_AddrMuxOut0.BLIF J1_IR9.Q \
+J1_IR8.Q J1_Call.BLIF J1_Rts.BLIF V0_AddendA0
+100--1- 1
+100-1-- 1
+1001--- 1
+0-1--1- 1
+0-1-1-- 1
+0-11--- 1
+100---1 1
+0-1---1 1
+-11--1- 1
+-11-1-- 1
+-111--- 1
+-11---1 1
+---0000 0
+101---- 0
+-10---- 0
+0-0---- 0
+.names V0_AddendA5.BLIF V0_AdderCarry4.BLIF J1_IR5.Q J1_Call.BLIF \
+V0_AdderCarry5
+11-- 1
+-110 1
+1-10 1
+-00- 0
+0-0- 0
+00-- 0
+-0-1 0
+0--1 0
+.names V0_AddendA4.BLIF V0_AdderCarry3.BLIF J1_IR4.Q J1_Call.BLIF \
+V0_AdderCarry4
+11-- 1
+-110 1
+1-10 1
+-00- 0
+0-0- 0
+00-- 0
+-0-1 0
+0--1 0
+.names V0_AddendA3.BLIF V0_AdderCarry2.BLIF J1_IR3.Q J1_Call.BLIF \
+V0_AdderCarry3
+11-- 1
+-110 1
+1-10 1
+-00- 0
+0-0- 0
+00-- 0
+-0-1 0
+0--1 0
+.names V0_AddendA2.BLIF V0_AdderCarry1.BLIF J1_IR2.Q J1_Call.BLIF \
+V0_AdderCarry2
+11-- 1
+-110 1
+1-10 1
+-00- 0
+0-0- 0
+00-- 0
+-0-1 0
+0--1 0
+.names V0_AddendA1.BLIF V0_AddendA0.BLIF J1_IR1.Q J1_IR0.Q J1_Call.BLIF \
+V0_AdderCarry1
+-1110 1
+11-10 1
+1-1-0 1
+--00- 0
+0--0- 0
+-00-- 0
+00--- 0
+0-0-- 0
+----1 0
+.names J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q J1_IR11.Q J1_IR10.Q J1_IR9.Q \
+J1_IR8.Q J1_IR7.Q J1_Load.BLIF J1_Rts.BLIF J0_AEnableAccumWrite
+0--101----0 1
+00-1-1--0-0 1
+0-01-0----0 1
+001-1-----0 1
+0--1-10---0 1
+0--1-1-0--0 1
+00000000--- 1
+0101------0 1
+0-10------0 1
+01---0----0 1
+01--0-----0 1
+---------1- 1
+-1111111-0- 0
+-00-111110- 0
+-01100---0- 0
+--0011---0- 0
+-000---1-0- 0
+-000--1--0- 0
+-000-1---0- 0
+-0001----0- 0
+1--------0- 0
+-1-------01 0
+---1-----01 0
+--1------01 0
+.names J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q J1_IR11.Q J1_IR10.Q \
+J1_Load.BLIF J1_TSATXA.BLIF J0_AEnableAccumWrite.BLIF J0_AEnableSZFlags
+00110000- 1
+01001100- 1
+------001 1
+--0--0--0 0
+---1-1--0 0
+---00---0 0
+-0--1---0 0
+-11-----0 0
+-------1- 0
+------1-- 0
+1-------0 0
+.names J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q J1_IR11.Q J1_IR10.Q J1_IR9.Q \
+J1_IR8.Q J0_AFControl1
+10----10 1
+10----01 1
+10--0--- 1
+--1--1-- 1
+--1-1--- 1
+--10---- 1
+-11----- 1
+00-100-- 0
+--0-1-00 0
+--0-1-11 0
+-10----- 0
+0-0----- 0
+.names J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q J1_IR11.Q J1_IR10.Q J1_IR9.Q \
+J1_IR8.Q J0_AFControl3
+00-100-- 1
+01111011 1
+0010---- 1
+0001---- 1
+-1----0- 0
+-1-----0 0
+-0111--- 0
+--11-1-- 0
+--00---- 0
+-1--0--- 0
+-1-0---- 0
+-10----- 0
+1------- 0
+.names J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q J1_IR11.Q J1_IR10.Q J1_IR9.Q \
+J1_IR8.Q J1_IR2.Q J1_IR1.Q J1_IR0.Q J0_AFlagMod0
+---10------ 1
+--0-1------ 1
+-1-0------- 1
+-01-------- 1
+--------00- 1
+----------1 1
+-------0--- 1
+------0---- 1
+-----0----- 1
+1---------- 1
+00000111-10 0
+01111111-10 0
+000001111-0 0
+011111111-0 0
+.names J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q J1_IR11.Q J1_IR10.Q J1_IR9.Q \
+J1_IR8.Q J1_IR2.Q J1_IR1.Q J1_IR0.Q J0_AFlagMod1
+---10------ 1
+--0-1------ 1
+-1-0------- 1
+-01-------- 1
+--------0-0 1
+---------1- 1
+-------0--- 1
+------0---- 1
+-----0----- 1
+1---------- 1
+0000011110- 0
+0111111110- 0
+00000111-01 0
+01111111-01 0
+.names J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q J1_IR11.Q J1_IR10.Q J1_IR9.Q \
+J1_IR8.Q J0_AShiftRight
+01110001 1
+------1- 0
+-----1-- 0
+----1--- 0
+---0---- 0
+--0----- 0
+-0------ 0
+1------- 0
+-------0 0
+.names J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q J1_IR11.Q J1_IR10.Q J1_IR9.Q \
+J1_IR8.Q J1_IR7.Q J0_DAddressMux0
+0--10--1- 1
+0--01--1- 1
+01-----1- 1
+0-1----1- 1
+0-----01- 1
+0------11 1
+1-0--1--- 1
+10---1--- 1
+0----0-1- 1
+0000011-0 0
+0001111-0 0
+111------ 0
+0------0- 0
+1----0--- 0
+.names J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q J1_IR11.Q J1_IR10.Q J1_IR9.Q \
+J1_IR8.Q J1_IR2.Q J1_IR1.Q J1_IR0.Q J0_DAddressMux1
+00000111000 1
+---------1- 0
+--------1-- 0
+-------0--- 0
+------0---- 0
+-----0----- 0
+----1------ 0
+---1------- 0
+--1-------- 0
+-1--------- 0
+1---------- 0
+----------1 0
+.names J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q J1_IR11.Q J1_IR10.Q J1_IR9.Q \
+J1_IR8.Q J1_IR7.Q J0_DDecrement
+111------ 1
+----1--0- 1
+----1-0-- 1
+----10--- 1
+---01---- 1
+--1-1---- 1
+-1--1---- 1
+1---1---- 1
+----1---1 1
+0001-1110 0
+--0-0---- 0
+-0--0---- 0
+0---0---- 0
+.names J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q J1_IR11.Q J1_IR10.Q J1_IR9.Q \
+J1_IR8.Q J1_IR7.Q J1_FSM3.Q J1_FSM2.Q J1_FSM1.Q J1_FSM0.Q J0_DEnableIncDec
+00011111000-0 1
+0000--01----- 1
+-000--10----- 1
+10----10----- 1
+----------010 1
+-----------01 1
+---10--1---00 0
+---1-0-1---00 0
+---1---11--00 0
+---1---1-1-00 0
+1------1---11 0
+1------1--11- 0
+------00--1-0 0
+0-1-------1-0 0
+0--1------1-0 0
+------11--1-0 0
+-1--------1-0 0
+---0--11---00 0
+0--1---0---00 0
+------00---11 0
+0-1--------11 0
+0--1-------11 0
+------00---00 0
+------11---11 0
+0-1--------00 0
+---1--0----00 0
+1------1---00 0
+-1---------11 0
+-1---------00 0
+.names J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q J1_IR11.Q J1_IR10.Q J1_IR9.Q \
+J1_IR8.Q J1_IR6.Q J1_Popf.BLIF J1_Call.BLIF J1_Rts.BLIF J0_DPost
+--------110- 1
+-------1-10- 1
+------0--10- 1
+-----0---10- 1
+----0----10- 1
+--1------10- 1
+-1-------10- 1
+1--------10- 1
+---1------0- 1
+--------1-01 1
+-------1--01 1
+------0---01 1
+-----0----01 1
+----0-----01 1
+--1-------01 1
+-1--------01 1
+1---------01 1
+000011100--- 0
+---0-----0-0 0
+----------1- 0
+.names J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q J1_IR11.Q J1_IR10.Q J1_IR9.Q \
+J1_IR8.Q J1_IR6.Q J1_FSM2.Q J1_FSM1.Q J1_FSM0.Q J0_DataDBSel0
+000011100--- 1
+---------001 1
+--------1-1- 0
+-------1--1- 0
+------0---1- 0
+-----0----1- 0
+----0-----1- 0
+---1------1- 0
+--1-------1- 0
+-1--------1- 0
+1---------1- 0
+--------11-- 0
+-------1-1-- 0
+------0--1-- 0
+-----0---1-- 0
+----0----1-- 0
+---1-----1-- 0
+--1------1-- 0
+-1-------1-- 0
+1--------1-- 0
+--------1--0 0
+-------1---0 0
+------0----0 0
+-----0-----0 0
+----0------0 0
+---1-------0 0
+--1--------0 0
+-1---------0 0
+1----------0 0
+.names J1_FSM2.Q J1_FSM1.Q J1_FSM0.Q J0_DataDBSel1
+010 1
+001 1
+-00 0
+-11 0
+1-- 0
+.names Flags5.Q Flags3.Q Flags2.Q Flags1.Q Flags0.Q J1_IR15.Q J1_IR14.Q \
+J1_IR13.Q J1_IR12.Q J1_IR11.Q J1_IR10.Q J1_IR9.Q J1_IR8.Q J1_IR7.Q J1_FSM3.Q \
+J1_FSM2.Q J1_FSM1.Q J1_FSM0.Q J0_PAddBSel0
+--11-10-11011----- 1
+-0---1-001100----- 1
+0----10111100----- 1
+-----00011111000-0 1
+--00010101111----- 1
+--11010101-11----- 1
+-0--01-001-00----- 1
+--00-10111011----- 1
+--10-10-11000----- 1
+--01-101-1000----- 1
+--10-10101100----- 1
+--01-10101-00----- 1
+----11-011111----- 1
+1----10111111----- 1
+----11-001011----- 1
+----01-011100----- 1
+---1-1-011011----- 1
+---0-1-011000----- 1
+----110101100----- 1
+--1--10101011----- 1
+--0--10101000----- 1
+-1---1-001-11----- 1
+---------------010 1
+-----110---------- 1
+-----0-----0----0- 0
+--110--10--0----0- 0
+--10---10-11----0- 0
+--000--10-10----0- 0
+--01---10--1----0- 0
+----1-000-00----0- 0
+-0----000-1-1---0- 0
+---1--001-00----0- 0
+--110--10--0---1-- 0
+---0--001-01----0- 0
+--00---11-00----0- 0
+--10---10-11---1-- 0
+--000--10-10---1-- 0
+--01---10--1---1-- 0
+--0----10-01----0- 0
+--110--10--0-----1 0
+----1-000-00---1-- 0
+--10---10-11-----1 0
+--11--0-1-00----0- 0
+----0-001-11---1-- 0
+--000--10-10-----1 0
+--01---10--1-----1 0
+-0--0-000--1----0- 0
+-0----000-1-1--1-- 0
+--10--0-1-01----0- 0
+---1--001-00---1-- 0
+1------11-10----0- 0
+0------11-11----0- 0
+---0--001-01---1-- 0
+----1-001-10----0- 0
+--01---1--01----0- 0
+--00---11-00---1-- 0
+----1-000-00-----1 0
+--1----10-00----0- 0
+----0-001-11-----1 0
+--0----10-01---1-- 0
+----1--10-11----0- 0
+-0----000-1-1----1 0
+---1--001-00-----1 0
+---0--001-01-----1 0
+--00---11-00-----1 0
+-1----000--0----0- 0
+--11--0-1-00---1-- 0
+-0--0-000--1---1-- 0
+--0----10-01-----1 0
+--10--0-1-01---1-- 0
+1------11-10---1-- 0
+----1-001-10---1-- 0
+0------11-11---1-- 0
+--01---1--01---1-- 0
+--1----10-00---1-- 0
+--11--0-1-00-----1 0
+----1--10-11---1-- 0
+-0--0-000--1-----1 0
+--10--0-1-01-----1 0
+1------11-10-----1 0
+----1-001-10-----1 0
+0------11-11-----1 0
+--01---1--01-----1 0
+-1----000--0---1-- 0
+--1----10-00-----1 0
+----01001-11----0- 0
+----1--10-11-----1 0
+-1----000--0-----1 0
+------0----10---0- 0
+------0----01---0- 0
+------0----10--1-- 0
+------0----01--1-- 0
+------0----10----1 0
+------0----01----1 0
+-----0--------1-0- 0
+-----0-------1--0- 0
+-----01---------0- 0
+------0--0-----1-- 0
+------11-------1-- 0
+-----0----0-----0- 0
+------0--0------0- 0
+------11--------0- 0
+-----0--0-------0- 0
+-----0-1--------0- 0
+------0--0-------1 0
+------11---------1 0
+-----0---------1-- 0
+-----0-----------1 0
+.names Flags5.Q Flags3.Q Flags2.Q Flags1.Q Flags0.Q J1_IR15.Q J1_IR14.Q \
+J1_IR13.Q J1_IR12.Q J1_IR11.Q J1_IR10.Q J1_IR9.Q J1_IR8.Q J1_FSM2.Q J1_FSM1.Q \
+J1_FSM0.Q J0_PAddBSel1
+--11-101-1011--- 1
+-0---1-001100--- 1
+0----10111100--- 1
+--00010101111--- 1
+--11010101-11--- 1
+-0--01-001-00--- 1
+--00-10111011--- 1
+--10-10-11000--- 1
+--01-101-1000--- 1
+--10-10101100--- 1
+--01-10101-00--- 1
+----11-011111--- 1
+1----10111111--- 1
+----11-001011--- 1
+----01-011100--- 1
+---1-1-011011--- 1
+---0-1-011000--- 1
+----110101100--- 1
+--1--10101011--- 1
+--0--10101000--- 1
+-1---1-001-11--- 1
+-------------010 1
+-------------101 1
+-----110-------- 1
+--110--10--0-1-0 0
+--110--10--0--11 0
+--110--10--0-00- 0
+--000--10-10-1-0 0
+--01---10--1-1-0 0
+--000--10-10--11 0
+--01---10--1--11 0
+--000--10-10-00- 0
+--01---10--1-00- 0
+--10---10-11-1-0 0
+--10---10-11--11 0
+--10---10-11-00- 0
+----1-000-00-1-0 0
+----1-000-00--11 0
+----1-000-00-00- 0
+-0----000-1-1-00 0
+-0----000-1-10-1 0
+-0----000-1-111- 0
+--00---11-00-1-0 0
+--00---11-00--11 0
+--00---11-00-00- 0
+--10---11-0-11-0 0
+--10---11-0-1-11 0
+--10---11-0-100- 0
+--1----10-00-1-0 0
+--1----10-00--11 0
+--1----10-00-00- 0
+--0----10-01-1-0 0
+--0----10-01--11 0
+--0----10-01-00- 0
+---1--001-00-1-0 0
+----1-001-10-1-0 0
+-0--0-000--1-1-0 0
+---1--001-00--11 0
+----1-001-10--11 0
+-0--0-000--1--11 0
+---1--001-00-00- 0
+----1-001-10-00- 0
+-0--0-000--1-00- 0
+--11---1--00-1-0 0
+1------11-10-1-0 0
+--11---1--00--11 0
+1------11-10--11 0
+--11---1--00-00- 0
+1------11-10-00- 0
+---0--001-01-1-0 0
+----0-001-11-1-0 0
+---0--001-01--11 0
+----0-001-11--11 0
+---0--001-01-00- 0
+----0-001-11-00- 0
+--01---1--01-1-0 0
+0------11-11-1-0 0
+--01---1--01--11 0
+0------11-11--11 0
+--01---1--01-00- 0
+0------11-11-00- 0
+----1--10-11-1-0 0
+----1--10-11--11 0
+----1--10-11-00- 0
+-1----000--0-1-0 0
+-1----000--0--11 0
+-1----000--0-00- 0
+------11-----1-0 0
+------11------11 0
+------11-----00- 0
+------0----101-0 0
+------0----011-0 0
+------0----10-11 0
+------0----01-11 0
+------0----1000- 0
+------0----0100- 0
+------0--0---1-0 0
+------0--0----11 0
+------0--0---00- 0
+-----0-------1-0 0
+-----0--------11 0
+-----0-------00- 0
+.names J1_IR15.Q J1_IR14.Q J1_IR11.Q J1_IR9.Q J1_IR8.Q J1_ConditionalJump.BLIF \
+J0_PAddBSel2
+101001 1
+101111 1
+---10- 0
+---01- 0
+--0--- 0
+-1---- 0
+0----- 0
+-----0 0
+.names J1_FSM3.Q J1_FSM2.Q J1_FSM1.Q J1_FSM0.Q J1_Call.BLIF J0_PHoldPC
+000-1 1
+-001- 1
+1--0- 0
+---00 0
+--1-- 0
+-1--- 0
+.names Reset.BLIF J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q J1_IR11.Q J1_IR10.Q \
+J1_IR9.Q J1_IR8.Q J1_IR6.Q J1_FSM2.Q J1_FSM1.Q J1_FSM0.Q J0_WR
+0000011100--- 1
+0101---01---- 1
+0101---10---- 1
+0101-0------- 1
+0---------010 1
+0---------001 1
+---01------00 0
+---01------11 0
+---01-----1-- 0
+---0-0-----11 0
+---0-0-----00 0
+---0--0----11 0
+---0--0----00 0
+---0-----1-11 0
+---0-----1-00 0
+---0-0----1-- 0
+---0---0---11 0
+---0----1--00 0
+---0--0---1-- 0
+---0-----11-- 0
+---0----1-1-- 0
+-----1-00--00 0
+-----1-11--00 0
+-----1-00--11 0
+-----1-11--11 0
+-----1-00-1-- 0
+-----1-11-1-- 0
+-1-0-------00 0
+-1-0-------11 0
+-1-0------1-- 0
+-0-1-------00 0
+-0-1-------11 0
+-0-1------1-- 0
+--1--------00 0
+--1--------11 0
+--1-------1-- 0
+1------------ 0
+.names J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q J1_IR11.Q J1_IR10.Q J1_IR9.Q \
+J1_IR8.Q J1_Popf
+00000010 1
+------0- 0
+-----1-- 0
+----1--- 0
+---1---- 0
+--1----- 0
+-1------ 0
+1------- 0
+-------1 0
+.names J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q J1_IR11.Q J1_IR10.Q J1_IR9.Q \
+J1_IR8.Q J1_TSATXA
+01100111 1
+------0- 0
+-----0-- 0
+----1--- 0
+---1---- 0
+--0----- 0
+-0------ 0
+1------- 0
+-------0 0
+.names J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR11.Q J1_IR9.Q J1_IR8.Q J1_Load
+100-10 1
+100-01 1
+1000-- 1
+---100 0
+---111 0
+--1--- 0
+-1---- 0
+0----- 0
+.names J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q J1_IR11.Q J1_IR10.Q J1_IR9.Q \
+J1_IR8.Q J1_LogicOp
+00101101 1
+0-1101-- 1
+0100---- 1
+-110---- 0
+--100--- 0
+--10--1- 0
+--10---0 0
+--1--0-- 0
+---11--- 0
+-00----- 0
+--01---- 0
+1------- 0
+.names J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q J1_LeftShift
+0101 1
+--1- 0
+-0-- 0
+1--- 0
+---0 0
+.names J1_IR15.Q J1_IR14.Q J1_IR11.Q J1_IR10.Q J1_IR9.Q J1_IR8.Q J1_LDI
+101001 1
+----1- 0
+---1-- 0
+--0--- 0
+-1---- 0
+0----- 0
+-----0 0
+.names J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_Call
+111 1
+-0- 0
+0-- 0
+--0 0
+.names J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q J1_IR11.Q J1_IR10.Q J1_IR9.Q \
+J1_IR8.Q J1_IR7.Q J1_Rts
+000111110 1
+-------0- 0
+------0-- 0
+-----0--- 0
+----0---- 0
+---0----- 0
+--1------ 0
+-1------- 0
+1-------- 0
+--------1 0
+.names V0_AddendA7.BLIF V0_AddendA6.BLIF V0_AdderCarry5.BLIF J1_IR7.Q J1_IR6.Q \
+J1_Call.BLIF DataAB7.X2
+-110-- 1
+-1-010 1
+--1010 1
+-001-0 1
+-0-100 1
+--0100 1
+-11--1 1
+-0---1 0
+--0--1 0
+-000-- 0
+-0-00- 0
+--000- 0
+-111-0 0
+-1-110 0
+--1110 0
+.names V0_AddendA6.BLIF DataAB6.X1
+0 1
+1 0
+.names V0_AddendA6.BLIF V0_AdderCarry5.BLIF J1_IR6.Q J1_Call.BLIF DataAB6.X2
+-00- 1
+-0-1 1
+-110 1
+-10- 0
+-1-1 0
+-010 0
+.names V0_AddendA5.BLIF DataAB5.X1
+0 1
+1 0
+.names V0_AddendA5.BLIF V0_AdderCarry4.BLIF J1_IR5.Q J1_Call.BLIF DataAB5.X2
+-00- 1
+-0-1 1
+-110 1
+-10- 0
+-1-1 0
+-010 0
+.names V0_AddendA4.BLIF DataAB4.X1
+0 1
+1 0
+.names V0_AddendA4.BLIF V0_AdderCarry3.BLIF J1_IR4.Q J1_Call.BLIF DataAB4.X2
+-00- 1
+-0-1 1
+-110 1
+-10- 0
+-1-1 0
+-010 0
+.names V0_AddendA3.BLIF DataAB3.X1
+0 1
+1 0
+.names V0_AddendA3.BLIF V0_AdderCarry2.BLIF J1_IR3.Q J1_Call.BLIF DataAB3.X2
+-00- 1
+-0-1 1
+-110 1
+-10- 0
+-1-1 0
+-010 0
+.names V0_AddendA2.BLIF DataAB2.X1
+0 1
+1 0
+.names V0_AddendA2.BLIF V0_AdderCarry1.BLIF J1_IR2.Q J1_Call.BLIF DataAB2.X2
+-00- 1
+-0-1 1
+-110 1
+-10- 0
+-1-1 0
+-010 0
+.names V0_AddendA1.BLIF V0_AddendA0.BLIF J1_IR1.Q J1_IR0.Q J1_Call.BLIF \
+DataAB1.X2
+-1010 1
+-01-0 1
+--100 1
+----1 0
+-00-- 0
+--00- 0
+-111- 0
+.names J1_IR15.Q J1_IR9.Q J1_IR8.Q J1_IR0.Q X0_Data0.X1
+0111 1
+1--- 0
+-0-- 0
+--0- 0
+---0 0
+.names DataDB0.BLIF SReg0.Q XReg0.Q J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q \
+J1_IR11.Q J1_IR10.Q J1_IR9.Q J1_IR8.Q J1_IR0.Q X0_Data0.X2
+1--0-----0-- 1
+1------0-0-- 1
+1---------0- 1
+---10--10011 1
+1-------10-- 1
+1---1----0-- 1
+-1-011001110 1
+--0011001111 1
+1--1-----1-- 1
+0---------0- 0
+0--1-----1-- 0
+0--0-----0-- 0
+0---1----0-- 0
+0------0-0-- 0
+0-------10-- 0
+---00----11- 0
+---0-0---11- 0
+---0--1--11- 0
+---0---1-11- 0
+---0----011- 0
+--10-----111 0
+-0-0-----110 0
+---10--10010 0
+.names DataDB1.BLIF J1_IR9.Q X0_Data1.X1
+10 1
+0- 0
+-1 0
+.names DataDB1.BLIF SReg1.Q XReg1.Q J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q \
+J1_IR11.Q J1_IR10.Q J1_IR9.Q J1_IR8.Q J1_IR1.Q J1_IR0.Q X0_Data1.X2
+0--10--10011- 1
+1--10--10-10- 1
+1--------10-- 1
+---00----111- 1
+---0-0---111- 1
+---0----0111- 1
+-1-01100111-0 1
+--101100111-1 1
+---0---1-111- 1
+---0--1--111- 1
+1--1-----1--- 1
+---0-----0--- 0
+----1----0--- 0
+-------0-0--- 0
+--------10--- 0
+0---------0-- 0
+---------00-- 0
+0--11-------- 0
+0--1---0----- 0
+0--1----1---- 0
+0--1-----1--- 0
+1--------0-1- 0
+0--1-------0- 0
+---00-----10- 0
+---0-0----10- 0
+---0--1---10- 0
+---0---1--10- 0
+---0----0-10- 0
+--0011001-1-1 0
+-0-011001-1-0 0
+.names DataDB2.BLIF J1_IR9.Q X0_Data2.X1
+10 1
+0- 0
+-1 0
+.names DataDB2.BLIF SReg2.Q XReg2.Q J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q \
+J1_IR11.Q J1_IR10.Q J1_IR9.Q J1_IR8.Q J1_IR2.Q J1_IR0.Q X0_Data2.X2
+0--10--10011- 1
+1--10--10-10- 1
+1--------10-- 1
+---00----111- 1
+---0-0---111- 1
+---0----0111- 1
+-1-01100111-0 1
+--101100111-1 1
+---0---1-111- 1
+---0--1--111- 1
+1--1-----1--- 1
+---0-----0--- 0
+----1----0--- 0
+-------0-0--- 0
+--------10--- 0
+0---------0-- 0
+---------00-- 0
+0--11-------- 0
+0--1---0----- 0
+0--1----1---- 0
+0--1-----1--- 0
+1--------0-1- 0
+0--1-------0- 0
+---00-----10- 0
+---0-0----10- 0
+---0--1---10- 0
+---0---1--10- 0
+---0----0-10- 0
+--0011001-1-1 0
+-0-011001-1-0 0
+.names DataDB3.BLIF J1_IR9.Q X0_Data3.X1
+10 1
+0- 0
+-1 0
+.names DataDB3.BLIF SReg3.Q XReg3.Q J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q \
+J1_IR11.Q J1_IR10.Q J1_IR9.Q J1_IR8.Q J1_IR3.Q J1_IR0.Q X0_Data3.X2
+0--10--10011- 1
+1--10--10-10- 1
+1--------10-- 1
+---00----111- 1
+---0-0---111- 1
+---0----0111- 1
+-1-01100111-0 1
+--101100111-1 1
+---0---1-111- 1
+---0--1--111- 1
+1--1-----1--- 1
+---0-----0--- 0
+----1----0--- 0
+-------0-0--- 0
+--------10--- 0
+0---------0-- 0
+---------00-- 0
+0--11-------- 0
+0--1---0----- 0
+0--1----1---- 0
+0--1-----1--- 0
+1--------0-1- 0
+0--1-------0- 0
+---00-----10- 0
+---0-0----10- 0
+---0--1---10- 0
+---0---1--10- 0
+---0----0-10- 0
+--0011001-1-1 0
+-0-011001-1-0 0
+.names DataDB4.BLIF J1_IR9.Q X0_Data4.X1
+10 1
+0- 0
+-1 0
+.names DataDB4.BLIF SReg4.Q XReg4.Q J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q \
+J1_IR11.Q J1_IR10.Q J1_IR9.Q J1_IR8.Q J1_IR4.Q J1_IR0.Q X0_Data4.X2
+0--10--10011- 1
+1--10--10-10- 1
+1--------10-- 1
+---00----111- 1
+---0-0---111- 1
+---0----0111- 1
+-1-01100111-0 1
+--101100111-1 1
+---0---1-111- 1
+---0--1--111- 1
+1--1-----1--- 1
+---0-----0--- 0
+----1----0--- 0
+-------0-0--- 0
+--------10--- 0
+0---------0-- 0
+---------00-- 0
+0--11-------- 0
+0--1---0----- 0
+0--1----1---- 0
+0--1-----1--- 0
+1--------0-1- 0
+0--1-------0- 0
+---00-----10- 0
+---0-0----10- 0
+---0--1---10- 0
+---0---1--10- 0
+---0----0-10- 0
+--0011001-1-1 0
+-0-011001-1-0 0
+.names DataDB5.BLIF J1_IR9.Q X0_Data5.X1
+10 1
+0- 0
+-1 0
+.names DataDB5.BLIF SReg5.Q XReg5.Q J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q \
+J1_IR11.Q J1_IR10.Q J1_IR9.Q J1_IR8.Q J1_IR5.Q J1_IR0.Q X0_Data5.X2
+0--10--10011- 1
+1--10--10-10- 1
+1--------10-- 1
+---00----111- 1
+---0-0---111- 1
+---0----0111- 1
+-1-01100111-0 1
+--101100111-1 1
+---0---1-111- 1
+---0--1--111- 1
+1--1-----1--- 1
+---0-----0--- 0
+----1----0--- 0
+-------0-0--- 0
+--------10--- 0
+0---------0-- 0
+---------00-- 0
+0--11-------- 0
+0--1---0----- 0
+0--1----1---- 0
+0--1-----1--- 0
+1--------0-1- 0
+0--1-------0- 0
+---00-----10- 0
+---0-0----10- 0
+---0--1---10- 0
+---0---1--10- 0
+---0----0-10- 0
+--0011001-1-1 0
+-0-011001-1-0 0
+.names DataDB6.BLIF J1_IR9.Q X0_Data6.X1
+10 1
+0- 0
+-1 0
+.names DataDB6.BLIF SReg6.Q XReg6.Q J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q \
+J1_IR11.Q J1_IR10.Q J1_IR9.Q J1_IR8.Q J1_IR6.Q J1_IR0.Q X0_Data6.X2
+0--10--10011- 1
+1--10--10-10- 1
+1--------10-- 1
+---00----111- 1
+---0-0---111- 1
+---0----0111- 1
+-1-01100111-0 1
+--101100111-1 1
+---0---1-111- 1
+---0--1--111- 1
+1--1-----1--- 1
+---0-----0--- 0
+----1----0--- 0
+-------0-0--- 0
+--------10--- 0
+0---------0-- 0
+---------00-- 0
+0--11-------- 0
+0--1---0----- 0
+0--1----1---- 0
+0--1-----1--- 0
+1--------0-1- 0
+0--1-------0- 0
+---00-----10- 0
+---0-0----10- 0
+---0--1---10- 0
+---0---1--10- 0
+---0----0-10- 0
+--0011001-1-1 0
+-0-011001-1-0 0
+.names J1_IR15.Q J0_ALUDSel0.X1
+0 1
+1 0
+.names J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q J1_IR11.Q J1_IR10.Q J1_IR9.Q \
+J1_IR8.Q J1_IR0.Q J0_ALUDSel0.X2
+0-----0-- 1
+0------0- 1
+011001--0 1
+-0--1001- 1
+11------- 0
+1---0---- 0
+1----1--- 0
+1------0- 0
+-0----11- 0
+--0---11- 0
+---1--11- 0
+----1-11- 0
+-----011- 0
+------111 0
+.names Reset.BLIF J0_AShiftRight.BLIF J1_IR15.Q J1_LeftShift.BLIF J1_LDI.BLIF \
+J0_RD.X1
+00000 1
+1---- 0
+-1--- 0
+--1-- 0
+---1- 0
+----1 0
+.names Reset.BLIF J0_AShiftRight.BLIF J1_IR15.Q J1_IR14.Q J1_IR13.Q J1_IR12.Q \
+J1_IR11.Q J1_IR9.Q J1_IR8.Q J1_FSM3.Q J1_FSM2.Q J1_FSM1.Q J1_FSM0.Q \
+J1_Popf.BLIF J1_LeftShift.BLIF J1_LDI.BLIF J1_Rts.BLIF J0_RD.X2
+000010--------00- 1
+000----1110---00- 1
+000----11--1--00- 1
+000----11-0-1-00- 1
+0000-0-------000- 1
+000----11-0---000 1
+000----11-1-0-00- 1
+00100-0-------00- 1
+00100--01-----00- 1
+001------0000-001 1
+001-------101-00- 1
+00100--10-----00- 1
+1---------------- 0
+-1--------------- 0
+--------------1-- 0
+---------------1- 0
+--01---0--------- 0
+--0--1-0--------- 0
+--01----0-------- 0
+--0--1--0-------- 0
+--11-------1----- 0
+--1-1------1----- 0
+--11-----10------ 0
+--1-1----10------ 0
+--11------0-1---- 0
+--1-1-----0-1---- 0
+--11------1-0---- 0
+--1-1-----1-0---- 0
+--0-0--0-----1--- 0
+--0-0---0----1--- 0
+--11------0-----0 0
+--1-1-----0-----0 0
+--1---111--1----- 0
+--1---100--1----- 0
+--01------101---- 0
+--0--1----101---- 0
+--1---11110------ 0
+--1---10010------ 0
+--1---111-0-1---- 0
+--1---100-0-1---- 0
+--1---111-1-0---- 0
+--1---100-1-0---- 0
+--0-0-----1011--- 0
+--1---111-0-----0 0
+--1---100-0-----0 0
+--01-----0000---1 0
+--0--1---0000---1 0
+--0-0----00001--1 0
+.names X1_FOutput7.BLIF X1_MaskAccum7.BLIF X1_Carry8.X1
+00 1
+1- 0
+-1 0
+.names X1_FOutput7.BLIF X1_FOutput6.BLIF X1_FOutput5.BLIF X1_Carry5.BLIF \
+X1_MaskAccum7.BLIF X1_MaskAccum6.BLIF X1_MaskAccum5.BLIF X1_Carry8.X2
+0---0-- 1
+-1---1- 1
+-111--- 1
+--11-1- 1
+-11---1 1
+-1-1--1 1
+--1--11 1
+---1-11 1
+1---1-- 1
+00--10- 0
+10--00- 0
+00001-- 0
+10000-- 0
+0-0010- 0
+1-0000- 0
+000-1-0 0
+00-01-0 0
+100-0-0 0
+10-00-0 0
+0-0-100 0
+0--0100 0
+1-0-000 0
+1--0000 0
+.names X1_FOutput6.BLIF X1_MaskAccum6.BLIF X1_Carry7.X1
+00 1
+1- 0
+-1 0
+.names X1_FOutput6.BLIF X1_FOutput5.BLIF X1_FOutput4.BLIF X1_FOutput3.BLIF \
+X1_FOutput2.BLIF X1_Carry2.BLIF X1_MaskAccum6.BLIF X1_MaskAccum5.BLIF \
+X1_MaskAccum4.BLIF X1_MaskAccum3.BLIF X1_MaskAccum2.BLIF X1_Carry7.X2
+0-----0---- 1
+-1-----1--- 1
+-11-----1-- 1
+--1----11-- 1
+-111-----1- 1
+--11---1-1- 1
+-1-1----11- 1
+---1---111- 1
+-11111----- 1
+--1111-1--- 1
+-1-111--1-- 1
+---111-11-- 1
+-11-11---1- 1
+--1-11-1-1- 1
+-1--11--11- 1
+----11-111- 1
+-1111-----1 1
+-111-1----1 1
+--111--1--1 1
+--11-1-1--1 1
+-1-11---1-1 1
+-1-1-1--1-1 1
+---11--11-1 1
+---1-1-11-1 1
+-11-1----11 1
+-11--1---11 1
+--1-1--1-11 1
+--1--1-1-11 1
+-1--1---111 1
+-1---1--111 1
+----1--1111 1
+-----1-1111 1
+1-----1---- 1
+00----10--- 0
+10----00--- 0
+000---1-0-- 0
+100---0-0-- 0
+0-0---100-- 0
+1-0---000-- 0
+0000--1--0- 0
+1000--0--0- 0
+0-00--10-0- 0
+1-00--00-0- 0
+00-0--1-00- 0
+10-0--0-00- 0
+0--0--1000- 0
+1--0--0000- 0
+0000001---- 0
+1000000---- 0
+0-000010--- 0
+1-000000--- 0
+00-0001-0-- 0
+10-0000-0-- 0
+0--000100-- 0
+1--000000-- 0
+000-001--0- 0
+100-000--0- 0
+0-0-0010-0- 0
+1-0-0000-0- 0
+00--001-00- 0
+10--000-00- 0
+0---001000- 0
+1---000000- 0
+00000-1---0 0
+0000-01---0 0
+10000-0---0 0
+1000-00---0 0
+0-000-10--0 0
+0-00-010--0 0
+1-000-00--0 0
+1-00-000--0 0
+00-00-1-0-0 0
+00-0-01-0-0 0
+10-00-0-0-0 0
+10-0-00-0-0 0
+0--00-100-0 0
+0--0-0100-0 0
+1--00-000-0 0
+1--0-0000-0 0
+000-0-1--00 0
+000--01--00 0
+100-0-0--00 0
+100--00--00 0
+0-0-0-10-00 0
+0-0--010-00 0
+1-0-0-00-00 0
+1-0--000-00 0
+00--0-1-000 0
+00---01-000 0
+10--0-0-000 0
+10---00-000 0
+0---0-10000 0
+0----010000 0
+1---0-00000 0
+1----000000 0
+.names X1_FOutput4.BLIF X1_MaskAccum4.BLIF X1_Carry5.X1
+00 1
+1- 0
+-1 0
+.names X1_FOutput4.BLIF X1_FOutput3.BLIF X1_FOutput2.BLIF X1_Carry2.BLIF \
+X1_MaskAccum4.BLIF X1_MaskAccum3.BLIF X1_MaskAccum2.BLIF X1_Carry5.X2
+0---0-- 1
+-1---1- 1
+-111--- 1
+--11-1- 1
+-11---1 1
+-1-1--1 1
+--1--11 1
+---1-11 1
+1---1-- 1
+00--10- 0
+10--00- 0
+00001-- 0
+10000-- 0
+0-0010- 0
+1-0000- 0
+000-1-0 0
+00-01-0 0
+100-0-0 0
+10-00-0 0
+0-0-100 0
+0--0100 0
+1-0-000 0
+1--0000 0
+.names X1_FOutput3.BLIF X1_MaskAccum3.BLIF X1_Carry4.X1
+00 1
+1- 0
+-1 0
+.names J0_AFControl3.BLIF J0_AFControl1.BLIF Accum1.Q X0_Data1.BLIF \
+X1_FOutput3.BLIF X1_FOutput2.BLIF X1_Carry1.BLIF X1_MaskAccum3.BLIF \
+X1_MaskAccum2.BLIF X1_MaskAccum1.BLIF J1_IR14.Q J1_IR12.Q J1_Load.BLIF \
+J1_LeftShift.BLIF X1_Carry4.X2
+----0--0------ 1
+-----1--1----- 1
+1-00-11------- 1
+1-00--1-1----- 1
+1-00-1---1---- 1
+-----11--1---- 1
+1-00----11---- 1
+------1-11---- 1
+----1--1------ 1
+-101-11------- 1
+-101--1-1----- 1
+-101-1---1---- 1
+-101----11---- 1
+--1--11------1 1
+--1---1-1----1 1
+--1--1---1---1 1
+--1-----11---1 1
+--10-11----10- 1
+--10--1-1--10- 1
+--10-1---1-10- 1
+--10----11-10- 1
+--11-11---1--- 1
+--11--1-1-1--- 1
+--11-1---11--- 1
+--11----111--- 1
+--11-11-----1- 1
+--11--1-1---1- 1
+--11-1---1--1- 1
+--11----11--1- 1
+----00-10----- 0
+----10-00----- 0
+----0001-0---- 0
+----1000-0---- 0
+----0-0100---- 0
+----1-0000---- 0
+-0010001------ 0
+0-000001------ 0
+-0011000------ 0
+0-001000------ 0
+-0010-010----- 0
+0-000-010----- 0
+-0011-000----- 0
+0-001-000----- 0
+-00100-1-0---- 0
+0-0000-1-0---- 0
+-00110-0-0---- 0
+0-0010-0-0---- 0
+-0010--100---- 0
+0-000--100---- 0
+-0011--000---- 0
+0-001--000---- 0
+--100001---0-0 0
+--101000---0-0 0
+--100-010--0-0 0
+--101-000--0-0 0
+--1000-1-0-0-0 0
+--1010-0-0-0-0 0
+--100--100-0-0 0
+--101--000-0-0 0
+--100001----10 0
+--101000----10 0
+--100-010---10 0
+--101-000---10 0
+--1000-1-0--10 0
+--1010-0-0--10 0
+--100--100--10 0
+--101--000--10 0
+--110001--0-00 0
+--111000--0-00 0
+--110-010-0-00 0
+--111-000-0-00 0
+--1100-1-00-00 0
+--1110-0-00-00 0
+--110--1000-00 0
+--111--0000-00 0
+.names X1_Carry1.BLIF X1_MaskAccum1.BLIF X1_Carry2.X1
+00 1
+1- 0
+-1 0
+.names J0_AFControl3.BLIF J0_AFControl1.BLIF Accum1.Q X0_Data1.BLIF \
+X1_Carry1.BLIF X1_MaskAccum1.BLIF J1_IR14.Q J1_IR12.Q J1_Load.BLIF \
+J1_LeftShift.BLIF X1_Carry2.X2
+----00---- 1
+1-00------ 1
+----11---- 1
+-101------ 1
+--1------1 1
+--10---10- 1
+--11--1--- 1
+--11----1- 1
+-00101---- 0
+0-0001---- 0
+-00110---- 0
+0-0010---- 0
+--1001-0-0 0
+--1010-0-0 0
+--1001--10 0
+--1010--10 0
+--11010-00 0
+--11100-00 0
+.names X1_Carry0.BLIF X1_MaskAccum0.BLIF X1_Carry1.X1
+00 1
+1- 0
+-1 0
+.names Accum0.Q X0_Data0.BLIF X1_Carry0.BLIF X1_MaskAccum0.BLIF J1_IR15.Q \
+J1_IR14.Q J1_IR13.Q J1_IR12.Q J1_IR11.Q J1_IR10.Q J1_IR9.Q J1_IR8.Q \
+J1_Load.BLIF J1_LeftShift.BLIF X1_Carry1.X2
+--00---------- 1
+00--0001------ 1
+--11---------- 1
+0---0010------ 1
+00--001-00---- 1
+0---01111011-- 1
+01----10------ 1
+01----1-1----- 1
+01----1--1---- 1
+01--10--0----- 1
+01--1-1------- 1
+01--10----01-- 1
+01--10----10-- 1
+-1---11------- 1
+1------------1 1
+10-----1----0- 1
+11---1-------- 1
+11----------1- 1
+00011--------- 0
+00101--------- 0
+0-01-10------- 0
+0-10-10------- 0
+01010-0------- 0
+01100-0------- 0
+0001-1-0------ 0
+0010-1-0------ 0
+0001--00------ 0
+0010--00------ 0
+0001-1--0----- 0
+0010-1--0----- 0
+0001-1---1---- 0
+0010-1---1---- 0
+0001-1----0--- 0
+0010-1----0--- 0
+0001-1-----0-- 0
+0010-1-----0-- 0
+1001---0-----0 0
+1010---0-----0 0
+1001--------10 0
+1010--------10 0
+0001--11-1---- 0
+0010--11-1---- 0
+1101-0------00 0
+1110-0------00 0
+0001-0111----- 0
+0010-0111----- 0
+0101--0-1-11-- 0
+0110--0-1-11-- 0
+0101--0-1-00-- 0
+0110--0-1-00-- 0
+010100-100---- 0
+011000-100---- 0
+.names J0_AShiftRight.BLIF X1_FOutput5.BLIF X1_NewAccum5.X1
+00 1
+1- 0
+-1 0
+.names J0_AShiftRight.BLIF Accum6.Q X1_FOutput5.BLIF X1_FOutput4.BLIF \
+X1_FOutput3.BLIF X1_FOutput2.BLIF X1_Carry2.BLIF X1_MaskAccum5.BLIF \
+X1_MaskAccum4.BLIF X1_MaskAccum3.BLIF X1_MaskAccum2.BLIF X1_NewAccum5.X2
+0--0---00-- 1
+0--00--0-0- 1
+0---0--000- 1
+0--00000--- 1
+0---00000-- 1
+0--0-000-0- 1
+0----00000- 1
+0--000-0--0 1
+0--00-00--0 1
+0---00-00-0 1
+0---0-000-0 1
+0--0-0-0-00 1
+0--0--00-00 1
+0----0-0000 1
+0-----00000 1
+0--1---11-- 1
+0--11--1-1- 1
+0---1--111- 1
+0--11111--- 1
+0---11111-- 1
+0--1-111-1- 1
+0----11111- 1
+0--111-1--1 1
+0--11-11--1 1
+0---11-11-1 1
+0---1-111-1 1
+0--1-1-1-11 1
+0--1--11-11 1
+0----1-1111 1
+0-----11111 1
+11--------- 1
+10--------- 0
+0--1---01-- 0
+0--0---10-- 0
+0--11--0-1- 0
+0---1--011- 0
+0--00--1-0- 0
+0---0--100- 0
+0--00001--- 0
+0--11110--- 0
+0---11101-- 0
+0---00010-- 0
+0--1-110-1- 0
+0----11011- 0
+0--0-001-0- 0
+0----00100- 0
+0--111-0--1 0
+0--11-10--1 0
+0---11-01-1 0
+0---1-101-1 0
+0--1-1-0-11 0
+0--1--10-11 0
+0----1-0111 0
+0-----10111 0
+0--000-1--0 0
+0--00-01--0 0
+0---00-10-0 0
+0---0-010-0 0
+0--0-0-1-00 0
+0--0--01-00 0
+0----0-1000 0
+0-----01000 0
+.names J0_AShiftRight.BLIF X1_FOutput4.BLIF X1_NewAccum4.X1
+00 1
+1- 0
+-1 0
+.names J0_AShiftRight.BLIF Accum5.Q X1_FOutput4.BLIF X1_Carry4.BLIF \
+X1_MaskAccum4.BLIF X1_NewAccum4.X2
+0--00 1
+0--11 1
+11--- 1
+10--- 0
+0--01 0
+0--10 0
+.names J0_AShiftRight.BLIF X1_FOutput3.BLIF X1_NewAccum3.X1
+00 1
+1- 0
+-1 0
+.names J0_AShiftRight.BLIF Accum4.Q X1_FOutput3.BLIF X1_FOutput2.BLIF \
+X1_Carry2.BLIF X1_MaskAccum3.BLIF X1_MaskAccum2.BLIF X1_NewAccum3.X2
+0--000- 1
+0--0-00 1
+0---000 1
+0--111- 1
+0--1-11 1
+0---111 1
+11----- 1
+10----- 0
+0--001- 0
+0--110- 0
+0--1-01 0
+0---101 0
+0--0-10 0
+0---010 0
+.names J0_AShiftRight.BLIF X1_FOutput1.BLIF X1_NewAccum1.X1
+00 1
+1- 0
+-1 0
+.names J0_AShiftRight.BLIF Accum2.Q X1_FOutput1.BLIF X1_Carry1.BLIF \
+X1_MaskAccum1.BLIF X1_NewAccum1.X2
+0--00 1
+0--11 1
+11--- 1
+10--- 0
+0--01 0
+0--10 0
+.names J0_AShiftRight.BLIF X1_FOutput0.BLIF X1_NewAccum0.X1
+00 1
+1- 0
+-1 0
+.names J0_AShiftRight.BLIF Accum1.Q X1_FOutput0.BLIF X1_Carry0.BLIF \
+X1_MaskAccum0.BLIF X1_NewAccum0.X2
+0--00 1
+0--11 1
+11--- 1
+10--- 0
+0--01 0
+0--10 0
+.names P0_AddendA11.BLIF P0_AddendB11.BLIF P0_Carry11.X1
+00 1
+1- 0
+-1 0
+.names P0_Carry6.BLIF P0_AddendA11.BLIF P0_AddendA10.BLIF P0_AddendA9.BLIF \
+P0_AddendA8.BLIF P0_AddendA7.BLIF P0_AddendB11.BLIF P0_AddendB10.BLIF \
+P0_AddendB9.BLIF P0_AddendB8.BLIF P0_AddendB7.BLIF P0_Carry11.X2
+-0----0---- 1
+--1----1--- 1
+--11----1-- 1
+---1---11-- 1
+--111----1- 1
+---11--1-1- 1
+--1-1---11- 1
+----1--111- 1
+1-1111----- 1
+1--111-1--- 1
+1-1-11--1-- 1
+1---11-11-- 1
+1-11-1---1- 1
+1--1-1-1-1- 1
+1-1--1--11- 1
+1----1-111- 1
+1-111-----1 1
+--1111----1 1
+1--11--1--1 1
+---111-1--1 1
+1-1-1---1-1 1
+--1-11--1-1 1
+1---1--11-1 1
+----11-11-1 1
+1-11-----11 1
+--11-1---11 1
+1--1---1-11 1
+---1-1-1-11 1
+1-1-----111 1
+--1--1--111 1
+1------1111 1
+-----1-1111 1
+-1----1---- 1
+-00---10--- 0
+-10---00--- 0
+-000--1-0-- 0
+-100--0-0-- 0
+-0-0--100-- 0
+-1-0--000-- 0
+-0000-1--0- 0
+-1000-0--0- 0
+-0-00-10-0- 0
+-1-00-00-0- 0
+-00-0-1-00- 0
+-10-0-0-00- 0
+-0--0-1000- 0
+-1--0-0000- 0
+0000001---- 0
+0100000---- 0
+00-00010--- 0
+01-00000--- 0
+000-001-0-- 0
+010-000-0-- 0
+00--00100-- 0
+01--00000-- 0
+0000-01--0- 0
+0100-00--0- 0
+00-0-010-0- 0
+01-0-000-0- 0
+000--01-00- 0
+010--00-00- 0
+00---01000- 0
+01---00000- 0
+00000-1---0 0
+-000001---0 0
+01000-0---0 0
+-100000---0 0
+00-00-10--0 0
+-0-00010--0 0
+01-00-00--0 0
+-1-00000--0 0
+000-0-1-0-0 0
+-00-001-0-0 0
+010-0-0-0-0 0
+-10-000-0-0 0
+00--0-100-0 0
+-0--00100-0 0
+01--0-000-0 0
+-1--00000-0 0
+0000--1--00 0
+-000-01--00 0
+0100--0--00 0
+-100-00--00 0
+00-0--10-00 0
+-0-0-010-00 0
+01-0--00-00 0
+-1-0-000-00 0
+000---1-000 0
+-00--01-000 0
+010---0-000 0
+-10--00-000 0
+00----10000 0
+-0---010000 0
+01----00000 0
+-1---000000 0
+.names P0_AddendA9.BLIF P0_AddendB9.BLIF P0_Carry9.X1
+00 1
+1- 0
+-1 0
+.names P0_Carry6.BLIF P0_AddendA9.BLIF P0_AddendA8.BLIF P0_AddendA7.BLIF \
+P0_AddendB9.BLIF P0_AddendB8.BLIF P0_AddendB7.BLIF P0_Carry9.X2
+-0--0-- 1
+--1--1- 1
+1-11--- 1
+1--1-1- 1
+1-1---1 1
+--11--1 1
+1----11 1
+---1-11 1
+-1--1-- 1
+-00-10- 0
+-10-00- 0
+00001-- 0
+01000-- 0
+00-010- 0
+01-000- 0
+000-1-0 0
+-0001-0 0
+010-0-0 0
+-1000-0 0
+00--100 0
+-0-0100 0
+01--000 0
+-1-0000 0
+.names P0_AddendA8.BLIF P0_AddendB8.BLIF P0_Carry8.X1
+00 1
+1- 0
+-1 0
+.names P0_Carry3.BLIF P0_AddendA8.BLIF P0_AddendA7.BLIF P0_AddendA6.BLIF \
+P0_AddendA5.BLIF P0_AddendA4.BLIF P0_AddendB8.BLIF P0_AddendB7.BLIF \
+P0_AddendB6.BLIF P0_AddendB5.BLIF P0_AddendB4.BLIF P0_Carry8.X2
+-0----0---- 1
+--1----1--- 1
+--11----1-- 1
+---1---11-- 1
+--111----1- 1
+---11--1-1- 1
+--1-1---11- 1
+----1--111- 1
+1-1111----- 1
+1--111-1--- 1
+1-1-11--1-- 1
+1---11-11-- 1
+1-11-1---1- 1
+1--1-1-1-1- 1
+1-1--1--11- 1
+1----1-111- 1
+1-111-----1 1
+--1111----1 1
+1--11--1--1 1
+---111-1--1 1
+1-1-1---1-1 1
+--1-11--1-1 1
+1---1--11-1 1
+----11-11-1 1
+1-11-----11 1
+--11-1---11 1
+1--1---1-11 1
+---1-1-1-11 1
+1-1-----111 1
+--1--1--111 1
+1------1111 1
+-----1-1111 1
+-1----1---- 1
+-00---10--- 0
+-10---00--- 0
+-000--1-0-- 0
+-100--0-0-- 0
+-0-0--100-- 0
+-1-0--000-- 0
+-0000-1--0- 0
+-1000-0--0- 0
+-0-00-10-0- 0
+-1-00-00-0- 0
+-00-0-1-00- 0
+-10-0-0-00- 0
+-0--0-1000- 0
+-1--0-0000- 0
+0000001---- 0
+0100000---- 0
+00-00010--- 0
+01-00000--- 0
+000-001-0-- 0
+010-000-0-- 0
+00--00100-- 0
+01--00000-- 0
+0000-01--0- 0
+0100-00--0- 0
+00-0-010-0- 0
+01-0-000-0- 0
+000--01-00- 0
+010--00-00- 0
+00---01000- 0
+01---00000- 0
+00000-1---0 0
+-000001---0 0
+01000-0---0 0
+-100000---0 0
+00-00-10--0 0
+-0-00010--0 0
+01-00-00--0 0
+-1-00000--0 0
+000-0-1-0-0 0
+-00-001-0-0 0
+010-0-0-0-0 0
+-10-000-0-0 0
+00--0-100-0 0
+-0--00100-0 0
+01--0-000-0 0
+-1--00000-0 0
+0000--1--00 0
+-000-01--00 0
+0100--0--00 0
+-100-00--00 0
+00-0--10-00 0
+-0-0-010-00 0
+01-0--00-00 0
+-1-0-000-00 0
+000---1-000 0
+-00--01-000 0
+010---0-000 0
+-10--00-000 0
+00----10000 0
+-0---010000 0
+01----00000 0
+-1---000000 0
+.names P0_AddendA6.BLIF P0_AddendB6.BLIF P0_Carry6.X1
+00 1
+1- 0
+-1 0
+.names P0_Carry3.BLIF P0_AddendA6.BLIF P0_AddendA5.BLIF P0_AddendA4.BLIF \
+P0_AddendB6.BLIF P0_AddendB5.BLIF P0_AddendB4.BLIF P0_Carry6.X2
+-0--0-- 1
+--1--1- 1
+1-11--- 1
+1--1-1- 1
+1-1---1 1
+--11--1 1
+1----11 1
+---1-11 1
+-1--1-- 1
+-00-10- 0
+-10-00- 0
+00001-- 0
+01000-- 0
+00-010- 0
+01-000- 0
+000-1-0 0
+-0001-0 0
+010-0-0 0
+-1000-0 0
+00--100 0
+-0-0100 0
+01--000 0
+-1-0000 0
+.names P0_AddendA5.BLIF P0_AddendB5.BLIF P0_Carry5.X1
+00 1
+1- 0
+-1 0
+.names P0_Carry3.BLIF P0_AddendA5.BLIF P0_AddendA4.BLIF P0_AddendB5.BLIF \
+P0_AddendB4.BLIF P0_Carry5.X2
+-0-0- 1
+1-1-- 1
+1---1 1
+--1-1 1
+-1-1- 1
+0001- 0
+0100- 0
+00-10 0
+-0010 0
+01-00 0
+-1000 0
+.names P0_AddendA3.BLIF P0_AddendB3.BLIF P0_Carry3.X1
+00 1
+1- 0
+-1 0
+.names P0_AddendA3.BLIF P0_AddendA2.BLIF P0_AddendA1.BLIF P0_AddendA0.BLIF \
+P0_AddendB3.BLIF P0_AddendB2.BLIF P0_AddendB1.BLIF P0_AddendB0.BLIF \
+P0_Carry3.X2
+0---0--- 1
+-1---1-- 1
+-11---1- 1
+--1--11- 1
+-111---1 1
+--11-1-1 1
+-1-1--11 1
+---1-111 1
+1---1--- 1
+00--10-- 0
+10--00-- 0
+00001--- 0
+10000--- 0
+0-0010-- 0
+1-0000-- 0
+000-1-0- 0
+00-01-0- 0
+100-0-0- 0
+10-00-0- 0
+0-0-100- 0
+0--0100- 0
+1-0-000- 0
+1--0000- 0
+000-1--0 0
+100-0--0 0
+0-0-10-0 0
+1-0-00-0 0
+00--1-00 0
+10--0-00 0
+0---1000 0
+1---0000 0
+.names P0_AddendA2.BLIF P0_AddendB2.BLIF P0_Carry2.X1
+00 1
+1- 0
+-1 0
+.names P0_AddendA2.BLIF P0_AddendA1.BLIF P0_AddendA0.BLIF P0_AddendB2.BLIF \
+P0_AddendB1.BLIF P0_AddendB0.BLIF P0_Carry2.X2
+0--0-- 1
+-1--1- 1
+-11--1 1
+--1-11 1
+1--1-- 1
+0001-- 0
+1000-- 0
+00-10- 0
+0-010- 0
+10-00- 0
+1-000- 0
+00-1-0 0
+10-0-0 0
+0--100 0
+1--000 0
+.names J0_DDecrement.BLIF V0_AddrMuxOut7.BLIF V0_AddrMuxOut6.BLIF \
+V0_IncDecCarry5.BLIF V0_IncDecOut7.X2
+0-11 1
+1-00 1
+1-1- 0
+0-0- 0
+1--1 0
+0--0 0
+.names J0_DDecrement.BLIF V0_AddrMuxOut5.BLIF V0_AddrMuxOut4.BLIF \
+V0_IncDecCarry3.BLIF V0_IncDecOut5.X2
+0-11 1
+1-00 1
+1-1- 0
+0-0- 0
+1--1 0
+0--0 0
+.names J0_DDecrement.BLIF V0_AddrMuxOut3.BLIF V0_AddrMuxOut2.BLIF \
+V0_IncDecCarry1.BLIF V0_IncDecOut3.X2
+0-11 1
+1-00 1
+1-1- 0
+0-0- 0
+1--1 0
+0--0 0
+.names J0_DDecrement.BLIF J0_DEnableIncDec.BLIF V0_AddrMuxOut1.BLIF \
+V0_AddrMuxOut0.BLIF V0_IncDecOut1.X2
+01-1 1
+11-0 1
+-0-- 0
+1--1 0
+0--0 0
+.names J0_DDecrement.BLIF V0_IncDecCarry1.BLIF V0_IncDecCarry5.X1
+10 1
+0- 0
+-1 0
+.names SReg3.Q XReg3.Q SReg2.Q XReg2.Q Accum3.Q Accum2.Q J0_DAddressMux1.BLIF \
+J0_DAddressMux0.BLIF J0_DDecrement.BLIF V0_AddrMuxOut5.BLIF \
+V0_AddrMuxOut4.BLIF V0_IncDecCarry1.BLIF V0_IncDecCarry5.X2
+0-0---00100- 1
+-0-0--01100- 1
+----001-100- 1
+--------1--1 1
+1-1---00-111 1
+-1-1--01-111 1
+----111--111 1
+--------00-- 0
+--------0-0- 0
+---------1-0 0
+----------10 0
+----0-1-0--- 0
+-----01-0--- 0
+----1-1----0 0
+-----11----0 0
+-0----010--- 0
+---0--010--- 0
+0-----000--- 0
+--0---000--- 0
+-1----01---0 0
+---1--01---0 0
+1-----00---0 0
+--1---00---0 0
+.names J0_DDecrement.BLIF V0_IncDecCarry1.BLIF V0_IncDecCarry3.X1
+10 1
+0- 0
+-1 0
+.names SReg3.Q XReg3.Q SReg2.Q XReg2.Q Accum3.Q Accum2.Q J0_DAddressMux1.BLIF \
+J0_DAddressMux0.BLIF J0_DDecrement.BLIF V0_IncDecCarry1.BLIF \
+V0_IncDecCarry3.X2
+0-0---001- 1
+-0-0--011- 1
+----001-1- 1
+--------11 1
+1-1---00-1 1
+-1-1--01-1 1
+----111--1 1
+----0-1-0- 0
+-----01-0- 0
+----1-1--0 0
+-----11--0 0
+-0----010- 0
+---0--010- 0
+0-----000- 0
+--0---000- 0
+-1----01-0 0
+---1--01-0 0
+1-----00-0 0
+--1---00-0 0
+.names J0_DDecrement.BLIF J0_DEnableIncDec.BLIF V0_IncDecCarry1.X1
+11 1
+0- 0
+-0 0
+.names SReg1.Q XReg1.Q SReg0.Q XReg0.Q Accum1.Q Accum0.Q J0_DAddressMux1.BLIF \
+J0_DAddressMux0.BLIF J0_DDecrement.BLIF J0_DEnableIncDec.BLIF \
+V0_IncDecCarry1.X2
+1-1---0001 1
+-1-1--0101 1
+----111-01 1
+--------10 1
+0-0---001- 1
+-0-0--011- 1
+----001-1- 1
+--------00 0
+----0-1-0- 0
+-----01-0- 0
+-0----010- 0
+---0--010- 0
+0-----000- 0
+--0---000- 0
+----1-1-11 0
+-----11-11 0
+-1----0111 0
+---1--0111 0
+1-----0011 0
+--1---0011 0
+.names J1_IR9.Q J1_ConditionalJump.X1
+0 1
+1 0
+.names Flags5.Q Flags3.Q Flags2.Q Flags1.Q Flags0.Q J1_IR13.Q J1_IR12.Q \
+J1_IR10.Q J1_IR9.Q J1_ConditionalJump.X2
+-1---00-- 1
+----1000- 1
+--000101- 1
+--1--100- 1
+--11010-- 1
+--00-110- 1
+--11--10- 1
+---1-010- 1
+----1011- 1
+1----111- 1
+--01-10-- 0
+--0-110-- 0
+-0--000-- 0
+0----111- 0
+----0011- 0
+----1101- 0
+-0---001- 0
+--01-1-0- 0
+--10--10- 0
+---0-010- 0
+--0--100- 0
+--10-101- 0
+.names J0_RD.BLIF RD
+1 1
+0 0
+.names J0_WR.BLIF WR
+1 1
+0 0
+.names J0_WR.BLIF DataDB7.OE
+1 1
+0 0
+.names J0_WR.BLIF DataDB6.OE
+1 1
+0 0
+.names J0_WR.BLIF DataDB5.OE
+1 1
+0 0
+.names J0_WR.BLIF DataDB4.OE
+1 1
+0 0
+.names J0_WR.BLIF DataDB3.OE
+1 1
+0 0
+.names J0_WR.BLIF DataDB2.OE
+1 1
+0 0
+.names J0_WR.BLIF DataDB1.OE
+1 1
+0 0
+.names J0_WR.BLIF DataDB0.OE
+1 1
+0 0
+.names Clock.BLIF Accum0.C
+1 1
+0 0
+.names Clock.BLIF Accum1.C
+1 1
+0 0
+.names Clock.BLIF Accum2.C
+1 1
+0 0
+.names Clock.BLIF Accum3.C
+1 1
+0 0
+.names Clock.BLIF Accum4.C
+1 1
+0 0
+.names Clock.BLIF Accum5.C
+1 1
+0 0
+.names Clock.BLIF Accum6.C
+1 1
+0 0
+.names Clock.BLIF Accum7.C
+1 1
+0 0
+.names Clock.BLIF Flags0.C
+1 1
+0 0
+.names Clock.BLIF Flags1.C
+1 1
+0 0
+.names Clock.BLIF Flags2.C
+1 1
+0 0
+.names Clock.BLIF Flags3.C
+1 1
+0 0
+.names Clock.BLIF Flags4.C
+1 1
+0 0
+.names Clock.BLIF Flags5.C
+1 1
+0 0
+.names Clock.BLIF Flags6.C
+1 1
+0 0
+.names Clock.BLIF Flags7.C
+1 1
+0 0
+.names Clock.BLIF ProgramAB0.C
+1 1
+0 0
+.names Clock.BLIF ProgramAB1.C
+1 1
+0 0
+.names Clock.BLIF ProgramAB10.C
+1 1
+0 0
+.names Clock.BLIF ProgramAB11.C
+1 1
+0 0
+.names Clock.BLIF ProgramAB12.C
+1 1
+0 0
+.names Clock.BLIF ProgramAB2.C
+1 1
+0 0
+.names Clock.BLIF ProgramAB3.C
+1 1
+0 0
+.names Clock.BLIF ProgramAB4.C
+1 1
+0 0
+.names Clock.BLIF ProgramAB5.C
+1 1
+0 0
+.names Clock.BLIF ProgramAB6.C
+1 1
+0 0
+.names Clock.BLIF ProgramAB7.C
+1 1
+0 0
+.names Clock.BLIF ProgramAB8.C
+1 1
+0 0
+.names Clock.BLIF ProgramAB9.C
+1 1
+0 0
+.names Clock.BLIF SReg0.C
+1 1
+0 0
+.names Clock.BLIF SReg1.C
+1 1
+0 0
+.names Clock.BLIF SReg2.C
+1 1
+0 0
+.names Clock.BLIF SReg3.C
+1 1
+0 0
+.names Clock.BLIF SReg4.C
+1 1
+0 0
+.names Clock.BLIF SReg5.C
+1 1
+0 0
+.names Clock.BLIF SReg6.C
+1 1
+0 0
+.names Clock.BLIF SReg7.C
+1 1
+0 0
+.names Clock.BLIF XReg0.C
+1 1
+0 0
+.names Clock.BLIF XReg1.C
+1 1
+0 0
+.names Clock.BLIF XReg2.C
+1 1
+0 0
+.names Clock.BLIF XReg3.C
+1 1
+0 0
+.names Clock.BLIF XReg4.C
+1 1
+0 0
+.names Clock.BLIF XReg5.C
+1 1
+0 0
+.names Clock.BLIF XReg6.C
+1 1
+0 0
+.names Clock.BLIF XReg7.C
+1 1
+0 0
+.names Clock.BLIF J1_IR15.C
+1 1
+0 0
+.names Clock.BLIF J1_IR14.C
+1 1
+0 0
+.names Clock.BLIF J1_IR13.C
+1 1
+0 0
+.names Clock.BLIF J1_IR12.C
+1 1
+0 0
+.names Clock.BLIF J1_IR11.C
+1 1
+0 0
+.names Clock.BLIF J1_IR10.C
+1 1
+0 0
+.names Clock.BLIF J1_IR9.C
+1 1
+0 0
+.names Clock.BLIF J1_IR8.C
+1 1
+0 0
+.names Clock.BLIF J1_IR7.C
+1 1
+0 0
+.names Clock.BLIF J1_IR6.C
+1 1
+0 0
+.names Clock.BLIF J1_IR5.C
+1 1
+0 0
+.names Clock.BLIF J1_IR4.C
+1 1
+0 0
+.names Clock.BLIF J1_IR3.C
+1 1
+0 0
+.names Clock.BLIF J1_IR2.C
+1 1
+0 0
+.names Clock.BLIF J1_IR1.C
+1 1
+0 0
+.names Clock.BLIF J1_IR0.C
+1 1
+0 0
+.names Clock.BLIF J1_FSM3.C
+1 1
+0 0
+.names Clock.BLIF J1_FSM2.C
+1 1
+0 0
+.names Clock.BLIF J1_FSM1.C
+1 1
+0 0
+.names Clock.BLIF J1_FSM0.C
+1 1
+0 0
+.names V0_AddendA7.BLIF DataAB7.X1
+1 1
+0 0
+.names V0_AddendA1.BLIF DataAB1.X1
+1 1
+0 0
+.names V0_AddrMuxOut7.BLIF V0_IncDecOut7.X1
+1 1
+0 0
+.names V0_AddrMuxOut5.BLIF V0_IncDecOut5.X1
+1 1
+0 0
+.names V0_AddrMuxOut3.BLIF V0_IncDecOut3.X1
+1 1
+0 0
+.names V0_AddrMuxOut1.BLIF V0_IncDecOut1.X1
+1 1
+0 0
+.names Reset.BLIF J0_AEnableAccumWrite.BLIF Accum0.Q X1_NewAccum0.BLIF \
+Accum0.D
+001- 1
+01-1 1
+-00- 0
+-1-0 0
+1--- 0
+.names Reset.BLIF J0_AEnableAccumWrite.BLIF Accum1.Q X1_NewAccum1.BLIF \
+Accum1.D
+001- 1
+01-1 1
+-00- 0
+-1-0 0
+1--- 0
+.names Reset.BLIF J0_AShiftRight.BLIF J0_AEnableAccumWrite.BLIF Accum3.Q \
+Accum2.Q X1_FOutput2.BLIF X1_Carry2.BLIF X1_MaskAccum2.BLIF Accum2.D
+001--100 1
+001--010 1
+001--001 1
+001--111 1
+0111---- 1
+0-0-1--- 1
+-01--000 0
+-01--110 0
+-01--101 0
+-01--011 0
+-110---- 0
+--0-0--- 0
+1------- 0
+.names Reset.BLIF J0_AShiftRight.BLIF J0_AEnableAccumWrite.BLIF Accum4.Q \
+Accum3.Q X1_FOutput3.BLIF X1_FOutput2.BLIF X1_Carry2.BLIF X1_MaskAccum3.BLIF \
+X1_MaskAccum2.BLIF Accum3.D
+001--0110- 1
+001--1111- 1
+001--1000- 1
+001--0001- 1
+001--1-000 1
+001--10-00 1
+001--0-010 1
+001--00-10 1
+001--0-101 1
+001--01-01 1
+001--1-111 1
+001--11-11 1
+0111------ 1
+0-0-1----- 1
+-01--1110- 0
+-01--0111- 0
+-01--0000- 0
+-01--1001- 0
+-01--0-000 0
+-01--00-00 0
+-01--1-010 0
+-01--10-10 0
+-01--1-101 0
+-01--11-01 0
+-01--0-111 0
+-01--01-11 0
+-110------ 0
+--0-0----- 0
+1--------- 0
+.names Reset.BLIF J0_AShiftRight.BLIF J0_AEnableAccumWrite.BLIF Accum5.Q \
+Accum4.Q X1_FOutput4.BLIF X1_Carry4.BLIF X1_MaskAccum4.BLIF Accum4.D
+001--100 1
+001--010 1
+001--001 1
+001--111 1
+0111---- 1
+0-0-1--- 1
+-01--000 0
+-01--110 0
+-01--101 0
+-01--011 0
+-110---- 0
+--0-0--- 0
+1------- 0
+.names Reset.BLIF J0_AShiftRight.BLIF J0_AEnableAccumWrite.BLIF Accum6.Q \
+Accum5.Q X1_FOutput5.BLIF X1_Carry5.BLIF X1_MaskAccum5.BLIF Accum5.D
+001--100 1
+001--010 1
+001--001 1
+001--111 1
+0111---- 1
+0-0-1--- 1
+-01--000 0
+-01--110 0
+-01--101 0
+-01--011 0
+-110---- 0
+--0-0--- 0
+1------- 0
+.names Reset.BLIF J0_AShiftRight.BLIF J0_AEnableAccumWrite.BLIF Accum7.Q \
+Accum6.Q X1_FOutput6.BLIF X1_FOutput5.BLIF X1_Carry5.BLIF X1_MaskAccum6.BLIF \
+X1_MaskAccum5.BLIF Accum6.D
+001--0110- 1
+001--1111- 1
+001--1000- 1
+001--0001- 1
+001--1-000 1
+001--10-00 1
+001--0-010 1
+001--00-10 1
+001--0-101 1
+001--01-01 1
+001--1-111 1
+001--11-11 1
+0111------ 1
+0-0-1----- 1
+-01--1110- 0
+-01--0111- 0
+-01--0000- 0
+-01--1001- 0
+-01--0-000 0
+-01--00-00 0
+-01--1-010 0
+-01--10-10 0
+-01--1-101 0
+-01--11-01 0
+-01--0-111 0
+-01--01-11 0
+-110------ 0
+--0-0----- 0
+1--------- 0
+.names Reset.BLIF J0_AShiftRight.BLIF J0_AEnableAccumWrite.BLIF Accum7.Q \
+Accum0.Q Flags3.Q X1_FOutput7.BLIF X1_Carry7.BLIF X1_MaskAccum7.BLIF J1_IR1.Q \
+J1_IR0.Q Accum7.D
+011-1----10 1
+001---100-- 1
+001---010-- 1
+001---001-- 1
+001---111-- 1
+011--1---11 1
+01-1-----01 1
+0-01------- 1
+-01---000-- 0
+-01---110-- 0
+-01---101-- 0
+-01---011-- 0
+-11--0---11 0
+-1-0-----0- 0
+-11-0-----0 0
+-11------00 0
+--00------- 0
+1---------- 0
+.names Reset.BLIF J0_AEnableSZFlags.BLIF J0_AShiftRight.BLIF Accum7.Q Accum3.Q \
+Accum0.Q Flags3.Q Flags0.Q X0_Data0.BLIF X1_FOutput7.BLIF X1_FOutput6.BLIF \
+X1_FOutput5.BLIF X1_FOutput2.BLIF X1_Carry7.BLIF X1_Carry5.BLIF X1_Carry2.BLIF \
+X1_MaskAccum7.BLIF X1_MaskAccum6.BLIF X1_MaskAccum5.BLIF X1_MaskAccum2.BLIF \
+X1_NewAccum5.BLIF X1_NewAccum4.BLIF X1_NewAccum3.BLIF X1_NewAccum1.BLIF \
+X1_NewAccum0.BLIF J1_IR1.Q J1_IR0.Q J1_Popf.BLIF Flags0.D
+0-------1------------------1 1
+00-----1-------------------0 1
+01100---------------000000-0 1
+011000--------------00000-00 1
+01100-0-------------00000110 1
+010------001011111-100000--0 1
+010------101001111-100000--0 1
+010------010010111-100000--0 1
+010------110000111-100000--0 1
+010------001111011-100000--0 1
+010------101101011-100000--0 1
+010------010110011-100000--0 1
+010------110100011-100000--0 1
+010------101011101-100000--0 1
+010------001001101-100000--0 1
+010------110010101-100000--0 1
+010------010000101-100000--0 1
+010------101111001-100000--0 1
+010------001101001-100000--0 1
+010------110110001-100000--0 1
+010------010100001-100000--0 1
+010------011011110-100000--0 1
+010------111001110-100000--0 1
+010------000010110-100000--0 1
+010------100000110-100000--0 1
+010------011111010-100000--0 1
+010------111101010-100000--0 1
+010------000110010-100000--0 1
+010------100100010-100000--0 1
+010------111011100-100000--0 1
+010------011001100-100000--0 1
+010------100010100-100000--0 1
+010------000000100-100000--0 1
+010------111111000-100000--0 1
+010------011101000-100000--0 1
+010------100110000-100000--0 1
+010------000100000-100000--0 1
+010------00101-1111100000--0 1
+010------10100-1111100000--0 1
+010------00-0111111100000--0 1
+010------10-0011111100000--0 1
+010------00111-0111100000--0 1
+010------10110-0111100000--0 1
+010------00-1110111100000--0 1
+010------10-1010111100000--0 1
+010------10101-1011100000--0 1
+010------00100-1011100000--0 1
+010------10-0111011100000--0 1
+010------00-0011011100000--0 1
+010------10111-0011100000--0 1
+010------00110-0011100000--0 1
+010------10-1110011100000--0 1
+010------00-1010011100000--0 1
+010------01101-1101100000--0 1
+010------11100-1101100000--0 1
+010------01-0111101100000--0 1
+010------11-0011101100000--0 1
+010------01111-0101100000--0 1
+010------11110-0101100000--0 1
+010------01-1110101100000--0 1
+010------11-1010101100000--0 1
+010------11101-1001100000--0 1
+010------01100-1001100000--0 1
+010------11-0111001100000--0 1
+010------01-0011001100000--0 1
+010------11111-0001100000--0 1
+010------01110-0001100000--0 1
+010------11-1110001100000--0 1
+010------01-1010001100000--0 1
+010------01001-1110100000--0 1
+010------11000-1110100000--0 1
+010------01-0101110100000--0 1
+010------11-0001110100000--0 1
+010------01011-0110100000--0 1
+010------11010-0110100000--0 1
+010------01-1100110100000--0 1
+010------11-1000110100000--0 1
+010------11001-1010100000--0 1
+010------01000-1010100000--0 1
+010------11-0101010100000--0 1
+010------01-0001010100000--0 1
+010------11011-0010100000--0 1
+010------01010-0010100000--0 1
+010------11-1100010100000--0 1
+010------01-1000010100000--0 1
+010------00001-1100100000--0 1
+010------10000-1100100000--0 1
+010------00-0101100100000--0 1
+010------10-0001100100000--0 1
+010------00011-0100100000--0 1
+010------10010-0100100000--0 1
+010------00-1100100100000--0 1
+010------10-1000100100000--0 1
+010------10001-1000100000--0 1
+010------00000-1000100000--0 1
+010------10-0101000100000--0 1
+010------00-0001000100000--0 1
+010------10011-0000100000--0 1
+010------00010-0000100000--0 1
+010------10-1100000100000--0 1
+010------00-1000000100000--0 1
+010------001111111-000000--0 1
+010------101101111-000000--0 1
+010------010110111-000000--0 1
+010------110100111-000000--0 1
+010------001011011-000000--0 1
+010------101001011-000000--0 1
+010------010010011-000000--0 1
+010------110000011-000000--0 1
+010------101111101-000000--0 1
+010------001101101-000000--0 1
+010------110110101-000000--0 1
+010------010100101-000000--0 1
+010------101011001-000000--0 1
+010------001001001-000000--0 1
+010------110010001-000000--0 1
+010------010000001-000000--0 1
+010------011111110-000000--0 1
+010------111101110-000000--0 1
+010------000110110-000000--0 1
+010------100100110-000000--0 1
+010------011011010-000000--0 1
+010------111001010-000000--0 1
+010------000010010-000000--0 1
+010------100000010-000000--0 1
+010------111111100-000000--0 1
+010------011101100-000000--0 1
+010------100110100-000000--0 1
+010------000100100-000000--0 1
+010------111011000-000000--0 1
+010------011001000-000000--0 1
+010------100010000-000000--0 1
+010------000000000-000000--0 1
+010------00111-1111000000--0 1
+010------10110-1111000000--0 1
+010------00-1111111000000--0 1
+010------10-1011111000000--0 1
+010------00101-0111000000--0 1
+010------10100-0111000000--0 1
+010------00-0110111000000--0 1
+010------10-0010111000000--0 1
+010------10111-1011000000--0 1
+010------00110-1011000000--0 1
+010------10-1111011000000--0 1
+010------00-1011011000000--0 1
+010------10101-0011000000--0 1
+010------00100-0011000000--0 1
+010------10-0110011000000--0 1
+010------00-0010011000000--0 1
+010------01111-1101000000--0 1
+010------11110-1101000000--0 1
+010------01-1111101000000--0 1
+010------11-1011101000000--0 1
+010------01101-0101000000--0 1
+010------11100-0101000000--0 1
+010------01-0110101000000--0 1
+010------11-0010101000000--0 1
+010------11111-1001000000--0 1
+010------01110-1001000000--0 1
+010------11-1111001000000--0 1
+010------01-1011001000000--0 1
+010------11101-0001000000--0 1
+010------01100-0001000000--0 1
+010------11-0110001000000--0 1
+010------01-0010001000000--0 1
+010------01011-1110000000--0 1
+010------11010-1110000000--0 1
+010------01-1101110000000--0 1
+010------11-1001110000000--0 1
+010------01001-0110000000--0 1
+010------11000-0110000000--0 1
+010------01-0100110000000--0 1
+010------11-0000110000000--0 1
+010------11011-1010000000--0 1
+010------01010-1010000000--0 1
+010------11-1101010000000--0 1
+010------01-1001010000000--0 1
+010------11001-0010000000--0 1
+010------01000-0010000000--0 1
+010------11-0100010000000--0 1
+010------01-0000010000000--0 1
+010------00011-1100000000--0 1
+010------10010-1100000000--0 1
+010------00-1101100000000--0 1
+010------10-1001100000000--0 1
+010------00001-0100000000--0 1
+010------10000-0100000000--0 1
+010------00-0100100000000--0 1
+010------10-0000100000000--0 1
+010------10011-1000000000--0 1
+010------00010-1000000000--0 1
+010------10-1101000000000--0 1
+010------00-1001000000000--0 1
+010------10001-0000000000--0 1
+010------00000-0000000000--0 1
+010------10-0100000000000--0 1
+010------00-0000000000000--0 1
+1--------------------------- 0
+--------0------------------1 0
+-0-----0-------------------0 0
+-1------------------1------0 0
+-1-------------------1-----0 0
+-1--------------------1----0 0
+-1---------------------1---0 0
+-1----------------------1--0 0
+-111-----------------------0 0
+-11-1----------------------0 0
+-10------1---1--1----------0 0
+-10------0---0--1----------0 0
+-10------0---1--0----------0 0
+-10------1---0--0----------0 0
+-10---------1--1---1-------0 0
+-10---------0--0---1-------0 0
+-10---------0--1---0-------0 0
+-10---------1--0---0-------0 0
+-11---1------------------110 0
+-11--1-------------------100 0
+-10-------11--1--1---------0 0
+-10-------00--0--1---------0 0
+-10-------01--1--0---------0 0
+-10-------10--0--0---------0 0
+-10-------11-----11--------0 0
+-10-------1---1--11--------0 0
+-10-------01-----01--------0 0
+-10-------0---1--01--------0 0
+-10-------00-----10--------0 0
+-10-------0---0--10--------0 0
+-10-------10-----00--------0 0
+-10-------1---0--00--------0 0
+.names Reset.BLIF J0_AEnableSZFlags.BLIF J0_AShiftRight.BLIF Accum7.Q Accum0.Q \
+Flags3.Q Flags1.Q X0_Data1.BLIF X1_FOutput7.BLIF X1_Carry7.BLIF \
+X1_MaskAccum7.BLIF J1_IR1.Q J1_IR0.Q J1_Popf.BLIF Flags1.D
+011-1------100 1
+0111-------010 1
+011--1-----110 1
+010-----100--0 1
+010-----010--0 1
+010-----001--0 1
+010-----111--0 1
+00----1------0 1
+0------1-----1 1
+-11--0-----110 0
+-10-----000--0 0
+-10-----110--0 0
+-10-----101--0 0
+-10-----011--0 0
+-11-0-------00 0
+-110-------0-0 0
+-11--------000 0
+-0----0------0 0
+-------0-----1 0
+1------------- 0
+.names Reset.BLIF J0_AEnableSZFlags.BLIF J0_AShiftRight.BLIF Flags2.Q \
+X0_Data2.BLIF X1_FOutput7.BLIF X1_FOutput6.BLIF X1_FOutput5.BLIF \
+X1_Carry7.BLIF X1_Carry5.BLIF X1_MaskAccum7.BLIF X1_MaskAccum6.BLIF \
+X1_MaskAccum5.BLIF J1_Popf.BLIF J1_LogicOp.BLIF Flags2.D
+010-----1000000 1
+010----01-00000 1
+010--0--10-0000 1
+010--0-01--0000 1
+010---0-100-000 1
+010---001-0-000 1
+010--00-10--000 1
+010--0001---000 1
+010-----0111100 1
+010----10-11100 1
+010--1--01-1100 1
+010--1-10--1100 1
+010---1-011-100 1
+010---110-1-100 1
+010--11-01--100 1
+010--1110---100 1
+010----01000-00 1
+010--0-010-0-00 1
+010----10111-00 1
+010--1-101-1-00 1
+010---00100--00 1
+010---11011--00 1
+010--00010---00 1
+010--11101---00 1
+010---0-1-00-00 1
+010--00-1--0-00 1
+010---1-0-11-00 1
+010--11-0--1-00 1
+0---1--------1- 1
+010--0--1-0--00 1
+010--1--0-1--00 1
+00-1---------0- 1
+0--1---------01 1
+-1------0000000 0
+-1-----00-00000 0
+-1---0--00-0000 0
+-1---0-00--0000 0
+-1----0-000-000 0
+-1----000-0-000 0
+-1---00-00--000 0
+-1---0000---000 0
+-1------1111100 0
+-1-----11-11100 0
+-1---1--11-1100 0
+-1---1-11--1100 0
+-1----1-111-100 0
+-1----111-1-100 0
+-1---11-11--100 0
+-1---1111---100 0
+-1-----00000-00 0
+-1---0-000-0-00 0
+-1-----11111-00 0
+-1---1-111-1-00 0
+-1----00000--00 0
+-1----11111--00 0
+-1---00000---00 0
+-1---11111---00 0
+-1----0-0-00-00 0
+-1---00-0--0-00 0
+-1----1-1-11-00 0
+-1---11-1--1-00 0
+----0--------1- 0
+-1---0--0-0--00 0
+-1---1--1-1--00 0
+-0-0---------0- 0
+---0---------01 0
+1-------------- 0
+-11----------00 0
+.names Reset.BLIF J0_AEnableSZFlags.BLIF J0_AShiftRight.BLIF J0_AFlagMod1.BLIF \
+J0_AFlagMod0.BLIF Accum0.Q Flags3.Q X0_Data3.BLIF X1_Carry8.BLIF J1_IR15.Q \
+J1_IR14.Q J1_IR13.Q J1_IR12.Q J1_IR11.Q J1_IR10.Q J1_IR9.Q J1_IR8.Q \
+J1_Popf.BLIF J1_LogicOp.BLIF Flags3.D
+0101----0001-00--00 1
+010-1---0001-00--00 1
+0101----1-1-0----00 1
+010-1---1-1-0----00 1
+0101----1-1----0-00 1
+0101----1-1-----000 1
+010-1---1-1----0-00 1
+010-1---1-1-----000 1
+010-1---00111101100 1
+0101----00111101100 1
+010-1---000100---00 1
+0101----000100---00 1
+010-1---00001----00 1
+0101----00001----00 1
+010-1---1--11-1--00 1
+0101----1--11-1--00 1
+010-1---1-01-1---00 1
+0101----1-01-1---00 1
+0--00--1----------- 1
+010-1---1--00----00 1
+0101----1--00----00 1
+010-1---1-1--0---00 1
+0101----1-1--0---00 1
+010-1---1-10-----00 1
+0101----1-10-----00 1
+011-11-----------00 1
+0111-1-----------00 1
+010-1---11-------00 1
+0101----11-------00 1
+0------1---------1- 1
+00--1-1----------0- 1
+00-1--1----------0- 1
+0---1-1----------01 1
+0--1--1----------01 1
+-101----1001-00--00 0
+-10-1---1001-00--00 0
+-101----0-1-0----00 0
+-10-1---0-1-0----00 0
+-101----0-1----0-00 0
+-101----0-1-----000 0
+-10-1---0-1----0-00 0
+-10-1---0-1-----000 0
+-10-1---10111101100 0
+-101----10111101100 0
+-10-1---100100---00 0
+-101----100100---00 0
+-10-1---10001----00 0
+-101----10001----00 0
+-10-1---0--11-1--00 0
+-101----0--11-1--00 0
+-10-1---0-01-1---00 0
+-101----0-01-1---00 0
+---00--0----------- 0
+-10-1---0--00----00 0
+-101----0--00----00 0
+-10-1---0-1--0---00 0
+-101----0-1--0---00 0
+-10-1---0-10-----00 0
+-101----0-10-----00 0
+-11-10-----------00 0
+-111-0-----------00 0
+-10-1---01-------00 0
+-101----01-------00 0
+-------0---------1- 0
+-0--1-0----------0- 0
+-0-1--0----------0- 0
+----1-0----------01 0
+---1--0----------01 0
+1------------------ 0
+.names Flags4.D
+.names Reset.BLIF J0_AFlagMod1.BLIF J0_AFlagMod0.BLIF Flags5.Q X0_Data5.BLIF \
+J1_Popf.BLIF Flags5.D
+010-1- 1
+0-11-0 1
+00-1-0 1
+0---11 1
+-10-0- 0
+--10-0 0
+-0-0-0 0
+----01 0
+1----- 0
+.names Flags6.D
+.names Reset.BLIF J0_AFlagMod1.BLIF J0_AFlagMod0.BLIF Flags7.Q X0_Data7.BLIF \
+J1_Popf.BLIF Flags7.D
+001-1- 1
+0-01-0 1
+01-1-0 1
+0---11 1
+-01-0- 0
+--00-0 0
+-1-0-0 0
+----01 0
+1----- 0
+.names Reset.BLIF J0_PHoldPC.BLIF ProgramAB0.Q P0_AddendA0.BLIF \
+P0_AddendB0.BLIF ProgramAB0.D
+00-10 1
+00-01 1
+011-- 1
+-0-00 0
+-0-11 0
+-10-- 0
+1---- 0
+.names Reset.BLIF J0_PHoldPC.BLIF ProgramAB1.Q P0_AddendA1.BLIF \
+P0_AddendA0.BLIF P0_AddendB1.BLIF P0_AddendB0.BLIF ProgramAB1.D
+00-100- 1
+00-0101 1
+00-001- 1
+00-1111 1
+00-1-00 1
+00-0-10 1
+011---- 1
+-0-000- 0
+-0-1101 0
+-0-101- 0
+-0-0111 0
+-0-0-00 0
+-0-1-10 0
+-10---- 0
+1------ 0
+.names Reset.BLIF J0_PHoldPC.BLIF ProgramAB10.Q P0_Carry6.BLIF \
+P0_AddendA10.BLIF P0_AddendA9.BLIF P0_AddendA8.BLIF P0_AddendA7.BLIF \
+P0_AddendB10.BLIF P0_AddendB9.BLIF P0_AddendB8.BLIF P0_AddendB7.BLIF \
+ProgramAB10.D
+00-10--1011- 1
+00-11--1111- 1
+00-101-10-1- 1
+00-111-11-1- 1
+00-10-1101-- 1
+00-11-1111-- 1
+00-101110--- 1
+00-111111--- 1
+00-01--0000- 1
+00-00--0100- 1
+00-010-00-0- 1
+00-000-01-0- 1
+00-01-0000-- 1
+00-00-0010-- 1
+00-010000--- 1
+00-000001--- 1
+00--1--00000 1
+00-01---0000 1
+00--0--01000 1
+00-00---1000 1
+00--10-00-00 1
+00-010--0-00 1
+00--00-01-00 1
+00-000--1-00 1
+00--1-0000-0 1
+00-01-0-00-0 1
+00--0-0010-0 1
+00-00-0-10-0 1
+00--10000--0 1
+00-0100-0--0 1
+00--00001--0 1
+00-0000-1--0 1
+00--0--10111 1
+00-10---0111 1
+00--1--11111 1
+00-11---1111 1
+00--01-10-11 1
+00-101--0-11 1
+00--11-11-11 1
+00-111--1-11 1
+00--0-1101-1 1
+00-10-1-01-1 1
+00--1-1111-1 1
+00-11-1-11-1 1
+00--01110--1 1
+00-1011-0--1 1
+00--11111--1 1
+00-1111-1--1 1
+00--1-0-000- 1
+00--0-0-100- 1
+00--100-0-0- 1
+00--000-1-0- 1
+00--0-1-011- 1
+00--1-1-111- 1
+00--011-0-1- 1
+00--111-1-1- 1
+00--10--00-- 1
+00--00--10-- 1
+00--01--01-- 1
+00--11--11-- 1
+011--------- 1
+-0-11--1011- 0
+-0-10--1111- 0
+-0-111-10-1- 0
+-0-101-11-1- 0
+-0-11-1101-- 0
+-0-10-1111-- 0
+-0-111110--- 0
+-0-101111--- 0
+-0-00--0000- 0
+-0-01--0100- 0
+-0-000-00-0- 0
+-0-010-01-0- 0
+-0-00-0000-- 0
+-0-01-0010-- 0
+-0-000000--- 0
+-0-010001--- 0
+-0--0--00000 0
+-0-00---0000 0
+-0--1--01000 0
+-0-01---1000 0
+-0--00-00-00 0
+-0-000--0-00 0
+-0--10-01-00 0
+-0-010--1-00 0
+-0--0-0000-0 0
+-0-00-0-00-0 0
+-0--1-0010-0 0
+-0-01-0-10-0 0
+-0--00000--0 0
+-0-0000-0--0 0
+-0--10001--0 0
+-0-0100-1--0 0
+-0--1--10111 0
+-0-11---0111 0
+-0--0--11111 0
+-0-10---1111 0
+-0--11-10-11 0
+-0-111--0-11 0
+-0--01-11-11 0
+-0-101--1-11 0
+-0--1-1101-1 0
+-0-11-1-01-1 0
+-0--0-1111-1 0
+-0-10-1-11-1 0
+-0--11110--1 0
+-0-1111-0--1 0
+-0--01111--1 0
+-0-1011-1--1 0
+-0--0-0-000- 0
+-0--1-0-100- 0
+-0--000-0-0- 0
+-0--100-1-0- 0
+-0--1-1-011- 0
+-0--0-1-111- 0
+-0--111-0-1- 0
+-0--011-1-1- 0
+-0--00--00-- 0
+-0--10--10-- 0
+-0--11--01-- 0
+-0--01--11-- 0
+-10--------- 0
+1----------- 0
+.names Reset.BLIF J0_PHoldPC.BLIF ProgramAB11.Q P0_Carry9.BLIF \
+P0_AddendA11.BLIF P0_AddendA10.BLIF P0_AddendB11.BLIF P0_AddendB10.BLIF \
+ProgramAB11.D
+00-1010- 1
+00-1111- 1
+00-0100- 1
+00-0001- 1
+00--1000 1
+00-01-00 1
+00--0010 1
+00-00-10 1
+00--0101 1
+00-10-01 1
+00--1111 1
+00-11-11 1
+011----- 1
+-0-1110- 0
+-0-1011- 0
+-0-0000- 0
+-0-0101- 0
+-0--0000 0
+-0-00-00 0
+-0--1010 0
+-0-01-10 0
+-0--1101 0
+-0-11-01 0
+-0--0111 0
+-0-10-11 0
+-10----- 0
+1------- 0
+.names Reset.BLIF J0_PHoldPC.BLIF ProgramAB12.Q P0_Carry11.BLIF \
+P0_AddendA12.BLIF P0_AddendB12.BLIF ProgramAB12.D
+00-100 1
+00-010 1
+00-001 1
+00-111 1
+011--- 1
+-0-000 0
+-0-110 0
+-0-101 0
+-0-011 0
+-10--- 0
+1----- 0
+.names Reset.BLIF J0_PHoldPC.BLIF ProgramAB2.Q P0_Carry1.BLIF P0_AddendA2.BLIF \
+P0_AddendB2.BLIF ProgramAB2.D
+00-100 1
+00-010 1
+00-001 1
+00-111 1
+011--- 1
+-0-000 0
+-0-110 0
+-0-101 0
+-0-011 0
+-10--- 0
+1----- 0
+.names Reset.BLIF J0_PHoldPC.BLIF ProgramAB3.Q P0_Carry2.BLIF P0_AddendA3.BLIF \
+P0_AddendB3.BLIF ProgramAB3.D
+00-100 1
+00-010 1
+00-001 1
+00-111 1
+011--- 1
+-0-000 0
+-0-110 0
+-0-101 0
+-0-011 0
+-10--- 0
+1----- 0
+.names Reset.BLIF J0_PHoldPC.BLIF ProgramAB4.Q P0_Carry3.BLIF P0_AddendA4.BLIF \
+P0_AddendB4.BLIF ProgramAB4.D
+00-100 1
+00-010 1
+00-001 1
+00-111 1
+011--- 1
+-0-000 0
+-0-110 0
+-0-101 0
+-0-011 0
+-10--- 0
+1----- 0
+.names Reset.BLIF J0_PHoldPC.BLIF ProgramAB5.Q P0_Carry4.BLIF P0_AddendA5.BLIF \
+P0_AddendB5.BLIF ProgramAB5.D
+00-100 1
+00-010 1
+00-001 1
+00-111 1
+011--- 1
+-0-000 0
+-0-110 0
+-0-101 0
+-0-011 0
+-10--- 0
+1----- 0
+.names Reset.BLIF J0_PHoldPC.BLIF ProgramAB6.Q P0_Carry5.BLIF P0_AddendA6.BLIF \
+P0_AddendB6.BLIF ProgramAB6.D
+00-100 1
+00-010 1
+00-001 1
+00-111 1
+011--- 1
+-0-000 0
+-0-110 0
+-0-101 0
+-0-011 0
+-10--- 0
+1----- 0
+.names Reset.BLIF J0_PHoldPC.BLIF ProgramAB7.Q P0_Carry6.BLIF P0_AddendA7.BLIF \
+P0_AddendB7.BLIF ProgramAB7.D
+00-100 1
+00-010 1
+00-001 1
+00-111 1
+011--- 1
+-0-000 0
+-0-110 0
+-0-101 0
+-0-011 0
+-10--- 0
+1----- 0
+.names Reset.BLIF J0_PHoldPC.BLIF ProgramAB8.Q P0_Carry6.BLIF P0_AddendA8.BLIF \
+P0_AddendA7.BLIF P0_AddendB8.BLIF P0_AddendB7.BLIF ProgramAB8.D
+00-1010- 1
+00-1111- 1
+00-0100- 1
+00-0001- 1
+00--1000 1
+00-01-00 1
+00--0010 1
+00-00-10 1
+00--0101 1
+00-10-01 1
+00--1111 1
+00-11-11 1
+011----- 1
+-0-1110- 0
+-0-1011- 0
+-0-0000- 0
+-0-0101- 0
+-0--0000 0
+-0-00-00 0
+-0--1010 0
+-0-01-10 0
+-0--1101 0
+-0-11-01 0
+-0--0111 0
+-0-10-11 0
+-10----- 0
+1------- 0
+.names Reset.BLIF J0_PHoldPC.BLIF ProgramAB9.Q P0_Carry8.BLIF P0_AddendA9.BLIF \
+P0_AddendB9.BLIF ProgramAB9.D
+00-100 1
+00-010 1
+00-001 1
+00-111 1
+011--- 1
+-0-000 0
+-0-110 0
+-0-101 0
+-0-011 0
+-10--- 0
+1----- 0
+.names SReg0.Q Reset.BLIF J0_DAddressMux0.BLIF J0_DEnableIncDec.BLIF \
+V0_AddrMuxOut0.BLIF SReg0.D
+-0010 1
+-0001 1
+101-- 1
+--000 0
+--011 0
+0-1-- 0
+-1--- 0
+.names SReg1.Q Reset.BLIF J0_DAddressMux0.BLIF V0_IncDecOut1.BLIF SReg1.D
+101- 1
+-001 1
+0-1- 0
+--00 0
+-1-- 0
+.names SReg2.Q Reset.BLIF J0_DAddressMux0.BLIF J0_DDecrement.BLIF \
+V0_AddrMuxOut2.BLIF V0_IncDecCarry1.BLIF SReg2.D
+-00100 1
+-00010 1
+-00001 1
+-00111 1
+101--- 1
+--0000 0
+--0110 0
+--0101 0
+--0011 0
+0-1--- 0
+-1---- 0
+.names SReg3.Q Reset.BLIF J0_DAddressMux0.BLIF V0_IncDecOut3.BLIF SReg3.D
+101- 1
+-001 1
+0-1- 0
+--00 0
+-1-- 0
+.names SReg4.Q Reset.BLIF J0_DAddressMux0.BLIF J0_DDecrement.BLIF \
+V0_AddrMuxOut4.BLIF V0_IncDecCarry3.BLIF SReg4.D
+-00100 1
+-00010 1
+-00001 1
+-00111 1
+101--- 1
+--0000 0
+--0110 0
+--0101 0
+--0011 0
+0-1--- 0
+-1---- 0
+.names SReg5.Q Reset.BLIF J0_DAddressMux0.BLIF V0_IncDecOut5.BLIF SReg5.D
+101- 1
+-001 1
+0-1- 0
+--00 0
+-1-- 0
+.names SReg6.Q Reset.BLIF J0_DAddressMux0.BLIF J0_DDecrement.BLIF \
+V0_AddrMuxOut6.BLIF V0_IncDecCarry5.BLIF SReg6.D
+-00100 1
+-00010 1
+-00001 1
+-00111 1
+101--- 1
+--0000 0
+--0110 0
+--0101 0
+--0011 0
+0-1--- 0
+-1---- 0
+.names SReg7.Q Reset.BLIF J0_DAddressMux0.BLIF V0_IncDecOut7.BLIF SReg7.D
+101- 1
+-001 1
+0-1- 0
+--00 0
+-1-- 0
+.names XReg0.Q Reset.BLIF J0_DAddressMux0.BLIF J0_DEnableIncDec.BLIF \
+V0_AddrMuxOut0.BLIF XReg0.D
+-0110 1
+-0101 1
+100-- 1
+--100 0
+--111 0
+0-0-- 0
+-1--- 0
+.names XReg1.Q Reset.BLIF J0_DAddressMux0.BLIF V0_IncDecOut1.BLIF XReg1.D
+100- 1
+-011 1
+0-0- 0
+--10 0
+-1-- 0
+.names XReg2.Q Reset.BLIF J0_DAddressMux0.BLIF J0_DDecrement.BLIF \
+V0_AddrMuxOut2.BLIF V0_IncDecCarry1.BLIF XReg2.D
+-01100 1
+-01010 1
+-01001 1
+-01111 1
+100--- 1
+--1000 0
+--1110 0
+--1101 0
+--1011 0
+0-0--- 0
+-1---- 0
+.names XReg3.Q Reset.BLIF J0_DAddressMux0.BLIF V0_IncDecOut3.BLIF XReg3.D
+100- 1
+-011 1
+0-0- 0
+--10 0
+-1-- 0
+.names XReg4.Q Reset.BLIF J0_DAddressMux0.BLIF J0_DDecrement.BLIF \
+V0_AddrMuxOut4.BLIF V0_IncDecCarry3.BLIF XReg4.D
+-01100 1
+-01010 1
+-01001 1
+-01111 1
+100--- 1
+--1000 0
+--1110 0
+--1101 0
+--1011 0
+0-0--- 0
+-1---- 0
+.names XReg5.Q Reset.BLIF J0_DAddressMux0.BLIF V0_IncDecOut5.BLIF XReg5.D
+100- 1
+-011 1
+0-0- 0
+--10 0
+-1-- 0
+.names XReg6.Q Reset.BLIF J0_DAddressMux0.BLIF J0_DDecrement.BLIF \
+V0_AddrMuxOut6.BLIF V0_IncDecCarry5.BLIF XReg6.D
+-01100 1
+-01010 1
+-01001 1
+-01111 1
+100--- 1
+--1000 0
+--1110 0
+--1101 0
+--1011 0
+0-0--- 0
+-1---- 0
+.names XReg7.Q Reset.BLIF J0_DAddressMux0.BLIF V0_IncDecOut7.BLIF XReg7.D
+100- 1
+-011 1
+0-0- 0
+--10 0
+-1-- 0
+.names Reset.BLIF ProgramDB15.BLIF J1_IR15.Q J1_FSM3.Q J1_Call.BLIF \
+J1_Rts.BLIF J1_IR15.D
+0-101- 1
+0-10-1 1
+01--00 1
+01-1-- 1
+--001- 0
+--00-1 0
+-0--00 0
+-0-1-- 0
+1----- 0
+.names Reset.BLIF ProgramDB14.BLIF J1_IR14.Q J1_FSM3.Q J1_Call.BLIF \
+J1_Rts.BLIF J1_IR14.D
+0-101- 1
+0-10-1 1
+01--00 1
+01-1-- 1
+--001- 0
+--00-1 0
+-0--00 0
+-0-1-- 0
+1----- 0
+.names Reset.BLIF ProgramDB13.BLIF J1_IR13.Q J1_FSM3.Q J1_Call.BLIF \
+J1_Rts.BLIF J1_IR13.D
+0-101- 1
+0-10-1 1
+01--00 1
+01-1-- 1
+--001- 0
+--00-1 0
+-0--00 0
+-0-1-- 0
+1----- 0
+.names Reset.BLIF ProgramDB12.BLIF J1_IR12.Q J1_FSM3.Q J1_Call.BLIF \
+J1_Rts.BLIF J1_IR12.D
+0-101- 1
+0-10-1 1
+01--00 1
+01-1-- 1
+--001- 0
+--00-1 0
+-0--00 0
+-0-1-- 0
+1----- 0
+.names Reset.BLIF ProgramDB11.BLIF J1_IR11.Q J1_FSM3.Q J1_Call.BLIF \
+J1_Rts.BLIF J1_IR11.D
+0-101- 1
+0-10-1 1
+01--00 1
+01-1-- 1
+--001- 0
+--00-1 0
+-0--00 0
+-0-1-- 0
+1----- 0
+.names Reset.BLIF ProgramDB10.BLIF J1_IR10.Q J1_FSM3.Q J1_Call.BLIF \
+J1_Rts.BLIF J1_IR10.D
+0-101- 1
+0-10-1 1
+01--00 1
+01-1-- 1
+--001- 0
+--00-1 0
+-0--00 0
+-0-1-- 0
+1----- 0
+.names Reset.BLIF ProgramDB9.BLIF J1_IR9.Q J1_FSM3.Q J1_Call.BLIF J1_Rts.BLIF \
+J1_IR9.D
+0-101- 1
+0-10-1 1
+01--00 1
+01-1-- 1
+--001- 0
+--00-1 0
+-0--00 0
+-0-1-- 0
+1----- 0
+.names Reset.BLIF ProgramDB8.BLIF J1_IR8.Q J1_FSM3.Q J1_Call.BLIF J1_Rts.BLIF \
+J1_IR8.D
+0-101- 1
+0-10-1 1
+01--00 1
+01-1-- 1
+--001- 0
+--00-1 0
+-0--00 0
+-0-1-- 0
+1----- 0
+.names Reset.BLIF ProgramDB7.BLIF J1_IR7.Q J1_FSM3.Q J1_Call.BLIF J1_Rts.BLIF \
+J1_IR7.D
+0-101- 1
+0-10-1 1
+01--00 1
+01-1-- 1
+--001- 0
+--00-1 0
+-0--00 0
+-0-1-- 0
+1----- 0
+.names Reset.BLIF ProgramDB6.BLIF J1_IR6.Q J1_FSM3.Q J1_Call.BLIF J1_Rts.BLIF \
+J1_IR6.D
+0-101- 1
+0-10-1 1
+01--00 1
+01-1-- 1
+--001- 0
+--00-1 0
+-0--00 0
+-0-1-- 0
+1----- 0
+.names Reset.BLIF ProgramDB5.BLIF J1_IR5.Q J1_FSM3.Q J1_Call.BLIF J1_Rts.BLIF \
+J1_IR5.D
+0-101- 1
+0-10-1 1
+01--00 1
+01-1-- 1
+--001- 0
+--00-1 0
+-0--00 0
+-0-1-- 0
+1----- 0
+.names Reset.BLIF ProgramDB4.BLIF J1_IR4.Q J1_FSM3.Q J1_Call.BLIF J1_Rts.BLIF \
+J1_IR4.D
+0-101- 1
+0-10-1 1
+01--00 1
+01-1-- 1
+--001- 0
+--00-1 0
+-0--00 0
+-0-1-- 0
+1----- 0
+.names Reset.BLIF ProgramDB3.BLIF J1_IR3.Q J1_FSM3.Q J1_Call.BLIF J1_Rts.BLIF \
+J1_IR3.D
+0-101- 1
+0-10-1 1
+01--00 1
+01-1-- 1
+--001- 0
+--00-1 0
+-0--00 0
+-0-1-- 0
+1----- 0
+.names Reset.BLIF ProgramDB2.BLIF J1_IR2.Q J1_FSM3.Q J1_Call.BLIF J1_Rts.BLIF \
+J1_IR2.D
+0-101- 1
+0-10-1 1
+01--00 1
+01-1-- 1
+--001- 0
+--00-1 0
+-0--00 0
+-0-1-- 0
+1----- 0
+.names Reset.BLIF ProgramDB1.BLIF J1_IR1.Q J1_FSM3.Q J1_Call.BLIF J1_Rts.BLIF \
+J1_IR1.D
+0-101- 1
+0-10-1 1
+01--00 1
+01-1-- 1
+--001- 0
+--00-1 0
+-0--00 0
+-0-1-- 0
+1----- 0
+.names Reset.BLIF ProgramDB0.BLIF J1_IR0.Q J1_FSM3.Q J1_Call.BLIF J1_Rts.BLIF \
+J1_IR0.D
+0-101- 1
+0-10-1 1
+01--00 1
+01-1-- 1
+--001- 0
+--00-1 0
+-0--00 0
+-0-1-- 0
+1----- 0
+.names Reset.BLIF J1_FSM3.Q J1_FSM2.Q J1_FSM1.Q J1_FSM0.Q J1_FSM3.D
+00010 1
+00101 1
+---00 0
+--0-1 0
+--11- 0
+-1--- 0
+1---- 0
+.names Reset.BLIF J1_FSM3.Q J1_FSM2.Q J1_FSM1.Q J1_FSM0.Q J1_Call.BLIF \
+J1_Rts.BLIF J1_FSM2.D
+0000001 1
+-----1- 0
+----1-- 0
+---1--- 0
+--1---- 0
+-1----- 0
+1------ 0
+------0 0
+.names Reset.BLIF J1_FSM3.Q J1_FSM2.Q J1_FSM1.Q J1_FSM0.Q J1_FSM1.D
+00001 1
+---1- 0
+--1-- 0
+-1--- 0
+1---- 0
+----0 0
+.names Reset.BLIF J1_FSM3.Q J1_FSM2.Q J1_FSM1.Q J1_FSM0.Q J1_Call.BLIF \
+J1_Rts.BLIF J1_FSM0.D
+000001- 1
+00000-1 1
+-----00 0
+----1-- 0
+---1--- 0
+--1---- 0
+-1----- 0
+1------ 0
+.end

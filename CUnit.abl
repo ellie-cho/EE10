@@ -1,0 +1,936 @@
+MODULE      ControlUnit
+INTERFACE   (IR15..IR0, Flags7..Flags0, Reset, Clock 
+            -> ALU_EnCVFlags, ALU_EnSZFlags,
+            ALU_FControl3..ALU_FControl0, 
+            ALU_Subtract, 
+            ALU_UseCarry, ALU_Popf, ALU_InvertAdderCarry, ALU_ZeroAdder, 
+            ALU_EnableAccumWrite, 
+            ALU_FlagMod1..ALU_FlagMod0,
+            PAU_MuxSel2..PAU_MuxSel0, PAU_Increment,
+            PAU_LoadHigh, PAU_LoadLow,
+            DAU_Decrement, 
+            DAU_AddressMuxSel1..DAU_AddressMuxSel0, DAU_CarryIn, 
+            DAU_WriteBackSel, DAU_Post, DAU_OffsetSel, 
+            DAU_Load, DataDBSel1..DataDBSel0,
+           PAUOffsetSel,
+           ALUDSel1..ALUDSel0, RD, WR);
+
+TITLE       'Control Unit'
+
+" Description: This module implements the Control Unit of the Caltech 10
+" CPU. The Control Unit consists of the Instruction Register (sixteen bits)
+" and the logic for generating the control signals for each of the other modules.
+
+
+" Inputs
+
+" The 16-bit instruction register
+IR15..IR0                    pin ISTYPE 'REG';
+Flags7..Flags0                   pin;
+
+" Reset and Clock pins
+Reset                            pin;
+Clock                            pin;
+
+" Internal instruction register 
+IReg15..IReg0                        pin ISTYPE 'reg';
+
+" FSM Register (this is a Moore state machine)
+FSM3..FSM0                       pin ISTYPE 'reg, buffer';
+
+" Outputs, grouped by function
+
+" Read, write, IO outputs
+RD                               pin;
+WR                               pin;
+
+Data7..Data0                     pin;
+Direct12..Direct0                pin;
+
+" ALU Control Pins:
+ALU_EnCVFlags                             pin;
+ALU_EnSZFlags                             pin;
+ALU_FControl3..ALU_FControl0              pin;
+ALU_Subtract                              pin;
+ALU_UseCarry                              pin;
+ALU_Popf                                  pin;
+ALU_InvertAdderCarry                      pin;
+ALU_ZeroAdder                             pin;
+ALU_EnableAccumWrite                      pin;
+" PAU Control Pins:
+PAU_MuxSel2..PAU_MuxSel0                  pin;
+PAU_Increment                             pin;
+PAU_LoadHigh                              pin;
+PAU_LoadLow                               pin;
+
+" DAU Control Pins:
+DAU_Decrement                             pin;
+DAU_AddressMuxSel1..DAU_AddressMuxSel0        pin;
+DAU_CarryIn                               pin;
+DAU_WriteBackSel                          pin;
+DAU_Post                                  pin;
+DAU_OffsetSel                             pin;
+DAU_Load                                  pin;
+
+" CPU Toplevel muxes 
+DataDBSel1..DataDBSel0           pin;
+PAUOffsetSel                     pin;
+ALUDSel1..ALUDSel0               pin;
+
+"Intermediate Variables
+Call         node; "high when performing the call instruction
+Rts          node; "high when performing the Rts instruction
+LoadIR       node; "high when IR is loaded: 
+"                   for almost every instruction
+Pushf        node; " High for Pushf instruction
+" Buses
+ALU_FControl        = [ALU_FControl3..ALU_FControl0];
+PAU_MuxSel          = [PAU_MuxSel2..PAU_MuxSel0];
+DataDBSel          = [DataDBSel1..DataDBSel0];
+FSM                 = [FSM3..FSM0];
+IR                  = [IR15..IR0];
+IReg                = [IReg15..IReg0];
+" Identifying bits for the JMP instruction are the top three bits
+JMP     = [1, 1, 0];
+
+" Identifying the addressing mode
+M       = [0, 0];
+X       = [0, 1];
+S       = [1, 0];
+K       = [1, 1];
+" FSM states
+IDLE       = [0, 0, 0, 0];
+CALL1      = [0, 0, 0, 1];
+CALL2      = [0, 0, 1, 0];
+RTS1       = [0, 1, 0, 1];
+RESLOAD    = [1, 0, 0, 0];
+
+EQUATIONS
+
+" Load the instruction register from IR, unless LoadIR is low.
+" LoadIR is always high unless it's CALL or RTS; if CALL or RTS,
+" then we load the instruction register if we are in the
+" ResumeLoad state, which occurs when FSM3 is high.
+Rts = (IR[15..0] == [0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0]);
+Call = (IR[15..13] == [1, 1, 1]);
+
+LoadIR = !(Call # Rts) # FSM3;
+
+IReg := (!LoadIR & IReg) # (LoadIR & IR);
+TSATXA    =   !IR15 &  IR14 & IR13  & !IR12 & !IR11 & IR10 & IR9 & IR8;
+
+Pushf   = !IR15 & !IR14 & !IR13 & !IR12 & IR11 & IR10 & IR9 & !IR8 
+          & !IR6; " Distinguishes from DES operation sharing top 8 bits of IR 
+"==========
+" JMP
+"==========
+WHEN (IR[15..13] == JMP) THEN  {
+" ALU does nothing for JMP instructions
+      ALU_EnCVFlags                             = 0;
+      ALU_EnSZFlags                             = 0;
+      ALU_ZeroAdder                             = 0;
+      ALU_FControl              = [1, 0, 1, 1];
+      ALU_Subtract                              = 0;
+      ALU_UseCarry                              = 0;
+      ALU_Popf                                  = 0;
+      ALU_InvertAdderCarry                      = 0;
+      ALU_EnableAccumWrite                      = 0;
+
+" PAU loads the pc and adds the thirteen bit offset
+      PAU_LoadHigh          = 1;
+      PAU_LoadLow           = 1;
+      PAU_MuxSel = [1, 0, 1];
+      PAU_Increment = 0;
+
+"DAU Instructions
+
+DAU_Decrement = 0                            
+[DAU_AddressMuxSel1..DAU_AddressMuxSel0] = [0, 0];     
+DAU_CarryIn = 0;                             
+DAU_WriteBackSel   = [0, 0];                      
+DAU_Post = 0;                                 
+DAU_OffsetSel = 0;                            
+DAU_Load = 1;
+
+"CPU instructions
+CPU_Offset = 1;  
+}
+
+"==========
+" Subtract: 
+"==========
+WHEN ((IR[15..12] == [0, 0, 0, 1]) & (IR[11..8] != [1, 1, 1, 1])) # 
+     ((IR[11..10] == [0, 0]) & (IR[15..12] == [0, 0, 1, 1]))
+THEN{
+      "ALU Instructions:
+      ALU_EnCVFlags                             = 1;
+      ALU_EnSZFlags                             = 1;
+      ALU_ZeroAdder                             = 0;
+      ALU_FControl3..ALU_FControl0              = [1, 1, 1, 1];
+      ALU_Subtract                              = 1;
+      WHEN (IR[11..10] == [0, 0]) THEN {
+       ALU_UseCarry     = 0;        
+      }
+      WHEN (IR[11..10] == [1, 0]) THEN {
+        ALU_UseCarry    = 1;        
+      }
+      ALU_Popf                                  = 0;
+      ALU_InvertAdderCarry                      = 1;
+      ALU_EnableAccumWrite                      = 1;
+
+      "Control unit instructions
+      WHEN (IR[10..8] != [0, 1, 1]) THEN {
+        RD             = 1;
+        CPU_ALUData    = M;
+      }
+
+      WHEN (IR[10..8] == [0, 1, 1]) THEN {
+        CPU_ALUData    = K; 
+      }
+
+      " PAU Instructions: Just increment
+      PAU_LoadHigh = 0;
+      PAU_LoadLow  = 0;
+      PAU_Increment = 1;
+      PAU_MuxSel = [0, 0, 0];
+
+      " DAU Instructions: 
+" No calculation if taking data from IR
+    WHEN (IR[9..8] == [1, 1]) THEN {
+      DAU_Decrement = 0                            
+      DAU_AddressMuxSel1..DAU_AddressMuxSel0 = [0, 0];     
+      DAU_CarryIn = 0;                         
+      DAU_Post = 0;                                 
+      DAU_OffsetSel = 0;                            
+      DAU_Load = 0;
+    }
+" When we are taking from M, we want to have that address in the data address
+" bus and then have it come to us in the data bus.
+" Taking from S, o:
+    WHEN (IR[9..8] == [1, 0]) THEN {
+      DAU_Decrement = 0                            
+      DAU_AddressMuxSel1..DAU_AddressMuxSel0 = [1, 0];     
+      DAU_CarryIn = 0;                        
+      DAU_Post = 0;                                 
+      DAU_OffsetSel = 1;                            
+      DAU_Load = 0;
+    }
+
+" Taking from X, o:
+    WHEN (IR[9..8] == [0, 1]) THEN {
+      DAU_Decrement = 0                            
+      DAU_AddressMuxSel1..DAU_AddressMuxSel0 = [1, 1];     
+      DAU_CarryIn = 0;                        
+      DAU_Post = 0;                                 
+      DAU_OffsetSel = 1;                            
+      DAU_Load = 0;
+    }
+
+" Taking just from m:
+    WHEN (IR[9..8] == [0, 0]) THEN {
+       DAU_Decrement = 0                            
+      DAU_AddressMuxSel1..DAU_AddressMuxSel0 = [0, 0];     
+      DAU_CarryIn = 0;                         
+      DAU_Post = 0;                                 
+      DAU_OffsetSel = 1;                            
+      DAU_Load = 0;
+    }
+
+}
+
+
+"=================
+" LD Instructions
+"=================
+"S Register:
+WHEN (IR[15..13] == [1, 0, 0]) & 
+     ((IR[11..9] == [0, 0, 1]) # (IR[11..9] == [1, 0, 1]))
+THEN {
+" ALU instructions, same code for all load instructions
+      ALU_EnCVFlags                             = 0;
+      ALU_EnSZFlags                             = 0;
+
+      ALU_ZeroAdder                             = 1;
+      ALU_FControl3..ALU_FControl0              = [0, 1, 0, 0];
+      ALU_Subtract                              = 0;
+      ALU_UseCarry     = 0;        
+      ALU_Popf                                  = 0;
+      ALU_InvertAdderCarry                      = 0;
+      ALU_EnableAccumWrite                      = 1;
+
+" PAU Instructions: Just need to increment
+    PAU_LoadHigh = 0;
+      PAU_LoadLow  = 0;
+      PAU_Increment = 1;
+      PAU_MuxSel = [0, 0, 0];
+
+"DAU Instructions:                                 
+      DAU_AddressMuxSel1..DAU_AddressMuxSel0 = [1, 0];      
+      DAU_Post = 0;                                 
+      DAU_OffsetSel = 1;                            
+      DAU_Load = 0;
+
+      "increment S-reg
+      WHEN ((IR[8] == 0) & (IR[11] == 0)) THEN {
+      DAU_CarryIn = 1;
+      DAU_Decrement =0;
+      }
+      "do nothing to S-reg
+       WHEN (IR[8] == 1) THEN {
+        DAU_CarryIn =0;
+        DAU_Decrement =0;
+       }
+      "decrement S-reg
+       WHEN ((IR[8] == 0) & (IR[11] == 1)) THEN {
+       DAU_CarryIn = 0;
+       DAU_Decrement = 1;
+       }
+       WHEN (IR[12] == 1) THEN {
+        DAU_Post       = 1;
+      }
+      WHEN (IR[12] == 0) THEN {
+        DAU_Post       = 0;
+      }
+      " CPU Instruction:
+    RD             = 1;
+    CPU_ALUData    = M;
+
+
+
+}
+ 
+" These are for loads with the X Register
+WHEN (IR[15..13] == [1, 0, 0]) & 
+     ((IR[11..9] == [0, 1, 1]) # (IR[11..9] == [1, 1, 1]))
+THEN {
+"ALU instructions are same for all load
+      ALU_EnCVFlags                             = 0;
+      ALU_EnSZFlags                             = 0;
+
+      ALU_ZeroAdder                             = 1;
+      ALU_FControl3..ALU_FControl0              = [0, 1, 0, 0];
+      ALU_Subtract                              = 0;
+      ALU_UseCarry     = 0;        
+      ALU_Popf                                  = 0;
+      ALU_InvertAdderCarry                      = 0;
+      ALU_EnableAccumWrite                      = 1;
+" PAU Instructions: Just need to increment
+      PAU_LoadHigh = 0;
+      PAU_LoadLow  = 0;
+      PAU_Increment = 1;
+      PAU_MuxSel = [0, 0, 0];
+"DAU Instructions: X reg
+      DAU_AddressMuxSel1..DAU_AddressMuxSel0 = [0, 1];      
+      DAU_Post = 0;                                 
+      DAU_OffsetSel = 1;                            
+      DAU_Load = 0;
+"increment X-reg
+      WHEN ((IR[8] == 0) & (IR[11] == 0)) THEN {
+      DAU_CarryIn = 1;
+      DAU_Decrement = 0;
+      }
+      "do nothing to S-reg
+       WHEN (IR[8] == 1) THEN {
+        DAU_CarryIn =0;
+        DAU_Decrement =0;
+       }
+      "decrement S-reg
+       WHEN ((IR[8] == 0) & (IR[11] == 1)) THEN {
+       DAU_CarryIn = 0;
+       DAU_Decrement = 1;
+       }
+      WHEN (IR[12] == 1) THEN {
+        DAU_Post       = 1;
+      }
+      WHEN (IR[12] == 0) THEN {
+        DAU_Post       = 0;
+      }
+      " CPU Instruction:
+    RD             = 1;
+    CPU_ALUData    = M;
+
+}
+
+" ===========
+"LDD and LDI
+"============
+WHEN (IR[15..12] == [1, 0, 0, 0]) & 
+     ((IR[11..8] == [0, 0, 0, 0]) # (IR[11..8] == [1, 0, 0, 1]))
+THEN {
+"ALU instructions are same for all load
+      ALU_EnCVFlags                             = 0;
+      ALU_EnSZFlags                             = 0;
+
+      ALU_ZeroAdder                             = 1;
+      ALU_FControl3..ALU_FControl0              = [0, 1, 0, 0];
+      ALU_Subtract                              = 0;
+      ALU_UseCarry     = 0;        
+      ALU_Popf                                  = 0;
+      ALU_InvertAdderCarry                      = 0;
+      ALU_EnableAccumWrite                      = 1;
+"PAU instructions: just increment
+      PAU_LoadHigh = 0;
+      PAU_LoadLow  = 0;
+      PAU_Increment = 1;
+      PAU_MuxSel = [0, 0, 0];
+" DAU Instructions:
+
+" Taking just from m:
+    WHEN (IR[11] == 0) THEN {
+      DAU_AddressMuxSel1..DAU_AddressMuxSel0 = [0, 0];      
+      DAU_Post = 0;                                 
+      DAU_OffsetSel = 1;                            
+      DAU_Load = 0;
+      DAU_Decrement =0;
+      DAU_CarryIn = 0;
+      CPU_ALUData         = K; 
+      RD                  = 1;
+    }
+" Taking directly from instruction:
+    WHEN (IR[11] == 1) THEN {
+       DAU_AddressMuxSel1..DAU_AddressMuxSel0 = [0, 0];      
+      DAU_Post = 0;                                 
+      DAU_OffsetSel = 0;                            
+      DAU_Load = 0;
+      DAU_Decrement =0;
+      DAU_CarryIn = 0;
+      CPU_ALUData         = K; 
+      RD                  = 1;
+    }
+}
+" ========================================
+" Addition, ADC, ADCI, ADD, ADDI, LSL, RLC
+" ========================================
+WHEN ((IR[15..12] == [0, 1, 0, 0]) & (IR[11..10] == [1, 1])) #
+     ((IR[15..12] == [0, 1, 1, 0]) & (IR[11..8] != [0, 1, 1, 1])) #
+     ((IR[15..12] == [0, 1, 0, 1]))
+THEN {
+"PAU instructions: just increment
+      PAU_LoadHigh = 0;
+      PAU_LoadLow  = 0;
+      PAU_Increment = 1;
+      PAU_MuxSel = [0, 0, 0];
+"ALU Instructions:
+      ALU_EnCVFlags                             = 1;
+      ALU_EnSZFlags                             = 1;
+      ALU_ZeroAdder                             = 0;
+      ALU_FControl3..ALU_FControl0              = [0, 1, 0, 0];
+      ALU_Subtract                              = 0;
+      WHEN (IR[11..10] == [0, 0]) THEN {
+       ALU_UseCarry     = 0;        
+      }
+      WHEN (IR[11] = 1) THEN {
+        ALU_UseCarry    = 1;        
+      }
+      ALU_Popf                                  = 0;
+      ALU_InvertAdderCarry                      = 0;
+      ALU_EnableAccumWrite                      = 1; 
+      " CPU Instructions:
+    WHEN (IR[9..8] != [1, 1]) THEN {
+        RD              = 1;
+        CPU_ALUData     = M;
+    }
+    WHEN (IR[9..8] == [1, 1]) THEN {
+        CPU_ALUData     = K; 
+    }
+    "DAU instructions:
+    " No calculation if taking data from IR
+    WHEN (IR[9..8] == [1, 1]) THEN {
+      DAU_Decrement = 0                            
+      DAU_AddressMuxSel1..DAU_AddressMuxSel0 = [0, 0];     
+      DAU_CarryIn = 0;                         
+      DAU_Post = 0;                                 
+      DAU_OffsetSel = 0;                            
+      DAU_Load = 0;
+    }
+" When we are taking from M, we want to have that address in the data address
+" bus and then have it come to us in the data bus.
+" Taking from S, o:
+    WHEN (IR[9..8] == [1, 0]) THEN {
+      DAU_Decrement = 0                            
+      DAU_AddressMuxSel1..DAU_AddressMuxSel0 = [1, 0];     
+      DAU_CarryIn = 0;                        
+      DAU_Post = 0;                                 
+      DAU_OffsetSel = 1;                            
+      DAU_Load = 0;
+    }
+
+" Taking from X, o:
+    WHEN (IR[9..8] == [0, 1]) THEN {
+      DAU_Decrement = 0                            
+      DAU_AddressMuxSel1..DAU_AddressMuxSel0 = [1, 1];     
+      DAU_CarryIn = 0;                        
+      DAU_Post = 0;                                 
+      DAU_OffsetSel = 1;                            
+      DAU_Load = 0;
+    }
+
+" Taking just from m:
+    WHEN (IR[9..8] == [0, 0]) THEN {
+       DAU_Decrement = 0                            
+      DAU_AddressMuxSel1..DAU_AddressMuxSel0 = [0, 0];     
+      DAU_CarryIn = 0;                         
+      DAU_Post = 0;                                 
+      DAU_OffsetSel = 1;                            
+      DAU_Load = 0;
+}
+
+" ===========================
+"  NOT
+" ===========================
+When (IR[15..12] == [0, 0, 1, 0]) THEN {
+
+" ALU Instructions:
+      ALU_EnCVFlags                             = 0;
+      ALU_EnSZFlags                             = 1;
+      ALU_ZeroAdder                             = 1;
+      ALU_FControl3..ALU_FControl0              = [0, 1, 1, 1];
+      ALU_Subtract                              = 0;
+      ALU_UseCarry                              = 0;        
+      ALU_Popf                                  = 0;
+      ALU_InvertAdderCarry                      = 0;
+      ALU_EnableAccumWrite                      = 1;
+"PAU instructions: just increment
+      PAU_LoadHigh = 0;
+      PAU_LoadLow  = 0;
+      PAU_Increment = 1;
+      PAU_MuxSel = [0, 0, 0];
+"DAU Instructions: no calculation
+      DAU_Decrement = 0                            
+      DAU_AddressMuxSel1..DAU_AddressMuxSel0 = [0, 0];     
+      DAU_CarryIn = 0;                         
+      DAU_Post = 0;                                 
+      DAU_OffsetSel = 0;                            
+      DAU_Load = 0;"
+}
+
+" ===============================
+" FBlock Operations: AND, OR, XOR
+" ===============================
+WHEN (IR[11..10] == [0, 1]) & 
+     ((IR[15..12] == [0, 0, 1, 1]) #
+     (IR[15..12] == [0, 1, 0, 0]) #
+     (IR[15..12] == [0, 1, 1, 1]))
+THEN {
+      ALU_EnCVFlags                             = 0;
+      ALU_EnSZFlags                             = 1;
+      ALU_ZeroAdder                             = 1;
+      ALU_Subtract                              = 0;
+      ALU_UseCarry                              = 0;        
+      ALU_Popf                                  = 0;
+      ALU_InvertAdderCarry                      = 0;
+      ALU_EnableAccumWrite                      = 1;
+" This is the XOR instruction
+    WHEN (IR[15..12] == [0, 0, 1, 1]) THEN {
+        ALU_FControl   = [0, 0, 1, 1];
+    }
+
+" This is the AND instruction
+    WHEN (IR[15..12] == [0, 1, 0, 0]) THEN {
+        ALU_FControl   = [0, 0, 0, 1];
+    }
+
+" This is the OR instruction
+    WHEN (IR[15..12] == [0, 1, 1, 1]) THEN {
+        ALU_FControl   = [0, 0, 1, 0];
+    }
+" CPU Instructions:
+" If it isn't a direct operation, we will be taking this input from the DataDB
+    WHEN (IR[10..8] != [0, 1, 1]) THEN {
+        RD             = 1;
+        CPU_ALUData    = M;
+    }
+" When it is a direct operation, we take input from the instruction
+    WHEN (IR[10..8] == [0, 1, 1]) THEN {
+        CPU_ALUData    = K; 
+    }
+"PAU instructions: just increment
+      PAU_LoadHigh = 0;
+      PAU_LoadLow  = 0;
+      PAU_Increment = 1;
+      PAU_MuxSel = [0, 0, 0];
+" No calculation if taking data from IR
+    WHEN (IR[9..8] == [1, 1]) THEN {
+         DAU_Decrement = 0                            
+      DAU_AddressMuxSel1..DAU_AddressMuxSel0 = [0, 0];     
+      DAU_CarryIn = 0;                         
+      DAU_Post = 0;                                 
+      DAU_OffsetSel = 0;                            
+      DAU_Load = 0;
+    }
+" When we are taking from M, we want to have that address in the data address
+" bus and then have it come to us in the data data bus.
+" Taking from S, o:
+    WHEN (IR[9..8] == [1, 0]) THEN {
+      DAU_Decrement = 0                            
+      DAU_AddressMuxSel1..DAU_AddressMuxSel0 = [1, 0];     
+      DAU_CarryIn = 0;                        
+      DAU_Post = 0;                                 
+      DAU_OffsetSel = 1;                            
+      DAU_Load = 0;
+    }
+
+" Taking from X, o:
+    WHEN (IR[9..8] == [0, 1]) THEN {
+        DAU_Decrement = 0                            
+      DAU_AddressMuxSel1..DAU_AddressMuxSel0 = [1, 1];     
+      DAU_CarryIn = 0;                        
+      DAU_Post = 0;                                 
+      DAU_OffsetSel = 1;                            
+      DAU_Load = 0;
+    }
+
+" Taking just from m:
+    WHEN (IR[9..8] == [0, 0]) THEN {
+         DAU_Decrement = 0                            
+      DAU_AddressMuxSel1..DAU_AddressMuxSel0 = [0, 0];     
+      DAU_CarryIn = 0;                         
+      DAU_Post = 0;                                 
+      DAU_OffsetSel = 1;                            
+      DAU_Load = 0;
+    }
+
+}
+
+"=============
+" INC / DEC
+"=============
+
+WHEN (IR[15..8] == [0, 0, 0, 0, 0, 0, 0, 0]) # 
+     (IR[15..8] == [0, 1, 1, 1, 1, 0, 1, 1])
+THEN {
+      ALU_EnCVFlags                             = 1;
+      ALU_EnSZFlags                             = 1;
+      ALU_ZeroAdder                             = 0;
+      ALU_UseCarry                              = 0;        
+      ALU_Popf                                  = 0;
+      ALU_InvertAdderCarry                      = 0;
+      ALU_EnableAccumWrite                      = 1;
+      ALU_Subtract = 0
+WHEN (IR[8] == 0) THEN {
+        ALU_FControl   = [1, 0, 0, 0];
+    }
+WHEN (IR[8] == 1) THEN {
+        ALU_FControl   = [1, 1, 1, 0];
+    }
+"PAU instructions: just increment
+      PAU_LoadHigh = 0;
+      PAU_LoadLow  = 0;
+      PAU_Increment = 1;
+      PAU_MuxSel = [0, 0, 0];
+
+" DAU Instructions: No calculation
+       DAU_Decrement = 0                            
+      DAU_AddressMuxSel1..DAU_AddressMuxSel0 = [0, 0];     
+      DAU_CarryIn = 0;                         
+      DAU_Post = 0;                                 
+      DAU_OffsetSel = 0;                            
+      DAU_Load = 0;
+}
+
+
+" ===============
+" POPF and NOP
+" ===============
+WHEN (IR[15..8] == [0, 0, 0, 0, 0, 0, 1, 0]) #
+     (IR[15..7] == [0, 0, 0, 1, 1, 1, 1, 1, 1])
+THEN {
+      " CPU Instructions
+    RD             = 1;
+    CPU_ALUData    = M;
+"PAU instructions: just increment
+      PAU_LoadHigh = 0;
+      PAU_LoadLow  = 0;
+      PAU_Increment = 1;
+      PAU_MuxSel = [0, 0, 0];
+" DAU Instructions: No calculation
+       DAU_Decrement = 0                            
+      DAU_AddressMuxSel1..DAU_AddressMuxSel0 = [0, 0];     
+      DAU_CarryIn = 0;                         
+      DAU_Post = 0;                                 
+      DAU_OffsetSel = 0;                            
+      DAU_Load = 0;    
+ALU_EnCVFlags                             = 1;
+      ALU_EnSZFlags                             = 1;
+      ALU_ZeroAdder                             = 0;
+      ALU_UseCarry                              = 0;        
+      ALU_Popf                                  = 0;
+      ALU_InvertAdderCarry                      = 0;
+      ALU_EnableAccumWrite                      = 0;
+      ALU_Subtract = 0
+
+}
+
+" =================
+" Jump Instructions
+" =================
+WHEN (IR[15..14] == [1, 0]) & (IR[11] == 1)
+THEN {
+" ALU does nothing for JMP instructions
+      ALU_EnCVFlags                             = 0;
+      ALU_EnSZFlags                             = 0;
+      ALU_ZeroAdder                             = 0;
+      ALU_FControl3..ALU_FControl0              = [1, 0, 1, 1];
+      ALU_Subtract                              = 0;
+      ALU_UseCarry                              = 0;
+      ALU_Popf                                  = 0;
+      ALU_InvertAdderCarry                      = 0;
+      ALU_EnableAccumWrite                      = 0;
+" DAU Instructions: No calculation
+       DAU_Decrement = 0                            
+      DAU_AddressMuxSel1..DAU_AddressMuxSel0 = [0, 0];     
+      DAU_CarryIn = 0;                         
+      DAU_Post = 0;                                 
+      DAU_OffsetSel = 0;                            
+      DAU_Load = 0;  
+
+    WHEN 
+(((IR[13..10] == [0, 0, 1, 0]) & (IR[9] $ (!Flags3 & !Flags0))) #
+((IR[13..10] == [0, 0, 1, 1]) & (IR[9] $ !Flags3)) #
+((IR[13..10] == [0, 1, 1, 0]) & (IR[9] $ !Flags1)) #
+((IR[13..10] == [0, 1, 1, 1]) & (IR[9] $ !Flags0)) #
+((IR[13..10] == [1, 0, 1, 0]) & (IR[9] $ !Flags2)) #
+((IR[13..10] == [1, 0, 1, 1]) & (IR[9] $ ((Flags2 != Flags1) # Flags0))) #
+((IR[13..10] == [1, 1, 1, 0]) & (IR[9] $ (Flags2 != Flags1))) #
+((IR[13..10] == [1, 1, 1, 1]) & (IR[9] $ !Flags5)))
+    THEN {
+    PAU_LoadHigh = 0;
+    PAU_LoadLow = 0;
+    CPU_Offset =1;
+    PAU_MuxSel = [1, 0, 1];
+    PAU_Increment = 0
+}  
+ELSE{
+      PAU_LoadHigh = 0;
+      PAU_LoadLow= 0;
+      PAU_MuxSel = [0, 1, 0];
+      PAU_Increment =1;
+}
+}
+
+
+
+" ===================
+" CALL Instruction
+" ===================
+WHEN (IR[15..13] == [1, 1, 1]) # 
+THEN {
+  WHEN (FSM == IDLE)
+  THEN{
+      ALU_EnCVFlags                             = 1;
+      ALU_EnSZFlags                             = 1;
+      ALU_ZeroAdder                             = 0;
+      ALU_FControl3..ALU_FControl0              = [1, 1, 1, 0];
+      ALU_Subtract                              = 0;
+      ALU_UseCarry                              = 0;
+      ALU_Popf                                  = 0;
+      ALU_InvertAdderCarry                      = 0;
+      ALU_EnableAccumWrite                      = 1;
+"PAU instructions: hold PC count
+      PAU_LoadHigh = 0;
+      PAU_LoadLow= 0;
+      PAU_MuxSel = [0, 0, 0];
+      PAU_Increment = 0;
+"DAU instructions: S-register decrement
+      DAU_Decrement = 1;                            
+      DAU_AddressMuxSel1..DAU_AddressMuxSel0 = [0, 1];     
+      DAU_CarryIn = 0;                         
+      DAU_Post = 0;                                 
+      DAU_OffsetSel = 0;                            
+      DAU_Load = 0;
+      }
+  WHEN (FSM == CALL1)
+  THEN{
+      ALU_EnCVFlags                             = 0;
+      ALU_EnSZFlags                             = 0;
+      ALU_ZeroAdder                             = 0;
+      ALU_FControl3..ALU_FControl0              = [1, 1, 1, 0];
+      ALU_Subtract                              = 0;
+      ALU_UseCarry                              = 0;
+      ALU_Popf                                  = 0;
+      ALU_InvertAdderCarry                      = 0;
+      ALU_EnableAccumWrite                      = 0;
+"PAU instructions: hold PC count
+      PAU_LoadHigh = 0;
+      PAU_LoadLow= 0;
+      PAU_MuxSel = [0, 0, 0];
+      PAU_Increment = 0;
+"DAU instructions: set offset sel
+      DAU_Decrement = 0;                            
+      DAU_AddressMuxSel1..DAU_AddressMuxSel0 = [0, 1];     
+      DAU_CarryIn = 0;                         
+      DAU_Post = 0;                                 
+      DAU_OffsetSel = 1;                            
+      DAU_Load = 0;
+  }
+  WHEN (FSM == CALL2)
+  THEN{
+      ALU_EnCVFlags                             = 0;
+      ALU_EnSZFlags                             = 0;
+      ALU_ZeroAdder                             = 0;
+      ALU_FControl3..ALU_FControl0              = [1, 1, 1, 0];
+      ALU_Subtract                              = 0;
+      ALU_UseCarry                              = 0;
+      ALU_Popf                                  = 0;
+      ALU_InvertAdderCarry                      = 0;
+      ALU_EnableAccumWrite                      = 0;
+"PAU instructions: hold PC count
+      PAU_LoadHigh = 0;
+      PAU_LoadLow= 0;
+      PAU_MuxSel = [0, 0, 0];
+      PAU_Increment = 0;
+"DAU instructions: S-decrement
+      DAU_Decrement = 1;                            
+      DAU_AddressMuxSel1..DAU_AddressMuxSel0 = [0, 1];     
+      DAU_CarryIn = 0;                         
+      DAU_Post = 0;                                 
+      DAU_OffsetSel = 0;                            
+      DAU_Load = 0;
+  }
+WHEN (FSM == RESLOAD)
+  THEN{
+      ALU_EnCVFlags                             = 0;
+      ALU_EnSZFlags                             = 0;
+      ALU_ZeroAdder                             = 0;
+      ALU_FControl3..ALU_FControl0              = [1, 1, 1, 0];
+      ALU_Subtract                              = 0;
+      ALU_UseCarry                              = 0;
+      ALU_Popf                                  = 0;
+      ALU_InvertAdderCarry                      = 0;
+      ALU_EnableAccumWrite                      = 0;
+"PAU instructions: save direct onto PC, load high 
+      PAU_LoadHigh = 1;
+      PAU_LoadLow= 1;
+      PAU_MuxSel = [0, 0, 1];
+      PAU_Increment = 1;
+"DAU instructions: nothing
+      DAU_Decrement = 0;                            
+      DAU_AddressMuxSel1..DAU_AddressMuxSel0 = [0, 1];     
+      DAU_CarryIn = 0;                         
+      DAU_Post = 0;                                 
+      DAU_OffsetSel = 0;                            
+      DAU_Load = 0;
+  }
+}
+
+" ====================
+" RTS Instruction
+" ====================
+WHEN (IR[15..0] == [0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0])
+THEN{
+    WHEN (FSM == IDLE)
+    THEN{
+      ALU_EnCVFlags                             = 0;
+      ALU_EnSZFlags                             = 0;
+      ALU_ZeroAdder                             = 0;
+      ALU_FControl3..ALU_FControl0              = [1, 1, 1, 0];
+      ALU_Subtract                              = 0;
+      ALU_UseCarry                              = 0;
+      ALU_Popf                                  = 0;
+      ALU_InvertAdderCarry                      = 0;
+      ALU_EnableAccumWrite                      = 0;
+"PAU instructions: load high
+      PAU_LoadHigh = 1;
+      PAU_LoadLow= 1;
+      PAU_MuxSel = [1, 0, 0];
+      PAU_Increment = 0;
+"DAU instructions: increment S
+      DAU_Decrement = 0;                            
+      DAU_AddressMuxSel1..DAU_AddressMuxSel0 = [0, 1];     
+      DAU_CarryIn = 1;                         
+      DAU_Post = 0;                                 
+      DAU_OffsetSel = 0;                            
+      DAU_Load = 0; 
+    }
+WHEN (FSM == CALL1)
+    THEN{
+      ALU_EnCVFlags                             = 0;
+      ALU_EnSZFlags                             = 0;
+      ALU_ZeroAdder                             = 0;
+      ALU_FControl3..ALU_FControl0              = [1, 1, 1, 0];
+      ALU_Subtract                              = 0;
+      ALU_UseCarry                              = 0;
+      ALU_Popf                                  = 0;
+      ALU_InvertAdderCarry                      = 0;
+      ALU_EnableAccumWrite                      = 0;
+"PAU instructions: loadlow high, loadhigh low
+      PAU_LoadHigh = 0;
+      PAU_LoadLow= 1;
+      PAU_MuxSel = [0, 1, 1];
+      PAU_Increment = 0;
+"DAU instructions: increment S
+      DAU_Decrement = 0;                            
+      DAU_AddressMuxSel1..DAU_AddressMuxSel0 = [0, 1];     
+      DAU_CarryIn = 1;                         
+      DAU_Post = 0;                                 
+      DAU_OffsetSel = 0;                            
+      DAU_Load = 0; 
+    }
+WHEN (FSM == RESLOAD) "does nothing
+    THEN{
+      ALU_EnCVFlags                             = 0;
+      ALU_EnSZFlags                             = 0;
+      ALU_ZeroAdder                             = 0;
+      ALU_FControl3..ALU_FControl0              = [1, 1, 1, 0];
+      ALU_Subtract                              = 0;
+      ALU_UseCarry                              = 0;
+      ALU_Popf                                  = 0;
+      ALU_InvertAdderCarry                      = 0;
+      ALU_EnableAccumWrite                      = 0;
+"PAU instructions
+      PAU_LoadHigh = 0;
+      PAU_LoadLow= 0;
+      PAU_MuxSel = [0, 0, 0];
+      PAU_Increment = 0;
+"DAU instructions: increment S
+      DAU_Decrement = 0;                            
+      DAU_AddressMuxSel1..DAU_AddressMuxSel0 = [0, 1];     
+      DAU_CarryIn = 1;                         
+      DAU_Post = 0;                                 
+      DAU_OffsetSel = 0;                            
+      DAU_Load = 0; 
+    }
+}
+
+"DataDBSel equation
+[DataDBSel1..DataDBSel0] = (Pushf & [0, 1])  " Pushf case
+                           # (!FSM2 & !FSM1 &  FSM0 & [1, 1])  " State CALL1
+                           # (!FSM2 &  FSM1 & !FSM0 & [1, 0]); " State CALL2
+
+"ALUData eqution
+[ALUDSel1..ALUDSel0]
+    = (((!IReg15 & !TSATXA & IReg8 & IReg9) # LDI) & [0, 1]) " Immediate load
+       # (TSATXA & [1, IReg0]);                          " X or S register 
+                               " If neither condition is met, the output
+                               " is 00 which selects the data-data bus.
+
+
+
+" Unless doing RTS, the PAU always takes its offset directly from the IR
+PAUOffsetSel                 = !Rts; 
+" Write only when we're performing STD, OUT, CALL or Pushf operations. 
+" Force this pin to low when Reset is high. Only force high for
+" first two cycles of Call.
+WR = ( (!FSM2 & (FSM1 $ FSM0))
+      # Pushf 
+      # (IR15 & !IR14 & IR13 & (!IR11 # (IR9 $ IR8)))) & !Reset;
+
+
+IR.CLK          = Clock;
+ALU_POPF = (IR[15..8] == [0, 0, 0, 0, 0, 0, 1, 0]);
+
+State_Diagram FSM;
+
+State IDLE  :     if Call then goto CALL1
+             else if Rts  then goto RTS1
+             else              goto IDLE;
+
+State CALL1   : goto CALL2;
+State CALL2   : goto RESLOAD;
+
+
+State RTS1    : goto RESLOAD;
+State RESLOAD : goto IDLE;
+
+
+END CUnit

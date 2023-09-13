@@ -1,0 +1,106 @@
+MODULE      ProgramAccess
+INTERFACE  (Offset7..Offset0, Direct12..Direct0, 
+		    LoadHigh,
+		    LoadLow,
+			MuxSel2..MuxSel0,
+            Increment,
+            Reset, 
+            Clock
+            -> 
+            ProgAddr12..ProgAddr0);
+TITLE		'Program Memory Access Unit Design for Caltech 10 CPU'
+" Inputs
+Offset7..Offset0        pin;
+Direct12..Direct0       pin;
+Clock                   pin;
+Reset                   pin;
+
+" Control inputs
+LoadHigh                pin; "when high, masks the PC to zero
+LoadLow                 pin;
+MuxSel2..MuxSel0        pin;  "Source Select from the Control Unit 
+Increment				pin; "if high, the PC simply increments
+
+" Intermediate Terms
+
+MuxOut12..MuxOut0      node;
+CarryOut12..CarryOut0  node;
+CarryIn12..CarryIn0    node;
+AddendA12..AddendA0    node;
+
+
+" Output
+PC12..PC0               node ISTYPE 'REG, KEEP';
+ProgAddr12..ProgAddr0   pin;
+
+" Buses
+Offset   = [Offset7..Offset0];
+PC       = [PC12..PC0];
+ProgAddr = [ProgAddr12..ProgAddr0];
+AddendA  = [AddendA12..AddendA0];
+MuxOut   = [MuxOut12..MuxOut0];
+Direct   = [Direct12..Direct0];
+CarryIn  = [CarryIn12..CarryIn0];
+CarryOut = [CarryOut12..CarryOut0];
+
+" Constants
+ZEROS = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+EQUATIONS
+
+PC12.CLK  =  Clock;
+PC11.CLK  =  Clock;
+PC10.CLK  =  Clock;
+PC9.CLK   =  Clock;
+PC8.CLK   =  Clock;
+PC7.CLK   =  Clock;
+PC6.CLK   =  Clock;
+PC5.CLK   =  Clock;
+PC4.CLK   =  Clock;
+PC3.CLK   =  Clock;
+PC2.CLK   =  Clock;
+PC1.CLK   =  Clock;
+PC0.CLK   =  Clock;
+
+PC12.CLR  =  !Reset;
+PC11.CLR  =  !Reset;
+PC10.CLR  =  !Reset;
+PC9.CLR   =  !Reset;
+PC8.CLR   =  !Reset;
+PC7.CLR   =  !Reset;
+PC6.CLR   =  !Reset;
+PC5.CLR   =  !Reset;
+PC4.CLR   =  !Reset;
+PC3.CLR   =  !Reset;
+PC2.CLR   =  !Reset;
+PC1.CLR   =  !Reset;
+PC0.CLR   =  !Reset;
+
+" Addend A is always PC (masked to 0 when Load is high).
+
+AddendA[7..0] = PC[7..0] & !LoadLow;
+AddendA[12..8] = PC[12..8] & !LoadHigh;
+
+" Addend B is given by an 8:1 mux with MuxSel2..MuxSel0 as the control inputs
+" 000: outputs zero, 001: outputs direct address input 010: outputs extended signed
+" offset input, 011: outputs a 13-bit version of the offset with zeros for the 5 high
+" bits, 100: outputs the low 5 bits of the offset as the 5 high bits and then 8 zeros 
+" for low bits
+MuxOut = (!MuxSel2 & MuxSel1 & !MuxSel0 & ZEROS)
+          # (!MuxSel2 & !MuxSel1  & MuxSel0 & Direct)
+          # (MuxSel2 & !MuxSel1 & !MuxSel0 & [Offset4..Offset0, 
+                                      0, 0, 0, 0, 0, 0, 0, 0])
+          # (!MuxSel2 & MuxSel1 & MuxSel0  & [0, 0, 0, 0, 0, Offset7..Offset0])
+          # (MuxSel2 & !MuxSel1 & MuxSel0 & [Offset7, Offset7, Offset7, Offset7, Offset7, Offset7..Offset0]);
+
+"If Inc is high, set low bit of CarryIn to 1
+
+
+CarryIn[0] = Increment;
+" compute the sum
+PC := AddendA $ MuxOut $ CarryIn;
+CarryOut = (AddendA & MuxOut) # (CarryIn & (AddendA $ MuxOut));
+CarryIn[12..1] = CarryOut[11..0];
+ProgAddr = PC;
+
+END ProgramAccess

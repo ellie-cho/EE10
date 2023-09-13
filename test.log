@@ -1,0 +1,4 @@
+<Error>  F38018:  Pin count 82 for the design exceeds the device limit of 32.
+<Error>  F38019:  Number of logic functions 212 in the design exceeds the device limit of 32.
+<Error>  F38020:  Design requires a minimum of 319 clusters: the device limit is 32 clusters.
+Project 'test' failed during design rules check!

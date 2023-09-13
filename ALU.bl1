@@ -1,0 +1,430 @@
+#$ TOOL ispLEVER Classic 2.0.00.17.20.15
+#$ DATE Tue Apr 07 00:08:23 2020
+#$ TITLE ALU module for the Caltech10 CPU.
+#$ MODULE alu
+#$ JEDECFILE alu
+#$ PINS 52 Data7 Data6 Data5 Data4 Data3 Data2 Data1 Data0 Reset Clock EnableCVFlags \
+#  EnableSZFlags FControl3 FControl2 FControl1 FControl0 ShiftRight AddToZero Subtract \
+#  UseCarry Rol InvertAdderCout EnableAccumWrite Popf RShiftType1 RShiftType0 FlagMod1 \
+#  FlagMod0 Accum7 Accum6 Accum5 Accum4 Accum3 Accum2 Accum1 Accum0 Flags7 Flags6 Flags5 \
+#  Flags4 Flags3 Flags2 Flags1 Flags0 Debug7 Debug6 Debug5 Debug4 Debug3 Debug2 Debug1 Debug0
+#$ NODES 61 FOutput7 FOutput6 FOutput5 FOutput4 FOutput3 FOutput2 FOutput1 FOutput0 \
+#  Sum7 Sum6 Sum5 Sum4 Sum3 Sum2 Sum1 Sum0 Carry8 Carry7 Carry6 Carry5 Carry4 Carry3 Carry2 \
+#  Carry1 Carry0 SOutput7 SOutput6 SOutput5 SOutput4 SOutput3 SOutput2 SOutput1 SOutput0 \
+#  MaskAccum7 MaskAccum6 MaskAccum5 MaskAccum4 MaskAccum3 MaskAccum2 MaskAccum1 \
+#  MaskAccum0 NewAccum7 NewAccum6 NewAccum5 NewAccum4 NewAccum3 NewAccum2 NewAccum1 \
+#  NewAccum0 NewFlags7 NewFlags6 NewFlags5 NewFlags4 NewFlags3 NewFlags2 NewFlags1 \
+#  NewFlags0 TempCarry AdderCarry AdderOverflow IntermediateZero
+#$ INTERFACE alu  44 AddToZero'i'  Clock'i'  Data0'i'  Data1'i'  Data2'i'  Data3'i'  Data4'i'  Data5'i'  Data6'i'  Data7'i'  \
+#  EnableAccumWrite'i'  EnableCVFlags'i'  EnableSZFlags'i'  FControl0'i'  FControl1'i'  FControl2'i'  FControl3'i'  \
+#  FlagMod0'i'  FlagMod1'i'  InvertAdderCout'i'  Popf'i'  RShiftType0'i'  RShiftType1'i'  Reset'i'  Rol'i'  ShiftRight'i'  \
+#  Subtract'i'  UseCarry'i'  Accum0'o'  Accum1'o'  Accum2'o'  Accum3'o'  Accum4'o'  Accum5'o'  Accum6'o'  Accum7'o'  Flags0'o'  Flags1'o'  \
+#  Flags2'o'  Flags3'o'  Flags4'o'  Flags5'o'  Flags6'o'  Flags7'o' 
+.model alu
+.inputs Clock.BLIF Reset.BLIF FControl3.BLIF Data7.BLIF Accum7.BLIF \
+FControl2.BLIF FControl1.BLIF FControl0.BLIF Data6.BLIF Accum6.BLIF Data5.BLIF \
+Accum5.BLIF Data4.BLIF Accum4.BLIF Data3.BLIF Accum3.BLIF Data2.BLIF \
+Accum2.BLIF Data1.BLIF Accum1.BLIF Data0.BLIF Accum0.BLIF Flags3.BLIF \
+Subtract.BLIF UseCarry.BLIF Rol.BLIF AddToZero.BLIF MaskAccum7.BLIF \
+FOutput7.BLIF Carry7.BLIF MaskAccum6.BLIF FOutput6.BLIF Carry6.BLIF \
+MaskAccum5.BLIF FOutput5.BLIF Carry5.BLIF MaskAccum4.BLIF FOutput4.BLIF \
+Carry4.BLIF MaskAccum3.BLIF FOutput3.BLIF Carry3.BLIF MaskAccum2.BLIF \
+FOutput2.BLIF Carry2.BLIF MaskAccum1.BLIF FOutput1.BLIF Carry1.BLIF \
+MaskAccum0.BLIF FOutput0.BLIF Carry0.BLIF Carry8.BLIF InvertAdderCout.BLIF \
+RShiftType1.BLIF RShiftType0.BLIF Sum7.BLIF ShiftRight.BLIF SOutput7.BLIF \
+Sum6.BLIF SOutput6.BLIF Sum5.BLIF SOutput5.BLIF Sum4.BLIF SOutput4.BLIF \
+Sum3.BLIF SOutput3.BLIF Sum2.BLIF SOutput2.BLIF Sum1.BLIF SOutput1.BLIF \
+Sum0.BLIF SOutput0.BLIF EnableAccumWrite.BLIF NewAccum7.BLIF NewAccum6.BLIF \
+NewAccum5.BLIF NewAccum4.BLIF NewAccum3.BLIF NewAccum2.BLIF NewAccum1.BLIF \
+NewAccum0.BLIF Flags1.BLIF EnableSZFlags.BLIF Flags0.BLIF \
+IntermediateZero.BLIF Flags5.BLIF FlagMod1.BLIF FlagMod0.BLIF Flags7.BLIF \
+Flags2.BLIF EnableCVFlags.BLIF AdderOverflow.BLIF AdderCarry.BLIF \
+TempCarry.BLIF NewFlags7.BLIF Popf.BLIF NewFlags6.BLIF NewFlags5.BLIF \
+NewFlags4.BLIF NewFlags3.BLIF NewFlags2.BLIF NewFlags1.BLIF NewFlags0.BLIF
+.outputs FOutput7 FOutput6 FOutput5 FOutput4 FOutput3 FOutput2 FOutput1 \
+FOutput0 Sum7 Sum6 Sum5 Sum4 Sum3 Sum2 Sum1 Sum0 Carry8 Carry7 Carry6 Carry5 \
+Carry4 Carry3 Carry2 Carry1 Carry0 SOutput7 SOutput6 SOutput5 SOutput4 \
+SOutput3 SOutput2 SOutput1 SOutput0 MaskAccum7 MaskAccum6 MaskAccum5 \
+MaskAccum4 MaskAccum3 MaskAccum2 MaskAccum1 MaskAccum0 NewAccum7 NewAccum6 \
+NewAccum5 NewAccum4 NewAccum3 NewAccum2 NewAccum1 NewAccum0 NewFlags7 \
+NewFlags6 NewFlags5 NewFlags4 NewFlags3 NewFlags2 NewFlags1 NewFlags0 \
+TempCarry AdderCarry AdderOverflow IntermediateZero Accum7.C Accum6.C Accum5.C \
+Accum4.C Accum3.C Accum2.C Accum1.C Accum0.C Flags7.C Flags6.C Flags5.C \
+Flags4.C Flags3.C Flags2.C Flags1.C Flags0.C Accum7.CLR Accum6.CLR Accum5.CLR \
+Accum4.CLR Accum3.CLR Accum2.CLR Accum1.CLR Accum0.CLR Flags7.CLR Flags6.CLR \
+Flags5.CLR Flags4.CLR Flags3.CLR Flags2.CLR Flags1.CLR Flags0.CLR Accum7.REG \
+Accum6.REG Accum5.REG Accum4.REG Accum3.REG Accum2.REG Accum1.REG Accum0.REG \
+Flags7.REG Flags6.REG Flags5.REG Flags4.REG Flags3.REG Flags2.REG Flags1.REG \
+Flags0.REG
+.names FControl3.BLIF Data7.BLIF Accum7.BLIF FControl2.BLIF FControl1.BLIF \
+FControl0.BLIF FOutput7
+100--- 1
+-011-- 1
+-10-1- 1
+-11--1 1
+.names FControl3.BLIF FControl2.BLIF FControl1.BLIF FControl0.BLIF Data6.BLIF \
+Accum6.BLIF FOutput6
+---111 1
+-1--01 1
+--1-10 1
+1---00 1
+.names FControl3.BLIF FControl2.BLIF FControl1.BLIF FControl0.BLIF Data5.BLIF \
+Accum5.BLIF FOutput5
+---111 1
+-1--01 1
+--1-10 1
+1---00 1
+.names FControl3.BLIF FControl2.BLIF FControl1.BLIF FControl0.BLIF Data4.BLIF \
+Accum4.BLIF FOutput4
+---111 1
+-1--01 1
+--1-10 1
+1---00 1
+.names FControl3.BLIF FControl2.BLIF FControl1.BLIF FControl0.BLIF Data3.BLIF \
+Accum3.BLIF FOutput3
+---111 1
+-1--01 1
+--1-10 1
+1---00 1
+.names FControl3.BLIF FControl2.BLIF FControl1.BLIF FControl0.BLIF Data2.BLIF \
+Accum2.BLIF FOutput2
+---111 1
+-1--01 1
+--1-10 1
+1---00 1
+.names FControl3.BLIF FControl2.BLIF FControl1.BLIF FControl0.BLIF Data1.BLIF \
+Accum1.BLIF FOutput1
+---111 1
+-1--01 1
+--1-10 1
+1---00 1
+.names FControl3.BLIF FControl2.BLIF FControl1.BLIF FControl0.BLIF Data0.BLIF \
+Accum0.BLIF FOutput0
+---111 1
+-1--01 1
+--1-10 1
+1---00 1
+.names MaskAccum7.BLIF FOutput7.BLIF Carry7.BLIF Sum7
+111 1
+001 1
+010 1
+100 1
+.names MaskAccum6.BLIF FOutput6.BLIF Carry6.BLIF Sum6
+111 1
+001 1
+010 1
+100 1
+.names MaskAccum5.BLIF FOutput5.BLIF Carry5.BLIF Sum5
+111 1
+001 1
+010 1
+100 1
+.names MaskAccum4.BLIF FOutput4.BLIF Carry4.BLIF Sum4
+111 1
+001 1
+010 1
+100 1
+.names MaskAccum3.BLIF FOutput3.BLIF Carry3.BLIF Sum3
+111 1
+001 1
+010 1
+100 1
+.names MaskAccum2.BLIF FOutput2.BLIF Carry2.BLIF Sum2
+111 1
+001 1
+010 1
+100 1
+.names MaskAccum1.BLIF FOutput1.BLIF Carry1.BLIF Sum1
+111 1
+001 1
+010 1
+100 1
+.names MaskAccum0.BLIF FOutput0.BLIF Carry0.BLIF Sum0
+111 1
+001 1
+010 1
+100 1
+.names MaskAccum7.BLIF FOutput7.BLIF Carry7.BLIF Carry8
+11- 1
+011 1
+101 1
+.names MaskAccum6.BLIF FOutput6.BLIF Carry6.BLIF Carry7
+11- 1
+011 1
+101 1
+.names MaskAccum5.BLIF FOutput5.BLIF Carry5.BLIF Carry6
+11- 1
+011 1
+101 1
+.names MaskAccum4.BLIF FOutput4.BLIF Carry4.BLIF Carry5
+11- 1
+011 1
+101 1
+.names MaskAccum3.BLIF FOutput3.BLIF Carry3.BLIF Carry4
+11- 1
+011 1
+101 1
+.names MaskAccum2.BLIF FOutput2.BLIF Carry2.BLIF Carry3
+11- 1
+011 1
+101 1
+.names MaskAccum1.BLIF FOutput1.BLIF Carry1.BLIF Carry2
+11- 1
+011 1
+101 1
+.names MaskAccum0.BLIF FOutput0.BLIF Carry0.BLIF Carry1
+11- 1
+011 1
+101 1
+.names Accum7.BLIF Flags3.BLIF Subtract.BLIF UseCarry.BLIF Rol.BLIF Carry0
+--10- 1
+1---1 1
+-011- 1
+-101- 1
+.names Accum7.BLIF Accum0.BLIF Flags3.BLIF RShiftType1.BLIF RShiftType0.BLIF \
+SOutput7
+--111 1
+1--01 1
+-1-10 1
+.names Accum7.BLIF AddToZero.BLIF MaskAccum7
+10 1
+.names Accum6.BLIF AddToZero.BLIF MaskAccum6
+10 1
+.names Accum5.BLIF AddToZero.BLIF MaskAccum5
+10 1
+.names Accum4.BLIF AddToZero.BLIF MaskAccum4
+10 1
+.names Accum3.BLIF AddToZero.BLIF MaskAccum3
+10 1
+.names Accum2.BLIF AddToZero.BLIF MaskAccum2
+10 1
+.names Accum1.BLIF AddToZero.BLIF MaskAccum1
+10 1
+.names Accum0.BLIF AddToZero.BLIF MaskAccum0
+10 1
+.names Sum7.BLIF ShiftRight.BLIF SOutput7.BLIF NewAccum7
+10- 1
+-11 1
+.names ShiftRight.BLIF Sum6.BLIF SOutput6.BLIF NewAccum6
+01- 1
+1-1 1
+.names ShiftRight.BLIF Sum5.BLIF SOutput5.BLIF NewAccum5
+01- 1
+1-1 1
+.names ShiftRight.BLIF Sum4.BLIF SOutput4.BLIF NewAccum4
+01- 1
+1-1 1
+.names ShiftRight.BLIF Sum3.BLIF SOutput3.BLIF NewAccum3
+01- 1
+1-1 1
+.names ShiftRight.BLIF Sum2.BLIF SOutput2.BLIF NewAccum2
+01- 1
+1-1 1
+.names ShiftRight.BLIF Sum1.BLIF SOutput1.BLIF NewAccum1
+01- 1
+1-1 1
+.names ShiftRight.BLIF Sum0.BLIF SOutput0.BLIF NewAccum0
+01- 1
+1-1 1
+.names Data7.BLIF FlagMod1.BLIF FlagMod0.BLIF Flags7.BLIF NewFlags7
+-1-1 1
+--01 1
+101- 1
+.names NewFlags6
+.names Data5.BLIF Flags5.BLIF FlagMod1.BLIF FlagMod0.BLIF NewFlags5
+-10- 1
+-1-1 1
+1-10 1
+.names NewFlags4
+.names Data3.BLIF FlagMod1.BLIF FlagMod0.BLIF TempCarry.BLIF NewFlags3
+-1-1 1
+--11 1
+100- 1
+.names ShiftRight.BLIF Flags2.BLIF EnableCVFlags.BLIF AdderOverflow.BLIF \
+NewFlags2
+-10- 1
+0-11 1
+.names NewAccum7.BLIF Flags1.BLIF EnableSZFlags.BLIF NewFlags1
+1-1 1
+-10 1
+.names EnableSZFlags.BLIF Flags0.BLIF IntermediateZero.BLIF NewFlags0
+01- 1
+1-1 1
+.names Accum0.BLIF Flags3.BLIF ShiftRight.BLIF EnableCVFlags.BLIF \
+AdderCarry.BLIF TempCarry
+-1-0- 1
+1-11- 1
+--011 1
+.names Carry8.BLIF InvertAdderCout.BLIF AdderCarry
+01 1
+10 1
+.names Carry7.BLIF Carry8.BLIF AdderOverflow
+01 1
+10 1
+.names NewAccum7.BLIF NewAccum6.BLIF NewAccum5.BLIF NewAccum4.BLIF \
+NewAccum3.BLIF NewAccum2.BLIF NewAccum1.BLIF NewAccum0.BLIF IntermediateZero
+00000000 1
+.names Accum7.BLIF EnableAccumWrite.BLIF NewAccum7.BLIF Accum7.REG
+10- 1
+-11 1
+.names Accum6.BLIF EnableAccumWrite.BLIF NewAccum6.BLIF Accum6.REG
+10- 1
+-11 1
+.names Accum5.BLIF EnableAccumWrite.BLIF NewAccum5.BLIF Accum5.REG
+10- 1
+-11 1
+.names Accum4.BLIF EnableAccumWrite.BLIF NewAccum4.BLIF Accum4.REG
+10- 1
+-11 1
+.names Accum3.BLIF EnableAccumWrite.BLIF NewAccum3.BLIF Accum3.REG
+10- 1
+-11 1
+.names Accum2.BLIF EnableAccumWrite.BLIF NewAccum2.BLIF Accum2.REG
+10- 1
+-11 1
+.names Accum1.BLIF EnableAccumWrite.BLIF NewAccum1.BLIF Accum1.REG
+10- 1
+-11 1
+.names Accum0.BLIF EnableAccumWrite.BLIF NewAccum0.BLIF Accum0.REG
+10- 1
+-11 1
+.names Data7.BLIF NewFlags7.BLIF Popf.BLIF Flags7.REG
+1-1 1
+-10 1
+.names Popf.BLIF NewFlags6.BLIF Flags6.REG
+01 1
+.names Data5.BLIF Popf.BLIF NewFlags5.BLIF Flags5.REG
+11- 1
+-01 1
+.names Popf.BLIF NewFlags4.BLIF Flags4.REG
+01 1
+.names Data3.BLIF Popf.BLIF NewFlags3.BLIF Flags3.REG
+11- 1
+-01 1
+.names Data2.BLIF Popf.BLIF NewFlags2.BLIF Flags2.REG
+11- 1
+-01 1
+.names Data1.BLIF Popf.BLIF NewFlags1.BLIF Flags1.REG
+11- 1
+-01 1
+.names Data0.BLIF Popf.BLIF NewFlags0.BLIF Flags0.REG
+11- 1
+-01 1
+.names Accum7.BLIF SOutput6
+1 1
+0 0
+.names Accum6.BLIF SOutput5
+1 1
+0 0
+.names Accum5.BLIF SOutput4
+1 1
+0 0
+.names Accum4.BLIF SOutput3
+1 1
+0 0
+.names Accum3.BLIF SOutput2
+1 1
+0 0
+.names Accum2.BLIF SOutput1
+1 1
+0 0
+.names Accum1.BLIF SOutput0
+1 1
+0 0
+.names Clock.BLIF Accum7.C
+1 1
+0 0
+.names Clock.BLIF Accum6.C
+1 1
+0 0
+.names Clock.BLIF Accum5.C
+1 1
+0 0
+.names Clock.BLIF Accum4.C
+1 1
+0 0
+.names Clock.BLIF Accum3.C
+1 1
+0 0
+.names Clock.BLIF Accum2.C
+1 1
+0 0
+.names Clock.BLIF Accum1.C
+1 1
+0 0
+.names Clock.BLIF Accum0.C
+1 1
+0 0
+.names Clock.BLIF Flags7.C
+1 1
+0 0
+.names Clock.BLIF Flags6.C
+1 1
+0 0
+.names Clock.BLIF Flags5.C
+1 1
+0 0
+.names Clock.BLIF Flags4.C
+1 1
+0 0
+.names Clock.BLIF Flags3.C
+1 1
+0 0
+.names Clock.BLIF Flags2.C
+1 1
+0 0
+.names Clock.BLIF Flags1.C
+1 1
+0 0
+.names Clock.BLIF Flags0.C
+1 1
+0 0
+.names Reset.BLIF Accum7.CLR
+1 1
+0 0
+.names Reset.BLIF Accum6.CLR
+1 1
+0 0
+.names Reset.BLIF Accum5.CLR
+1 1
+0 0
+.names Reset.BLIF Accum4.CLR
+1 1
+0 0
+.names Reset.BLIF Accum3.CLR
+1 1
+0 0
+.names Reset.BLIF Accum2.CLR
+1 1
+0 0
+.names Reset.BLIF Accum1.CLR
+1 1
+0 0
+.names Reset.BLIF Accum0.CLR
+1 1
+0 0
+.names Reset.BLIF Flags7.CLR
+1 1
+0 0
+.names Reset.BLIF Flags6.CLR
+1 1
+0 0
+.names Reset.BLIF Flags5.CLR
+1 1
+0 0
+.names Reset.BLIF Flags4.CLR
+1 1
+0 0
+.names Reset.BLIF Flags3.CLR
+1 1
+0 0
+.names Reset.BLIF Flags2.CLR
+1 1
+0 0
+.names Reset.BLIF Flags1.CLR
+1 1
+0 0
+.names Reset.BLIF Flags0.CLR
+1 1
+0 0
+.end

@@ -1,0 +1,175 @@
+MODULE		ALU
+INTERFACE  (Data7..Data0,              " ALU Data input
+            EnCVFlags,                 " Enable setting C, V Flags when high
+            EnSZFlags,                 " Enable setting S, Z Flags when high
+            FControl3..FControl0,      " F-Block Truth Table Controls
+            						   " is an ALU OP
+            ZeroAdder,                 " High zeroes A-input of adder,
+            						   " is an ALU Op (switch)
+   
+            Subtract,	
+            UseCarry,
+            Popf,					   " High for the POPF instruction
+            InvertAdderCarry,          " High only to invert CarryOut of adder
+            						   " before storing it to the carry flag
+            EnableAccumWrite,          " High to write to the accumulator
+            FlagMod1..FlagMod0,        " Control inputs for flag modification
+            Reset, Clock
+            -> Accum7..Accum0, 
+            Flags7..Flags0);        " ALU Flags output
+
+TITLE	'Caltech10 CPU Accumulator + Status Register + ALU'
+
+" Description: This file implements the ALU Module for the Caltech10 CPU. 
+" It implements the accumulator, ALU, and the status register in one  
+" module. It takes in control inputs and outputs in the eight-bit accumulator
+" and the eight-bit status register flags. 
+"
+" Inputs: Data7..0			 ALU Data Input
+"		  EnCVFlags			 High when the C and V flags are affected by the 
+"							  operation
+"		  EnSZFlags			 High when the S and Z flags are affected by the 
+"							  operation
+"		  FControl3..0		 Represents the truth table input for the F-Block 
+"							0000->zeros 0001 -> AND 0010 -> OR 0100 -> Data 1111
+" -> (!Data $ ZEROS) 1000 -> ONE 0011 -> XOR 1110 -> NEGATIVEONE 
+" 0111 -> NOT 1101 -> Accum
+"		  ZeroAdder		     Makes the first input into the adder zero
+"		  Subtract			 High when adder is performing subtraction
+"		  SubCarry			 Sets Carry to Cin or !Cin if Subtract is high
+"		  Popf				 High if the instruction is a POPF instruction
+"		  InvertAdderCarry   Inverts the CarryOut of Adder before storing it
+"		  EnableAccumWrite   Allows writing to the accumulator; overwrites the
+"							  value in the accumulator if high, otherwise 
+"							  leaves accumulator value unchanged
+"		  FlagMod1..0		 11 for no flags changed, 00 for modifying carry, 
+"							  01 modifies interrupt, 10 modifies user
+" Outputs:Accum7..0			 accumulator output value
+"		  Flags7..0 		 flag outputs
+
+"Revision History:
+"02/23/20 	Ellie Cho Initial Revision
+"02/26/20   Ellie Cho updated code
+"3/3/20     Ellie Cho fixed some bugs
+"3/4/20     Ellie Cho fixed even more bugs
+
+" Inputs
+
+Data7..Data0		          pin;
+EnCVFlags				    pin;
+EnSZFlags				    pin;
+FControl3..FControl0		    pin;
+ZeroAdder				    pin;
+Subtract  				    pin;
+UseCarry 				    pin;
+Popf					    pin;
+InvertAdderCarry	   		    pin;
+EnableAccumWrite	  		    pin;
+FlagMod1..FlagMod0	          pin;
+Clock			        	    pin;
+Reset                 		    pin;
+
+" Outputs
+Accum7..Accum0			    pin ISTYPE 'REG';
+Flags7..Flags0				pin ISTYPE 'REG';
+
+"Intermediate Values
+FOutput7..FOutput0     			node; "Output of F-Block, B-input to Adder
+Sum7..Sum0             			node; "Output of adder
+Carry8..Carry0         			node; "Carry in bits of adder
+MaskAccum7..MaskAccum0 			node; "Accumulator, masked to 0 when AddToZero 
+"                                       is high
+NewAccum7..NewAccum0   			node; "Stores updated accumulator value 
+"                                       temporarily
+NewFlags7..NewFlags0   			node; "Stores updated flags
+TempCarry              			node; "Intermediate when computing new flag 
+"                                       variable.
+AdderCarry             			node; "Carry out from adder
+AdderOverflow          			node; "Overflow from adder
+
+
+
+" Constants
+
+ONE   =  [ 0, 0, 0, 0, 0, 0, 0, 1 ];	" 8-bit value of 1
+ZEROS = [0,0,0,0,0,0,0,0];
+NEGATIVEONE = [1, 1, 1, 1, 1, 1, 1, 1]; 
+"Buses/Vectors
+Accum = [Accum7..Accum0];
+Data = [Data7..Data0];
+Flags = [Flags7..Flags0];
+
+MaskAccum = [MaskAccum7..MaskAccum0];
+NewAccum  = [NewAccum7..NewAccum0];
+NewFlags = [NewFlags7..NewFlags0]; 
+FOutput   = [FOutput7..FOutput0];
+Sum = [Sum7..Sum0];
+
+EQUATIONS
+
+"Clock
+Accum.CLK = Clock;
+Accum.CLR = !Reset;
+Flags.CLK = Clock;
+Flags.CLR = !Reset;
+
+"FBlock: 0000->zeros 0001 -> AND 0010 -> OR 0100 -> Data 1111 -> (!Data $ ZEROS)
+" 1000 -> ONE 0011 -> XOR 1110 -> NEGATIVEONE 0111 -> NOT 1101 -> Accum
+FOutput = (!FControl0 & !FControl1 & !FControl2 & !FControl3 & ZEROS) #
+		  (FControl0 & !FControl1 & !FControl2 & !FControl3 & (Data & Accum)) #
+		  (!FControl0 & FControl1 & !FControl2 & !FControl3 & (Data # Accum)) #
+		  (!FControl0 & !FControl1 & FControl2 & !FControl3 & Data) #
+		   (FControl0 & FControl1 & FControl2 & FControl3 & (!Data $ ZEROS)) #
+		 (!FControl0 & !FControl1 & !FControl2 & FControl3 & ONE) #
+		  (FControl0 & FControl1 & !FControl2 & !FControl3 & (Data $ Accum)) #
+		     (!FControl0 & FControl1 & FControl2 & FControl3 & NEGATIVEONE) #
+		     (FControl0 & FControl1 & FControl2 & !FControl3 & !Accum) #
+		     (FControl0 & !FControl1 & FControl2 & FControl3 & Accum);
+
+
+Carry0     = (Subtract $ ((UseCarry & Flags3) # (!UseCarry & 0)));
+
+MaskAccum        = !ZeroAdder & Accum;
+
+[Carry8..Carry1] = (MaskAccum & (FOutput)) # ([Carry7..Carry0] & 
+(MaskAccum $ FOutput));
+
+Sum              = MaskAccum $ FOutput $ [Carry7..Carry0];
+AdderCarry    = Carry8 $ InvertAdderCarry;
+AdderOverflow = Carry8 $ Carry7;
+NewAccum = Sum;
+Accum   := (Accum & !EnableAccumWrite) # (NewAccum & EnableAccumWrite);
+
+" If EnableSZFlags is high, change flags based on new accumulator. Otherwise,
+" don't change.
+
+NewFlags1        = (Flags1 & !EnSZFlags) # (NewAccum7 & EnSZFlags);   " Sign 
+NewFlags0  = (Flags0 & !EnSZFlags) # 
+(!NewAccum7 & !NewAccum6 & !NewAccum5 & !NewAccum4       
+& !NewAccum3 & !NewAccum2 & !NewAccum1 & !NewAccum0 & EnSZFlags); " Zero
+
+" Interrupt and user flags are set only if the ModifyFlag control
+" is high and the appropriate data bit giving the flag to set is high.
+NewFlags5 = (Flags5 & !(FlagMod1 & !FlagMod0)) # 
+(Data5 & (FlagMod1 & !FlagMod0));
+NewFlags7 = (Flags7 & !(!FlagMod1 & FlagMod0)) # (
+Data7 & (!FlagMod1 & FlagMod0));
+
+" Equations for new overflow and interrupt flags. If EnableCVFlags is
+" low, then we don't change the overflow flag, and we only set the
+" carry flag if ModifyFlag is 00 and Data2 is high. Overflow, if EnableCVFlags
+" is high, is equal to the overflow of the adder.
+
+NewFlags2 = (Flags2 & !EnCVFlags) # (AdderOverflow & EnCVFlags);	"Overflow
+TempCarry = (Flags3 & !EnCVFlags # (AdderCarry) & EnCVFlags);
+NewFlags3 = (TempCarry & !(!FlagMod0 & !FlagMod1)) # 
+(Data3 & (!FlagMod0 & !FlagMod1));  "Carry
+
+" Dummy values for unused bits of flag register
+NewFlags4 = 0;
+NewFlags6 = 0;
+
+" If Popf is high, then use the data bus in place of the flags.
+Flags := (NewFlags & !Popf) # (Data & Popf);
+
+END ALU

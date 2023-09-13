@@ -1,0 +1,2640 @@
+|--------------------------------------------------------------|
+|- ispLEVER Classic 2.0.00.17.20.15 Fitter Report File        -|
+|- Copyright(C), 1992-2012, Lattice Semiconductor Corporation -|
+|- All Rights Reserved.                                       -|
+|--------------------------------------------------------------|
+
+
+
+
+The Basic/Detailed Report Format can be selected in the dialog box
+Tools->Fitter Report File Format...
+
+Project_Summary
+~~~~~~~~~~~~~~~
+Project Name         :  test
+Project Path         :  C:\Users\ellie\OneDrive\Documents\Caltech\EE 10
+Project Fitted on    :  Tue Apr 07 00:08:47 2020
+
+Device               :  M4032_30
+Package              :  44
+GLB Input Mux Size   :  6
+Available Blocks     :  2
+Speed                :  -10
+Part Number          :  LC4032V-10T44I
+Source Format        :  ABEL_Schematic
+
+
+<Error> Project 'test' failed during design rules check!
+
+
+Compilation_Times
+~~~~~~~~~~~~~~~~~
+Prefit Time                     0 secs
+Load Design Time                0.11 secs
+Partition Time                  0.00 secs
+Place Time                      0.00 secs
+Route Time                      0.00 secs
+Total Fit Time                  00:00:01
+
+
+Design_Summary
+~~~~~~~~~~~~~~
+Total Input Pins                18
+Total Logic Functions           212
+  Total Output Pins             0
+  Total Bidir I/O Pins          64
+  Total Buried Nodes            148
+Total Flip-Flops                65
+  Total D Flip-Flops            65
+  Total T Flip-Flops            0
+  Total Latches                 0
+Total Product Terms             1452
+
+Total Reserved Pins             0
+Total Locked Pins               0
+Total Locked Nodes              0
+
+Total Unique Output Enables     2
+Total Unique Clocks             1
+Total Unique Clock Enables      0
+Total Unique Resets             0
+Total Unique Presets            0
+
+Device_Resource_Summary
+~~~~~~~~~~~~~~~~~~~~~~~
+                                 Device
+                                 Total    Used   Not Used   Utilization
+-----------------------------------------------------------------------
+Dedicated Pins
+  Clock/Input Pins                  2        0      2    -->     0
+  I/O / Enable Pins                 2        0      2    -->     0
+I/O Pins                           28        0     28    -->     0
+Logic Functions                    32      212      0    -->   662
+  Input Registers                  30        0     30    -->     0
+
+GLB Inputs                         72        0     72    -->     0
+Logical Product Terms             160     1461      0    -->   913
+Occupied GLBs                       2        0      2    -->     0
+Macrocells                         32        0     32    -->     0
+
+Control Product Terms:
+  GLB Clock/Clock Enables           2        0      2    -->     0
+  GLB Reset/Presets                 2        0      2    -->     0
+  Macrocell Clocks                 32       65      0    -->   203
+  Macrocell Clock Enables          32        0     32    -->     0
+  Macrocell Enables                32        8     24    -->    25
+  Macrocell Resets                 32        0     32    -->     0
+  Macrocell Presets                32        0     32    -->     0
+
+Global Routing Pool                64        0     64    -->     0
+  GRP from IFB                     ..        0     ..    -->    ..
+    (from input signals)           ..        0     ..    -->    ..
+    (from output signals)          ..        0     ..    -->    ..
+    (from bidir signals)           ..        0     ..    -->    ..
+  GRP from MFB                     ..        0     ..    -->    ..
+----------------------------------------------------------------------
+
+<Note> 1 : The available PT is the product term that has not been used.
+<Note> 2 : IFB is I/O feedback.
+<Note> 3 : MFB is macrocell feedback.
+<Note> 4 : The Product Term Cluster and the Biput Product Term Cluster counts
+           are estimates only if the design failed during partitioning.
+
+
+
+GLB_Resource_Summary
+~~~~~~~~~~~~~~~~~~~~
+                                                                                     # of PT
+               ---  Fanin  ---    I/O    Input  Macrocells       Macrocells   Logic  clusters
+             Unique Shared Total  Pins    Regs Used Inaccessible  available    PTs   used
+-------------------------------------------------------------------------------------------
+Maximum
+  GLB                      36      *(1)     8   --     --             16       80       16
+-------------------------------------------------------------------------------------------
+  GLB    A      0     0     0      0/15     0    0      0             16        0        0
+  GLB    B      0     0     0      0/15     0    0      0             16        0        0
+-------------------------------------------------------------------------------------------
+TOTALS:         0     0     0      0/30     0    0      0             32        0        0
+
+<Note> 1 : For ispMACH 4000 devices, the number of IOs depends on the GLB.
+<Note> 2 : Four rightmost columns above reflect last status of the placement process.
+
+
+
+GLB_Control_Summary
+~~~~~~~~~~~~~~~~~~~
+           Shared Shared | Mcell  Mcell  Mcell  Mcell  Mcell 
+           Clk/CE Rst/Pr | Clock  CE     Enable Reset  Preset
+------------------------------------------------------------------------------
+Maximum
+  GLB        1      1        16     16     16     16     16  
+==============================================================================
+  GLB    A   0      0         0      0      0      0      0
+  GLB    B   0      0         0      0      0      0      0
+------------------------------------------------------------------------------
+
+<Note> 1 : For ispMACH 4000 devices, the number of output enables depends on the GLB.
+
+
+
+Optimizer_and_Fitter_Options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Pin Assignment :                       No
+Group Assignment :                     No
+Pin Reservation :                      No
+
+@Ignore_Project_Constraints :
+  Pin Assignments :                    No
+      Keep Block Assignment            --
+      Keep Segment Assignment          --
+  Group Assignments :                  No
+  Macrocell Assignment :               No
+      Keep Block Assignment            --
+      Keep Segment Assignment          --
+
+@Backannotate_Project_Constraints
+  Pin Assignments :                    No
+  Pin And Block Assignments :          No
+  Pin, Macrocell and Block :           No
+
+@Timing_Constraints :                  No
+
+@Global_Project_Optimization :
+  Balanced Partitioning :              No
+  Spread Placement :                   Yes
+
+  Note :
+    Pack Design :
+       Balanced Partitioning = No
+       Spread Placement      = No
+    Spread Design :
+       Balanced Partitioning = Yes
+       Spread Placement      = Yes
+
+
+@Logic_Synthesis :
+  Logic Reduction :                    Yes
+  Node Collapsing :                    FMAX
+  Fmax_Logic_Level :                   1
+  D/T Synthesis :                      Yes
+  XOR Synthesis :                      Yes
+  Max. P-Term for Collapsing :         16
+  Max. P-Term for Splitting :          80
+  Max Symbols :                        24
+
+@Utilization_options
+  Max. % of Macrocells used :          100
+@Usercode                               (HEX)
+@IO_Types                              Default = LVCMOS18 (2)
+@Output_Slew_Rate                      Default = FAST (2)
+@Power                                 Default = HIGH (2)
+@Pull                                  Default = PULLUP_UP (2)
+@Fast_Bypass                           Default = None (2)
+@ORP_Bypass                            Default = None
+@Input_Registers                       Default = None (2)
+@Register_Powerup                      Default = None
+
+Device Options:
+<Note> 1 : Reserved unused I/Os can be independently driven to Low or High, and does not
+           follow the drive level set for the Global Configure Unused I/O Option.
+<Note> 2 : For user-specified constraints on individual signals, refer to the Output,
+           Bidir and Buried Signal Lists.
+
+
+
+Pinout_Listing
+~~~~~~~~~~~~~~
+      | Pin   | Bank |GLB |Assigned|                 | Signal|
+Pin No| Type  |Number|Pad |Pin     |     I/O Type    | Type  | Signal name
+-----------------------------------------------------------------------------------
+1     | TDI   |   -  |    |        |                 |       |
+2     |  I_O  |   0  | A5 |        |                 |       |
+3     |  I_O  |   0  | A6 |        |                 |       |
+4     |  I_O  |   0  | A7 |        |                 |       |
+5     |GNDIO0 |   -  |    |        |                 |       |
+6     |VCCIO0 |   -  |    |        |                 |       |
+7     |  I_O  |   0  | A8 |        |                 |       |
+8     |  I_O  |   0  | A9 |        |                 |       |
+9     |  I_O  |   0  | A10|        |                 |       |
+10    | TCK   |   -  |    |        |                 |       |
+11    | VCC   |   -  |    |        |                 |       |
+12    | GND   |   -  |    |        |                 |       |
+13    |  I_O  |   0  | A12|        |                 |       |
+14    |  I_O  |   0  | A13|        |                 |       |
+15    |  I_O  |   0  | A14|        |                 |       |
+16    |  I_O  |   0  | A15|        |                 |       |
+17    |INCLK2 |   1  |    |        |                 |       |
+18    |  I_O  |   1  | B0 |        |                 |       |
+19    |  I_O  |   1  | B1 |        |                 |       |
+20    |  I_O  |   1  | B2 |        |                 |       |
+21    |  I_O  |   1  | B3 |        |                 |       |
+22    |  I_O  |   1  | B4 |        |                 |       |
+23    | TMS   |   -  |    |        |                 |       |
+24    |  I_O  |   1  | B5 |        |                 |       |
+25    |  I_O  |   1  | B6 |        |                 |       |
+26    |  I_O  |   1  | B7 |        |                 |       |
+27    |GNDIO1 |   -  |    |        |                 |       |
+28    |VCCIO1 |   -  |    |        |                 |       |
+29    |  I_O  |   1  | B8 |        |                 |       |
+30    |  I_O  |   1  | B9 |        |                 |       |
+31    |  I_O  |   1  | B10|        |                 |       |
+32    | TDO   |   -  |    |        |                 |       |
+33    | VCC   |   -  |    |        |                 |       |
+34    | GND   |   -  |    |        |                 |       |
+35    |  I_O  |   1  | B12|        |                 |       |
+36    |  I_O  |   1  | B13|        |                 |       |
+37    |  I_O  |   1  | B14|        |                 |       |
+38    | I_O/OE|   1  | B15|        |                 |       |
+39    |INCLK0 |   0  |    |        |                 |       |
+40    | I_O/OE|   0  | A0 |        |                 |       |
+41    |  I_O  |   0  | A1 |        |                 |       |
+42    |  I_O  |   0  | A2 |        |                 |       |
+43    |  I_O  |   0  | A3 |        |                 |       |
+44    |  I_O  |   0  | A4 |        |                 |       |
+-----------------------------------------------------------------------------------
+
+<Note> GLB Pad : This notation refers to the GLB I/O pad number in the device.
+<Note> Assigned Pin : user or dedicated input assignment (E.g. Clock pins).
+<Note> Pin Type : 
+          ClkIn : Dedicated input or clock pin 
+           CLK  : Dedicated clock pin
+           I_O  : Input/Output pin
+           INP  : Dedicated input pin
+           JTAG : JTAG Control and test pin
+           NC   : No connected
+
+
+
+Input_Signal_List
+~~~~~~~~~~~~~~~~~
+                Input
+         Pin    Fanout
+ Pin GLB Type         Pullup Signal
+----------------------------------------
+  --  --          --      Up Clock
+  --  --          --      Up ProgramDB0
+  --  --          --      Up ProgramDB1
+  --  --          --      Up ProgramDB10
+  --  --          --      Up ProgramDB11
+  --  --          --      Up ProgramDB12
+  --  --          --      Up ProgramDB13
+  --  --          --      Up ProgramDB14
+  --  --          --      Up ProgramDB15
+  --  --          --      Up ProgramDB2
+  --  --          --      Up ProgramDB3
+  --  --          --      Up ProgramDB4
+  --  --          --      Up ProgramDB5
+  --  --          --      Up ProgramDB6
+  --  --          --      Up ProgramDB7
+  --  --          --      Up ProgramDB8
+  --  --          --      Up ProgramDB9
+  --  --          --      Up Reset
+----------------------------------------
+
+
+
+Output_Signal_List
+~~~~~~~~~~~~~~~~~~
+          I         C      P R P       O Output
+          N         L Mc   R E U C O F B Fanout
+ Pin GLB  P LL PTs  S Type E S P E E P P       Slew Pullup Signal
+----------------------------------------------------------------------
+  --  --  5  -   4  0 DFF      R   *       --  Fast     Up Accum0
+  --  --  5  -   4  0 DFF      R   *       --  Fast     Up Accum1
+  --  --  9  -   7  0 DFF      R   *       --  Fast     Up Accum2
+  --  -- 11  -  11  0 DFF      R   *       --  Fast     Up Accum3
+  --  --  9  -   7  0 DFF      R   *       --  Fast     Up Accum4
+  --  --  9  -   7  0 DFF      R   *       --  Fast     Up Accum5
+  --  -- 11  -  11  0 DFF      R   *       --  Fast     Up Accum6
+  --  -- 12  -   9  0 DFF      R   *       --  Fast     Up Accum7
+  --  --  3  -   3  0 COM          *       --  Fast     Up DataAB0
+  --  --  5  -   4  0 COM          *       --  Fast     Up DataAB1
+  --  --  4  -   4  0 COM          *       --  Fast     Up DataAB2
+  --  --  4  -   4  0 COM          *       --  Fast     Up DataAB3
+  --  --  4  -   4  0 COM          *       --  Fast     Up DataAB4
+  --  --  4  -   4  0 COM          *       --  Fast     Up DataAB5
+  --  --  4  -   4  0 COM          *       --  Fast     Up DataAB6
+  --  --  6  -   8  0 COM          *       --  Fast     Up DataAB7
+  --  -- 29  -  34  0 DFF      R   *       --  Fast     Up Flags0
+  --  -- 15  -  10  0 DFF      R   *       --  Fast     Up Flags1
+  --  -- 16  -  35  0 DFF      R   *       --  Fast     Up Flags2
+  --  -- 20  -  36  0 DFF      R   *       --  Fast     Up Flags3
+  --  --  1  -   2  0 DFF      R   *       --  Fast     Up Flags4
+  --  --  7  -   6  0 DFF      R   *       --  Fast     Up Flags5
+  --  --  1  -   2  0 DFF      R   *       --  Fast     Up Flags6
+  --  --  7  -   6  0 DFF      R   *       --  Fast     Up Flags7
+  --  --  8  -   1  0 COM          *       --  Fast     Up IO
+  --  --  6  -   5  0 DFF      R   *       --  Fast     Up ProgramAB0
+  --  --  8  -   7  0 DFF      R   *       --  Fast     Up ProgramAB1
+  --  -- 13  -  63  0 DFF      R   *       --  Fast     Up ProgramAB10
+  --  --  9  -  10  0 DFF      R   *       --  Fast     Up ProgramAB11
+  --  --  7  -   6  0 DFF      R   *       --  Fast     Up ProgramAB12
+  --  --  7  -   6  0 DFF      R   *       --  Fast     Up ProgramAB2
+  --  --  7  -   6  0 DFF      R   *       --  Fast     Up ProgramAB3
+  --  --  7  -   6  0 DFF      R   *       --  Fast     Up ProgramAB4
+  --  --  7  -   6  0 DFF      R   *       --  Fast     Up ProgramAB5
+  --  --  7  -   6  0 DFF      R   *       --  Fast     Up ProgramAB6
+  --  --  7  -   6  0 DFF      R   *       --  Fast     Up ProgramAB7
+  --  --  9  -  10  0 DFF      R   *       --  Fast     Up ProgramAB8
+  --  --  7  -   6  0 DFF      R   *       --  Fast     Up ProgramAB9
+  --  -- 17  -  13  0 COM          *       --  Fast     Up RD
+  --  --  6  -   5  0 DFF      R   *       --  Fast     Up SReg0
+  --  --  5  -   4  0 DFF      R   *       --  Fast     Up SReg1
+  --  --  7  -   6  0 DFF      R   *       --  Fast     Up SReg2
+  --  --  5  -   4  0 DFF      R   *       --  Fast     Up SReg3
+  --  --  7  -   6  0 DFF      R   *       --  Fast     Up SReg4
+  --  --  5  -   4  0 DFF      R   *       --  Fast     Up SReg5
+  --  --  7  -   6  0 DFF      R   *       --  Fast     Up SReg6
+  --  --  5  -   4  0 DFF      R   *       --  Fast     Up SReg7
+  --  --  1  -   1  0 COM          *       --  Fast     Up WR
+  --  --  6  -   5  0 DFF      R   *       --  Fast     Up XReg0
+  --  --  5  -   4  0 DFF      R   *       --  Fast     Up XReg1
+  --  --  7  -   6  0 DFF      R   *       --  Fast     Up XReg2
+  --  --  5  -   4  0 DFF      R   *       --  Fast     Up XReg3
+  --  --  7  -   6  0 DFF      R   *       --  Fast     Up XReg4
+  --  --  5  -   4  0 DFF      R   *       --  Fast     Up XReg5
+  --  --  7  -   6  0 DFF      R   *       --  Fast     Up XReg6
+  --  --  5  -   4  0 DFF      R   *       --  Fast     Up XReg7
+----------------------------------------------------------------------
+
+<Note> CLS = Number of clusters used
+       INP = Number of input signals
+       PTs = Number of product terms
+        LL = Number of logic levels
+       PRE = Has preset equation
+       RES = Has reset equation
+       PUP = Power-Up initial state: R=Reset, S=Set
+        CE = Has clock enable equation
+        OE = Has output enable equation
+        FP = Fast path used
+       OBP = ORP bypass used
+
+
+
+Bidir_Signal_List
+~~~~~~~~~~~~~~~~~
+          I         C      P R P       O Bidir
+          N         L Mc   R E U C O F B Fanout
+ Pin GLB  P LL PTs  S Type E S P E E P P       Slew Pullup Signal
+------------------------------------------------------------------
+  --  --  7  -   5  0 COM          *       --  Fast     Up DataDB0
+  --  --  7  -   5  0 COM          *       --  Fast     Up DataDB1
+  --  --  7  -   5  0 COM          *       --  Fast     Up DataDB2
+  --  --  7  -   5  0 COM          *       --  Fast     Up DataDB3
+  --  --  7  -   5  0 COM          *       --  Fast     Up DataDB4
+  --  --  6  -   4  0 COM          *       --  Fast     Up DataDB5
+  --  --  6  -   4  0 COM          *       --  Fast     Up DataDB6
+  --  --  6  -   4  0 COM          *       --  Fast     Up DataDB7
+------------------------------------------------------------------
+
+<Note> CLS = Number of clusters used
+       INP = Number of input signals
+       PTs = Number of product terms
+        LL = Number of logic levels
+       PRE = Has preset equation
+       RES = Has reset equation
+       PUP = Power-Up initial state: R=Reset, S=Set
+        CE = Has clock enable equation
+        OE = Has output enable equation
+        FP = Fast path used
+       OBP = ORP bypass used
+
+
+
+Buried_Signal_List
+~~~~~~~~~~~~~~~~~~
+        I         C      P R P       Node
+        N         L Mc   R E U C I F Fanout
+Mc GLB  P LL PTs  S Type E S P E R P       Signal
+---------------------------------------------------------------
+--  -- 11  -  12  0 COM                --  J0_AEnableAccumWrite
+--  --  9  -   3  0 COM                --  J0_AEnableSZFlags
+--  --  8  -   5  0 COM                --  J0_AFControl1
+--  --  8  -   4  0 COM                --  J0_AFControl3
+--  -- 11  -   4  0 COM                --  J0_AFlagMod0
+--  -- 11  -   4  0 COM                --  J0_AFlagMod1
+--  --  9  -   5  0 COM                --  J0_ALUDSel0
+--  --  8  -   1  0 COM                --  J0_AShiftRight
+--  --  9  -   5  0 COM                --  J0_DAddressMux0
+--  -- 11  -   1  0 COM                --  J0_DAddressMux1
+--  --  9  -   4  0 COM                --  J0_DDecrement
+--  -- 13  -   6  0 COM                --  J0_DEnableIncDec
+--  -- 12  -   3  0 COM                --  J0_DPost
+--  -- 12  -   2  0 COM                --  J0_DataDBSel0
+--  --  3  -   2  0 COM                --  J0_DataDBSel1
+--  -- 18  -  24  0 COM                --  J0_PAddBSel0
+--  -- 16  -  24  0 COM                --  J0_PAddBSel1
+--  --  6  -   2  0 COM                --  J0_PAddBSel2
+--  --  5  -   2  0 COM                --  J0_PHoldPC
+--  -- 13  -   6  0 COM                --  J0_WR
+--  --  3  -   1  0 COM                --  J1_Call
+--  --  9  -  11  0 COM                --  J1_ConditionalJump
+--  --  8  -   4  0 DFF      R         --  J1_FSM0
+--  --  6  -   3  0 DFF      R         --  J1_FSM1
+--  --  8  -   3  0 DFF      R         --  J1_FSM2
+--  --  6  -   4  0 DFF      R         --  J1_FSM3
+--  --  7  -   6  0 DFF      R         --  J1_IR0
+--  --  7  -   6  0 DFF      R         --  J1_IR1
+--  --  7  -   6  0 DFF      R         --  J1_IR10
+--  --  7  -   6  0 DFF      R         --  J1_IR11
+--  --  7  -   6  0 DFF      R         --  J1_IR12
+--  --  7  -   6  0 DFF      R         --  J1_IR13
+--  --  7  -   6  0 DFF      R         --  J1_IR14
+--  --  7  -   6  0 DFF      R         --  J1_IR15
+--  --  7  -   6  0 DFF      R         --  J1_IR2
+--  --  7  -   6  0 DFF      R         --  J1_IR3
+--  --  7  -   6  0 DFF      R         --  J1_IR4
+--  --  7  -   6  0 DFF      R         --  J1_IR5
+--  --  7  -   6  0 DFF      R         --  J1_IR6
+--  --  7  -   6  0 DFF      R         --  J1_IR7
+--  --  7  -   6  0 DFF      R         --  J1_IR8
+--  --  7  -   6  0 DFF      R         --  J1_IR9
+--  --  6  -   1  0 COM                --  J1_LDI
+--  --  4  -   1  0 COM                --  J1_LeftShift
+--  --  6  -   3  0 COM                --  J1_Load
+--  --  8  -   3  0 COM                --  J1_LogicOp
+--  --  8  -   1  0 COM                --  J1_Popf
+--  --  9  -   1  0 COM                --  J1_Rts
+--  --  8  -   1  0 COM                --  J1_TSATXA
+--  -- 14  -   4  0 COM                --  P0_AddendA0
+--  -- 14  -   4  0 COM                --  P0_AddendA1
+--  --  9  -   4  0 COM                --  P0_AddendA10
+--  --  9  -   4  0 COM                --  P0_AddendA11
+--  --  9  -   4  0 COM                --  P0_AddendA12
+--  -- 14  -   4  0 COM                --  P0_AddendA2
+--  -- 14  -   4  0 COM                --  P0_AddendA3
+--  --  9  -   4  0 COM                --  P0_AddendA4
+--  --  9  -   4  0 COM                --  P0_AddendA5
+--  --  9  -   4  0 COM                --  P0_AddendA6
+--  --  9  -   4  0 COM                --  P0_AddendA7
+--  --  9  -   4  0 COM                --  P0_AddendA8
+--  --  9  -   4  0 COM                --  P0_AddendA9
+--  -- 11  -  18  0 COM                --  P0_AddendB0
+--  -- 11  -  12  0 COM                --  P0_AddendB1
+--  --  9  -   5  0 COM                --  P0_AddendB10
+--  --  9  -   5  0 COM                --  P0_AddendB11
+--  --  9  -   5  0 COM                --  P0_AddendB12
+--  -- 11  -  12  0 COM                --  P0_AddendB2
+--  -- 11  -  12  0 COM                --  P0_AddendB3
+--  --  6  -   5  0 COM                --  P0_AddendB4
+--  --  6  -   5  0 COM                --  P0_AddendB5
+--  --  6  -   5  0 COM                --  P0_AddendB6
+--  --  6  -   5  0 COM                --  P0_AddendB7
+--  --  9  -   5  0 COM                --  P0_AddendB8
+--  --  9  -   5  0 COM                --  P0_AddendB9
+--  --  4  -   3  0 COM                --  P0_Carry1
+--  -- 11  -  34  0 COM                --  P0_Carry11
+--  --  6  -   6  0 COM                --  P0_Carry2
+--  --  8  -  10  0 COM                --  P0_Carry3
+--  --  3  -   3  0 COM                --  P0_Carry4
+--  --  5  -   6  0 COM                --  P0_Carry5
+--  --  7  -  10  0 COM                --  P0_Carry6
+--  -- 11  -  34  0 COM                --  P0_Carry8
+--  --  7  -  10  0 COM                --  P0_Carry9
+--  --  7  -   4  0 COM                --  V0_AddendA0
+--  --  7  -   3  0 COM                --  V0_AddendA1
+--  --  8  -   6  0 COM                --  V0_AddendA2
+--  --  7  -   3  0 COM                --  V0_AddendA3
+--  --  8  -   6  0 COM                --  V0_AddendA4
+--  --  7  -   3  0 COM                --  V0_AddendA5
+--  --  8  -   6  0 COM                --  V0_AddendA6
+--  --  7  -   3  0 COM                --  V0_AddendA7
+--  --  5  -   3  0 COM                --  V0_AdderCarry1
+--  --  4  -   3  0 COM                --  V0_AdderCarry2
+--  --  4  -   3  0 COM                --  V0_AdderCarry3
+--  --  4  -   3  0 COM                --  V0_AdderCarry4
+--  --  4  -   3  0 COM                --  V0_AdderCarry5
+--  --  5  -   3  0 COM                --  V0_AddrMuxOut0
+--  --  5  -   3  0 COM                --  V0_AddrMuxOut1
+--  --  5  -   3  0 COM                --  V0_AddrMuxOut2
+--  --  5  -   3  0 COM                --  V0_AddrMuxOut3
+--  --  5  -   3  0 COM                --  V0_AddrMuxOut4
+--  --  5  -   3  0 COM                --  V0_AddrMuxOut5
+--  --  5  -   3  0 COM                --  V0_AddrMuxOut6
+--  --  5  -   3  0 COM                --  V0_AddrMuxOut7
+--  -- 10  -   8  0 COM                --  V0_IncDecCarry1
+--  -- 10  -   8  0 COM                --  V0_IncDecCarry3
+--  -- 12  -   8  0 COM                --  V0_IncDecCarry5
+--  --  4  -   3  0 COM                --  V0_IncDecOut1
+--  --  4  -   3  0 COM                --  V0_IncDecOut3
+--  --  4  -   3  0 COM                --  V0_IncDecOut5
+--  --  4  -   3  0 COM                --  V0_IncDecOut7
+--  -- 12  -  10  0 COM                --  X0_Data0
+--  -- 13  -  12  0 COM                --  X0_Data1
+--  -- 13  -  12  0 COM                --  X0_Data2
+--  -- 13  -  12  0 COM                --  X0_Data3
+--  -- 13  -  12  0 COM                --  X0_Data4
+--  -- 13  -  12  0 COM                --  X0_Data5
+--  -- 13  -  12  0 COM                --  X0_Data6
+--  --  6  -   4  0 COM                --  X0_Data7
+--  -- 10  -   8  0 COM                --  X1_Carry0
+--  -- 14  -  19  0 COM                --  X1_Carry1
+--  -- 10  -   9  0 COM                --  X1_Carry2
+--  -- 14  -  30  0 COM                --  X1_Carry4
+--  --  7  -  10  0 COM                --  X1_Carry5
+--  -- 11  -  34  0 COM                --  X1_Carry7
+--  --  7  -  10  0 COM                --  X1_Carry8
+--  --  8  -   5  0 COM                --  X1_FOutput0
+--  --  8  -   5  0 COM                --  X1_FOutput1
+--  --  8  -   5  0 COM                --  X1_FOutput2
+--  --  8  -   5  0 COM                --  X1_FOutput3
+--  --  8  -   5  0 COM                --  X1_FOutput4
+--  --  8  -   5  0 COM                --  X1_FOutput5
+--  --  8  -   5  0 COM                --  X1_FOutput6
+--  --  8  -   5  0 COM                --  X1_FOutput7
+--  --  9  -   8  0 COM                --  X1_MaskAccum0
+--  --  8  -   4  0 COM                --  X1_MaskAccum1
+--  --  8  -   4  0 COM                --  X1_MaskAccum2
+--  --  8  -   4  0 COM                --  X1_MaskAccum3
+--  --  8  -   4  0 COM                --  X1_MaskAccum4
+--  --  8  -   4  0 COM                --  X1_MaskAccum5
+--  --  8  -   4  0 COM                --  X1_MaskAccum6
+--  --  8  -   4  0 COM                --  X1_MaskAccum7
+--  --  5  -   4  0 COM                --  X1_NewAccum0
+--  --  5  -   4  0 COM                --  X1_NewAccum1
+--  --  7  -   8  0 COM                --  X1_NewAccum3
+--  --  5  -   4  0 COM                --  X1_NewAccum4
+--  -- 11  -  32  0 COM                --  X1_NewAccum5
+--  --  1   1  0 PTOE             --     DataDB0.OE
+--  --  0   1  0 PTOE             --     SReg0.OE
+---------------------------------------------------------------
+
+<Note> CLS = Number of clusters used
+       INP = Number of input signals
+       PTs = Number of product terms
+        LL = Number of logic levels
+       PRE = Has preset equation
+       RES = Has reset equation
+       PUP = Power-Up initial state: R=Reset, S=Set
+        CE = Has clock enable equation
+        OE = Has output enable equation
+        IR = Input register
+        FP = Fast path used
+       OBP = ORP bypass used
+
+
+
+PostFit_Equations
+~~~~~~~~~~~~~~~~~
+Accum0.D = !Reset & Accum0.Q & !J0_AEnableAccumWrite
+    # !Reset & J0_AEnableAccumWrite & X1_NewAccum0 ; (2 pterms, 4 signals)
+Accum0.OE = 1 ; (1 pterm, 0 signal)
+Accum0.C = Clock ; (1 pterm, 1 signal)
+
+Accum1.D = !Reset & Accum1.Q & !J0_AEnableAccumWrite
+    # !Reset & J0_AEnableAccumWrite & X1_NewAccum1 ; (2 pterms, 4 signals)
+Accum1.OE = 1 ; (1 pterm, 0 signal)
+Accum1.C = Clock ; (1 pterm, 1 signal)
+
+Accum2.D.X1 = !Reset & Accum2.Q & !J0_AEnableAccumWrite
+    # !Reset & Accum3.Q & J0_AEnableAccumWrite & J0_AShiftRight
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & !X1_Carry2
+       & !X1_MaskAccum2
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & X1_Carry2
+       & X1_MaskAccum2 ; (4 pterms, 7 signals)
+Accum2.D.X2 = !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & !X1_FOutput2 ; (1 pterm, 4 signals)
+Accum2.OE = 1 ; (1 pterm, 0 signal)
+Accum2.C = Clock ; (1 pterm, 1 signal)
+
+Accum3.D.X1 = !Reset & Accum3.Q & !J0_AEnableAccumWrite
+    # !Reset & Accum4.Q & J0_AEnableAccumWrite & J0_AShiftRight
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & !X1_Carry2
+       & !X1_MaskAccum3 & !X1_MaskAccum2
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & !X1_FOutput2
+       & !X1_Carry2 & !X1_MaskAccum3
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & !X1_FOutput2
+       & !X1_MaskAccum3 & !X1_MaskAccum2
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & X1_Carry2
+       & X1_MaskAccum3 & X1_MaskAccum2
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & X1_FOutput2
+       & X1_MaskAccum3 & X1_MaskAccum2
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & X1_FOutput2
+       & X1_Carry2 & X1_MaskAccum3 & !X1_MaskAccum2 ; (8 pterms, 9 signals)
+Accum3.D.X2 = !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & !X1_FOutput3 ; (1 pterm, 4 signals)
+Accum3.OE = 1 ; (1 pterm, 0 signal)
+Accum3.C = Clock ; (1 pterm, 1 signal)
+
+Accum4.D.X1 = !Reset & Accum4.Q & !J0_AEnableAccumWrite
+    # !Reset & Accum5.Q & J0_AEnableAccumWrite & J0_AShiftRight
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & !X1_Carry4
+       & !X1_MaskAccum4
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & X1_Carry4
+       & X1_MaskAccum4 ; (4 pterms, 7 signals)
+Accum4.D.X2 = !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & !X1_FOutput4 ; (1 pterm, 4 signals)
+Accum4.OE = 1 ; (1 pterm, 0 signal)
+Accum4.C = Clock ; (1 pterm, 1 signal)
+
+Accum5.D.X1 = !Reset & Accum5.Q & !J0_AEnableAccumWrite
+    # !Reset & Accum6.Q & J0_AEnableAccumWrite & J0_AShiftRight
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & !X1_Carry5
+       & !X1_MaskAccum5
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & X1_Carry5
+       & X1_MaskAccum5 ; (4 pterms, 7 signals)
+Accum5.D.X2 = !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & !X1_FOutput5 ; (1 pterm, 4 signals)
+Accum5.OE = 1 ; (1 pterm, 0 signal)
+Accum5.C = Clock ; (1 pterm, 1 signal)
+
+Accum6.D.X1 = !Reset & Accum6.Q & !J0_AEnableAccumWrite
+    # !Reset & Accum7.Q & J0_AEnableAccumWrite & J0_AShiftRight
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & !X1_Carry5
+       & !X1_MaskAccum6 & !X1_MaskAccum5
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & !X1_FOutput5
+       & !X1_Carry5 & !X1_MaskAccum6
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & !X1_FOutput5
+       & !X1_MaskAccum6 & !X1_MaskAccum5
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & X1_Carry5
+       & X1_MaskAccum6 & X1_MaskAccum5
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & X1_FOutput5
+       & X1_MaskAccum6 & X1_MaskAccum5
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & X1_FOutput5
+       & X1_Carry5 & X1_MaskAccum6 & !X1_MaskAccum5 ; (8 pterms, 9 signals)
+Accum6.D.X2 = !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & !X1_FOutput6 ; (1 pterm, 4 signals)
+Accum6.OE = 1 ; (1 pterm, 0 signal)
+Accum6.C = Clock ; (1 pterm, 1 signal)
+
+Accum7.D.X1 = !Reset & Accum7.Q & !J0_AEnableAccumWrite
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & !X1_Carry7
+       & !X1_MaskAccum7
+    # !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & X1_Carry7
+       & X1_MaskAccum7
+    # !Reset & Accum7.Q & J0_AEnableAccumWrite & J0_AShiftRight & !J1_IR1.Q
+       & J1_IR0.Q
+    # !Reset & Accum0.Q & J0_AEnableAccumWrite & J0_AShiftRight & J1_IR1.Q
+       & !J1_IR0.Q
+    # !Reset & Flags3.Q & J0_AEnableAccumWrite & J0_AShiftRight & J1_IR1.Q
+       & J1_IR0.Q ; (6 pterms, 10 signals)
+Accum7.D.X2 = !Reset & J0_AEnableAccumWrite & !J0_AShiftRight & !X1_FOutput7 ; (1 pterm, 4 signals)
+Accum7.OE = 1 ; (1 pterm, 0 signal)
+Accum7.C = Clock ; (1 pterm, 1 signal)
+
+DataAB0 = !V0_AddendA0 & J1_IR0.Q & !J1_Call
+    # V0_AddendA0 & !J1_IR0.Q
+    # V0_AddendA0 & J1_Call ; (3 pterms, 3 signals)
+DataAB0.OE = 1 ; (1 pterm, 0 signal)
+
+DataAB1.X1 = V0_AddendA0 & !J1_IR1.Q & J1_IR0.Q & !J1_Call
+    # !V0_AddendA0 & J1_IR1.Q & !J1_Call
+    # J1_IR1.Q & !J1_IR0.Q & !J1_Call ; (3 pterms, 4 signals)
+DataAB1.X2 = V0_AddendA1 ; (1 pterm, 1 signal)
+DataAB1.OE = 1 ; (1 pterm, 0 signal)
+
+DataAB2.X1 = !V0_AdderCarry1 & !J1_IR2.Q
+    # !V0_AdderCarry1 & J1_Call
+    # V0_AdderCarry1 & J1_IR2.Q & !J1_Call ; (3 pterms, 3 signals)
+DataAB2.X2 = !V0_AddendA2 ; (1 pterm, 1 signal)
+DataAB2.OE = 1 ; (1 pterm, 0 signal)
+
+DataAB3.X1 = !V0_AdderCarry2 & !J1_IR3.Q
+    # !V0_AdderCarry2 & J1_Call
+    # V0_AdderCarry2 & J1_IR3.Q & !J1_Call ; (3 pterms, 3 signals)
+DataAB3.X2 = !V0_AddendA3 ; (1 pterm, 1 signal)
+DataAB3.OE = 1 ; (1 pterm, 0 signal)
+
+DataAB4.X1 = !V0_AdderCarry3 & !J1_IR4.Q
+    # !V0_AdderCarry3 & J1_Call
+    # V0_AdderCarry3 & J1_IR4.Q & !J1_Call ; (3 pterms, 3 signals)
+DataAB4.X2 = !V0_AddendA4 ; (1 pterm, 1 signal)
+DataAB4.OE = 1 ; (1 pterm, 0 signal)
+
+DataAB5.X1 = !V0_AdderCarry4 & !J1_IR5.Q
+    # !V0_AdderCarry4 & J1_Call
+    # V0_AdderCarry4 & J1_IR5.Q & !J1_Call ; (3 pterms, 3 signals)
+DataAB5.X2 = !V0_AddendA5 ; (1 pterm, 1 signal)
+DataAB5.OE = 1 ; (1 pterm, 0 signal)
+
+DataAB6.X1 = !V0_AdderCarry5 & !J1_IR6.Q
+    # !V0_AdderCarry5 & J1_Call
+    # V0_AdderCarry5 & J1_IR6.Q & !J1_Call ; (3 pterms, 3 signals)
+DataAB6.X2 = !V0_AddendA6 ; (1 pterm, 1 signal)
+DataAB6.OE = 1 ; (1 pterm, 0 signal)
+
+DataAB7.X1 = V0_AddendA6 & V0_AdderCarry5 & !J1_IR7.Q
+    # V0_AddendA6 & !J1_IR7.Q & J1_IR6.Q & !J1_Call
+    # V0_AdderCarry5 & !J1_IR7.Q & J1_IR6.Q & !J1_Call
+    # !V0_AddendA6 & !V0_AdderCarry5 & J1_IR7.Q & !J1_Call
+    # !V0_AddendA6 & J1_IR7.Q & !J1_IR6.Q & !J1_Call
+    # !V0_AdderCarry5 & J1_IR7.Q & !J1_IR6.Q & !J1_Call
+    # V0_AddendA6 & V0_AdderCarry5 & J1_Call ; (7 pterms, 5 signals)
+DataAB7.X2 = V0_AddendA7 ; (1 pterm, 1 signal)
+DataAB7.OE = 1 ; (1 pterm, 0 signal)
+
+DataDB0 = ProgramAB0.Q & !J0_DataDBSel0 & J0_DataDBSel1
+    # Flags0.Q & J0_DataDBSel0 & !J0_DataDBSel1
+    # Accum0.Q & !J0_DataDBSel0 & !J0_DataDBSel1
+    # ProgramAB8.Q & J0_DataDBSel0 & J0_DataDBSel1 ; (4 pterms, 6 signals)
+DataDB0.OE = J0_WR ; (1 pterm, 1 signal)
+
+DataDB1 = ProgramAB1.Q & !J0_DataDBSel0 & J0_DataDBSel1
+    # Flags1.Q & J0_DataDBSel0 & !J0_DataDBSel1
+    # Accum1.Q & !J0_DataDBSel0 & !J0_DataDBSel1
+    # ProgramAB9.Q & J0_DataDBSel0 & J0_DataDBSel1 ; (4 pterms, 6 signals)
+DataDB1.OE = J0_WR ; (1 pterm, 1 signal)
+
+DataDB2 = ProgramAB2.Q & !J0_DataDBSel0 & J0_DataDBSel1
+    # Flags2.Q & J0_DataDBSel0 & !J0_DataDBSel1
+    # Accum2.Q & !J0_DataDBSel0 & !J0_DataDBSel1
+    # ProgramAB10.Q & J0_DataDBSel0 & J0_DataDBSel1 ; (4 pterms, 6 signals)
+DataDB2.OE = J0_WR ; (1 pterm, 1 signal)
+
+DataDB3 = ProgramAB3.Q & !J0_DataDBSel0 & J0_DataDBSel1
+    # Flags3.Q & J0_DataDBSel0 & !J0_DataDBSel1
+    # Accum3.Q & !J0_DataDBSel0 & !J0_DataDBSel1
+    # ProgramAB11.Q & J0_DataDBSel0 & J0_DataDBSel1 ; (4 pterms, 6 signals)
+DataDB3.OE = J0_WR ; (1 pterm, 1 signal)
+
+DataDB4 = ProgramAB4.Q & !J0_DataDBSel0 & J0_DataDBSel1
+    # Flags4.Q & J0_DataDBSel0 & !J0_DataDBSel1
+    # Accum4.Q & !J0_DataDBSel0 & !J0_DataDBSel1
+    # ProgramAB12.Q & J0_DataDBSel0 & J0_DataDBSel1 ; (4 pterms, 6 signals)
+DataDB4.OE = J0_WR ; (1 pterm, 1 signal)
+
+DataDB5 = Flags5.Q & J0_DataDBSel0 & !J0_DataDBSel1
+    # Accum5.Q & !J0_DataDBSel0 & !J0_DataDBSel1
+    # ProgramAB5.Q & !J0_DataDBSel0 & J0_DataDBSel1 ; (3 pterms, 5 signals)
+DataDB5.OE = J0_WR ; (1 pterm, 1 signal)
+
+DataDB6 = Flags6.Q & J0_DataDBSel0 & !J0_DataDBSel1
+    # Accum6.Q & !J0_DataDBSel0 & !J0_DataDBSel1
+    # ProgramAB6.Q & !J0_DataDBSel0 & J0_DataDBSel1 ; (3 pterms, 5 signals)
+DataDB6.OE = J0_WR ; (1 pterm, 1 signal)
+
+DataDB7 = Flags7.Q & J0_DataDBSel0 & !J0_DataDBSel1
+    # Accum7.Q & !J0_DataDBSel0 & !J0_DataDBSel1
+    # ProgramAB7.Q & !J0_DataDBSel0 & J0_DataDBSel1 ; (3 pterms, 5 signals)
+DataDB7.OE = J0_WR ; (1 pterm, 1 signal)
+
+Flags0.D = !( Reset
+    # !X0_Data0 & J1_Popf
+    # !Flags0.Q & !J0_AEnableSZFlags & !J1_Popf
+    # J0_AEnableSZFlags & X1_NewAccum5 & !J1_Popf
+    # J0_AEnableSZFlags & X1_NewAccum4 & !J1_Popf
+    # J0_AEnableSZFlags & X1_NewAccum3 & !J1_Popf
+    # J0_AEnableSZFlags & X1_NewAccum1 & !J1_Popf
+    # J0_AEnableSZFlags & X1_NewAccum0 & !J1_Popf
+    # Accum7.Q & J0_AEnableSZFlags & J0_AShiftRight & !J1_Popf
+    # Accum3.Q & J0_AEnableSZFlags & J0_AShiftRight & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput7 & X1_Carry7
+       & X1_MaskAccum7 & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput7 & !X1_Carry7
+       & X1_MaskAccum7 & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput7 & X1_Carry7
+       & !X1_MaskAccum7 & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput7 & !X1_Carry7
+       & !X1_MaskAccum7 & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput2 & X1_Carry2
+       & X1_MaskAccum2 & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput2 & !X1_Carry2
+       & X1_MaskAccum2 & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput2 & X1_Carry2
+       & !X1_MaskAccum2 & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput2 & !X1_Carry2
+       & !X1_MaskAccum2 & !J1_Popf
+    # Flags3.Q & J0_AEnableSZFlags & J0_AShiftRight & J1_IR1.Q & J1_IR0.Q
+       & !J1_Popf
+    # Accum0.Q & J0_AEnableSZFlags & J0_AShiftRight & J1_IR1.Q & !J1_IR0.Q
+       & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput6 & X1_FOutput5
+       & X1_Carry5 & X1_MaskAccum6 & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput6 & !X1_FOutput5
+       & !X1_Carry5 & X1_MaskAccum6 & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput6 & X1_FOutput5
+       & X1_Carry5 & !X1_MaskAccum6 & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput6 & !X1_FOutput5
+       & !X1_Carry5 & !X1_MaskAccum6 & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput6 & X1_FOutput5
+       & X1_MaskAccum6 & X1_MaskAccum5 & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput6 & X1_Carry5
+       & X1_MaskAccum6 & X1_MaskAccum5 & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput6 & X1_FOutput5
+       & !X1_MaskAccum6 & X1_MaskAccum5 & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput6 & X1_Carry5
+       & !X1_MaskAccum6 & X1_MaskAccum5 & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput6 & !X1_FOutput5
+       & X1_MaskAccum6 & !X1_MaskAccum5 & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput6 & !X1_Carry5
+       & X1_MaskAccum6 & !X1_MaskAccum5 & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput6 & !X1_FOutput5
+       & !X1_MaskAccum6 & !X1_MaskAccum5 & !J1_Popf
+    # J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput6 & !X1_Carry5
+       & !X1_MaskAccum6 & !X1_MaskAccum5 & !J1_Popf ) ; (32 pterms, 28 signals)
+Flags0.OE = 1 ; (1 pterm, 0 signal)
+Flags0.C = Clock ; (1 pterm, 1 signal)
+
+Flags1.D.X1 = !Reset & X0_Data1 & J1_Popf
+    # !Reset & Flags1.Q & !J0_AEnableSZFlags & !J1_Popf
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & !X1_Carry7
+       & !X1_MaskAccum7 & !J1_Popf
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & X1_Carry7 & X1_MaskAccum7
+       & !J1_Popf
+    # !Reset & Flags3.Q & J0_AEnableSZFlags & J0_AShiftRight & J1_IR1.Q
+       & J1_IR0.Q & !J1_Popf
+    # !Reset & Accum0.Q & J0_AEnableSZFlags & J0_AShiftRight & J1_IR1.Q
+       & !J1_IR0.Q & !J1_Popf
+    # !Reset & Accum7.Q & J0_AEnableSZFlags & J0_AShiftRight & !J1_IR1.Q
+       & J1_IR0.Q & !J1_Popf ; (7 pterms, 13 signals)
+Flags1.D.X2 = !Reset & J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput7
+       & !J1_Popf ; (1 pterm, 5 signals)
+Flags1.OE = 1 ; (1 pterm, 0 signal)
+Flags1.C = Clock ; (1 pterm, 1 signal)
+
+Flags2.D = !Reset & J0_AEnableSZFlags & !J0_AShiftRight & X1_Carry7
+       & !X1_Carry5 & !X1_MaskAccum7 & !X1_MaskAccum6 & !X1_MaskAccum5
+       & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput5 & X1_Carry7
+       & !X1_MaskAccum7 & !X1_MaskAccum6 & !X1_MaskAccum5 & !J1_Popf
+       & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput7 & X1_Carry7
+       & !X1_Carry5 & !X1_MaskAccum6 & !X1_MaskAccum5 & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput7
+       & !X1_FOutput5 & X1_Carry7 & !X1_MaskAccum6 & !X1_MaskAccum5 & !J1_Popf
+       & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput6 & X1_Carry7
+       & !X1_Carry5 & !X1_MaskAccum7 & !X1_MaskAccum5 & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput6
+       & !X1_FOutput5 & X1_Carry7 & !X1_MaskAccum7 & !X1_MaskAccum5 & !J1_Popf
+       & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput7
+       & !X1_FOutput6 & X1_Carry7 & !X1_Carry5 & !X1_MaskAccum5 & !J1_Popf
+       & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput7
+       & !X1_FOutput6 & !X1_FOutput5 & X1_Carry7 & !X1_MaskAccum5 & !J1_Popf
+       & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & !X1_Carry7 & X1_Carry5
+       & X1_MaskAccum7 & X1_MaskAccum6 & X1_MaskAccum5 & !J1_Popf
+       & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput5 & !X1_Carry7
+       & X1_MaskAccum7 & X1_MaskAccum6 & X1_MaskAccum5 & !J1_Popf
+       & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput7 & !X1_Carry7
+       & X1_Carry5 & X1_MaskAccum6 & X1_MaskAccum5 & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput7 & X1_FOutput5
+       & !X1_Carry7 & X1_MaskAccum6 & X1_MaskAccum5 & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput6 & !X1_Carry7
+       & X1_Carry5 & X1_MaskAccum7 & X1_MaskAccum5 & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput6 & X1_FOutput5
+       & !X1_Carry7 & X1_MaskAccum7 & X1_MaskAccum5 & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput7 & X1_FOutput6
+       & !X1_Carry7 & X1_Carry5 & X1_MaskAccum5 & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput7 & X1_FOutput6
+       & X1_FOutput5 & !X1_Carry7 & X1_MaskAccum5 & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput5 & X1_Carry7
+       & !X1_Carry5 & !X1_MaskAccum7 & !X1_MaskAccum6 & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput7
+       & !X1_FOutput5 & X1_Carry7 & !X1_Carry5 & !X1_MaskAccum6 & !J1_Popf
+       & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput5 & !X1_Carry7
+       & X1_Carry5 & X1_MaskAccum7 & X1_MaskAccum6 & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput7 & X1_FOutput5
+       & !X1_Carry7 & X1_Carry5 & X1_MaskAccum6 & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput6
+       & !X1_FOutput5 & X1_Carry7 & !X1_Carry5 & !X1_MaskAccum7 & !J1_Popf
+       & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput6 & X1_FOutput5
+       & !X1_Carry7 & X1_Carry5 & X1_MaskAccum7 & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput7
+       & !X1_FOutput6 & !X1_FOutput5 & X1_Carry7 & !X1_Carry5 & !J1_Popf
+       & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput7 & X1_FOutput6
+       & X1_FOutput5 & !X1_Carry7 & X1_Carry5 & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput6 & X1_Carry7
+       & !X1_MaskAccum7 & !X1_MaskAccum6 & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput7
+       & !X1_FOutput6 & X1_Carry7 & !X1_MaskAccum6 & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput6 & !X1_Carry7
+       & X1_MaskAccum7 & X1_MaskAccum6 & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput7 & X1_FOutput6
+       & !X1_Carry7 & X1_MaskAccum6 & !J1_Popf & !J1_LogicOp
+    # !Reset & X0_Data2 & J1_Popf
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & !X1_FOutput7 & X1_Carry7
+       & !X1_MaskAccum7 & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & !J0_AShiftRight & X1_FOutput7 & !X1_Carry7
+       & X1_MaskAccum7 & !J1_Popf & !J1_LogicOp
+    # !Reset & Flags2.Q & !J0_AEnableSZFlags & !J1_Popf
+    # !Reset & Flags2.Q & !J1_Popf & J1_LogicOp ; (33 pterms, 15 signals)
+Flags2.OE = 1 ; (1 pterm, 0 signal)
+Flags2.C = Clock ; (1 pterm, 1 signal)
+
+Flags3.D = !Reset & J0_AEnableSZFlags & J0_AFlagMod1 & !J0_AShiftRight
+       & !X1_Carry8 & !J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR11.Q
+       & !J1_IR10.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod0 & !J0_AShiftRight & !X1_Carry8
+       & !J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR11.Q & !J1_IR10.Q
+       & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod1 & !J0_AShiftRight & X1_Carry8
+       & J1_IR14.Q & !J1_IR12.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod0 & !J0_AShiftRight & X1_Carry8
+       & J1_IR14.Q & !J1_IR12.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod1 & !J0_AShiftRight & X1_Carry8
+       & J1_IR14.Q & !J1_IR9.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod1 & !J0_AShiftRight & X1_Carry8
+       & J1_IR14.Q & !J1_IR8.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod0 & !J0_AShiftRight & X1_Carry8
+       & J1_IR14.Q & !J1_IR9.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod0 & !J0_AShiftRight & X1_Carry8
+       & J1_IR14.Q & !J1_IR8.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod0 & !J0_AShiftRight & !X1_Carry8
+       & !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & J1_IR12.Q & J1_IR11.Q
+       & !J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod1 & !J0_AShiftRight & !X1_Carry8
+       & !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & J1_IR12.Q & J1_IR11.Q
+       & !J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod0 & !J0_AShiftRight & !X1_Carry8
+       & !J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q
+       & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod1 & !J0_AShiftRight & !X1_Carry8
+       & !J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q
+       & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod0 & !J0_AShiftRight & !X1_Carry8
+       & !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & J1_IR12.Q & !J1_Popf
+       & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod1 & !J0_AShiftRight & !X1_Carry8
+       & !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & J1_IR12.Q & !J1_Popf
+       & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod0 & !J0_AShiftRight & X1_Carry8
+       & J1_IR13.Q & J1_IR12.Q & J1_IR10.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod1 & !J0_AShiftRight & X1_Carry8
+       & J1_IR13.Q & J1_IR12.Q & J1_IR10.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod0 & !J0_AShiftRight & X1_Carry8
+       & !J1_IR14.Q & J1_IR13.Q & J1_IR11.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod1 & !J0_AShiftRight & X1_Carry8
+       & !J1_IR14.Q & J1_IR13.Q & J1_IR11.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & X0_Data3 & !J0_AFlagMod0 & !J0_AFlagMod1
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod0 & !J0_AShiftRight & X1_Carry8
+       & !J1_IR13.Q & !J1_IR12.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod1 & !J0_AShiftRight & X1_Carry8
+       & !J1_IR13.Q & !J1_IR12.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod0 & !J0_AShiftRight & X1_Carry8
+       & J1_IR14.Q & !J1_IR11.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod1 & !J0_AShiftRight & X1_Carry8
+       & J1_IR14.Q & !J1_IR11.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod0 & !J0_AShiftRight & X1_Carry8
+       & J1_IR14.Q & !J1_IR13.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod1 & !J0_AShiftRight & X1_Carry8
+       & J1_IR14.Q & !J1_IR13.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & Accum0.Q & J0_AEnableSZFlags & J0_AFlagMod0 & J0_AShiftRight
+       & !J1_Popf & !J1_LogicOp
+    # !Reset & Accum0.Q & J0_AEnableSZFlags & J0_AFlagMod1 & J0_AShiftRight
+       & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod0 & !J0_AShiftRight & X1_Carry8
+       & J1_IR15.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & J0_AEnableSZFlags & J0_AFlagMod1 & !J0_AShiftRight & X1_Carry8
+       & J1_IR15.Q & !J1_Popf & !J1_LogicOp
+    # !Reset & X0_Data3 & J1_Popf
+    # !Reset & Flags3.Q & !J0_AEnableSZFlags & J0_AFlagMod0 & !J1_Popf
+    # !Reset & Flags3.Q & !J0_AEnableSZFlags & J0_AFlagMod1 & !J1_Popf
+    # !Reset & Flags3.Q & J0_AFlagMod0 & !J1_Popf & J1_LogicOp
+    # !Reset & Flags3.Q & J0_AFlagMod1 & !J1_Popf & J1_LogicOp ; (34 pterms, 19 signals)
+Flags3.OE = 1 ; (1 pterm, 0 signal)
+Flags3.C = Clock ; (1 pterm, 1 signal)
+
+Flags4.D = 0 ; (0 pterm, 0 signal)
+Flags4.OE = 1 ; (1 pterm, 0 signal)
+Flags4.C = Clock ; (1 pterm, 1 signal)
+
+Flags5.D = !Reset & X0_Data5 & !J0_AFlagMod0 & J0_AFlagMod1
+    # !Reset & Flags5.Q & J0_AFlagMod0 & !J1_Popf
+    # !Reset & Flags5.Q & !J0_AFlagMod1 & !J1_Popf
+    # !Reset & X0_Data5 & J1_Popf ; (4 pterms, 6 signals)
+Flags5.OE = 1 ; (1 pterm, 0 signal)
+Flags5.C = Clock ; (1 pterm, 1 signal)
+
+Flags6.D = 0 ; (0 pterm, 0 signal)
+Flags6.OE = 1 ; (1 pterm, 0 signal)
+Flags6.C = Clock ; (1 pterm, 1 signal)
+
+Flags7.D = !Reset & X0_Data7 & J0_AFlagMod0 & !J0_AFlagMod1
+    # !Reset & Flags7.Q & !J0_AFlagMod0 & !J1_Popf
+    # !Reset & Flags7.Q & J0_AFlagMod1 & !J1_Popf
+    # !Reset & X0_Data7 & J1_Popf ; (4 pterms, 6 signals)
+Flags7.OE = 1 ; (1 pterm, 0 signal)
+Flags7.C = Clock ; (1 pterm, 1 signal)
+
+IO = !Reset & J1_IR15.Q & !J1_IR14.Q & J1_IR12.Q & !J1_IR11.Q & !J1_IR10.Q
+       & !J1_IR9.Q & !J1_IR8.Q ; (1 pterm, 8 signals)
+IO.OE = 1 ; (1 pterm, 0 signal)
+
+J0_AEnableAccumWrite = !J1_IR15.Q & J1_IR12.Q & !J1_IR11.Q & J1_IR10.Q
+       & !J1_Rts
+    # !J1_IR15.Q & !J1_IR14.Q & J1_IR12.Q & J1_IR10.Q & !J1_IR7.Q & !J1_Rts
+    # !J1_IR15.Q & !J1_IR13.Q & J1_IR12.Q & !J1_IR10.Q & !J1_Rts
+    # !J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & J1_IR11.Q & !J1_Rts
+    # !J1_IR15.Q & J1_IR12.Q & J1_IR10.Q & !J1_IR9.Q & !J1_Rts
+    # !J1_IR15.Q & J1_IR12.Q & J1_IR10.Q & !J1_IR8.Q & !J1_Rts
+    # !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q
+       & !J1_IR10.Q & !J1_IR9.Q & !J1_IR8.Q
+    # !J1_IR15.Q & J1_IR14.Q & !J1_IR13.Q & J1_IR12.Q & !J1_Rts
+    # !J1_IR15.Q & J1_IR13.Q & !J1_IR12.Q & !J1_Rts
+    # !J1_IR15.Q & J1_IR14.Q & !J1_IR10.Q & !J1_Rts
+    # !J1_IR15.Q & J1_IR14.Q & !J1_IR11.Q & !J1_Rts
+    # J1_Load ; (12 pterms, 11 signals)
+
+J0_AEnableSZFlags = !J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & J1_IR12.Q
+       & !J1_IR11.Q & !J1_IR10.Q & !J1_TSATXA & !J1_Load
+    # !J1_IR15.Q & J1_IR14.Q & !J1_IR13.Q & !J1_IR12.Q & J1_IR11.Q & J1_IR10.Q
+       & !J1_TSATXA & !J1_Load
+    # J0_AEnableAccumWrite & !J1_TSATXA & !J1_Load ; (3 pterms, 9 signals)
+
+J0_AFControl1 = !( !J1_IR15.Q & !J1_IR14.Q & J1_IR12.Q & !J1_IR11.Q
+       & !J1_IR10.Q
+    # !J1_IR13.Q & J1_IR11.Q & !J1_IR9.Q & !J1_IR8.Q
+    # !J1_IR13.Q & J1_IR11.Q & J1_IR9.Q & J1_IR8.Q
+    # J1_IR14.Q & !J1_IR13.Q
+    # !J1_IR15.Q & !J1_IR13.Q ) ; (5 pterms, 8 signals)
+
+J0_AFControl3 = !J1_IR15.Q & !J1_IR14.Q & J1_IR12.Q & !J1_IR11.Q & !J1_IR10.Q
+    # !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & J1_IR12.Q & J1_IR11.Q & !J1_IR10.Q
+       & J1_IR9.Q & J1_IR8.Q
+    # !J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q
+    # !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & J1_IR12.Q ; (4 pterms, 8 signals)
+
+J0_AFlagMod0 = !( !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & !J1_IR12.Q
+       & !J1_IR11.Q & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & J1_IR1.Q & !J1_IR0.Q
+    # !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & J1_IR12.Q & J1_IR11.Q & J1_IR10.Q
+       & J1_IR9.Q & J1_IR8.Q & J1_IR1.Q & !J1_IR0.Q
+    # !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & J1_IR2.Q & !J1_IR0.Q
+    # !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & J1_IR12.Q & J1_IR11.Q & J1_IR10.Q
+       & J1_IR9.Q & J1_IR8.Q & J1_IR2.Q & !J1_IR0.Q ) ; (4 pterms, 11 signals)
+
+J0_AFlagMod1 = !( !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & !J1_IR12.Q
+       & !J1_IR11.Q & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & J1_IR2.Q & !J1_IR1.Q
+    # !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & J1_IR12.Q & J1_IR11.Q & J1_IR10.Q
+       & J1_IR9.Q & J1_IR8.Q & J1_IR2.Q & !J1_IR1.Q
+    # !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & !J1_IR1.Q & J1_IR0.Q
+    # !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & J1_IR12.Q & J1_IR11.Q & J1_IR10.Q
+       & J1_IR9.Q & J1_IR8.Q & !J1_IR1.Q & J1_IR0.Q ) ; (4 pterms, 11 signals)
+
+J0_ALUDSel0.X1 = !J1_IR15.Q & !J1_IR9.Q
+    # !J1_IR15.Q & !J1_IR8.Q
+    # !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q & J1_IR10.Q
+       & !J1_IR0.Q
+    # !J1_IR14.Q & J1_IR11.Q & !J1_IR10.Q & !J1_IR9.Q & J1_IR8.Q ; (4 pterms, 9 signals)
+J0_ALUDSel0.X2 = !J1_IR15.Q ; (1 pterm, 1 signal)
+
+J0_AShiftRight = !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & J1_IR12.Q & !J1_IR11.Q
+       & !J1_IR10.Q & !J1_IR9.Q & J1_IR8.Q ; (1 pterm, 8 signals)
+
+J0_DAddressMux0 = !( !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & !J1_IR12.Q
+       & !J1_IR11.Q & J1_IR10.Q & J1_IR9.Q & !J1_IR7.Q
+    # !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & J1_IR12.Q & J1_IR11.Q & J1_IR10.Q
+       & J1_IR9.Q & !J1_IR7.Q
+    # J1_IR15.Q & J1_IR14.Q & J1_IR13.Q
+    # !J1_IR15.Q & !J1_IR8.Q
+    # J1_IR15.Q & !J1_IR10.Q ) ; (5 pterms, 9 signals)
+
+J0_DAddressMux1 = !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & !J1_IR12.Q
+       & !J1_IR11.Q & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & !J1_IR2.Q & !J1_IR1.Q
+       & !J1_IR0.Q ; (1 pterm, 11 signals)
+
+J0_DDecrement = !( !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & J1_IR12.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & !J1_IR7.Q
+    # !J1_IR13.Q & !J1_IR11.Q
+    # !J1_IR14.Q & !J1_IR11.Q
+    # !J1_IR15.Q & !J1_IR11.Q ) ; (4 pterms, 9 signals)
+
+J0_DEnableIncDec = !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & J1_IR12.Q
+       & J1_IR11.Q & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & !J1_IR7.Q & !J1_FSM3.Q
+       & !J1_FSM2.Q & !J1_FSM0.Q
+    # !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & !J1_IR12.Q & !J1_IR9.Q & J1_IR8.Q
+    # !J1_IR14.Q & !J1_IR13.Q & !J1_IR12.Q & J1_IR9.Q & !J1_IR8.Q
+    # J1_IR15.Q & !J1_IR14.Q & J1_IR9.Q & !J1_IR8.Q
+    # !J1_FSM2.Q & J1_FSM1.Q & !J1_FSM0.Q
+    # !J1_FSM1.Q & J1_FSM0.Q ; (6 pterms, 13 signals)
+
+J0_DPost = !( !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & !J1_IR12.Q & J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & !J1_IR8.Q & !J1_IR6.Q
+    # !J1_IR12.Q & !J1_Popf & !J1_Rts
+    # J1_Call ) ; (3 pterms, 12 signals)
+
+J0_DataDBSel0 = !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & !J1_IR12.Q & J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & !J1_IR8.Q & !J1_IR6.Q
+    # !J1_FSM2.Q & !J1_FSM1.Q & J1_FSM0.Q ; (2 pterms, 12 signals)
+
+J0_DataDBSel1 = !J1_FSM2.Q & J1_FSM1.Q & !J1_FSM0.Q
+    # !J1_FSM2.Q & !J1_FSM1.Q & J1_FSM0.Q ; (2 pterms, 3 signals)
+
+J0_PAddBSel0 = Flags2.Q & Flags1.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR12.Q
+       & J1_IR11.Q & !J1_IR10.Q & J1_IR9.Q & J1_IR8.Q
+    # !Flags3.Q & J1_IR15.Q & !J1_IR13.Q & !J1_IR12.Q & J1_IR11.Q & J1_IR10.Q
+       & !J1_IR9.Q & !J1_IR8.Q
+    # !Flags5.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & J1_IR12.Q & J1_IR11.Q
+       & J1_IR10.Q & !J1_IR9.Q & !J1_IR8.Q
+    # !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & J1_IR12.Q & J1_IR11.Q & J1_IR10.Q
+       & J1_IR9.Q & J1_IR8.Q & !J1_IR7.Q & !J1_FSM3.Q & !J1_FSM2.Q
+       & !J1_FSM0.Q
+    # !Flags2.Q & !Flags1.Q & !Flags0.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q
+       & !J1_IR12.Q & J1_IR11.Q & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q
+    # Flags2.Q & Flags1.Q & !Flags0.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q
+       & !J1_IR12.Q & J1_IR11.Q & J1_IR9.Q & J1_IR8.Q
+    # !Flags3.Q & !Flags0.Q & J1_IR15.Q & !J1_IR13.Q & !J1_IR12.Q & J1_IR11.Q
+       & !J1_IR9.Q & !J1_IR8.Q
+    # !Flags2.Q & !Flags1.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & J1_IR12.Q
+       & J1_IR11.Q & !J1_IR10.Q & J1_IR9.Q & J1_IR8.Q
+    # Flags2.Q & !Flags1.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR12.Q & J1_IR11.Q
+       & !J1_IR10.Q & !J1_IR9.Q & !J1_IR8.Q
+    # !Flags2.Q & Flags1.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & J1_IR11.Q
+       & !J1_IR10.Q & !J1_IR9.Q & !J1_IR8.Q
+    # Flags2.Q & !Flags1.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q
+       & J1_IR11.Q & J1_IR10.Q & !J1_IR9.Q & !J1_IR8.Q
+    # !Flags2.Q & Flags1.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q
+       & J1_IR11.Q & !J1_IR9.Q & !J1_IR8.Q
+    # Flags0.Q & J1_IR15.Q & !J1_IR13.Q & J1_IR12.Q & J1_IR11.Q & J1_IR10.Q
+       & J1_IR9.Q & J1_IR8.Q
+    # Flags5.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & J1_IR12.Q & J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q
+    # Flags0.Q & J1_IR15.Q & !J1_IR13.Q & !J1_IR12.Q & J1_IR11.Q & !J1_IR10.Q
+       & J1_IR9.Q & J1_IR8.Q
+    # !Flags0.Q & J1_IR15.Q & !J1_IR13.Q & J1_IR12.Q & J1_IR11.Q & J1_IR10.Q
+       & !J1_IR9.Q & !J1_IR8.Q
+    # Flags1.Q & J1_IR15.Q & !J1_IR13.Q & J1_IR12.Q & J1_IR11.Q & !J1_IR10.Q
+       & J1_IR9.Q & J1_IR8.Q
+    # !Flags1.Q & J1_IR15.Q & !J1_IR13.Q & J1_IR12.Q & J1_IR11.Q & !J1_IR10.Q
+       & !J1_IR9.Q & !J1_IR8.Q
+    # Flags0.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & J1_IR11.Q
+       & J1_IR10.Q & !J1_IR9.Q & !J1_IR8.Q
+    # Flags2.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & J1_IR11.Q
+       & !J1_IR10.Q & J1_IR9.Q & J1_IR8.Q
+    # !Flags2.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & J1_IR11.Q
+       & !J1_IR10.Q & !J1_IR9.Q & !J1_IR8.Q
+    # Flags3.Q & J1_IR15.Q & !J1_IR13.Q & !J1_IR12.Q & J1_IR11.Q & J1_IR9.Q
+       & J1_IR8.Q
+    # !J1_FSM2.Q & J1_FSM1.Q & !J1_FSM0.Q
+    # J1_IR15.Q & J1_IR14.Q & !J1_IR13.Q ; (24 pterms, 18 signals)
+
+J0_PAddBSel1 = Flags2.Q & Flags1.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q
+       & J1_IR11.Q & !J1_IR10.Q & J1_IR9.Q & J1_IR8.Q
+    # !Flags3.Q & J1_IR15.Q & !J1_IR13.Q & !J1_IR12.Q & J1_IR11.Q & J1_IR10.Q
+       & !J1_IR9.Q & !J1_IR8.Q
+    # !Flags5.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & J1_IR12.Q & J1_IR11.Q
+       & J1_IR10.Q & !J1_IR9.Q & !J1_IR8.Q
+    # !Flags2.Q & !Flags1.Q & !Flags0.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q
+       & !J1_IR12.Q & J1_IR11.Q & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q
+    # Flags2.Q & Flags1.Q & !Flags0.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q
+       & !J1_IR12.Q & J1_IR11.Q & J1_IR9.Q & J1_IR8.Q
+    # !Flags3.Q & !Flags0.Q & J1_IR15.Q & !J1_IR13.Q & !J1_IR12.Q & J1_IR11.Q
+       & !J1_IR9.Q & !J1_IR8.Q
+    # !Flags2.Q & !Flags1.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & J1_IR12.Q
+       & J1_IR11.Q & !J1_IR10.Q & J1_IR9.Q & J1_IR8.Q
+    # Flags2.Q & !Flags1.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR12.Q & J1_IR11.Q
+       & !J1_IR10.Q & !J1_IR9.Q & !J1_IR8.Q
+    # !Flags2.Q & Flags1.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & J1_IR11.Q
+       & !J1_IR10.Q & !J1_IR9.Q & !J1_IR8.Q
+    # Flags2.Q & !Flags1.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q
+       & J1_IR11.Q & J1_IR10.Q & !J1_IR9.Q & !J1_IR8.Q
+    # !Flags2.Q & Flags1.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q
+       & J1_IR11.Q & !J1_IR9.Q & !J1_IR8.Q
+    # Flags0.Q & J1_IR15.Q & !J1_IR13.Q & J1_IR12.Q & J1_IR11.Q & J1_IR10.Q
+       & J1_IR9.Q & J1_IR8.Q
+    # Flags5.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & J1_IR12.Q & J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q
+    # Flags0.Q & J1_IR15.Q & !J1_IR13.Q & !J1_IR12.Q & J1_IR11.Q & !J1_IR10.Q
+       & J1_IR9.Q & J1_IR8.Q
+    # !Flags0.Q & J1_IR15.Q & !J1_IR13.Q & J1_IR12.Q & J1_IR11.Q & J1_IR10.Q
+       & !J1_IR9.Q & !J1_IR8.Q
+    # Flags1.Q & J1_IR15.Q & !J1_IR13.Q & J1_IR12.Q & J1_IR11.Q & !J1_IR10.Q
+       & J1_IR9.Q & J1_IR8.Q
+    # !Flags1.Q & J1_IR15.Q & !J1_IR13.Q & J1_IR12.Q & J1_IR11.Q & !J1_IR10.Q
+       & !J1_IR9.Q & !J1_IR8.Q
+    # Flags0.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & J1_IR11.Q
+       & J1_IR10.Q & !J1_IR9.Q & !J1_IR8.Q
+    # Flags2.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & J1_IR11.Q
+       & !J1_IR10.Q & J1_IR9.Q & J1_IR8.Q
+    # !Flags2.Q & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & J1_IR11.Q
+       & !J1_IR10.Q & !J1_IR9.Q & !J1_IR8.Q
+    # Flags3.Q & J1_IR15.Q & !J1_IR13.Q & !J1_IR12.Q & J1_IR11.Q & J1_IR9.Q
+       & J1_IR8.Q
+    # !J1_FSM2.Q & J1_FSM1.Q & !J1_FSM0.Q
+    # J1_FSM2.Q & !J1_FSM1.Q & J1_FSM0.Q
+    # J1_IR15.Q & J1_IR14.Q & !J1_IR13.Q ; (24 pterms, 16 signals)
+
+J0_PAddBSel2 = J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & !J1_IR9.Q & !J1_IR8.Q
+       & J1_ConditionalJump
+    # J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & J1_IR9.Q & J1_IR8.Q
+       & J1_ConditionalJump ; (2 pterms, 6 signals)
+
+J0_PHoldPC = !J1_FSM3.Q & !J1_FSM2.Q & !J1_FSM1.Q & J1_Call
+    # !J1_FSM2.Q & !J1_FSM1.Q & J1_FSM0.Q ; (2 pterms, 5 signals)
+
+J0_WR = !Reset & !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & !J1_IR12.Q & J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & !J1_IR8.Q & !J1_IR6.Q
+    # !Reset & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR9.Q & J1_IR8.Q
+    # !Reset & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & J1_IR9.Q & !J1_IR8.Q
+    # !Reset & J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR11.Q
+    # !Reset & !J1_FSM2.Q & J1_FSM1.Q & !J1_FSM0.Q
+    # !Reset & !J1_FSM2.Q & !J1_FSM1.Q & J1_FSM0.Q ; (6 pterms, 13 signals)
+
+J1_Call = J1_IR15.Q & J1_IR14.Q & J1_IR13.Q ; (1 pterm, 3 signals)
+
+J1_ConditionalJump.X1 = Flags3.Q & !J1_IR13.Q & !J1_IR12.Q
+    # Flags0.Q & !J1_IR13.Q & !J1_IR12.Q & !J1_IR10.Q
+    # !Flags2.Q & !Flags1.Q & !Flags0.Q & J1_IR13.Q & !J1_IR12.Q & J1_IR10.Q
+    # Flags2.Q & J1_IR13.Q & !J1_IR12.Q & !J1_IR10.Q
+    # Flags2.Q & Flags1.Q & !Flags0.Q & J1_IR13.Q & !J1_IR12.Q
+    # !Flags2.Q & !Flags1.Q & J1_IR13.Q & J1_IR12.Q & !J1_IR10.Q
+    # Flags2.Q & Flags1.Q & J1_IR12.Q & !J1_IR10.Q
+    # Flags1.Q & !J1_IR13.Q & J1_IR12.Q & !J1_IR10.Q
+    # Flags0.Q & !J1_IR13.Q & J1_IR12.Q & J1_IR10.Q
+    # Flags5.Q & J1_IR13.Q & J1_IR12.Q & J1_IR10.Q ; (10 pterms, 8 signals)
+J1_ConditionalJump.X2 = !J1_IR9.Q ; (1 pterm, 1 signal)
+
+J1_FSM0.D = !Reset & !J1_FSM3.Q & !J1_FSM2.Q & !J1_FSM1.Q & !J1_FSM0.Q
+       & J1_Call
+    # !Reset & !J1_FSM3.Q & !J1_FSM2.Q & !J1_FSM1.Q & !J1_FSM0.Q & J1_Rts ; (2 pterms, 7 signals)
+J1_FSM0.C = Clock ; (1 pterm, 1 signal)
+
+J1_FSM1.D = !Reset & !J1_FSM3.Q & !J1_FSM2.Q & !J1_FSM1.Q & J1_FSM0.Q ; (1 pterm, 5 signals)
+J1_FSM1.C = Clock ; (1 pterm, 1 signal)
+
+J1_FSM2.D = !Reset & !J1_FSM3.Q & !J1_FSM2.Q & !J1_FSM1.Q & !J1_FSM0.Q
+       & !J1_Call & J1_Rts ; (1 pterm, 7 signals)
+J1_FSM2.C = Clock ; (1 pterm, 1 signal)
+
+J1_FSM3.D = !Reset & !J1_FSM3.Q & !J1_FSM2.Q & J1_FSM1.Q & !J1_FSM0.Q
+    # !Reset & !J1_FSM3.Q & J1_FSM2.Q & !J1_FSM1.Q & J1_FSM0.Q ; (2 pterms, 5 signals)
+J1_FSM3.C = Clock ; (1 pterm, 1 signal)
+
+J1_IR0.D = !Reset & J1_IR0.Q & !J1_FSM3.Q & J1_Call
+    # !Reset & J1_IR0.Q & !J1_FSM3.Q & J1_Rts
+    # ProgramDB0 & !Reset & !J1_Call & !J1_Rts
+    # ProgramDB0 & !Reset & J1_FSM3.Q ; (4 pterms, 6 signals)
+J1_IR0.C = Clock ; (1 pterm, 1 signal)
+
+J1_IR1.D = !Reset & J1_IR1.Q & !J1_FSM3.Q & J1_Call
+    # !Reset & J1_IR1.Q & !J1_FSM3.Q & J1_Rts
+    # ProgramDB1 & !Reset & !J1_Call & !J1_Rts
+    # ProgramDB1 & !Reset & J1_FSM3.Q ; (4 pterms, 6 signals)
+J1_IR1.C = Clock ; (1 pterm, 1 signal)
+
+J1_IR10.D = !Reset & J1_IR10.Q & !J1_FSM3.Q & J1_Call
+    # !Reset & J1_IR10.Q & !J1_FSM3.Q & J1_Rts
+    # ProgramDB10 & !Reset & !J1_Call & !J1_Rts
+    # ProgramDB10 & !Reset & J1_FSM3.Q ; (4 pterms, 6 signals)
+J1_IR10.C = Clock ; (1 pterm, 1 signal)
+
+J1_IR11.D = !Reset & J1_IR11.Q & !J1_FSM3.Q & J1_Call
+    # !Reset & J1_IR11.Q & !J1_FSM3.Q & J1_Rts
+    # ProgramDB11 & !Reset & !J1_Call & !J1_Rts
+    # ProgramDB11 & !Reset & J1_FSM3.Q ; (4 pterms, 6 signals)
+J1_IR11.C = Clock ; (1 pterm, 1 signal)
+
+J1_IR12.D = !Reset & J1_IR12.Q & !J1_FSM3.Q & J1_Call
+    # !Reset & J1_IR12.Q & !J1_FSM3.Q & J1_Rts
+    # ProgramDB12 & !Reset & !J1_Call & !J1_Rts
+    # ProgramDB12 & !Reset & J1_FSM3.Q ; (4 pterms, 6 signals)
+J1_IR12.C = Clock ; (1 pterm, 1 signal)
+
+J1_IR13.D = !Reset & J1_IR13.Q & !J1_FSM3.Q & J1_Call
+    # !Reset & J1_IR13.Q & !J1_FSM3.Q & J1_Rts
+    # ProgramDB13 & !Reset & !J1_Call & !J1_Rts
+    # ProgramDB13 & !Reset & J1_FSM3.Q ; (4 pterms, 6 signals)
+J1_IR13.C = Clock ; (1 pterm, 1 signal)
+
+J1_IR14.D = !Reset & J1_IR14.Q & !J1_FSM3.Q & J1_Call
+    # !Reset & J1_IR14.Q & !J1_FSM3.Q & J1_Rts
+    # ProgramDB14 & !Reset & !J1_Call & !J1_Rts
+    # ProgramDB14 & !Reset & J1_FSM3.Q ; (4 pterms, 6 signals)
+J1_IR14.C = Clock ; (1 pterm, 1 signal)
+
+J1_IR15.D = !Reset & J1_IR15.Q & !J1_FSM3.Q & J1_Call
+    # !Reset & J1_IR15.Q & !J1_FSM3.Q & J1_Rts
+    # ProgramDB15 & !Reset & !J1_Call & !J1_Rts
+    # ProgramDB15 & !Reset & J1_FSM3.Q ; (4 pterms, 6 signals)
+J1_IR15.C = Clock ; (1 pterm, 1 signal)
+
+J1_IR2.D = !Reset & J1_IR2.Q & !J1_FSM3.Q & J1_Call
+    # !Reset & J1_IR2.Q & !J1_FSM3.Q & J1_Rts
+    # ProgramDB2 & !Reset & !J1_Call & !J1_Rts
+    # ProgramDB2 & !Reset & J1_FSM3.Q ; (4 pterms, 6 signals)
+J1_IR2.C = Clock ; (1 pterm, 1 signal)
+
+J1_IR3.D = !Reset & J1_IR3.Q & !J1_FSM3.Q & J1_Call
+    # !Reset & J1_IR3.Q & !J1_FSM3.Q & J1_Rts
+    # ProgramDB3 & !Reset & !J1_Call & !J1_Rts
+    # ProgramDB3 & !Reset & J1_FSM3.Q ; (4 pterms, 6 signals)
+J1_IR3.C = Clock ; (1 pterm, 1 signal)
+
+J1_IR4.D = !Reset & J1_IR4.Q & !J1_FSM3.Q & J1_Call
+    # !Reset & J1_IR4.Q & !J1_FSM3.Q & J1_Rts
+    # ProgramDB4 & !Reset & !J1_Call & !J1_Rts
+    # ProgramDB4 & !Reset & J1_FSM3.Q ; (4 pterms, 6 signals)
+J1_IR4.C = Clock ; (1 pterm, 1 signal)
+
+J1_IR5.D = !Reset & J1_IR5.Q & !J1_FSM3.Q & J1_Call
+    # !Reset & J1_IR5.Q & !J1_FSM3.Q & J1_Rts
+    # ProgramDB5 & !Reset & !J1_Call & !J1_Rts
+    # ProgramDB5 & !Reset & J1_FSM3.Q ; (4 pterms, 6 signals)
+J1_IR5.C = Clock ; (1 pterm, 1 signal)
+
+J1_IR6.D = !Reset & J1_IR6.Q & !J1_FSM3.Q & J1_Call
+    # !Reset & J1_IR6.Q & !J1_FSM3.Q & J1_Rts
+    # ProgramDB6 & !Reset & !J1_Call & !J1_Rts
+    # ProgramDB6 & !Reset & J1_FSM3.Q ; (4 pterms, 6 signals)
+J1_IR6.C = Clock ; (1 pterm, 1 signal)
+
+J1_IR7.D = !Reset & J1_IR7.Q & !J1_FSM3.Q & J1_Call
+    # !Reset & J1_IR7.Q & !J1_FSM3.Q & J1_Rts
+    # ProgramDB7 & !Reset & !J1_Call & !J1_Rts
+    # ProgramDB7 & !Reset & J1_FSM3.Q ; (4 pterms, 6 signals)
+J1_IR7.C = Clock ; (1 pterm, 1 signal)
+
+J1_IR8.D = !Reset & J1_IR8.Q & !J1_FSM3.Q & J1_Call
+    # !Reset & J1_IR8.Q & !J1_FSM3.Q & J1_Rts
+    # ProgramDB8 & !Reset & !J1_Call & !J1_Rts
+    # ProgramDB8 & !Reset & J1_FSM3.Q ; (4 pterms, 6 signals)
+J1_IR8.C = Clock ; (1 pterm, 1 signal)
+
+J1_IR9.D = !Reset & J1_IR9.Q & !J1_FSM3.Q & J1_Call
+    # !Reset & J1_IR9.Q & !J1_FSM3.Q & J1_Rts
+    # ProgramDB9 & !Reset & !J1_Call & !J1_Rts
+    # ProgramDB9 & !Reset & J1_FSM3.Q ; (4 pterms, 6 signals)
+J1_IR9.C = Clock ; (1 pterm, 1 signal)
+
+J1_LDI = J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & !J1_IR10.Q & !J1_IR9.Q
+       & J1_IR8.Q ; (1 pterm, 6 signals)
+
+J1_LeftShift = !J1_IR15.Q & J1_IR14.Q & !J1_IR13.Q & J1_IR12.Q ; (1 pterm, 4 signals)
+
+J1_Load = J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & J1_IR9.Q & !J1_IR8.Q
+    # J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & !J1_IR9.Q & J1_IR8.Q
+    # J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & !J1_IR11.Q ; (3 pterms, 6 signals)
+
+J1_LogicOp = !J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & J1_IR11.Q
+       & J1_IR10.Q & !J1_IR9.Q & J1_IR8.Q
+    # !J1_IR15.Q & J1_IR13.Q & J1_IR12.Q & !J1_IR11.Q & J1_IR10.Q
+    # !J1_IR15.Q & J1_IR14.Q & !J1_IR13.Q & !J1_IR12.Q ; (3 pterms, 8 signals)
+
+J1_Popf = !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q
+       & !J1_IR10.Q & J1_IR9.Q & !J1_IR8.Q ; (1 pterm, 8 signals)
+
+J1_Rts = !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & J1_IR12.Q & J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & !J1_IR7.Q ; (1 pterm, 9 signals)
+
+J1_TSATXA = !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q ; (1 pterm, 8 signals)
+
+P0_AddendA0 = !( !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & J1_IR12.Q & J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & !J1_IR7.Q & !J1_FSM3.Q & !J1_FSM2.Q
+       & !J1_FSM0.Q
+    # J1_IR15.Q & J1_IR14.Q & !J1_IR13.Q
+    # !J1_FSM2.Q & J1_FSM1.Q & !J1_FSM0.Q
+    # !ProgramAB0.Q ) ; (4 pterms, 14 signals)
+
+P0_AddendA1 = !( !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & J1_IR12.Q & J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & !J1_IR7.Q & !J1_FSM3.Q & !J1_FSM2.Q
+       & !J1_FSM0.Q
+    # J1_IR15.Q & J1_IR14.Q & !J1_IR13.Q
+    # !J1_FSM2.Q & J1_FSM1.Q & !J1_FSM0.Q
+    # !ProgramAB1.Q ) ; (4 pterms, 14 signals)
+
+P0_AddendA10 = !( J1_IR15.Q & J1_IR14.Q & !J1_IR13.Q
+    # !J1_FSM2.Q & J1_FSM1.Q & !J1_FSM0.Q
+    # !J1_FSM3.Q & !J1_FSM2.Q & !J1_FSM0.Q & J1_Rts
+    # !ProgramAB10.Q ) ; (4 pterms, 9 signals)
+
+P0_AddendA11 = !( J1_IR15.Q & J1_IR14.Q & !J1_IR13.Q
+    # !J1_FSM2.Q & J1_FSM1.Q & !J1_FSM0.Q
+    # !J1_FSM3.Q & !J1_FSM2.Q & !J1_FSM0.Q & J1_Rts
+    # !ProgramAB11.Q ) ; (4 pterms, 9 signals)
+
+P0_AddendA12 = !( J1_IR15.Q & J1_IR14.Q & !J1_IR13.Q
+    # !J1_FSM2.Q & J1_FSM1.Q & !J1_FSM0.Q
+    # !J1_FSM3.Q & !J1_FSM2.Q & !J1_FSM0.Q & J1_Rts
+    # !ProgramAB12.Q ) ; (4 pterms, 9 signals)
+
+P0_AddendA2 = !( !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & J1_IR12.Q & J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & !J1_IR7.Q & !J1_FSM3.Q & !J1_FSM2.Q
+       & !J1_FSM0.Q
+    # J1_IR15.Q & J1_IR14.Q & !J1_IR13.Q
+    # !J1_FSM2.Q & J1_FSM1.Q & !J1_FSM0.Q
+    # !ProgramAB2.Q ) ; (4 pterms, 14 signals)
+
+P0_AddendA3 = !( !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & J1_IR12.Q & J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & !J1_IR7.Q & !J1_FSM3.Q & !J1_FSM2.Q
+       & !J1_FSM0.Q
+    # J1_IR15.Q & J1_IR14.Q & !J1_IR13.Q
+    # !J1_FSM2.Q & J1_FSM1.Q & !J1_FSM0.Q
+    # !ProgramAB3.Q ) ; (4 pterms, 14 signals)
+
+P0_AddendA4 = !( J1_IR15.Q & J1_IR14.Q & !J1_IR13.Q
+    # !J1_FSM2.Q & J1_FSM1.Q & !J1_FSM0.Q
+    # !J1_FSM3.Q & !J1_FSM2.Q & !J1_FSM0.Q & J1_Rts
+    # !ProgramAB4.Q ) ; (4 pterms, 9 signals)
+
+P0_AddendA5 = !( J1_IR15.Q & J1_IR14.Q & !J1_IR13.Q
+    # !J1_FSM2.Q & J1_FSM1.Q & !J1_FSM0.Q
+    # !J1_FSM3.Q & !J1_FSM2.Q & !J1_FSM0.Q & J1_Rts
+    # !ProgramAB5.Q ) ; (4 pterms, 9 signals)
+
+P0_AddendA6 = !( J1_IR15.Q & J1_IR14.Q & !J1_IR13.Q
+    # !J1_FSM2.Q & J1_FSM1.Q & !J1_FSM0.Q
+    # !J1_FSM3.Q & !J1_FSM2.Q & !J1_FSM0.Q & J1_Rts
+    # !ProgramAB6.Q ) ; (4 pterms, 9 signals)
+
+P0_AddendA7 = !( J1_IR15.Q & J1_IR14.Q & !J1_IR13.Q
+    # !J1_FSM2.Q & J1_FSM1.Q & !J1_FSM0.Q
+    # !J1_FSM3.Q & !J1_FSM2.Q & !J1_FSM0.Q & J1_Rts
+    # !ProgramAB7.Q ) ; (4 pterms, 9 signals)
+
+P0_AddendA8 = !( J1_IR15.Q & J1_IR14.Q & !J1_IR13.Q
+    # !J1_FSM2.Q & J1_FSM1.Q & !J1_FSM0.Q
+    # !J1_FSM3.Q & !J1_FSM2.Q & !J1_FSM0.Q & J1_Rts
+    # !ProgramAB8.Q ) ; (4 pterms, 9 signals)
+
+P0_AddendA9 = !( J1_IR15.Q & J1_IR14.Q & !J1_IR13.Q
+    # !J1_FSM2.Q & J1_FSM1.Q & !J1_FSM0.Q
+    # !J1_FSM3.Q & !J1_FSM2.Q & !J1_FSM0.Q & J1_Rts
+    # !ProgramAB9.Q ) ; (4 pterms, 9 signals)
+
+P0_AddendB0 = !J0_PAddBSel1 & J1_IR0.Q & !J1_Rts
+    # DataDB0 & J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & !J1_IR9.Q & !J1_IR8.Q
+       & J1_Rts & J1_ConditionalJump
+    # DataDB0 & J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & J1_IR9.Q & J1_IR8.Q
+       & J1_Rts & J1_ConditionalJump
+    # J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & !J1_IR9.Q & !J1_IR8.Q & J1_IR0.Q
+       & !J1_Rts & J1_ConditionalJump
+    # J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & J1_IR9.Q & J1_IR8.Q & J1_IR0.Q
+       & !J1_Rts & J1_ConditionalJump
+    # J0_PAddBSel0 & J0_PAddBSel1 & J1_IR9.Q & !J1_IR8.Q & J1_IR0.Q
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J1_IR9.Q & J1_IR8.Q & J1_IR0.Q
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J1_IR11.Q & J1_IR0.Q
+    # J0_PAddBSel0 & J0_PAddBSel1 & J1_IR14.Q & J1_IR0.Q
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J1_IR15.Q & J1_IR0.Q
+    # !J0_PAddBSel0 & !J0_PAddBSel1 & J1_IR9.Q & !J1_IR8.Q
+    # !J0_PAddBSel0 & !J0_PAddBSel1 & !J1_IR9.Q & J1_IR8.Q
+    # DataDB0 & !J0_PAddBSel1 & J1_Rts
+    # J0_PAddBSel0 & J0_PAddBSel1 & J1_IR0.Q & !J1_ConditionalJump
+    # !J0_PAddBSel0 & !J0_PAddBSel1 & !J1_IR11.Q
+    # !J0_PAddBSel0 & !J0_PAddBSel1 & J1_IR14.Q
+    # !J0_PAddBSel0 & !J0_PAddBSel1 & !J1_IR15.Q
+    # !J0_PAddBSel0 & !J0_PAddBSel1 & !J1_ConditionalJump ; (18 pterms, 11 signals)
+
+P0_AddendB1 = DataDB1 & J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & !J1_IR9.Q
+       & !J1_IR8.Q & J1_Rts & J1_ConditionalJump
+    # DataDB1 & J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & J1_IR9.Q & J1_IR8.Q
+       & J1_Rts & J1_ConditionalJump
+    # J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & !J1_IR9.Q & !J1_IR8.Q & J1_IR1.Q
+       & !J1_Rts & J1_ConditionalJump
+    # J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & J1_IR9.Q & J1_IR8.Q & J1_IR1.Q
+       & !J1_Rts & J1_ConditionalJump
+    # DataDB1 & J0_PAddBSel0 & !J0_PAddBSel1 & J1_Rts
+    # J0_PAddBSel0 & J0_PAddBSel1 & J1_IR9.Q & !J1_IR8.Q & J1_IR1.Q
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J1_IR9.Q & J1_IR8.Q & J1_IR1.Q
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J1_IR11.Q & J1_IR1.Q
+    # J0_PAddBSel0 & J0_PAddBSel1 & J1_IR14.Q & J1_IR1.Q
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J1_IR15.Q & J1_IR1.Q
+    # J0_PAddBSel0 & J1_IR1.Q & !J1_Rts
+    # J0_PAddBSel0 & J0_PAddBSel1 & J1_IR1.Q & !J1_ConditionalJump ; (12 pterms, 11 signals)
+
+P0_AddendB10 = !J0_PAddBSel0 & J0_PAddBSel1 & !J0_PAddBSel2 & J1_IR2.Q
+       & !J1_Rts
+    # DataDB2 & !J0_PAddBSel0 & J0_PAddBSel1 & !J0_PAddBSel2 & J1_Rts
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J0_PAddBSel2 & J1_IR10.Q
+    # J0_PAddBSel2 & J1_IR7.Q & !J1_Rts
+    # DataDB7 & J0_PAddBSel2 & J1_Rts ; (5 pterms, 9 signals)
+
+P0_AddendB11 = !J0_PAddBSel0 & J0_PAddBSel1 & !J0_PAddBSel2 & J1_IR3.Q
+       & !J1_Rts
+    # DataDB3 & !J0_PAddBSel0 & J0_PAddBSel1 & !J0_PAddBSel2 & J1_Rts
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J0_PAddBSel2 & J1_IR11.Q
+    # J0_PAddBSel2 & J1_IR7.Q & !J1_Rts
+    # DataDB7 & J0_PAddBSel2 & J1_Rts ; (5 pterms, 9 signals)
+
+P0_AddendB12 = !J0_PAddBSel0 & J0_PAddBSel1 & !J0_PAddBSel2 & J1_IR4.Q
+       & !J1_Rts
+    # DataDB4 & !J0_PAddBSel0 & J0_PAddBSel1 & !J0_PAddBSel2 & J1_Rts
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J0_PAddBSel2 & J1_IR12.Q
+    # J0_PAddBSel2 & J1_IR7.Q & !J1_Rts
+    # DataDB7 & J0_PAddBSel2 & J1_Rts ; (5 pterms, 9 signals)
+
+P0_AddendB2 = DataDB2 & J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & !J1_IR9.Q
+       & !J1_IR8.Q & J1_Rts & J1_ConditionalJump
+    # DataDB2 & J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & J1_IR9.Q & J1_IR8.Q
+       & J1_Rts & J1_ConditionalJump
+    # J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & !J1_IR9.Q & !J1_IR8.Q & J1_IR2.Q
+       & !J1_Rts & J1_ConditionalJump
+    # J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & J1_IR9.Q & J1_IR8.Q & J1_IR2.Q
+       & !J1_Rts & J1_ConditionalJump
+    # DataDB2 & J0_PAddBSel0 & !J0_PAddBSel1 & J1_Rts
+    # J0_PAddBSel0 & J0_PAddBSel1 & J1_IR9.Q & !J1_IR8.Q & J1_IR2.Q
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J1_IR9.Q & J1_IR8.Q & J1_IR2.Q
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J1_IR11.Q & J1_IR2.Q
+    # J0_PAddBSel0 & J0_PAddBSel1 & J1_IR14.Q & J1_IR2.Q
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J1_IR15.Q & J1_IR2.Q
+    # J0_PAddBSel0 & J1_IR2.Q & !J1_Rts
+    # J0_PAddBSel0 & J0_PAddBSel1 & J1_IR2.Q & !J1_ConditionalJump ; (12 pterms, 11 signals)
+
+P0_AddendB3 = DataDB3 & J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & !J1_IR9.Q
+       & !J1_IR8.Q & J1_Rts & J1_ConditionalJump
+    # DataDB3 & J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & J1_IR9.Q & J1_IR8.Q
+       & J1_Rts & J1_ConditionalJump
+    # J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & !J1_IR9.Q & !J1_IR8.Q & J1_IR3.Q
+       & !J1_Rts & J1_ConditionalJump
+    # J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & J1_IR9.Q & J1_IR8.Q & J1_IR3.Q
+       & !J1_Rts & J1_ConditionalJump
+    # DataDB3 & J0_PAddBSel0 & !J0_PAddBSel1 & J1_Rts
+    # J0_PAddBSel0 & J0_PAddBSel1 & J1_IR9.Q & !J1_IR8.Q & J1_IR3.Q
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J1_IR9.Q & J1_IR8.Q & J1_IR3.Q
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J1_IR11.Q & J1_IR3.Q
+    # J0_PAddBSel0 & J0_PAddBSel1 & J1_IR14.Q & J1_IR3.Q
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J1_IR15.Q & J1_IR3.Q
+    # J0_PAddBSel0 & J1_IR3.Q & !J1_Rts
+    # J0_PAddBSel0 & J0_PAddBSel1 & J1_IR3.Q & !J1_ConditionalJump ; (12 pterms, 11 signals)
+
+P0_AddendB4 = DataDB4 & J0_PAddBSel0 & !J0_PAddBSel1 & J1_Rts
+    # J0_PAddBSel0 & J1_IR4.Q & !J1_Rts
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J0_PAddBSel2 & J1_IR4.Q
+    # DataDB4 & J0_PAddBSel2 & J1_Rts
+    # J0_PAddBSel2 & J1_IR4.Q & !J1_Rts ; (5 pterms, 6 signals)
+
+P0_AddendB5 = DataDB5 & J0_PAddBSel0 & !J0_PAddBSel1 & J1_Rts
+    # J0_PAddBSel0 & J1_IR5.Q & !J1_Rts
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J0_PAddBSel2 & J1_IR5.Q
+    # DataDB5 & J0_PAddBSel2 & J1_Rts
+    # J0_PAddBSel2 & J1_IR5.Q & !J1_Rts ; (5 pterms, 6 signals)
+
+P0_AddendB6 = DataDB6 & J0_PAddBSel0 & !J0_PAddBSel1 & J1_Rts
+    # J0_PAddBSel0 & J1_IR6.Q & !J1_Rts
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J0_PAddBSel2 & J1_IR6.Q
+    # DataDB6 & J0_PAddBSel2 & J1_Rts
+    # J0_PAddBSel2 & J1_IR6.Q & !J1_Rts ; (5 pterms, 6 signals)
+
+P0_AddendB7 = DataDB7 & J0_PAddBSel0 & !J0_PAddBSel1 & J1_Rts
+    # J0_PAddBSel0 & J1_IR7.Q & !J1_Rts
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J0_PAddBSel2 & J1_IR7.Q
+    # DataDB7 & J0_PAddBSel2 & J1_Rts
+    # J0_PAddBSel2 & J1_IR7.Q & !J1_Rts ; (5 pterms, 6 signals)
+
+P0_AddendB8 = !J0_PAddBSel0 & J0_PAddBSel1 & !J0_PAddBSel2 & J1_IR0.Q
+       & !J1_Rts
+    # DataDB0 & !J0_PAddBSel0 & J0_PAddBSel1 & !J0_PAddBSel2 & J1_Rts
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J0_PAddBSel2 & J1_IR8.Q
+    # J0_PAddBSel2 & J1_IR7.Q & !J1_Rts
+    # DataDB7 & J0_PAddBSel2 & J1_Rts ; (5 pterms, 9 signals)
+
+P0_AddendB9 = !J0_PAddBSel0 & J0_PAddBSel1 & !J0_PAddBSel2 & J1_IR1.Q
+       & !J1_Rts
+    # DataDB1 & !J0_PAddBSel0 & J0_PAddBSel1 & !J0_PAddBSel2 & J1_Rts
+    # J0_PAddBSel0 & J0_PAddBSel1 & !J0_PAddBSel2 & J1_IR9.Q
+    # J0_PAddBSel2 & J1_IR7.Q & !J1_Rts
+    # DataDB7 & J0_PAddBSel2 & J1_Rts ; (5 pterms, 9 signals)
+
+P0_Carry1 = P0_AddendA1 & P0_AddendA0 & P0_AddendB0
+    # P0_AddendA0 & P0_AddendB1 & P0_AddendB0
+    # P0_AddendA1 & P0_AddendB1 ; (3 pterms, 4 signals)
+
+P0_Carry11.X1 = !P0_AddendA11 & !P0_AddendB11
+    # P0_AddendA10 & P0_AddendB10
+    # P0_AddendA10 & P0_AddendA9 & P0_AddendB9
+    # P0_AddendA9 & P0_AddendB10 & P0_AddendB9
+    # P0_AddendA10 & P0_AddendA9 & P0_AddendA8 & P0_AddendB8
+    # P0_AddendA9 & P0_AddendA8 & P0_AddendB10 & P0_AddendB8
+    # P0_AddendA10 & P0_AddendA8 & P0_AddendB9 & P0_AddendB8
+    # P0_AddendA8 & P0_AddendB10 & P0_AddendB9 & P0_AddendB8
+    # P0_Carry6 & P0_AddendA10 & P0_AddendA9 & P0_AddendA8 & P0_AddendA7
+    # P0_Carry6 & P0_AddendA9 & P0_AddendA8 & P0_AddendA7 & P0_AddendB10
+    # P0_Carry6 & P0_AddendA10 & P0_AddendA8 & P0_AddendA7 & P0_AddendB9
+    # P0_Carry6 & P0_AddendA8 & P0_AddendA7 & P0_AddendB10 & P0_AddendB9
+    # P0_Carry6 & P0_AddendA10 & P0_AddendA9 & P0_AddendA7 & P0_AddendB8
+    # P0_Carry6 & P0_AddendA9 & P0_AddendA7 & P0_AddendB10 & P0_AddendB8
+    # P0_Carry6 & P0_AddendA10 & P0_AddendA7 & P0_AddendB9 & P0_AddendB8
+    # P0_Carry6 & P0_AddendA7 & P0_AddendB10 & P0_AddendB9 & P0_AddendB8
+    # P0_Carry6 & P0_AddendA10 & P0_AddendA9 & P0_AddendA8 & P0_AddendB7
+    # P0_AddendA10 & P0_AddendA9 & P0_AddendA8 & P0_AddendA7 & P0_AddendB7
+    # P0_Carry6 & P0_AddendA9 & P0_AddendA8 & P0_AddendB10 & P0_AddendB7
+    # P0_AddendA9 & P0_AddendA8 & P0_AddendA7 & P0_AddendB10 & P0_AddendB7
+    # P0_Carry6 & P0_AddendA10 & P0_AddendA8 & P0_AddendB9 & P0_AddendB7
+    # P0_AddendA10 & P0_AddendA8 & P0_AddendA7 & P0_AddendB9 & P0_AddendB7
+    # P0_Carry6 & P0_AddendA8 & P0_AddendB10 & P0_AddendB9 & P0_AddendB7
+    # P0_AddendA8 & P0_AddendA7 & P0_AddendB10 & P0_AddendB9 & P0_AddendB7
+    # P0_Carry6 & P0_AddendA10 & P0_AddendA9 & P0_AddendB8 & P0_AddendB7
+    # P0_AddendA10 & P0_AddendA9 & P0_AddendA7 & P0_AddendB8 & P0_AddendB7
+    # P0_Carry6 & P0_AddendA9 & P0_AddendB10 & P0_AddendB8 & P0_AddendB7
+    # P0_AddendA9 & P0_AddendA7 & P0_AddendB10 & P0_AddendB8 & P0_AddendB7
+    # P0_Carry6 & P0_AddendA10 & P0_AddendB9 & P0_AddendB8 & P0_AddendB7
+    # P0_AddendA10 & P0_AddendA7 & P0_AddendB9 & P0_AddendB8 & P0_AddendB7
+    # P0_Carry6 & P0_AddendB10 & P0_AddendB9 & P0_AddendB8 & P0_AddendB7
+    # P0_AddendA7 & P0_AddendB10 & P0_AddendB9 & P0_AddendB8 & P0_AddendB7
+    # P0_AddendA11 & P0_AddendB11 ; (33 pterms, 11 signals)
+P0_Carry11.X2 = !P0_AddendA11 & !P0_AddendB11 ; (1 pterm, 2 signals)
+
+P0_Carry2.X1 = !P0_AddendA2 & !P0_AddendB2
+    # P0_AddendA1 & P0_AddendB1
+    # P0_AddendA1 & P0_AddendA0 & P0_AddendB0
+    # P0_AddendA0 & P0_AddendB1 & P0_AddendB0
+    # P0_AddendA2 & P0_AddendB2 ; (5 pterms, 6 signals)
+P0_Carry2.X2 = !P0_AddendA2 & !P0_AddendB2 ; (1 pterm, 2 signals)
+
+P0_Carry3.X1 = !P0_AddendA3 & !P0_AddendB3
+    # P0_AddendA2 & P0_AddendB2
+    # P0_AddendA2 & P0_AddendA1 & P0_AddendB1
+    # P0_AddendA1 & P0_AddendB2 & P0_AddendB1
+    # P0_AddendA2 & P0_AddendA1 & P0_AddendA0 & P0_AddendB0
+    # P0_AddendA1 & P0_AddendA0 & P0_AddendB2 & P0_AddendB0
+    # P0_AddendA2 & P0_AddendA0 & P0_AddendB1 & P0_AddendB0
+    # P0_AddendA0 & P0_AddendB2 & P0_AddendB1 & P0_AddendB0
+    # P0_AddendA3 & P0_AddendB3 ; (9 pterms, 8 signals)
+P0_Carry3.X2 = !P0_AddendA3 & !P0_AddendB3 ; (1 pterm, 2 signals)
+
+P0_Carry4 = P0_AddendA4 & P0_AddendB4
+    # P0_Carry3 & P0_AddendA4
+    # P0_Carry3 & P0_AddendB4 ; (3 pterms, 3 signals)
+
+P0_Carry5.X1 = !P0_AddendA5 & !P0_AddendB5
+    # P0_Carry3 & P0_AddendA4
+    # P0_Carry3 & P0_AddendB4
+    # P0_AddendA4 & P0_AddendB4
+    # P0_AddendA5 & P0_AddendB5 ; (5 pterms, 5 signals)
+P0_Carry5.X2 = !P0_AddendA5 & !P0_AddendB5 ; (1 pterm, 2 signals)
+
+P0_Carry6.X1 = !P0_AddendA6 & !P0_AddendB6
+    # P0_AddendA5 & P0_AddendB5
+    # P0_Carry3 & P0_AddendA5 & P0_AddendA4
+    # P0_Carry3 & P0_AddendA4 & P0_AddendB5
+    # P0_Carry3 & P0_AddendA5 & P0_AddendB4
+    # P0_AddendA5 & P0_AddendA4 & P0_AddendB4
+    # P0_Carry3 & P0_AddendB5 & P0_AddendB4
+    # P0_AddendA4 & P0_AddendB5 & P0_AddendB4
+    # P0_AddendA6 & P0_AddendB6 ; (9 pterms, 7 signals)
+P0_Carry6.X2 = !P0_AddendA6 & !P0_AddendB6 ; (1 pterm, 2 signals)
+
+P0_Carry8.X1 = !P0_AddendA8 & !P0_AddendB8
+    # P0_AddendA7 & P0_AddendB7
+    # P0_AddendA7 & P0_AddendA6 & P0_AddendB6
+    # P0_AddendA6 & P0_AddendB7 & P0_AddendB6
+    # P0_AddendA7 & P0_AddendA6 & P0_AddendA5 & P0_AddendB5
+    # P0_AddendA6 & P0_AddendA5 & P0_AddendB7 & P0_AddendB5
+    # P0_AddendA7 & P0_AddendA5 & P0_AddendB6 & P0_AddendB5
+    # P0_AddendA5 & P0_AddendB7 & P0_AddendB6 & P0_AddendB5
+    # P0_Carry3 & P0_AddendA7 & P0_AddendA6 & P0_AddendA5 & P0_AddendA4
+    # P0_Carry3 & P0_AddendA6 & P0_AddendA5 & P0_AddendA4 & P0_AddendB7
+    # P0_Carry3 & P0_AddendA7 & P0_AddendA5 & P0_AddendA4 & P0_AddendB6
+    # P0_Carry3 & P0_AddendA5 & P0_AddendA4 & P0_AddendB7 & P0_AddendB6
+    # P0_Carry3 & P0_AddendA7 & P0_AddendA6 & P0_AddendA4 & P0_AddendB5
+    # P0_Carry3 & P0_AddendA6 & P0_AddendA4 & P0_AddendB7 & P0_AddendB5
+    # P0_Carry3 & P0_AddendA7 & P0_AddendA4 & P0_AddendB6 & P0_AddendB5
+    # P0_Carry3 & P0_AddendA4 & P0_AddendB7 & P0_AddendB6 & P0_AddendB5
+    # P0_Carry3 & P0_AddendA7 & P0_AddendA6 & P0_AddendA5 & P0_AddendB4
+    # P0_AddendA7 & P0_AddendA6 & P0_AddendA5 & P0_AddendA4 & P0_AddendB4
+    # P0_Carry3 & P0_AddendA6 & P0_AddendA5 & P0_AddendB7 & P0_AddendB4
+    # P0_AddendA6 & P0_AddendA5 & P0_AddendA4 & P0_AddendB7 & P0_AddendB4
+    # P0_Carry3 & P0_AddendA7 & P0_AddendA5 & P0_AddendB6 & P0_AddendB4
+    # P0_AddendA7 & P0_AddendA5 & P0_AddendA4 & P0_AddendB6 & P0_AddendB4
+    # P0_Carry3 & P0_AddendA5 & P0_AddendB7 & P0_AddendB6 & P0_AddendB4
+    # P0_AddendA5 & P0_AddendA4 & P0_AddendB7 & P0_AddendB6 & P0_AddendB4
+    # P0_Carry3 & P0_AddendA7 & P0_AddendA6 & P0_AddendB5 & P0_AddendB4
+    # P0_AddendA7 & P0_AddendA6 & P0_AddendA4 & P0_AddendB5 & P0_AddendB4
+    # P0_Carry3 & P0_AddendA6 & P0_AddendB7 & P0_AddendB5 & P0_AddendB4
+    # P0_AddendA6 & P0_AddendA4 & P0_AddendB7 & P0_AddendB5 & P0_AddendB4
+    # P0_Carry3 & P0_AddendA7 & P0_AddendB6 & P0_AddendB5 & P0_AddendB4
+    # P0_AddendA7 & P0_AddendA4 & P0_AddendB6 & P0_AddendB5 & P0_AddendB4
+    # P0_Carry3 & P0_AddendB7 & P0_AddendB6 & P0_AddendB5 & P0_AddendB4
+    # P0_AddendA4 & P0_AddendB7 & P0_AddendB6 & P0_AddendB5 & P0_AddendB4
+    # P0_AddendA8 & P0_AddendB8 ; (33 pterms, 11 signals)
+P0_Carry8.X2 = !P0_AddendA8 & !P0_AddendB8 ; (1 pterm, 2 signals)
+
+P0_Carry9.X1 = !P0_AddendA9 & !P0_AddendB9
+    # P0_AddendA8 & P0_AddendB8
+    # P0_Carry6 & P0_AddendA8 & P0_AddendA7
+    # P0_Carry6 & P0_AddendA7 & P0_AddendB8
+    # P0_Carry6 & P0_AddendA8 & P0_AddendB7
+    # P0_AddendA8 & P0_AddendA7 & P0_AddendB7
+    # P0_Carry6 & P0_AddendB8 & P0_AddendB7
+    # P0_AddendA7 & P0_AddendB8 & P0_AddendB7
+    # P0_AddendA9 & P0_AddendB9 ; (9 pterms, 7 signals)
+P0_Carry9.X2 = !P0_AddendA9 & !P0_AddendB9 ; (1 pterm, 2 signals)
+
+ProgramAB0.D = !Reset & !J0_PHoldPC & P0_AddendA0 & !P0_AddendB0
+    # !Reset & !J0_PHoldPC & !P0_AddendA0 & P0_AddendB0
+    # !Reset & ProgramAB0.Q & J0_PHoldPC ; (3 pterms, 5 signals)
+ProgramAB0.OE = 1 ; (1 pterm, 0 signal)
+ProgramAB0.C = Clock ; (1 pterm, 1 signal)
+
+ProgramAB1.D.X1 = !Reset & ProgramAB1.Q & J0_PHoldPC
+    # !Reset & !J0_PHoldPC & !P0_AddendB1 & !P0_AddendB0
+    # !Reset & !J0_PHoldPC & !P0_AddendA0 & !P0_AddendB1
+    # !Reset & !J0_PHoldPC & P0_AddendA0 & P0_AddendB1 & P0_AddendB0 ; (4 pterms, 6 signals)
+ProgramAB1.D.X2 = !Reset & !J0_PHoldPC & !P0_AddendA1 ; (1 pterm, 3 signals)
+ProgramAB1.OE = 1 ; (1 pterm, 0 signal)
+ProgramAB1.C = Clock ; (1 pterm, 1 signal)
+
+ProgramAB10.D = !Reset & !J0_PHoldPC & P0_Carry6 & !P0_AddendA10 & P0_AddendA7
+       & !P0_AddendB10 & P0_AddendB9 & P0_AddendB8
+    # !Reset & !J0_PHoldPC & P0_Carry6 & P0_AddendA10 & P0_AddendA7
+       & P0_AddendB10 & P0_AddendB9 & P0_AddendB8
+    # !Reset & !J0_PHoldPC & P0_Carry6 & !P0_AddendA10 & P0_AddendA9
+       & P0_AddendA7 & !P0_AddendB10 & P0_AddendB8
+    # !Reset & !J0_PHoldPC & P0_Carry6 & P0_AddendA10 & P0_AddendA9
+       & P0_AddendA7 & P0_AddendB10 & P0_AddendB8
+    # !Reset & !J0_PHoldPC & P0_Carry6 & !P0_AddendA10 & P0_AddendA8
+       & P0_AddendA7 & !P0_AddendB10 & P0_AddendB9
+    # !Reset & !J0_PHoldPC & P0_Carry6 & P0_AddendA10 & P0_AddendA8
+       & P0_AddendA7 & P0_AddendB10 & P0_AddendB9
+    # !Reset & !J0_PHoldPC & P0_Carry6 & !P0_AddendA10 & P0_AddendA9
+       & P0_AddendA8 & P0_AddendA7 & !P0_AddendB10
+    # !Reset & !J0_PHoldPC & P0_Carry6 & P0_AddendA10 & P0_AddendA9
+       & P0_AddendA8 & P0_AddendA7 & P0_AddendB10
+    # !Reset & !J0_PHoldPC & !P0_Carry6 & P0_AddendA10 & !P0_AddendA7
+       & !P0_AddendB10 & !P0_AddendB9 & !P0_AddendB8
+    # !Reset & !J0_PHoldPC & !P0_Carry6 & !P0_AddendA10 & !P0_AddendA7
+       & P0_AddendB10 & !P0_AddendB9 & !P0_AddendB8
+    # !Reset & !J0_PHoldPC & !P0_Carry6 & P0_AddendA10 & !P0_AddendA9
+       & !P0_AddendA7 & !P0_AddendB10 & !P0_AddendB8
+    # !Reset & !J0_PHoldPC & !P0_Carry6 & !P0_AddendA10 & !P0_AddendA9
+       & !P0_AddendA7 & P0_AddendB10 & !P0_AddendB8
+    # !Reset & !J0_PHoldPC & !P0_Carry6 & P0_AddendA10 & !P0_AddendA8
+       & !P0_AddendA7 & !P0_AddendB10 & !P0_AddendB9
+    # !Reset & !J0_PHoldPC & !P0_Carry6 & !P0_AddendA10 & !P0_AddendA8
+       & !P0_AddendA7 & P0_AddendB10 & !P0_AddendB9
+    # !Reset & !J0_PHoldPC & !P0_Carry6 & P0_AddendA10 & !P0_AddendA9
+       & !P0_AddendA8 & !P0_AddendA7 & !P0_AddendB10
+    # !Reset & !J0_PHoldPC & !P0_Carry6 & !P0_AddendA10 & !P0_AddendA9
+       & !P0_AddendA8 & !P0_AddendA7 & P0_AddendB10
+    # !Reset & !J0_PHoldPC & P0_AddendA10 & !P0_AddendA7 & !P0_AddendB10
+       & !P0_AddendB9 & !P0_AddendB8 & !P0_AddendB7
+    # !Reset & !J0_PHoldPC & !P0_Carry6 & P0_AddendA10 & !P0_AddendB10
+       & !P0_AddendB9 & !P0_AddendB8 & !P0_AddendB7
+    # !Reset & !J0_PHoldPC & !P0_AddendA10 & !P0_AddendA7 & P0_AddendB10
+       & !P0_AddendB9 & !P0_AddendB8 & !P0_AddendB7
+    # !Reset & !J0_PHoldPC & !P0_Carry6 & !P0_AddendA10 & P0_AddendB10
+       & !P0_AddendB9 & !P0_AddendB8 & !P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_AddendA10 & !P0_AddendA9 & !P0_AddendA7
+       & !P0_AddendB10 & !P0_AddendB8 & !P0_AddendB7
+    # !Reset & !J0_PHoldPC & !P0_Carry6 & P0_AddendA10 & !P0_AddendA9
+       & !P0_AddendB10 & !P0_AddendB8 & !P0_AddendB7
+    # !Reset & !J0_PHoldPC & !P0_AddendA10 & !P0_AddendA9 & !P0_AddendA7
+       & P0_AddendB10 & !P0_AddendB8 & !P0_AddendB7
+    # !Reset & !J0_PHoldPC & !P0_Carry6 & !P0_AddendA10 & !P0_AddendA9
+       & P0_AddendB10 & !P0_AddendB8 & !P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_AddendA10 & !P0_AddendA8 & !P0_AddendA7
+       & !P0_AddendB10 & !P0_AddendB9 & !P0_AddendB7
+    # !Reset & !J0_PHoldPC & !P0_Carry6 & P0_AddendA10 & !P0_AddendA8
+       & !P0_AddendB10 & !P0_AddendB9 & !P0_AddendB7
+    # !Reset & !J0_PHoldPC & !P0_AddendA10 & !P0_AddendA8 & !P0_AddendA7
+       & P0_AddendB10 & !P0_AddendB9 & !P0_AddendB7
+    # !Reset & !J0_PHoldPC & !P0_Carry6 & !P0_AddendA10 & !P0_AddendA8
+       & P0_AddendB10 & !P0_AddendB9 & !P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_AddendA10 & !P0_AddendA9 & !P0_AddendA8
+       & !P0_AddendA7 & !P0_AddendB10 & !P0_AddendB7
+    # !Reset & !J0_PHoldPC & !P0_Carry6 & P0_AddendA10 & !P0_AddendA9
+       & !P0_AddendA8 & !P0_AddendB10 & !P0_AddendB7
+    # !Reset & !J0_PHoldPC & !P0_AddendA10 & !P0_AddendA9 & !P0_AddendA8
+       & !P0_AddendA7 & P0_AddendB10 & !P0_AddendB7
+    # !Reset & !J0_PHoldPC & !P0_Carry6 & !P0_AddendA10 & !P0_AddendA9
+       & !P0_AddendA8 & P0_AddendB10 & !P0_AddendB7
+    # !Reset & !J0_PHoldPC & !P0_AddendA10 & P0_AddendA7 & !P0_AddendB10
+       & P0_AddendB9 & P0_AddendB8 & P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_Carry6 & !P0_AddendA10 & !P0_AddendB10
+       & P0_AddendB9 & P0_AddendB8 & P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_AddendA10 & P0_AddendA7 & P0_AddendB10
+       & P0_AddendB9 & P0_AddendB8 & P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_Carry6 & P0_AddendA10 & P0_AddendB10
+       & P0_AddendB9 & P0_AddendB8 & P0_AddendB7
+    # !Reset & !J0_PHoldPC & !P0_AddendA10 & P0_AddendA9 & P0_AddendA7
+       & !P0_AddendB10 & P0_AddendB8 & P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_Carry6 & !P0_AddendA10 & P0_AddendA9
+       & !P0_AddendB10 & P0_AddendB8 & P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_AddendA10 & P0_AddendA9 & P0_AddendA7
+       & P0_AddendB10 & P0_AddendB8 & P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_Carry6 & P0_AddendA10 & P0_AddendA9
+       & P0_AddendB10 & P0_AddendB8 & P0_AddendB7
+    # !Reset & !J0_PHoldPC & !P0_AddendA10 & P0_AddendA8 & P0_AddendA7
+       & !P0_AddendB10 & P0_AddendB9 & P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_Carry6 & !P0_AddendA10 & P0_AddendA8
+       & !P0_AddendB10 & P0_AddendB9 & P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_AddendA10 & P0_AddendA8 & P0_AddendA7
+       & P0_AddendB10 & P0_AddendB9 & P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_Carry6 & P0_AddendA10 & P0_AddendA8
+       & P0_AddendB10 & P0_AddendB9 & P0_AddendB7
+    # !Reset & !J0_PHoldPC & !P0_AddendA10 & P0_AddendA9 & P0_AddendA8
+       & P0_AddendA7 & !P0_AddendB10 & P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_Carry6 & !P0_AddendA10 & P0_AddendA9
+       & P0_AddendA8 & !P0_AddendB10 & P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_AddendA10 & P0_AddendA9 & P0_AddendA8
+       & P0_AddendA7 & P0_AddendB10 & P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_Carry6 & P0_AddendA10 & P0_AddendA9
+       & P0_AddendA8 & P0_AddendB10 & P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_AddendA10 & !P0_AddendA8 & !P0_AddendB10
+       & !P0_AddendB9 & !P0_AddendB8
+    # !Reset & !J0_PHoldPC & !P0_AddendA10 & !P0_AddendA8 & P0_AddendB10
+       & !P0_AddendB9 & !P0_AddendB8
+    # !Reset & !J0_PHoldPC & P0_AddendA10 & !P0_AddendA9 & !P0_AddendA8
+       & !P0_AddendB10 & !P0_AddendB8
+    # !Reset & !J0_PHoldPC & !P0_AddendA10 & !P0_AddendA9 & !P0_AddendA8
+       & P0_AddendB10 & !P0_AddendB8
+    # !Reset & !J0_PHoldPC & !P0_AddendA10 & P0_AddendA8 & !P0_AddendB10
+       & P0_AddendB9 & P0_AddendB8
+    # !Reset & !J0_PHoldPC & P0_AddendA10 & P0_AddendA8 & P0_AddendB10
+       & P0_AddendB9 & P0_AddendB8
+    # !Reset & !J0_PHoldPC & !P0_AddendA10 & P0_AddendA9 & P0_AddendA8
+       & !P0_AddendB10 & P0_AddendB8
+    # !Reset & !J0_PHoldPC & P0_AddendA10 & P0_AddendA9 & P0_AddendA8
+       & P0_AddendB10 & P0_AddendB8
+    # !Reset & !J0_PHoldPC & P0_AddendA10 & !P0_AddendA9 & !P0_AddendB10
+       & !P0_AddendB9
+    # !Reset & !J0_PHoldPC & !P0_AddendA10 & !P0_AddendA9 & P0_AddendB10
+       & !P0_AddendB9
+    # !Reset & !J0_PHoldPC & !P0_AddendA10 & P0_AddendA9 & !P0_AddendB10
+       & P0_AddendB9
+    # !Reset & !J0_PHoldPC & P0_AddendA10 & P0_AddendA9 & P0_AddendB10
+       & P0_AddendB9
+    # !Reset & ProgramAB10.Q & J0_PHoldPC ; (61 pterms, 12 signals)
+ProgramAB10.OE = 1 ; (1 pterm, 0 signal)
+ProgramAB10.C = Clock ; (1 pterm, 1 signal)
+
+ProgramAB11.D.X1 = !Reset & ProgramAB11.Q & J0_PHoldPC
+    # !Reset & !J0_PHoldPC & !P0_AddendA11 & !P0_AddendA10 & !P0_AddendB10
+    # !Reset & !J0_PHoldPC & !P0_Carry9 & !P0_AddendA11 & !P0_AddendA10
+    # !Reset & !J0_PHoldPC & !P0_Carry9 & !P0_AddendA11 & !P0_AddendB10
+    # !Reset & !J0_PHoldPC & P0_AddendA11 & P0_AddendA10 & P0_AddendB10
+    # !Reset & !J0_PHoldPC & P0_Carry9 & P0_AddendA11 & P0_AddendB10
+    # !Reset & !J0_PHoldPC & P0_Carry9 & P0_AddendA11 & P0_AddendA10
+       & !P0_AddendB10 ; (7 pterms, 7 signals)
+ProgramAB11.D.X2 = !Reset & !J0_PHoldPC & !P0_AddendB11 ; (1 pterm, 3 signals)
+ProgramAB11.OE = 1 ; (1 pterm, 0 signal)
+ProgramAB11.C = Clock ; (1 pterm, 1 signal)
+
+ProgramAB12.D.X1 = !Reset & ProgramAB12.Q & J0_PHoldPC
+    # !Reset & !J0_PHoldPC & !P0_AddendA12 & !P0_AddendB12
+    # !Reset & !J0_PHoldPC & P0_AddendA12 & P0_AddendB12 ; (3 pterms, 5 signals)
+ProgramAB12.D.X2 = !Reset & !J0_PHoldPC & !P0_Carry11 ; (1 pterm, 3 signals)
+ProgramAB12.OE = 1 ; (1 pterm, 0 signal)
+ProgramAB12.C = Clock ; (1 pterm, 1 signal)
+
+ProgramAB2.D.X1 = !Reset & ProgramAB2.Q & J0_PHoldPC
+    # !Reset & !J0_PHoldPC & !P0_AddendA2 & !P0_AddendB2
+    # !Reset & !J0_PHoldPC & P0_AddendA2 & P0_AddendB2 ; (3 pterms, 5 signals)
+ProgramAB2.D.X2 = !Reset & !J0_PHoldPC & !P0_Carry1 ; (1 pterm, 3 signals)
+ProgramAB2.OE = 1 ; (1 pterm, 0 signal)
+ProgramAB2.C = Clock ; (1 pterm, 1 signal)
+
+ProgramAB3.D.X1 = !Reset & ProgramAB3.Q & J0_PHoldPC
+    # !Reset & !J0_PHoldPC & !P0_AddendA3 & !P0_AddendB3
+    # !Reset & !J0_PHoldPC & P0_AddendA3 & P0_AddendB3 ; (3 pterms, 5 signals)
+ProgramAB3.D.X2 = !Reset & !J0_PHoldPC & !P0_Carry2 ; (1 pterm, 3 signals)
+ProgramAB3.OE = 1 ; (1 pterm, 0 signal)
+ProgramAB3.C = Clock ; (1 pterm, 1 signal)
+
+ProgramAB4.D.X1 = !Reset & ProgramAB4.Q & J0_PHoldPC
+    # !Reset & !J0_PHoldPC & !P0_AddendA4 & !P0_AddendB4
+    # !Reset & !J0_PHoldPC & P0_AddendA4 & P0_AddendB4 ; (3 pterms, 5 signals)
+ProgramAB4.D.X2 = !Reset & !J0_PHoldPC & !P0_Carry3 ; (1 pterm, 3 signals)
+ProgramAB4.OE = 1 ; (1 pterm, 0 signal)
+ProgramAB4.C = Clock ; (1 pterm, 1 signal)
+
+ProgramAB5.D.X1 = !Reset & ProgramAB5.Q & J0_PHoldPC
+    # !Reset & !J0_PHoldPC & !P0_AddendA5 & !P0_AddendB5
+    # !Reset & !J0_PHoldPC & P0_AddendA5 & P0_AddendB5 ; (3 pterms, 5 signals)
+ProgramAB5.D.X2 = !Reset & !J0_PHoldPC & !P0_Carry4 ; (1 pterm, 3 signals)
+ProgramAB5.OE = 1 ; (1 pterm, 0 signal)
+ProgramAB5.C = Clock ; (1 pterm, 1 signal)
+
+ProgramAB6.D.X1 = !Reset & ProgramAB6.Q & J0_PHoldPC
+    # !Reset & !J0_PHoldPC & !P0_AddendA6 & !P0_AddendB6
+    # !Reset & !J0_PHoldPC & P0_AddendA6 & P0_AddendB6 ; (3 pterms, 5 signals)
+ProgramAB6.D.X2 = !Reset & !J0_PHoldPC & !P0_Carry5 ; (1 pterm, 3 signals)
+ProgramAB6.OE = 1 ; (1 pterm, 0 signal)
+ProgramAB6.C = Clock ; (1 pterm, 1 signal)
+
+ProgramAB7.D.X1 = !Reset & ProgramAB7.Q & J0_PHoldPC
+    # !Reset & !J0_PHoldPC & !P0_AddendA7 & !P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_AddendA7 & P0_AddendB7 ; (3 pterms, 5 signals)
+ProgramAB7.D.X2 = !Reset & !J0_PHoldPC & !P0_Carry6 ; (1 pterm, 3 signals)
+ProgramAB7.OE = 1 ; (1 pterm, 0 signal)
+ProgramAB7.C = Clock ; (1 pterm, 1 signal)
+
+ProgramAB8.D.X1 = !Reset & ProgramAB8.Q & J0_PHoldPC
+    # !Reset & !J0_PHoldPC & !P0_AddendA8 & !P0_AddendA7 & !P0_AddendB7
+    # !Reset & !J0_PHoldPC & !P0_Carry6 & !P0_AddendA8 & !P0_AddendA7
+    # !Reset & !J0_PHoldPC & !P0_Carry6 & !P0_AddendA8 & !P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_AddendA8 & P0_AddendA7 & P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_Carry6 & P0_AddendA8 & P0_AddendB7
+    # !Reset & !J0_PHoldPC & P0_Carry6 & P0_AddendA8 & P0_AddendA7
+       & !P0_AddendB7 ; (7 pterms, 7 signals)
+ProgramAB8.D.X2 = !Reset & !J0_PHoldPC & !P0_AddendB8 ; (1 pterm, 3 signals)
+ProgramAB8.OE = 1 ; (1 pterm, 0 signal)
+ProgramAB8.C = Clock ; (1 pterm, 1 signal)
+
+ProgramAB9.D.X1 = !Reset & ProgramAB9.Q & J0_PHoldPC
+    # !Reset & !J0_PHoldPC & !P0_AddendA9 & !P0_AddendB9
+    # !Reset & !J0_PHoldPC & P0_AddendA9 & P0_AddendB9 ; (3 pterms, 5 signals)
+ProgramAB9.D.X2 = !Reset & !J0_PHoldPC & !P0_Carry8 ; (1 pterm, 3 signals)
+ProgramAB9.OE = 1 ; (1 pterm, 0 signal)
+ProgramAB9.C = Clock ; (1 pterm, 1 signal)
+
+RD.X1 = !Reset & !J0_AShiftRight & !J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q
+       & !J1_IR12.Q & !J1_LeftShift & !J1_LDI
+    # !Reset & !J0_AShiftRight & !J1_IR15.Q & J1_IR9.Q & J1_IR8.Q & J1_FSM3.Q
+       & !J1_FSM2.Q & !J1_LeftShift & !J1_LDI
+    # !Reset & !J0_AShiftRight & !J1_IR15.Q & J1_IR9.Q & J1_IR8.Q & J1_FSM1.Q
+       & !J1_LeftShift & !J1_LDI
+    # !Reset & !J0_AShiftRight & !J1_IR15.Q & J1_IR9.Q & J1_IR8.Q & !J1_FSM2.Q
+       & J1_FSM0.Q & !J1_LeftShift & !J1_LDI
+    # !Reset & !J0_AShiftRight & !J1_IR15.Q & !J1_IR14.Q & !J1_IR12.Q
+       & !J1_Popf & !J1_LeftShift & !J1_LDI
+    # !Reset & !J0_AShiftRight & !J1_IR15.Q & J1_IR9.Q & J1_IR8.Q & !J1_FSM2.Q
+       & !J1_LeftShift & !J1_LDI & !J1_Rts
+    # !Reset & !J0_AShiftRight & !J1_IR15.Q & J1_IR9.Q & J1_IR8.Q & J1_FSM2.Q
+       & !J1_FSM0.Q & !J1_LeftShift & !J1_LDI
+    # !Reset & !J0_AShiftRight & J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q
+       & !J1_IR11.Q & !J1_LeftShift & !J1_LDI
+    # !Reset & !J0_AShiftRight & J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q
+       & !J1_IR9.Q & J1_IR8.Q & !J1_LeftShift & !J1_LDI
+    # !Reset & !J0_AShiftRight & J1_IR15.Q & !J1_FSM3.Q & !J1_FSM2.Q
+       & !J1_FSM1.Q & !J1_FSM0.Q & !J1_LeftShift & !J1_LDI & J1_Rts
+    # !Reset & !J0_AShiftRight & J1_IR15.Q & J1_FSM2.Q & !J1_FSM1.Q
+       & J1_FSM0.Q & !J1_LeftShift & !J1_LDI
+    # !Reset & !J0_AShiftRight & J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q
+       & J1_IR9.Q & !J1_IR8.Q & !J1_LeftShift & !J1_LDI ; (12 pterms, 17 signals)
+RD.X2 = !Reset & !J0_AShiftRight & !J1_IR15.Q & !J1_LeftShift & !J1_LDI ; (1 pterm, 5 signals)
+RD.OE = 1 ; (1 pterm, 0 signal)
+
+SReg0.D = !Reset & !J0_DAddressMux0 & J0_DEnableIncDec & !V0_AddrMuxOut0
+    # !Reset & !J0_DAddressMux0 & !J0_DEnableIncDec & V0_AddrMuxOut0
+    # !Reset & SReg0.Q & J0_DAddressMux0 ; (3 pterms, 5 signals)
+SReg0.OE = 1 ; (1 pterm, 0 signal)
+SReg0.C = Clock ; (1 pterm, 1 signal)
+
+SReg1.D = !Reset & SReg1.Q & J0_DAddressMux0
+    # !Reset & !J0_DAddressMux0 & V0_IncDecOut1 ; (2 pterms, 4 signals)
+SReg1.OE = 1 ; (1 pterm, 0 signal)
+SReg1.C = Clock ; (1 pterm, 1 signal)
+
+SReg2.D.X1 = !Reset & SReg2.Q & J0_DAddressMux0
+    # !Reset & !J0_DAddressMux0 & !V0_AddrMuxOut2 & !V0_IncDecCarry1
+    # !Reset & !J0_DAddressMux0 & V0_AddrMuxOut2 & V0_IncDecCarry1 ; (3 pterms, 5 signals)
+SReg2.D.X2 = !Reset & !J0_DAddressMux0 & !J0_DDecrement ; (1 pterm, 3 signals)
+SReg2.OE = 1 ; (1 pterm, 0 signal)
+SReg2.C = Clock ; (1 pterm, 1 signal)
+
+SReg3.D = !Reset & SReg3.Q & J0_DAddressMux0
+    # !Reset & !J0_DAddressMux0 & V0_IncDecOut3 ; (2 pterms, 4 signals)
+SReg3.OE = 1 ; (1 pterm, 0 signal)
+SReg3.C = Clock ; (1 pterm, 1 signal)
+
+SReg4.D.X1 = !Reset & SReg4.Q & J0_DAddressMux0
+    # !Reset & !J0_DAddressMux0 & !V0_AddrMuxOut4 & !V0_IncDecCarry3
+    # !Reset & !J0_DAddressMux0 & V0_AddrMuxOut4 & V0_IncDecCarry3 ; (3 pterms, 5 signals)
+SReg4.D.X2 = !Reset & !J0_DAddressMux0 & !J0_DDecrement ; (1 pterm, 3 signals)
+SReg4.OE = 1 ; (1 pterm, 0 signal)
+SReg4.C = Clock ; (1 pterm, 1 signal)
+
+SReg5.D = !Reset & SReg5.Q & J0_DAddressMux0
+    # !Reset & !J0_DAddressMux0 & V0_IncDecOut5 ; (2 pterms, 4 signals)
+SReg5.OE = 1 ; (1 pterm, 0 signal)
+SReg5.C = Clock ; (1 pterm, 1 signal)
+
+SReg6.D.X1 = !Reset & SReg6.Q & J0_DAddressMux0
+    # !Reset & !J0_DAddressMux0 & !V0_AddrMuxOut6 & !V0_IncDecCarry5
+    # !Reset & !J0_DAddressMux0 & V0_AddrMuxOut6 & V0_IncDecCarry5 ; (3 pterms, 5 signals)
+SReg6.D.X2 = !Reset & !J0_DAddressMux0 & !J0_DDecrement ; (1 pterm, 3 signals)
+SReg6.OE = 1 ; (1 pterm, 0 signal)
+SReg6.C = Clock ; (1 pterm, 1 signal)
+
+SReg7.D = !Reset & SReg7.Q & J0_DAddressMux0
+    # !Reset & !J0_DAddressMux0 & V0_IncDecOut7 ; (2 pterms, 4 signals)
+SReg7.OE = 1 ; (1 pterm, 0 signal)
+SReg7.C = Clock ; (1 pterm, 1 signal)
+
+V0_AddendA0 = !( !J1_IR9.Q & !J1_IR8.Q & !J1_Call & !J1_Rts
+    # J0_DEnableIncDec & !J0_DPost & V0_AddrMuxOut0
+    # J0_DPost & !V0_AddrMuxOut0
+    # !J0_DEnableIncDec & !V0_AddrMuxOut0 ) ; (4 pterms, 7 signals)
+
+V0_AddendA1 = !( !J1_IR9.Q & !J1_IR8.Q & !J1_Call & !J1_Rts
+    # !J0_DPost & !V0_IncDecOut1
+    # J0_DPost & !V0_AddrMuxOut1 ) ; (3 pterms, 7 signals)
+
+V0_AddendA2 = !( !J1_IR9.Q & !J1_IR8.Q & !J1_Call & !J1_Rts
+    # J0_DDecrement & !J0_DPost & V0_AddrMuxOut2 & !V0_IncDecCarry1
+    # !J0_DDecrement & !J0_DPost & V0_AddrMuxOut2 & V0_IncDecCarry1
+    # !J0_DDecrement & !V0_AddrMuxOut2 & !V0_IncDecCarry1
+    # J0_DDecrement & !V0_AddrMuxOut2 & V0_IncDecCarry1
+    # J0_DPost & !V0_AddrMuxOut2 ) ; (6 pterms, 8 signals)
+
+V0_AddendA3 = !( !J1_IR9.Q & !J1_IR8.Q & !J1_Call & !J1_Rts
+    # !J0_DPost & !V0_IncDecOut3
+    # J0_DPost & !V0_AddrMuxOut3 ) ; (3 pterms, 7 signals)
+
+V0_AddendA4 = !( !J1_IR9.Q & !J1_IR8.Q & !J1_Call & !J1_Rts
+    # J0_DDecrement & !J0_DPost & V0_AddrMuxOut4 & !V0_IncDecCarry3
+    # !J0_DDecrement & !J0_DPost & V0_AddrMuxOut4 & V0_IncDecCarry3
+    # !J0_DDecrement & !V0_AddrMuxOut4 & !V0_IncDecCarry3
+    # J0_DDecrement & !V0_AddrMuxOut4 & V0_IncDecCarry3
+    # J0_DPost & !V0_AddrMuxOut4 ) ; (6 pterms, 8 signals)
+
+V0_AddendA5 = !( !J1_IR9.Q & !J1_IR8.Q & !J1_Call & !J1_Rts
+    # !J0_DPost & !V0_IncDecOut5
+    # J0_DPost & !V0_AddrMuxOut5 ) ; (3 pterms, 7 signals)
+
+V0_AddendA6 = !( !J1_IR9.Q & !J1_IR8.Q & !J1_Call & !J1_Rts
+    # J0_DDecrement & !J0_DPost & V0_AddrMuxOut6 & !V0_IncDecCarry5
+    # !J0_DDecrement & !J0_DPost & V0_AddrMuxOut6 & V0_IncDecCarry5
+    # !J0_DDecrement & !V0_AddrMuxOut6 & !V0_IncDecCarry5
+    # J0_DDecrement & !V0_AddrMuxOut6 & V0_IncDecCarry5
+    # J0_DPost & !V0_AddrMuxOut6 ) ; (6 pterms, 8 signals)
+
+V0_AddendA7 = !( !J1_IR9.Q & !J1_IR8.Q & !J1_Call & !J1_Rts
+    # !J0_DPost & !V0_IncDecOut7
+    # J0_DPost & !V0_AddrMuxOut7 ) ; (3 pterms, 7 signals)
+
+V0_AdderCarry1 = V0_AddendA0 & J1_IR1.Q & J1_IR0.Q & !J1_Call
+    # V0_AddendA1 & V0_AddendA0 & J1_IR0.Q & !J1_Call
+    # V0_AddendA1 & J1_IR1.Q & !J1_Call ; (3 pterms, 5 signals)
+
+V0_AdderCarry2 = V0_AddendA2 & V0_AdderCarry1
+    # V0_AdderCarry1 & J1_IR2.Q & !J1_Call
+    # V0_AddendA2 & J1_IR2.Q & !J1_Call ; (3 pterms, 4 signals)
+
+V0_AdderCarry3 = V0_AddendA3 & V0_AdderCarry2
+    # V0_AdderCarry2 & J1_IR3.Q & !J1_Call
+    # V0_AddendA3 & J1_IR3.Q & !J1_Call ; (3 pterms, 4 signals)
+
+V0_AdderCarry4 = V0_AddendA4 & V0_AdderCarry3
+    # V0_AdderCarry3 & J1_IR4.Q & !J1_Call
+    # V0_AddendA4 & J1_IR4.Q & !J1_Call ; (3 pterms, 4 signals)
+
+V0_AdderCarry5 = V0_AddendA5 & V0_AdderCarry4
+    # V0_AdderCarry4 & J1_IR5.Q & !J1_Call
+    # V0_AddendA5 & J1_IR5.Q & !J1_Call ; (3 pterms, 4 signals)
+
+V0_AddrMuxOut0 = SReg0.Q & !J0_DAddressMux0 & !J0_DAddressMux1
+    # XReg0.Q & J0_DAddressMux0 & !J0_DAddressMux1
+    # Accum0.Q & J0_DAddressMux1 ; (3 pterms, 5 signals)
+
+V0_AddrMuxOut1 = SReg1.Q & !J0_DAddressMux0 & !J0_DAddressMux1
+    # XReg1.Q & J0_DAddressMux0 & !J0_DAddressMux1
+    # Accum1.Q & J0_DAddressMux1 ; (3 pterms, 5 signals)
+
+V0_AddrMuxOut2 = SReg2.Q & !J0_DAddressMux0 & !J0_DAddressMux1
+    # XReg2.Q & J0_DAddressMux0 & !J0_DAddressMux1
+    # Accum2.Q & J0_DAddressMux1 ; (3 pterms, 5 signals)
+
+V0_AddrMuxOut3 = SReg3.Q & !J0_DAddressMux0 & !J0_DAddressMux1
+    # XReg3.Q & J0_DAddressMux0 & !J0_DAddressMux1
+    # Accum3.Q & J0_DAddressMux1 ; (3 pterms, 5 signals)
+
+V0_AddrMuxOut4 = SReg4.Q & !J0_DAddressMux0 & !J0_DAddressMux1
+    # XReg4.Q & J0_DAddressMux0 & !J0_DAddressMux1
+    # Accum4.Q & J0_DAddressMux1 ; (3 pterms, 5 signals)
+
+V0_AddrMuxOut5 = SReg5.Q & !J0_DAddressMux0 & !J0_DAddressMux1
+    # XReg5.Q & J0_DAddressMux0 & !J0_DAddressMux1
+    # Accum5.Q & J0_DAddressMux1 ; (3 pterms, 5 signals)
+
+V0_AddrMuxOut6 = SReg6.Q & !J0_DAddressMux0 & !J0_DAddressMux1
+    # XReg6.Q & J0_DAddressMux0 & !J0_DAddressMux1
+    # Accum6.Q & J0_DAddressMux1 ; (3 pterms, 5 signals)
+
+V0_AddrMuxOut7 = SReg7.Q & !J0_DAddressMux0 & !J0_DAddressMux1
+    # XReg7.Q & J0_DAddressMux0 & !J0_DAddressMux1
+    # Accum7.Q & J0_DAddressMux1 ; (3 pterms, 5 signals)
+
+V0_IncDecCarry1.X1 = SReg1.Q & SReg0.Q & !J0_DAddressMux0 & !J0_DAddressMux1
+       & !J0_DDecrement & J0_DEnableIncDec
+    # XReg1.Q & XReg0.Q & J0_DAddressMux0 & !J0_DAddressMux1 & !J0_DDecrement
+       & J0_DEnableIncDec
+    # Accum1.Q & Accum0.Q & J0_DAddressMux1 & !J0_DDecrement
+       & J0_DEnableIncDec
+    # J0_DDecrement & !J0_DEnableIncDec
+    # !SReg1.Q & !SReg0.Q & !J0_DAddressMux0 & !J0_DAddressMux1
+       & J0_DDecrement
+    # !XReg1.Q & !XReg0.Q & J0_DAddressMux0 & !J0_DAddressMux1 & J0_DDecrement
+    # !Accum1.Q & !Accum0.Q & J0_DAddressMux1 & J0_DDecrement ; (7 pterms, 10 signals)
+V0_IncDecCarry1.X2 = J0_DDecrement & J0_DEnableIncDec ; (1 pterm, 2 signals)
+
+V0_IncDecCarry3.X1 = !SReg3.Q & !SReg2.Q & !J0_DAddressMux0 & !J0_DAddressMux1
+       & J0_DDecrement
+    # !XReg3.Q & !XReg2.Q & J0_DAddressMux0 & !J0_DAddressMux1 & J0_DDecrement
+    # !Accum3.Q & !Accum2.Q & J0_DAddressMux1 & J0_DDecrement
+    # J0_DDecrement & V0_IncDecCarry1
+    # SReg3.Q & SReg2.Q & !J0_DAddressMux0 & !J0_DAddressMux1
+       & V0_IncDecCarry1
+    # XReg3.Q & XReg2.Q & J0_DAddressMux0 & !J0_DAddressMux1 & V0_IncDecCarry1
+    # Accum3.Q & Accum2.Q & J0_DAddressMux1 & V0_IncDecCarry1 ; (7 pterms, 10 signals)
+V0_IncDecCarry3.X2 = J0_DDecrement & !V0_IncDecCarry1 ; (1 pterm, 2 signals)
+
+V0_IncDecCarry5.X1 = !SReg3.Q & !SReg2.Q & !J0_DAddressMux0 & !J0_DAddressMux1
+       & J0_DDecrement & !V0_AddrMuxOut5 & !V0_AddrMuxOut4
+    # !XReg3.Q & !XReg2.Q & J0_DAddressMux0 & !J0_DAddressMux1 & J0_DDecrement
+       & !V0_AddrMuxOut5 & !V0_AddrMuxOut4
+    # !Accum3.Q & !Accum2.Q & J0_DAddressMux1 & J0_DDecrement
+       & !V0_AddrMuxOut5 & !V0_AddrMuxOut4
+    # J0_DDecrement & V0_IncDecCarry1
+    # SReg3.Q & SReg2.Q & !J0_DAddressMux0 & !J0_DAddressMux1 & V0_AddrMuxOut5
+       & V0_AddrMuxOut4 & V0_IncDecCarry1
+    # XReg3.Q & XReg2.Q & J0_DAddressMux0 & !J0_DAddressMux1 & V0_AddrMuxOut5
+       & V0_AddrMuxOut4 & V0_IncDecCarry1
+    # Accum3.Q & Accum2.Q & J0_DAddressMux1 & V0_AddrMuxOut5 & V0_AddrMuxOut4
+       & V0_IncDecCarry1 ; (7 pterms, 12 signals)
+V0_IncDecCarry5.X2 = J0_DDecrement & !V0_IncDecCarry1 ; (1 pterm, 2 signals)
+
+V0_IncDecOut1.X1 = !J0_DDecrement & J0_DEnableIncDec & V0_AddrMuxOut0
+    # J0_DDecrement & J0_DEnableIncDec & !V0_AddrMuxOut0 ; (2 pterms, 3 signals)
+V0_IncDecOut1.X2 = V0_AddrMuxOut1 ; (1 pterm, 1 signal)
+
+V0_IncDecOut3.X1 = !J0_DDecrement & V0_AddrMuxOut2 & V0_IncDecCarry1
+    # J0_DDecrement & !V0_AddrMuxOut2 & !V0_IncDecCarry1 ; (2 pterms, 3 signals)
+V0_IncDecOut3.X2 = V0_AddrMuxOut3 ; (1 pterm, 1 signal)
+
+V0_IncDecOut5.X1 = !J0_DDecrement & V0_AddrMuxOut4 & V0_IncDecCarry3
+    # J0_DDecrement & !V0_AddrMuxOut4 & !V0_IncDecCarry3 ; (2 pterms, 3 signals)
+V0_IncDecOut5.X2 = V0_AddrMuxOut5 ; (1 pterm, 1 signal)
+
+V0_IncDecOut7.X1 = !J0_DDecrement & V0_AddrMuxOut6 & V0_IncDecCarry5
+    # J0_DDecrement & !V0_AddrMuxOut6 & !V0_IncDecCarry5 ; (2 pterms, 3 signals)
+V0_IncDecOut7.X2 = V0_AddrMuxOut7 ; (1 pterm, 1 signal)
+
+WR = J0_WR ; (1 pterm, 1 signal)
+WR.OE = 1 ; (1 pterm, 0 signal)
+
+X0_Data0.X1 = DataDB0 & !J1_IR15.Q & !J1_IR9.Q
+    # DataDB0 & !J1_IR11.Q & !J1_IR9.Q
+    # DataDB0 & !J1_IR8.Q
+    # J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & !J1_IR10.Q & !J1_IR9.Q & J1_IR8.Q
+       & J1_IR0.Q
+    # DataDB0 & J1_IR10.Q & !J1_IR9.Q
+    # DataDB0 & J1_IR14.Q & !J1_IR9.Q
+    # SReg0.Q & !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & !J1_IR0.Q
+    # !XReg0.Q & !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & J1_IR0.Q
+    # DataDB0 & J1_IR15.Q & J1_IR9.Q ; (9 pterms, 12 signals)
+X0_Data0.X2 = !J1_IR15.Q & J1_IR9.Q & J1_IR8.Q & J1_IR0.Q ; (1 pterm, 4 signals)
+
+X0_Data1.X1 = !DataDB1 & J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & !J1_IR10.Q
+       & !J1_IR9.Q & J1_IR8.Q & J1_IR1.Q
+    # DataDB1 & J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & !J1_IR10.Q & J1_IR8.Q
+       & !J1_IR1.Q
+    # DataDB1 & J1_IR9.Q & !J1_IR8.Q
+    # !J1_IR15.Q & !J1_IR14.Q & J1_IR9.Q & J1_IR8.Q & J1_IR1.Q
+    # !J1_IR15.Q & !J1_IR13.Q & J1_IR9.Q & J1_IR8.Q & J1_IR1.Q
+    # !J1_IR15.Q & !J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & J1_IR1.Q
+    # SReg1.Q & !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & !J1_IR0.Q
+    # XReg1.Q & !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & J1_IR0.Q
+    # !J1_IR15.Q & J1_IR11.Q & J1_IR9.Q & J1_IR8.Q & J1_IR1.Q
+    # !J1_IR15.Q & J1_IR12.Q & J1_IR9.Q & J1_IR8.Q & J1_IR1.Q
+    # DataDB1 & J1_IR15.Q & J1_IR9.Q ; (11 pterms, 13 signals)
+X0_Data1.X2 = DataDB1 & !J1_IR9.Q ; (1 pterm, 2 signals)
+
+X0_Data2.X1 = !DataDB2 & J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & !J1_IR10.Q
+       & !J1_IR9.Q & J1_IR8.Q & J1_IR2.Q
+    # DataDB2 & J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & !J1_IR10.Q & J1_IR8.Q
+       & !J1_IR2.Q
+    # DataDB2 & J1_IR9.Q & !J1_IR8.Q
+    # !J1_IR15.Q & !J1_IR14.Q & J1_IR9.Q & J1_IR8.Q & J1_IR2.Q
+    # !J1_IR15.Q & !J1_IR13.Q & J1_IR9.Q & J1_IR8.Q & J1_IR2.Q
+    # !J1_IR15.Q & !J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & J1_IR2.Q
+    # SReg2.Q & !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & !J1_IR0.Q
+    # XReg2.Q & !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & J1_IR0.Q
+    # !J1_IR15.Q & J1_IR11.Q & J1_IR9.Q & J1_IR8.Q & J1_IR2.Q
+    # !J1_IR15.Q & J1_IR12.Q & J1_IR9.Q & J1_IR8.Q & J1_IR2.Q
+    # DataDB2 & J1_IR15.Q & J1_IR9.Q ; (11 pterms, 13 signals)
+X0_Data2.X2 = DataDB2 & !J1_IR9.Q ; (1 pterm, 2 signals)
+
+X0_Data3.X1 = !DataDB3 & J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & !J1_IR10.Q
+       & !J1_IR9.Q & J1_IR8.Q & J1_IR3.Q
+    # DataDB3 & J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & !J1_IR10.Q & J1_IR8.Q
+       & !J1_IR3.Q
+    # DataDB3 & J1_IR9.Q & !J1_IR8.Q
+    # !J1_IR15.Q & !J1_IR14.Q & J1_IR9.Q & J1_IR8.Q & J1_IR3.Q
+    # !J1_IR15.Q & !J1_IR13.Q & J1_IR9.Q & J1_IR8.Q & J1_IR3.Q
+    # !J1_IR15.Q & !J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & J1_IR3.Q
+    # SReg3.Q & !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & !J1_IR0.Q
+    # XReg3.Q & !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & J1_IR0.Q
+    # !J1_IR15.Q & J1_IR11.Q & J1_IR9.Q & J1_IR8.Q & J1_IR3.Q
+    # !J1_IR15.Q & J1_IR12.Q & J1_IR9.Q & J1_IR8.Q & J1_IR3.Q
+    # DataDB3 & J1_IR15.Q & J1_IR9.Q ; (11 pterms, 13 signals)
+X0_Data3.X2 = DataDB3 & !J1_IR9.Q ; (1 pterm, 2 signals)
+
+X0_Data4.X1 = !DataDB4 & J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & !J1_IR10.Q
+       & !J1_IR9.Q & J1_IR8.Q & J1_IR4.Q
+    # DataDB4 & J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & !J1_IR10.Q & J1_IR8.Q
+       & !J1_IR4.Q
+    # DataDB4 & J1_IR9.Q & !J1_IR8.Q
+    # !J1_IR15.Q & !J1_IR14.Q & J1_IR9.Q & J1_IR8.Q & J1_IR4.Q
+    # !J1_IR15.Q & !J1_IR13.Q & J1_IR9.Q & J1_IR8.Q & J1_IR4.Q
+    # !J1_IR15.Q & !J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & J1_IR4.Q
+    # SReg4.Q & !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & !J1_IR0.Q
+    # XReg4.Q & !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & J1_IR0.Q
+    # !J1_IR15.Q & J1_IR11.Q & J1_IR9.Q & J1_IR8.Q & J1_IR4.Q
+    # !J1_IR15.Q & J1_IR12.Q & J1_IR9.Q & J1_IR8.Q & J1_IR4.Q
+    # DataDB4 & J1_IR15.Q & J1_IR9.Q ; (11 pterms, 13 signals)
+X0_Data4.X2 = DataDB4 & !J1_IR9.Q ; (1 pterm, 2 signals)
+
+X0_Data5.X1 = !DataDB5 & J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & !J1_IR10.Q
+       & !J1_IR9.Q & J1_IR8.Q & J1_IR5.Q
+    # DataDB5 & J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & !J1_IR10.Q & J1_IR8.Q
+       & !J1_IR5.Q
+    # DataDB5 & J1_IR9.Q & !J1_IR8.Q
+    # !J1_IR15.Q & !J1_IR14.Q & J1_IR9.Q & J1_IR8.Q & J1_IR5.Q
+    # !J1_IR15.Q & !J1_IR13.Q & J1_IR9.Q & J1_IR8.Q & J1_IR5.Q
+    # !J1_IR15.Q & !J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & J1_IR5.Q
+    # SReg5.Q & !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & !J1_IR0.Q
+    # XReg5.Q & !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & J1_IR0.Q
+    # !J1_IR15.Q & J1_IR11.Q & J1_IR9.Q & J1_IR8.Q & J1_IR5.Q
+    # !J1_IR15.Q & J1_IR12.Q & J1_IR9.Q & J1_IR8.Q & J1_IR5.Q
+    # DataDB5 & J1_IR15.Q & J1_IR9.Q ; (11 pterms, 13 signals)
+X0_Data5.X2 = DataDB5 & !J1_IR9.Q ; (1 pterm, 2 signals)
+
+X0_Data6.X1 = !DataDB6 & J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & !J1_IR10.Q
+       & !J1_IR9.Q & J1_IR8.Q & J1_IR6.Q
+    # DataDB6 & J1_IR15.Q & !J1_IR14.Q & J1_IR11.Q & !J1_IR10.Q & J1_IR8.Q
+       & !J1_IR6.Q
+    # DataDB6 & J1_IR9.Q & !J1_IR8.Q
+    # !J1_IR15.Q & !J1_IR14.Q & J1_IR9.Q & J1_IR8.Q & J1_IR6.Q
+    # !J1_IR15.Q & !J1_IR13.Q & J1_IR9.Q & J1_IR8.Q & J1_IR6.Q
+    # !J1_IR15.Q & !J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & J1_IR6.Q
+    # SReg6.Q & !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & !J1_IR0.Q
+    # XReg6.Q & !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q
+       & J1_IR10.Q & J1_IR9.Q & J1_IR8.Q & J1_IR0.Q
+    # !J1_IR15.Q & J1_IR11.Q & J1_IR9.Q & J1_IR8.Q & J1_IR6.Q
+    # !J1_IR15.Q & J1_IR12.Q & J1_IR9.Q & J1_IR8.Q & J1_IR6.Q
+    # DataDB6 & J1_IR15.Q & J1_IR9.Q ; (11 pterms, 13 signals)
+X0_Data6.X2 = DataDB6 & !J1_IR9.Q ; (1 pterm, 2 signals)
+
+X0_Data7 = J0_ALUDSel0 & J1_IR7.Q & !J1_TSATXA
+    # DataDB7 & !J0_ALUDSel0 & !J1_TSATXA
+    # XReg7.Q & J0_ALUDSel0 & J1_TSATXA
+    # SReg7.Q & !J0_ALUDSel0 & J1_TSATXA ; (4 pterms, 6 signals)
+
+X1_Carry0 = !J1_IR15.Q & !J1_IR14.Q & J1_IR12.Q & !J1_IR11.Q & !J1_IR10.Q
+    # Accum7.Q & !J1_IR15.Q & !J1_IR13.Q & J1_IR12.Q & !J1_IR11.Q & !J1_IR10.Q
+       & J1_IR9.Q & !J1_IR8.Q
+    # Flags3.Q & !J1_IR15.Q & !J1_IR13.Q & J1_IR12.Q & !J1_IR11.Q & !J1_IR10.Q
+       & !J1_IR9.Q & !J1_IR8.Q
+    # Flags3.Q & !J1_IR15.Q & J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q & !J1_IR10.Q
+    # !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & J1_IR12.Q & J1_IR10.Q
+    # !Flags3.Q & !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & J1_IR12.Q
+    # !J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q & !J1_IR11.Q
+    # !J1_IR15.Q & !J1_IR14.Q & !J1_IR11.Q & !J1_IR10.Q & !J1_IR9.Q
+       & !J1_IR8.Q ; (8 pterms, 10 signals)
+
+X1_Carry1.X1 = !X1_Carry0 & !X1_MaskAccum0
+    # !Accum0.Q & !X0_Data0 & !J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & J1_IR12.Q
+    # X1_Carry0 & X1_MaskAccum0
+    # !Accum0.Q & !J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q
+    # !Accum0.Q & !X0_Data0 & !J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR11.Q
+       & !J1_IR10.Q
+    # !Accum0.Q & !J1_IR15.Q & J1_IR14.Q & J1_IR13.Q & J1_IR12.Q & J1_IR11.Q
+       & !J1_IR10.Q & J1_IR9.Q & J1_IR8.Q
+    # !Accum0.Q & X0_Data0 & J1_IR13.Q & !J1_IR12.Q
+    # !Accum0.Q & X0_Data0 & J1_IR13.Q & J1_IR11.Q
+    # !Accum0.Q & X0_Data0 & J1_IR13.Q & J1_IR10.Q
+    # !Accum0.Q & X0_Data0 & J1_IR15.Q & !J1_IR14.Q & !J1_IR11.Q
+    # !Accum0.Q & X0_Data0 & J1_IR15.Q & J1_IR13.Q
+    # !Accum0.Q & X0_Data0 & J1_IR15.Q & !J1_IR14.Q & !J1_IR9.Q & J1_IR8.Q
+    # !Accum0.Q & X0_Data0 & J1_IR15.Q & !J1_IR14.Q & J1_IR9.Q & !J1_IR8.Q
+    # X0_Data0 & J1_IR14.Q & J1_IR13.Q
+    # Accum0.Q & J1_LeftShift
+    # Accum0.Q & !X0_Data0 & J1_IR12.Q & !J1_Load
+    # Accum0.Q & X0_Data0 & J1_IR14.Q
+    # Accum0.Q & X0_Data0 & J1_Load ; (18 pterms, 14 signals)
+X1_Carry1.X2 = !X1_Carry0 & !X1_MaskAccum0 ; (1 pterm, 2 signals)
+
+X1_Carry2.X1 = !X1_Carry1 & !X1_MaskAccum1
+    # !Accum1.Q & !X0_Data1 & J0_AFControl3
+    # X1_Carry1 & X1_MaskAccum1
+    # !Accum1.Q & X0_Data1 & J0_AFControl1
+    # Accum1.Q & J1_LeftShift
+    # Accum1.Q & !X0_Data1 & J1_IR12.Q & !J1_Load
+    # Accum1.Q & X0_Data1 & J1_IR14.Q
+    # Accum1.Q & X0_Data1 & J1_Load ; (8 pterms, 10 signals)
+X1_Carry2.X2 = !X1_Carry1 & !X1_MaskAccum1 ; (1 pterm, 2 signals)
+
+X1_Carry4.X1 = !X1_FOutput3 & !X1_MaskAccum3
+    # X1_FOutput2 & X1_MaskAccum2
+    # !Accum1.Q & !X0_Data1 & J0_AFControl3 & X1_FOutput2 & X1_Carry1
+    # !Accum1.Q & !X0_Data1 & J0_AFControl3 & X1_Carry1 & X1_MaskAccum2
+    # !Accum1.Q & !X0_Data1 & J0_AFControl3 & X1_FOutput2 & X1_MaskAccum1
+    # X1_FOutput2 & X1_Carry1 & X1_MaskAccum1
+    # !Accum1.Q & !X0_Data1 & J0_AFControl3 & X1_MaskAccum2 & X1_MaskAccum1
+    # X1_Carry1 & X1_MaskAccum2 & X1_MaskAccum1
+    # X1_FOutput3 & X1_MaskAccum3
+    # !Accum1.Q & X0_Data1 & J0_AFControl1 & X1_FOutput2 & X1_Carry1
+    # !Accum1.Q & X0_Data1 & J0_AFControl1 & X1_Carry1 & X1_MaskAccum2
+    # !Accum1.Q & X0_Data1 & J0_AFControl1 & X1_FOutput2 & X1_MaskAccum1
+    # !Accum1.Q & X0_Data1 & J0_AFControl1 & X1_MaskAccum2 & X1_MaskAccum1
+    # Accum1.Q & X1_FOutput2 & X1_Carry1 & J1_LeftShift
+    # Accum1.Q & X1_Carry1 & X1_MaskAccum2 & J1_LeftShift
+    # Accum1.Q & X1_FOutput2 & X1_MaskAccum1 & J1_LeftShift
+    # Accum1.Q & X1_MaskAccum2 & X1_MaskAccum1 & J1_LeftShift
+    # Accum1.Q & !X0_Data1 & X1_FOutput2 & X1_Carry1 & J1_IR12.Q & !J1_Load
+    # Accum1.Q & !X0_Data1 & X1_Carry1 & X1_MaskAccum2 & J1_IR12.Q & !J1_Load
+    # Accum1.Q & !X0_Data1 & X1_FOutput2 & X1_MaskAccum1 & J1_IR12.Q
+       & !J1_Load
+    # Accum1.Q & !X0_Data1 & X1_MaskAccum2 & X1_MaskAccum1 & J1_IR12.Q
+       & !J1_Load
+    # Accum1.Q & X0_Data1 & X1_FOutput2 & X1_Carry1 & J1_IR14.Q
+    # Accum1.Q & X0_Data1 & X1_Carry1 & X1_MaskAccum2 & J1_IR14.Q
+    # Accum1.Q & X0_Data1 & X1_FOutput2 & X1_MaskAccum1 & J1_IR14.Q
+    # Accum1.Q & X0_Data1 & X1_MaskAccum2 & X1_MaskAccum1 & J1_IR14.Q
+    # Accum1.Q & X0_Data1 & X1_FOutput2 & X1_Carry1 & J1_Load
+    # Accum1.Q & X0_Data1 & X1_Carry1 & X1_MaskAccum2 & J1_Load
+    # Accum1.Q & X0_Data1 & X1_FOutput2 & X1_MaskAccum1 & J1_Load
+    # Accum1.Q & X0_Data1 & X1_MaskAccum2 & X1_MaskAccum1 & J1_Load ; (29 pterms, 14 signals)
+X1_Carry4.X2 = !X1_FOutput3 & !X1_MaskAccum3 ; (1 pterm, 2 signals)
+
+X1_Carry5.X1 = !X1_FOutput4 & !X1_MaskAccum4
+    # X1_FOutput3 & X1_MaskAccum3
+    # X1_FOutput3 & X1_FOutput2 & X1_Carry2
+    # X1_FOutput2 & X1_Carry2 & X1_MaskAccum3
+    # X1_FOutput3 & X1_FOutput2 & X1_MaskAccum2
+    # X1_FOutput3 & X1_Carry2 & X1_MaskAccum2
+    # X1_FOutput2 & X1_MaskAccum3 & X1_MaskAccum2
+    # X1_Carry2 & X1_MaskAccum3 & X1_MaskAccum2
+    # X1_FOutput4 & X1_MaskAccum4 ; (9 pterms, 7 signals)
+X1_Carry5.X2 = !X1_FOutput4 & !X1_MaskAccum4 ; (1 pterm, 2 signals)
+
+X1_Carry7.X1 = !X1_FOutput6 & !X1_MaskAccum6
+    # X1_FOutput5 & X1_MaskAccum5
+    # X1_FOutput5 & X1_FOutput4 & X1_MaskAccum4
+    # X1_FOutput4 & X1_MaskAccum5 & X1_MaskAccum4
+    # X1_FOutput5 & X1_FOutput4 & X1_FOutput3 & X1_MaskAccum3
+    # X1_FOutput4 & X1_FOutput3 & X1_MaskAccum5 & X1_MaskAccum3
+    # X1_FOutput5 & X1_FOutput3 & X1_MaskAccum4 & X1_MaskAccum3
+    # X1_FOutput3 & X1_MaskAccum5 & X1_MaskAccum4 & X1_MaskAccum3
+    # X1_FOutput5 & X1_FOutput4 & X1_FOutput3 & X1_FOutput2 & X1_Carry2
+    # X1_FOutput4 & X1_FOutput3 & X1_FOutput2 & X1_Carry2 & X1_MaskAccum5
+    # X1_FOutput5 & X1_FOutput3 & X1_FOutput2 & X1_Carry2 & X1_MaskAccum4
+    # X1_FOutput3 & X1_FOutput2 & X1_Carry2 & X1_MaskAccum5 & X1_MaskAccum4
+    # X1_FOutput5 & X1_FOutput4 & X1_FOutput2 & X1_Carry2 & X1_MaskAccum3
+    # X1_FOutput4 & X1_FOutput2 & X1_Carry2 & X1_MaskAccum5 & X1_MaskAccum3
+    # X1_FOutput5 & X1_FOutput2 & X1_Carry2 & X1_MaskAccum4 & X1_MaskAccum3
+    # X1_FOutput2 & X1_Carry2 & X1_MaskAccum5 & X1_MaskAccum4 & X1_MaskAccum3
+    # X1_FOutput5 & X1_FOutput4 & X1_FOutput3 & X1_FOutput2 & X1_MaskAccum2
+    # X1_FOutput5 & X1_FOutput4 & X1_FOutput3 & X1_Carry2 & X1_MaskAccum2
+    # X1_FOutput4 & X1_FOutput3 & X1_FOutput2 & X1_MaskAccum5 & X1_MaskAccum2
+    # X1_FOutput4 & X1_FOutput3 & X1_Carry2 & X1_MaskAccum5 & X1_MaskAccum2
+    # X1_FOutput5 & X1_FOutput3 & X1_FOutput2 & X1_MaskAccum4 & X1_MaskAccum2
+    # X1_FOutput5 & X1_FOutput3 & X1_Carry2 & X1_MaskAccum4 & X1_MaskAccum2
+    # X1_FOutput3 & X1_FOutput2 & X1_MaskAccum5 & X1_MaskAccum4
+       & X1_MaskAccum2
+    # X1_FOutput3 & X1_Carry2 & X1_MaskAccum5 & X1_MaskAccum4 & X1_MaskAccum2
+    # X1_FOutput5 & X1_FOutput4 & X1_FOutput2 & X1_MaskAccum3 & X1_MaskAccum2
+    # X1_FOutput5 & X1_FOutput4 & X1_Carry2 & X1_MaskAccum3 & X1_MaskAccum2
+    # X1_FOutput4 & X1_FOutput2 & X1_MaskAccum5 & X1_MaskAccum3
+       & X1_MaskAccum2
+    # X1_FOutput4 & X1_Carry2 & X1_MaskAccum5 & X1_MaskAccum3 & X1_MaskAccum2
+    # X1_FOutput5 & X1_FOutput2 & X1_MaskAccum4 & X1_MaskAccum3
+       & X1_MaskAccum2
+    # X1_FOutput5 & X1_Carry2 & X1_MaskAccum4 & X1_MaskAccum3 & X1_MaskAccum2
+    # X1_FOutput2 & X1_MaskAccum5 & X1_MaskAccum4 & X1_MaskAccum3
+       & X1_MaskAccum2
+    # X1_Carry2 & X1_MaskAccum5 & X1_MaskAccum4 & X1_MaskAccum3
+       & X1_MaskAccum2
+    # X1_FOutput6 & X1_MaskAccum6 ; (33 pterms, 11 signals)
+X1_Carry7.X2 = !X1_FOutput6 & !X1_MaskAccum6 ; (1 pterm, 2 signals)
+
+X1_Carry8.X1 = !X1_FOutput7 & !X1_MaskAccum7
+    # X1_FOutput6 & X1_MaskAccum6
+    # X1_FOutput6 & X1_FOutput5 & X1_Carry5
+    # X1_FOutput5 & X1_Carry5 & X1_MaskAccum6
+    # X1_FOutput6 & X1_FOutput5 & X1_MaskAccum5
+    # X1_FOutput6 & X1_Carry5 & X1_MaskAccum5
+    # X1_FOutput5 & X1_MaskAccum6 & X1_MaskAccum5
+    # X1_Carry5 & X1_MaskAccum6 & X1_MaskAccum5
+    # X1_FOutput7 & X1_MaskAccum7 ; (9 pterms, 7 signals)
+X1_Carry8.X2 = !X1_FOutput7 & !X1_MaskAccum7 ; (1 pterm, 2 signals)
+
+X1_FOutput0 = !( Accum0.Q & X0_Data0 & !J1_IR14.Q & !J1_Load & !J1_LeftShift
+    # !Accum0.Q & X0_Data0 & !J0_AFControl1
+    # !Accum0.Q & !X0_Data0 & !J0_AFControl3
+    # Accum0.Q & !X0_Data0 & J1_Load & !J1_LeftShift
+    # Accum0.Q & !X0_Data0 & !J1_IR12.Q & !J1_LeftShift ) ; (5 pterms, 8 signals)
+
+X1_FOutput1 = !( Accum1.Q & X0_Data1 & !J1_IR14.Q & !J1_Load & !J1_LeftShift
+    # !Accum1.Q & X0_Data1 & !J0_AFControl1
+    # !Accum1.Q & !X0_Data1 & !J0_AFControl3
+    # Accum1.Q & !X0_Data1 & J1_Load & !J1_LeftShift
+    # Accum1.Q & !X0_Data1 & !J1_IR12.Q & !J1_LeftShift ) ; (5 pterms, 8 signals)
+
+X1_FOutput2 = !( Accum2.Q & X0_Data2 & !J1_IR14.Q & !J1_Load & !J1_LeftShift
+    # !Accum2.Q & X0_Data2 & !J0_AFControl1
+    # !Accum2.Q & !X0_Data2 & !J0_AFControl3
+    # Accum2.Q & !X0_Data2 & J1_Load & !J1_LeftShift
+    # Accum2.Q & !X0_Data2 & !J1_IR12.Q & !J1_LeftShift ) ; (5 pterms, 8 signals)
+
+X1_FOutput3 = !( Accum3.Q & X0_Data3 & !J1_IR14.Q & !J1_Load & !J1_LeftShift
+    # !Accum3.Q & X0_Data3 & !J0_AFControl1
+    # !Accum3.Q & !X0_Data3 & !J0_AFControl3
+    # Accum3.Q & !X0_Data3 & J1_Load & !J1_LeftShift
+    # Accum3.Q & !X0_Data3 & !J1_IR12.Q & !J1_LeftShift ) ; (5 pterms, 8 signals)
+
+X1_FOutput4 = !( Accum4.Q & X0_Data4 & !J1_IR14.Q & !J1_Load & !J1_LeftShift
+    # !Accum4.Q & X0_Data4 & !J0_AFControl1
+    # !Accum4.Q & !X0_Data4 & !J0_AFControl3
+    # Accum4.Q & !X0_Data4 & J1_Load & !J1_LeftShift
+    # Accum4.Q & !X0_Data4 & !J1_IR12.Q & !J1_LeftShift ) ; (5 pterms, 8 signals)
+
+X1_FOutput5 = !( Accum5.Q & X0_Data5 & !J1_IR14.Q & !J1_Load & !J1_LeftShift
+    # !Accum5.Q & X0_Data5 & !J0_AFControl1
+    # !Accum5.Q & !X0_Data5 & !J0_AFControl3
+    # Accum5.Q & !X0_Data5 & J1_Load & !J1_LeftShift
+    # Accum5.Q & !X0_Data5 & !J1_IR12.Q & !J1_LeftShift ) ; (5 pterms, 8 signals)
+
+X1_FOutput6 = !( Accum6.Q & X0_Data6 & !J1_IR14.Q & !J1_Load & !J1_LeftShift
+    # !Accum6.Q & X0_Data6 & !J0_AFControl1
+    # !Accum6.Q & !X0_Data6 & !J0_AFControl3
+    # Accum6.Q & !X0_Data6 & J1_Load & !J1_LeftShift
+    # Accum6.Q & !X0_Data6 & !J1_IR12.Q & !J1_LeftShift ) ; (5 pterms, 8 signals)
+
+X1_FOutput7 = !( Accum7.Q & X0_Data7 & !J1_IR14.Q & !J1_Load & !J1_LeftShift
+    # !Accum7.Q & X0_Data7 & !J0_AFControl1
+    # !Accum7.Q & !X0_Data7 & !J0_AFControl3
+    # Accum7.Q & !X0_Data7 & J1_Load & !J1_LeftShift
+    # Accum7.Q & !X0_Data7 & !J1_IR12.Q & !J1_LeftShift ) ; (5 pterms, 8 signals)
+
+X1_MaskAccum0 = !( !J1_IR15.Q & J1_IR13.Q & !J1_IR11.Q & J1_IR10.Q & J1_IR9.Q
+       & J1_IR8.Q
+    # !J1_IR15.Q & J1_IR13.Q & J1_IR12.Q & !J1_IR11.Q & J1_IR10.Q
+    # J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & J1_IR9.Q & !J1_IR8.Q
+    # J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & !J1_IR9.Q & J1_IR8.Q
+    # !J1_IR15.Q & J1_IR14.Q & !J1_IR13.Q & !J1_IR12.Q
+    # J1_IR15.Q & !J1_IR14.Q & !J1_IR13.Q & !J1_IR11.Q
+    # !J1_IR15.Q & !J1_IR14.Q & J1_IR13.Q & !J1_IR12.Q
+    # !Accum0.Q ) ; (8 pterms, 9 signals)
+
+X1_MaskAccum1 = Accum1.Q & J1_IR12.Q & !J1_TSATXA & !J1_Load & !J1_LogicOp
+    # Accum1.Q & !J1_IR13.Q & !J1_TSATXA & !J1_Load & !J1_LogicOp
+    # Accum1.Q & J1_IR14.Q & !J1_TSATXA & !J1_Load & !J1_LogicOp
+    # Accum1.Q & J1_IR15.Q & !J1_TSATXA & !J1_Load & !J1_LogicOp ; (4 pterms, 8 signals)
+
+X1_MaskAccum2 = Accum2.Q & J1_IR12.Q & !J1_TSATXA & !J1_Load & !J1_LogicOp
+    # Accum2.Q & !J1_IR13.Q & !J1_TSATXA & !J1_Load & !J1_LogicOp
+    # Accum2.Q & J1_IR14.Q & !J1_TSATXA & !J1_Load & !J1_LogicOp
+    # Accum2.Q & J1_IR15.Q & !J1_TSATXA & !J1_Load & !J1_LogicOp ; (4 pterms, 8 signals)
+
+X1_MaskAccum3 = Accum3.Q & J1_IR12.Q & !J1_TSATXA & !J1_Load & !J1_LogicOp
+    # Accum3.Q & !J1_IR13.Q & !J1_TSATXA & !J1_Load & !J1_LogicOp
+    # Accum3.Q & J1_IR14.Q & !J1_TSATXA & !J1_Load & !J1_LogicOp
+    # Accum3.Q & J1_IR15.Q & !J1_TSATXA & !J1_Load & !J1_LogicOp ; (4 pterms, 8 signals)
+
+X1_MaskAccum4 = Accum4.Q & J1_IR12.Q & !J1_TSATXA & !J1_Load & !J1_LogicOp
+    # Accum4.Q & !J1_IR13.Q & !J1_TSATXA & !J1_Load & !J1_LogicOp
+    # Accum4.Q & J1_IR14.Q & !J1_TSATXA & !J1_Load & !J1_LogicOp
+    # Accum4.Q & J1_IR15.Q & !J1_TSATXA & !J1_Load & !J1_LogicOp ; (4 pterms, 8 signals)
+
+X1_MaskAccum5 = Accum5.Q & J1_IR12.Q & !J1_TSATXA & !J1_Load & !J1_LogicOp
+    # Accum5.Q & !J1_IR13.Q & !J1_TSATXA & !J1_Load & !J1_LogicOp
+    # Accum5.Q & J1_IR14.Q & !J1_TSATXA & !J1_Load & !J1_LogicOp
+    # Accum5.Q & J1_IR15.Q & !J1_TSATXA & !J1_Load & !J1_LogicOp ; (4 pterms, 8 signals)
+
+X1_MaskAccum6 = Accum6.Q & J1_IR12.Q & !J1_TSATXA & !J1_Load & !J1_LogicOp
+    # Accum6.Q & !J1_IR13.Q & !J1_TSATXA & !J1_Load & !J1_LogicOp
+    # Accum6.Q & J1_IR14.Q & !J1_TSATXA & !J1_Load & !J1_LogicOp
+    # Accum6.Q & J1_IR15.Q & !J1_TSATXA & !J1_Load & !J1_LogicOp ; (4 pterms, 8 signals)
+
+X1_MaskAccum7 = Accum7.Q & J1_IR12.Q & !J1_TSATXA & !J1_Load & !J1_LogicOp
+    # Accum7.Q & !J1_IR13.Q & !J1_TSATXA & !J1_Load & !J1_LogicOp
+    # Accum7.Q & J1_IR14.Q & !J1_TSATXA & !J1_Load & !J1_LogicOp
+    # Accum7.Q & J1_IR15.Q & !J1_TSATXA & !J1_Load & !J1_LogicOp ; (4 pterms, 8 signals)
+
+X1_NewAccum0.X1 = !J0_AShiftRight & !X1_Carry0 & !X1_MaskAccum0
+    # !J0_AShiftRight & X1_Carry0 & X1_MaskAccum0
+    # Accum1.Q & J0_AShiftRight ; (3 pterms, 4 signals)
+X1_NewAccum0.X2 = !J0_AShiftRight & !X1_FOutput0 ; (1 pterm, 2 signals)
+
+X1_NewAccum1.X1 = !J0_AShiftRight & !X1_Carry1 & !X1_MaskAccum1
+    # !J0_AShiftRight & X1_Carry1 & X1_MaskAccum1
+    # Accum2.Q & J0_AShiftRight ; (3 pterms, 4 signals)
+X1_NewAccum1.X2 = !J0_AShiftRight & !X1_FOutput1 ; (1 pterm, 2 signals)
+
+X1_NewAccum3.X1 = !J0_AShiftRight & !X1_FOutput2 & !X1_Carry2 & !X1_MaskAccum3
+    # !J0_AShiftRight & !X1_FOutput2 & !X1_MaskAccum3 & !X1_MaskAccum2
+    # !J0_AShiftRight & !X1_Carry2 & !X1_MaskAccum3 & !X1_MaskAccum2
+    # !J0_AShiftRight & X1_FOutput2 & X1_Carry2 & X1_MaskAccum3
+    # !J0_AShiftRight & X1_FOutput2 & X1_MaskAccum3 & X1_MaskAccum2
+    # !J0_AShiftRight & X1_Carry2 & X1_MaskAccum3 & X1_MaskAccum2
+    # Accum4.Q & J0_AShiftRight ; (7 pterms, 6 signals)
+X1_NewAccum3.X2 = !J0_AShiftRight & !X1_FOutput3 ; (1 pterm, 2 signals)
+
+X1_NewAccum4.X1 = !J0_AShiftRight & !X1_Carry4 & !X1_MaskAccum4
+    # !J0_AShiftRight & X1_Carry4 & X1_MaskAccum4
+    # Accum5.Q & J0_AShiftRight ; (3 pterms, 4 signals)
+X1_NewAccum4.X2 = !J0_AShiftRight & !X1_FOutput4 ; (1 pterm, 2 signals)
+
+X1_NewAccum5.X1 = !J0_AShiftRight & !X1_FOutput4 & !X1_MaskAccum5
+       & !X1_MaskAccum4
+    # !J0_AShiftRight & !X1_FOutput4 & !X1_FOutput3 & !X1_MaskAccum5
+       & !X1_MaskAccum3
+    # !J0_AShiftRight & !X1_FOutput3 & !X1_MaskAccum5 & !X1_MaskAccum4
+       & !X1_MaskAccum3
+    # !J0_AShiftRight & !X1_FOutput4 & !X1_FOutput3 & !X1_FOutput2
+       & !X1_Carry2 & !X1_MaskAccum5
+    # !J0_AShiftRight & !X1_FOutput3 & !X1_FOutput2 & !X1_Carry2
+       & !X1_MaskAccum5 & !X1_MaskAccum4
+    # !J0_AShiftRight & !X1_FOutput4 & !X1_FOutput2 & !X1_Carry2
+       & !X1_MaskAccum5 & !X1_MaskAccum3
+    # !J0_AShiftRight & !X1_FOutput2 & !X1_Carry2 & !X1_MaskAccum5
+       & !X1_MaskAccum4 & !X1_MaskAccum3
+    # !J0_AShiftRight & !X1_FOutput4 & !X1_FOutput3 & !X1_FOutput2
+       & !X1_MaskAccum5 & !X1_MaskAccum2
+    # !J0_AShiftRight & !X1_FOutput4 & !X1_FOutput3 & !X1_Carry2
+       & !X1_MaskAccum5 & !X1_MaskAccum2
+    # !J0_AShiftRight & !X1_FOutput3 & !X1_FOutput2 & !X1_MaskAccum5
+       & !X1_MaskAccum4 & !X1_MaskAccum2
+    # !J0_AShiftRight & !X1_FOutput3 & !X1_Carry2 & !X1_MaskAccum5
+       & !X1_MaskAccum4 & !X1_MaskAccum2
+    # !J0_AShiftRight & !X1_FOutput4 & !X1_FOutput2 & !X1_MaskAccum5
+       & !X1_MaskAccum3 & !X1_MaskAccum2
+    # !J0_AShiftRight & !X1_FOutput4 & !X1_Carry2 & !X1_MaskAccum5
+       & !X1_MaskAccum3 & !X1_MaskAccum2
+    # !J0_AShiftRight & !X1_FOutput2 & !X1_MaskAccum5 & !X1_MaskAccum4
+       & !X1_MaskAccum3 & !X1_MaskAccum2
+    # !J0_AShiftRight & !X1_Carry2 & !X1_MaskAccum5 & !X1_MaskAccum4
+       & !X1_MaskAccum3 & !X1_MaskAccum2
+    # !J0_AShiftRight & X1_FOutput4 & X1_MaskAccum5 & X1_MaskAccum4
+    # !J0_AShiftRight & X1_FOutput4 & X1_FOutput3 & X1_MaskAccum5
+       & X1_MaskAccum3
+    # !J0_AShiftRight & X1_FOutput3 & X1_MaskAccum5 & X1_MaskAccum4
+       & X1_MaskAccum3
+    # !J0_AShiftRight & X1_FOutput4 & X1_FOutput3 & X1_FOutput2 & X1_Carry2
+       & X1_MaskAccum5
+    # !J0_AShiftRight & X1_FOutput3 & X1_FOutput2 & X1_Carry2 & X1_MaskAccum5
+       & X1_MaskAccum4
+    # !J0_AShiftRight & X1_FOutput4 & X1_FOutput2 & X1_Carry2 & X1_MaskAccum5
+       & X1_MaskAccum3
+    # !J0_AShiftRight & X1_FOutput2 & X1_Carry2 & X1_MaskAccum5
+       & X1_MaskAccum4 & X1_MaskAccum3
+    # !J0_AShiftRight & X1_FOutput4 & X1_FOutput3 & X1_FOutput2
+       & X1_MaskAccum5 & X1_MaskAccum2
+    # !J0_AShiftRight & X1_FOutput4 & X1_FOutput3 & X1_Carry2 & X1_MaskAccum5
+       & X1_MaskAccum2
+    # !J0_AShiftRight & X1_FOutput3 & X1_FOutput2 & X1_MaskAccum5
+       & X1_MaskAccum4 & X1_MaskAccum2
+    # !J0_AShiftRight & X1_FOutput3 & X1_Carry2 & X1_MaskAccum5
+       & X1_MaskAccum4 & X1_MaskAccum2
+    # !J0_AShiftRight & X1_FOutput4 & X1_FOutput2 & X1_MaskAccum5
+       & X1_MaskAccum3 & X1_MaskAccum2
+    # !J0_AShiftRight & X1_FOutput4 & X1_Carry2 & X1_MaskAccum5
+       & X1_MaskAccum3 & X1_MaskAccum2
+    # !J0_AShiftRight & X1_FOutput2 & X1_MaskAccum5 & X1_MaskAccum4
+       & X1_MaskAccum3 & X1_MaskAccum2
+    # !J0_AShiftRight & X1_Carry2 & X1_MaskAccum5 & X1_MaskAccum4
+       & X1_MaskAccum3 & X1_MaskAccum2
+    # Accum6.Q & J0_AShiftRight ; (31 pterms, 10 signals)
+X1_NewAccum5.X2 = !J0_AShiftRight & !X1_FOutput5 ; (1 pterm, 2 signals)
+
+XReg0.D = !Reset & J0_DAddressMux0 & J0_DEnableIncDec & !V0_AddrMuxOut0
+    # !Reset & J0_DAddressMux0 & !J0_DEnableIncDec & V0_AddrMuxOut0
+    # !Reset & XReg0.Q & !J0_DAddressMux0 ; (3 pterms, 5 signals)
+XReg0.OE = 1 ; (1 pterm, 0 signal)
+XReg0.C = Clock ; (1 pterm, 1 signal)
+
+XReg1.D = !Reset & XReg1.Q & !J0_DAddressMux0
+    # !Reset & J0_DAddressMux0 & V0_IncDecOut1 ; (2 pterms, 4 signals)
+XReg1.OE = 1 ; (1 pterm, 0 signal)
+XReg1.C = Clock ; (1 pterm, 1 signal)
+
+XReg2.D.X1 = !Reset & XReg2.Q & !J0_DAddressMux0
+    # !Reset & J0_DAddressMux0 & !V0_AddrMuxOut2 & !V0_IncDecCarry1
+    # !Reset & J0_DAddressMux0 & V0_AddrMuxOut2 & V0_IncDecCarry1 ; (3 pterms, 5 signals)
+XReg2.D.X2 = !Reset & J0_DAddressMux0 & !J0_DDecrement ; (1 pterm, 3 signals)
+XReg2.OE = 1 ; (1 pterm, 0 signal)
+XReg2.C = Clock ; (1 pterm, 1 signal)
+
+XReg3.D = !Reset & XReg3.Q & !J0_DAddressMux0
+    # !Reset & J0_DAddressMux0 & V0_IncDecOut3 ; (2 pterms, 4 signals)
+XReg3.OE = 1 ; (1 pterm, 0 signal)
+XReg3.C = Clock ; (1 pterm, 1 signal)
+
+XReg4.D.X1 = !Reset & XReg4.Q & !J0_DAddressMux0
+    # !Reset & J0_DAddressMux0 & !V0_AddrMuxOut4 & !V0_IncDecCarry3
+    # !Reset & J0_DAddressMux0 & V0_AddrMuxOut4 & V0_IncDecCarry3 ; (3 pterms, 5 signals)
+XReg4.D.X2 = !Reset & J0_DAddressMux0 & !J0_DDecrement ; (1 pterm, 3 signals)
+XReg4.OE = 1 ; (1 pterm, 0 signal)
+XReg4.C = Clock ; (1 pterm, 1 signal)
+
+XReg5.D = !Reset & XReg5.Q & !J0_DAddressMux0
+    # !Reset & J0_DAddressMux0 & V0_IncDecOut5 ; (2 pterms, 4 signals)
+XReg5.OE = 1 ; (1 pterm, 0 signal)
+XReg5.C = Clock ; (1 pterm, 1 signal)
+
+XReg6.D.X1 = !Reset & XReg6.Q & !J0_DAddressMux0
+    # !Reset & J0_DAddressMux0 & !V0_AddrMuxOut6 & !V0_IncDecCarry5
+    # !Reset & J0_DAddressMux0 & V0_AddrMuxOut6 & V0_IncDecCarry5 ; (3 pterms, 5 signals)
+XReg6.D.X2 = !Reset & J0_DAddressMux0 & !J0_DDecrement ; (1 pterm, 3 signals)
+XReg6.OE = 1 ; (1 pterm, 0 signal)
+XReg6.C = Clock ; (1 pterm, 1 signal)
+
+XReg7.D = !Reset & XReg7.Q & !J0_DAddressMux0
+    # !Reset & J0_DAddressMux0 & V0_IncDecOut7 ; (2 pterms, 4 signals)
+XReg7.OE = 1 ; (1 pterm, 0 signal)
+XReg7.C = Clock ; (1 pterm, 1 signal)
+
+
+
+

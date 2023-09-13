@@ -1,0 +1,5 @@
+. CPU "\\131.215.138.127\Udrive\Vivek Bharadwaj\Final_CPU\Final_CPU\cpu.abl" "\\131.215.138.127\Udrive\Vivek Bharadwaj\Final_CPU\Final_CPU\cpu.abl"
+ALUnit ALU "\\131.215.138.127\Udrive\Vivek Bharadwaj\Final_CPU\Final_CPU\alu.abl" "\\131.215.138.127\Udrive\Vivek Bharadwaj\Final_CPU\Final_CPU\alu.abl"
+DAUnit DAU "\\131.215.138.127\Udrive\Vivek Bharadwaj\Final_CPU\Final_CPU\dau.abl" "\\131.215.138.127\Udrive\Vivek Bharadwaj\Final_CPU\Final_CPU\dau.abl"
+PAUnit PAU "\\131.215.138.127\Udrive\Vivek Bharadwaj\Final_CPU\Final_CPU\pau.abl" "\\131.215.138.127\Udrive\Vivek Bharadwaj\Final_CPU\Final_CPU\pau.abl"
+CUnit ControlUnit "\\131.215.138.127\Udrive\Vivek Bharadwaj\Final_CPU\Final_CPU\controlu.abl" "\\131.215.138.127\Udrive\Vivek Bharadwaj\Final_CPU\Final_CPU\controlu.abl"

@@ -1,0 +1,550 @@
+#$ TOOL ispLEVER Classic 2.0.00.17.20.15
+#$ DATE Tue Apr 07 00:08:23 2020
+#$ MODULE controlunit
+#$ JEDECFILE controlunit
+#$ PINS 105 ProgramDB15 ProgramDB14 ProgramDB13 ProgramDB12 ProgramDB11 ProgramDB10 \
+#  ProgramDB9 ProgramDB8 ProgramDB7 ProgramDB6 ProgramDB5 ProgramDB4 ProgramDB3 \
+#  ProgramDB2 ProgramDB1 ProgramDB0 Flags7 Flags6 Flags5 Flags4 Flags3 Flags2 Flags1 Flags0 \
+#  Reset Clock IR15 IR14 IR13 IR12 IR11 IR10 IR9 IR8 IR7 IR6 IR5 IR4 IR3 IR2 IR1 IR0 FSM3+ FSM2+ \
+#  FSM1+ FSM0+ RD WR IO Data7 Data6 Data5 Data4 Data3 Data2 Data1 Data0 Direct12 Direct11 \
+#  Direct10 Direct9 Direct8 Direct7 Direct6 Direct5 Direct4 Direct3 Direct2 Direct1 Direct0 \
+#  PLoad PHoldPC PAddBSel2 PAddBSel1 PAddBSel0 DAddressMux1 DAddressMux0 DDecrement \
+#  DEnableIncDec DPost DOffsetSel DLoad AEnableCVFlags AEnableSZFlags AFControl3 \
+#  AFControl2 AFControl1 AFControl0 AShiftRight AAddToZero ASubtract AUseCarry ARol \
+#  AInvertAdderCout AEnableAccumWrite APopf ARShiftType1 ARShiftType0 AFlagMod1 \
+#  AFlagMod0 DataDBSel1 DataDBSel0 PAUOffsetSel ALUDSel1 ALUDSel0
+#$ NODES 17 Node1 Node3 Pushf Popf TSATXA Nop Load LogicOp Cmp SubCmp LeftShift LDI Call \
+#  Rts LoadIR ConditionalJump IdleState
+#$ INTERFACE controlunit  85 Clock'i'  Flags0'i'  Flags1'i'  Flags2'i'  Flags3'i'  Flags4'i'  Flags5'i'  Flags6'i'  \
+#  Flags7'i'  ProgramDB0'i'  ProgramDB1'i'  ProgramDB10'i'  ProgramDB11'i'  ProgramDB12'i'  ProgramDB13'i'  \
+#  ProgramDB14'i'  ProgramDB15'i'  ProgramDB2'i'  ProgramDB3'i'  ProgramDB4'i'  ProgramDB5'i'  ProgramDB6'i'  \
+#  ProgramDB7'i'  ProgramDB8'i'  ProgramDB9'i'  Reset'i'  AAddToZero'o'  AEnableAccumWrite'o'  AEnableCVFlags'o'  \
+#  AEnableSZFlags'o'  AFControl0'o'  AFControl1'o'  AFControl2'o'  AFControl3'o'  AFlagMod0'o'  AFlagMod1'o'  \
+#  AInvertAdderCout'o'  ALUDSel0'o'  ALUDSel1'o'  APopf'o'  ARShiftType0'o'  ARShiftType1'o'  ARol'o'  AShiftRight'o'  \
+#  ASubtract'o'  AUseCarry'o'  DAddressMux0'o'  DAddressMux1'o'  DDecrement'o'  DEnableIncDec'o'  DLoad'o'  \
+#  DOffsetSel'o'  DPost'o'  Data0'o'  Data1'o'  Data2'o'  Data3'o'  Data4'o'  Data5'o'  Data6'o'  Data7'o'  DataDBSel0'o'  DataDBSel1'o'  \
+#  Direct0'o'  Direct1'o'  Direct10'o'  Direct11'o'  Direct12'o'  Direct2'o'  Direct3'o'  Direct4'o'  Direct5'o'  Direct6'o'  \
+#  Direct7'o'  Direct8'o'  Direct9'o'  IO'o'  PAUOffsetSel'o'  PAddBSel0'o'  PAddBSel1'o'  PAddBSel2'o'  PHoldPC'o'  PLoad'o'  RD'o'  WR'o' 
+.model controlunit
+.inputs Clock.BLIF Reset.BLIF Call.BLIF Rts.BLIF FSM3.BLIF LoadIR.BLIF \
+IR15.BLIF ProgramDB15.BLIF IR14.BLIF ProgramDB14.BLIF IR13.BLIF \
+ProgramDB13.BLIF IR12.BLIF ProgramDB12.BLIF IR11.BLIF ProgramDB11.BLIF \
+IR10.BLIF ProgramDB10.BLIF IR9.BLIF ProgramDB9.BLIF IR8.BLIF ProgramDB8.BLIF \
+IR7.BLIF ProgramDB7.BLIF IR6.BLIF ProgramDB6.BLIF IR5.BLIF ProgramDB5.BLIF \
+IR4.BLIF ProgramDB4.BLIF IR3.BLIF ProgramDB3.BLIF IR2.BLIF ProgramDB2.BLIF \
+IR1.BLIF ProgramDB1.BLIF IR0.BLIF ProgramDB0.BLIF Cmp.BLIF FSM2.BLIF FSM1.BLIF \
+FSM0.BLIF Flags0.BLIF Flags3.BLIF Flags1.BLIF Flags2.BLIF Flags5.BLIF \
+ConditionalJump.BLIF IdleState.BLIF Popf.BLIF Pushf.BLIF Node1.BLIF \
+LeftShift.BLIF Load.BLIF Nop.BLIF Node3.BLIF TSATXA.BLIF \
+AEnableAccumWrite.BLIF AEnableSZFlags.BLIF LogicOp.BLIF SubCmp.BLIF LDI.BLIF \
+AShiftRight.BLIF FSM3.FB FSM2.FB FSM1.FB FSM0.FB
+.outputs RD WR IO Data7 Data6 Data5 Data4 Data3 Data2 Data1 Data0 Direct12 \
+Direct11 Direct10 Direct9 Direct8 Direct7 Direct6 Direct5 Direct4 Direct3 \
+Direct2 Direct1 Direct0 PLoad PHoldPC PAddBSel2 PAddBSel1 PAddBSel0 \
+DAddressMux1 DAddressMux0 DDecrement DEnableIncDec DPost DOffsetSel DLoad \
+AEnableCVFlags AEnableSZFlags AFControl3 AFControl2 AFControl1 AFControl0 \
+AShiftRight AAddToZero ASubtract AUseCarry ARol AInvertAdderCout \
+AEnableAccumWrite APopf ARShiftType1 ARShiftType0 AFlagMod1 AFlagMod0 \
+DataDBSel1 DataDBSel0 PAUOffsetSel ALUDSel1 ALUDSel0 Node1 Node3 Pushf Popf \
+TSATXA Nop Load LogicOp Cmp SubCmp LeftShift LDI Call Rts LoadIR \
+ConditionalJump IdleState IR15.C IR14.C IR13.C IR12.C IR11.C IR10.C IR9.C \
+IR8.C IR7.C IR6.C IR5.C IR4.C IR3.C IR2.C IR1.C IR0.C IR15.CLR IR14.CLR \
+IR13.CLR IR12.CLR IR11.CLR IR10.CLR IR9.CLR IR8.CLR IR7.CLR IR6.CLR IR5.CLR \
+IR4.CLR IR3.CLR IR2.CLR IR1.CLR IR0.CLR FSM3.C FSM2.C FSM1.C FSM0.C FSM3.SR \
+FSM2.SR FSM1.SR FSM0.SR IR15.REG IR14.REG IR13.REG IR12.REG IR11.REG IR10.REG \
+IR9.REG IR8.REG IR7.REG IR6.REG IR5.REG IR4.REG IR3.REG IR2.REG IR1.REG \
+IR0.REG FSM0.REG FSM1.REG FSM2.REG FSM3.REG
+.names Reset.BLIF Rts.BLIF IR15.BLIF IR14.BLIF IR13.BLIF IR12.BLIF IR11.BLIF \
+IR9.BLIF IR8.BLIF FSM2.BLIF FSM1.BLIF FSM0.BLIF IdleState.BLIF Popf.BLIF \
+LeftShift.BLIF LDI.BLIF AShiftRight.BLIF RD
+0-01---0------000 1
+0-0--1-0------000 1
+0-01----0-----000 1
+0-0--1--0-----000 1
+011---------1-000 1
+01-1--------1-000 1
+01---1------1-000 1
+0-100-0-------000 1
+0-1------101--000 1
+0--1-----101--000 1
+0----1---101--000 1
+0-0-0--0-----1000 1
+0-0-0---0----1000 1
+01--0-------11000 1
+0---0----101-1000 1
+0-100-101-----000 1
+0-100-110-----000 1
+.names Reset.BLIF IR15.BLIF IR14.BLIF IR13.BLIF IR11.BLIF IR9.BLIF IR8.BLIF \
+FSM2.BLIF FSM1.BLIF FSM0.BLIF Pushf.BLIF WR
+0---------1 1
+0------001- 1
+0------010- 1
+01010------ 1
+0101-01---- 1
+0101-10---- 1
+.names Reset.BLIF IR15.BLIF IR14.BLIF IR12.BLIF IR11.BLIF IR10.BLIF IR9.BLIF \
+IR8.BLIF IO
+01010000 1
+.names Rts.BLIF IR15.BLIF IR14.BLIF IR13.BLIF FSM2.BLIF FSM1.BLIF FSM0.BLIF \
+IdleState.BLIF PLoad
+1------1 1
+-110---- 1
+----010- 1
+.names Call.BLIF FSM2.BLIF FSM1.BLIF FSM0.BLIF IdleState.BLIF PHoldPC
+1---1 1
+-001- 1
+.names IR15.BLIF IR14.BLIF IR11.BLIF IR9.BLIF IR8.BLIF ConditionalJump.BLIF \
+PAddBSel2
+101111 1
+101001 1
+.names IR15.BLIF IR14.BLIF IR13.BLIF IR11.BLIF IR9.BLIF IR8.BLIF FSM2.BLIF \
+FSM1.BLIF FSM0.BLIF ConditionalJump.BLIF PAddBSel1
+110------- 1
+------101- 1
+------010- 1
+10-111---1 1
+10-100---1 1
+.names Rts.BLIF IR15.BLIF IR14.BLIF IR13.BLIF IR11.BLIF IR9.BLIF IR8.BLIF \
+FSM2.BLIF FSM1.BLIF FSM0.BLIF ConditionalJump.BLIF IdleState.BLIF PAddBSel0
+1----------1 1
+-110-------- 1
+-------010-- 1
+-10-111---1- 1
+-10-100---1- 1
+.names IR2.BLIF IR1.BLIF IR0.BLIF Node1.BLIF DAddressMux1
+0001 1
+.names Call.BLIF Rts.BLIF IR15.BLIF IR10.BLIF IR8.BLIF IR7.BLIF Node1.BLIF \
+DAddressMux0
+-----11 1
+0-11--- 1
+-00-1-0 1
+.names Call.BLIF Rts.BLIF IR11.BLIF DDecrement
+10- 1
+-01 1
+.names Rts.BLIF IR15.BLIF IR14.BLIF IR13.BLIF IR12.BLIF IR9.BLIF IR8.BLIF \
+FSM2.BLIF FSM1.BLIF FSM0.BLIF IdleState.BLIF DEnableIncDec
+1---------1 1
+-------101- 1
+-------001- 1
+-------010- 1
+-10--10---- 1
+-000001---- 1
+-000010---- 1
+.names Call.BLIF Rts.BLIF IR12.BLIF Popf.BLIF Pushf.BLIF DPost
+01--0 1
+0-1-0 1
+0--10 1
+.names Call.BLIF DOffsetSel
+0 1
+.names Call.BLIF Rts.BLIF IR9.BLIF IR8.BLIF DLoad
+0000 1
+.names AEnableSZFlags.BLIF LogicOp.BLIF AEnableCVFlags
+10 1
+.names IR15.BLIF IR14.BLIF IR13.BLIF IR12.BLIF IR11.BLIF IR10.BLIF Load.BLIF \
+TSATXA.BLIF AEnableAccumWrite.BLIF AEnableSZFlags
+------001 1
+01001100- 1
+00110000- 1
+.names IR15.BLIF IR14.BLIF IR13.BLIF IR12.BLIF IR11.BLIF IR10.BLIF IR9.BLIF \
+IR8.BLIF Cmp.BLIF LeftShift.BLIF Load.BLIF AFControl3
+--------1-- 1
+0001-----00 1
+0010-----00 1
+01111011-00 1
+.names IR12.BLIF LeftShift.BLIF Load.BLIF AFControl2
+-1- 1
+1-0 1
+.names IR13.BLIF Cmp.BLIF LeftShift.BLIF Load.BLIF AFControl1
+--01 1
+100- 1
+.names IR14.BLIF LeftShift.BLIF Load.BLIF AFControl0
+1-- 1
+-1- 1
+--1 1
+.names IR15.BLIF IR14.BLIF IR13.BLIF IR12.BLIF IR11.BLIF IR10.BLIF IR9.BLIF \
+IR8.BLIF AShiftRight
+01110001 1
+.names IR15.BLIF IR14.BLIF IR13.BLIF IR12.BLIF Load.BLIF TSATXA.BLIF \
+LogicOp.BLIF AAddToZero
+----1-- 1
+-----1- 1
+------1 1
+0010--- 1
+.names IR15.BLIF IR14.BLIF IR13.BLIF IR12.BLIF IR11.BLIF IR10.BLIF IR9.BLIF \
+IR8.BLIF SubCmp.BLIF ASubtract
+--------1 1
+00000000- 1
+.names IR15.BLIF IR14.BLIF IR13.BLIF IR12.BLIF IR11.BLIF IR10.BLIF IR9.BLIF \
+IR8.BLIF AUseCarry
+000110-- 1
+011000-- 1
+01010000 1
+.names IR15.BLIF IR14.BLIF IR13.BLIF IR12.BLIF IR11.BLIF IR10.BLIF IR9.BLIF \
+IR8.BLIF ARol
+01010010 1
+.names IR15.BLIF IR14.BLIF IR13.BLIF IR12.BLIF IR11.BLIF IR10.BLIF IR9.BLIF \
+IR8.BLIF SubCmp.BLIF AInvertAdderCout
+--------1 1
+01111011- 1
+.names Rts.BLIF IR15.BLIF IR14.BLIF IR13.BLIF IR12.BLIF IR11.BLIF IR10.BLIF \
+IR9.BLIF IR8.BLIF Load.BLIF Nop.BLIF Node3.BLIF AEnableAccumWrite
+---------1-- 1
+0011------00 1
+001-1-----00 1
+00-01-----00 1
+00-10-----00 1
+00-1-1----00 1
+00--11----00 1
+001--0----00 1
+00-1--1---00 1
+00--1-1---00 1
+001---0---00 1
+-00000000--- 1
+.names IR2.BLIF IR1.BLIF IR0.BLIF Node1.BLIF Node3.BLIF AFlagMod1
+-1-1- 1
+-1--1 1
+---00 1
+0001- 1
+000-1 1
+.names IR2.BLIF IR1.BLIF IR0.BLIF Node1.BLIF Node3.BLIF AFlagMod0
+--11- 1
+--1-1 1
+---00 1
+0001- 1
+000-1 1
+.names FSM2.BLIF FSM1.BLIF FSM0.BLIF DataDBSel1
+001 1
+010 1
+.names FSM2.BLIF FSM1.BLIF FSM0.BLIF Pushf.BLIF DataDBSel0
+---1 1
+001- 1
+.names Rts.BLIF PAUOffsetSel
+0 1
+.names IR15.BLIF IR9.BLIF IR8.BLIF IR0.BLIF TSATXA.BLIF LDI.BLIF ALUDSel0
+-----1 1
+---11- 1
+011-0- 1
+.names IR15.BLIF IR14.BLIF IR13.BLIF IR12.BLIF IR11.BLIF IR10.BLIF IR9.BLIF \
+IR8.BLIF Node1
+00000111 1
+.names IR15.BLIF IR14.BLIF IR13.BLIF IR12.BLIF IR11.BLIF IR10.BLIF IR9.BLIF \
+IR8.BLIF Node3
+01111111 1
+.names IR15.BLIF IR14.BLIF IR13.BLIF IR12.BLIF IR11.BLIF IR10.BLIF IR9.BLIF \
+IR8.BLIF IR6.BLIF Pushf
+000011100 1
+.names IR15.BLIF IR14.BLIF IR13.BLIF IR12.BLIF IR11.BLIF IR10.BLIF IR9.BLIF \
+IR8.BLIF Popf
+00000010 1
+.names IR15.BLIF IR14.BLIF IR13.BLIF IR12.BLIF IR11.BLIF IR10.BLIF IR9.BLIF \
+IR8.BLIF TSATXA
+01100111 1
+.names IR15.BLIF IR14.BLIF IR13.BLIF IR12.BLIF IR11.BLIF IR10.BLIF IR9.BLIF \
+IR8.BLIF IR7.BLIF Nop
+000111111 1
+.names IR15.BLIF IR14.BLIF IR13.BLIF IR11.BLIF IR9.BLIF IR8.BLIF Load
+1000-- 1
+100-01 1
+100-10 1
+.names IR15.BLIF IR14.BLIF IR13.BLIF IR12.BLIF IR11.BLIF IR10.BLIF IR9.BLIF \
+IR8.BLIF LogicOp
+0100---- 1
+0-1101-- 1
+00101101 1
+.names IR15.BLIF IR14.BLIF IR13.BLIF IR12.BLIF IR11.BLIF IR10.BLIF Cmp
+001100 1
+.names IR15.BLIF IR14.BLIF IR13.BLIF IR12.BLIF IR11.BLIF Cmp.BLIF SubCmp
+-----1 1
+0001-- 1
+00100- 1
+.names IR15.BLIF IR14.BLIF IR13.BLIF IR12.BLIF LeftShift
+0101 1
+.names IR15.BLIF IR14.BLIF IR11.BLIF IR10.BLIF IR9.BLIF IR8.BLIF LDI
+101001 1
+.names IR15.BLIF IR14.BLIF IR13.BLIF Call
+111 1
+.names IR15.BLIF IR14.BLIF IR13.BLIF IR12.BLIF IR11.BLIF IR10.BLIF IR9.BLIF \
+IR8.BLIF IR7.BLIF Rts
+000111110 1
+.names Call.BLIF Rts.BLIF FSM3.BLIF LoadIR
+--1 1
+00- 1
+.names IR13.BLIF IR12.BLIF IR10.BLIF IR9.BLIF Flags0.BLIF Flags3.BLIF \
+Flags1.BLIF Flags2.BLIF Flags5.BLIF ConditionalJump
+00-1-1--- 1
+01111---- 1
+00011---- 1
+10101---- 1
+01100---- 1
+0010-0--- 1
+0101--1-- 1
+0100--0-- 1
+1001---1- 1
+-101--11- 1
+1000---0- 1
+1111----1 1
+1110----0 1
+000000--- 1
+10-10-11- 1
+1010--01- 1
+1100--01- 1
+1010--10- 1
+1100--10- 1
+1101--00- 1
+10110-00- 1
+.names FSM3.BLIF FSM2.BLIF FSM1.BLIF FSM0.BLIF IdleState
+0000 1
+.names LoadIR.BLIF IR15.BLIF ProgramDB15.BLIF IR15.REG
+01- 1
+1-1 1
+.names LoadIR.BLIF IR14.BLIF ProgramDB14.BLIF IR14.REG
+01- 1
+1-1 1
+.names LoadIR.BLIF IR13.BLIF ProgramDB13.BLIF IR13.REG
+01- 1
+1-1 1
+.names LoadIR.BLIF IR12.BLIF ProgramDB12.BLIF IR12.REG
+01- 1
+1-1 1
+.names LoadIR.BLIF IR11.BLIF ProgramDB11.BLIF IR11.REG
+01- 1
+1-1 1
+.names LoadIR.BLIF IR10.BLIF ProgramDB10.BLIF IR10.REG
+01- 1
+1-1 1
+.names LoadIR.BLIF IR9.BLIF ProgramDB9.BLIF IR9.REG
+01- 1
+1-1 1
+.names LoadIR.BLIF IR8.BLIF ProgramDB8.BLIF IR8.REG
+01- 1
+1-1 1
+.names LoadIR.BLIF IR7.BLIF ProgramDB7.BLIF IR7.REG
+01- 1
+1-1 1
+.names LoadIR.BLIF IR6.BLIF ProgramDB6.BLIF IR6.REG
+01- 1
+1-1 1
+.names LoadIR.BLIF IR5.BLIF ProgramDB5.BLIF IR5.REG
+01- 1
+1-1 1
+.names LoadIR.BLIF IR4.BLIF ProgramDB4.BLIF IR4.REG
+01- 1
+1-1 1
+.names LoadIR.BLIF IR3.BLIF ProgramDB3.BLIF IR3.REG
+01- 1
+1-1 1
+.names LoadIR.BLIF IR2.BLIF ProgramDB2.BLIF IR2.REG
+01- 1
+1-1 1
+.names LoadIR.BLIF IR1.BLIF ProgramDB1.BLIF IR1.REG
+01- 1
+1-1 1
+.names LoadIR.BLIF IR0.BLIF ProgramDB0.BLIF IR0.REG
+01- 1
+1-1 1
+.names Call.BLIF Rts.BLIF FSM3.FB FSM2.FB FSM1.FB FSM0.FB FSM0.REG
+1-0000 1
+010000 1
+.names FSM3.FB FSM2.FB FSM1.FB FSM0.FB FSM1.REG
+0001 1
+.names Call.BLIF Rts.BLIF FSM3.FB FSM2.FB FSM1.FB FSM0.FB FSM2.REG
+010000 1
+.names FSM3.FB FSM2.FB FSM1.FB FSM0.FB FSM3.REG
+0101 1
+0010 1
+.names IR7.BLIF Data7
+1 1
+0 0
+.names IR6.BLIF Data6
+1 1
+0 0
+.names IR5.BLIF Data5
+1 1
+0 0
+.names IR4.BLIF Data4
+1 1
+0 0
+.names IR3.BLIF Data3
+1 1
+0 0
+.names IR2.BLIF Data2
+1 1
+0 0
+.names IR1.BLIF Data1
+1 1
+0 0
+.names IR0.BLIF Data0
+1 1
+0 0
+.names IR12.BLIF Direct12
+1 1
+0 0
+.names IR11.BLIF Direct11
+1 1
+0 0
+.names IR10.BLIF Direct10
+1 1
+0 0
+.names IR9.BLIF Direct9
+1 1
+0 0
+.names IR8.BLIF Direct8
+1 1
+0 0
+.names IR7.BLIF Direct7
+1 1
+0 0
+.names IR6.BLIF Direct6
+1 1
+0 0
+.names IR5.BLIF Direct5
+1 1
+0 0
+.names IR4.BLIF Direct4
+1 1
+0 0
+.names IR3.BLIF Direct3
+1 1
+0 0
+.names IR2.BLIF Direct2
+1 1
+0 0
+.names IR1.BLIF Direct1
+1 1
+0 0
+.names IR0.BLIF Direct0
+1 1
+0 0
+.names Popf.BLIF APopf
+1 1
+0 0
+.names IR1.BLIF ARShiftType1
+1 1
+0 0
+.names IR0.BLIF ARShiftType0
+1 1
+0 0
+.names TSATXA.BLIF ALUDSel1
+1 1
+0 0
+.names Clock.BLIF IR15.C
+1 1
+0 0
+.names Clock.BLIF IR14.C
+1 1
+0 0
+.names Clock.BLIF IR13.C
+1 1
+0 0
+.names Clock.BLIF IR12.C
+1 1
+0 0
+.names Clock.BLIF IR11.C
+1 1
+0 0
+.names Clock.BLIF IR10.C
+1 1
+0 0
+.names Clock.BLIF IR9.C
+1 1
+0 0
+.names Clock.BLIF IR8.C
+1 1
+0 0
+.names Clock.BLIF IR7.C
+1 1
+0 0
+.names Clock.BLIF IR6.C
+1 1
+0 0
+.names Clock.BLIF IR5.C
+1 1
+0 0
+.names Clock.BLIF IR4.C
+1 1
+0 0
+.names Clock.BLIF IR3.C
+1 1
+0 0
+.names Clock.BLIF IR2.C
+1 1
+0 0
+.names Clock.BLIF IR1.C
+1 1
+0 0
+.names Clock.BLIF IR0.C
+1 1
+0 0
+.names Reset.BLIF IR15.CLR
+1 1
+0 0
+.names Reset.BLIF IR14.CLR
+1 1
+0 0
+.names Reset.BLIF IR13.CLR
+1 1
+0 0
+.names Reset.BLIF IR12.CLR
+1 1
+0 0
+.names Reset.BLIF IR11.CLR
+1 1
+0 0
+.names Reset.BLIF IR10.CLR
+1 1
+0 0
+.names Reset.BLIF IR9.CLR
+1 1
+0 0
+.names Reset.BLIF IR8.CLR
+1 1
+0 0
+.names Reset.BLIF IR7.CLR
+1 1
+0 0
+.names Reset.BLIF IR6.CLR
+1 1
+0 0
+.names Reset.BLIF IR5.CLR
+1 1
+0 0
+.names Reset.BLIF IR4.CLR
+1 1
+0 0
+.names Reset.BLIF IR3.CLR
+1 1
+0 0
+.names Reset.BLIF IR2.CLR
+1 1
+0 0
+.names Reset.BLIF IR1.CLR
+1 1
+0 0
+.names Reset.BLIF IR0.CLR
+1 1
+0 0
+.names Clock.BLIF FSM3.C
+1 1
+0 0
+.names Clock.BLIF FSM2.C
+1 1
+0 0
+.names Clock.BLIF FSM1.C
+1 1
+0 0
+.names Clock.BLIF FSM0.C
+1 1
+0 0
+.names Reset.BLIF FSM3.SR
+1 1
+0 0
+.names Reset.BLIF FSM2.SR
+1 1
+0 0
+.names Reset.BLIF FSM1.SR
+1 1
+0 0
+.names Reset.BLIF FSM0.SR
+1 1
+0 0
+.end

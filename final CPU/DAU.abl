@@ -1,0 +1,125 @@
+MODULE         DataAccess
+INTERFACE  (Accum7..Accum0, Offset7..Offset0,
+                       AccumMuxSel1..AccumMuxSel0, Decrement, CarryIn,
+                       WriteBackSel, Post, OffsetSel, Load,
+                       Reset, Clock
+                       -> DataAddr7..DataAddr0, XReg7..XReg0, SReg7..SReg0);
+
+TITLE 'Data Access Unit'
+
+" Revision History
+" 03/20/20 Ellie Cho	Initial Revision
+" 3/26/20  Ellie Cho	Finished DAU		
+" Description: This module implements the Data Memory Access Unit. 
+" The Data Memory Access Unit consists of the X and S registers (eight bits
+" each), the logic for generating data addresses, and the logic for updating
+" the X and S registers when doing pre- and post- increment/decrement 
+" instructions. The inputs to the unit are an 8-bit offset, the 8-bit
+" accumulator , and appropriate control lines from the Control Unit. The 
+" outputs of the unit are the Data Address Bus, the X register and the S register.
+" Inputs:
+" AddressMux1..AddressMux0: Control inputs for a mux controlling the input to
+" the incrementer / decrementer. The encoding of controls is given by:
+"     AccumMux1..AccumMux0:
+"     00 -> Zeros
+"     01 -> XRegister
+"     10 -> SRegister
+"     11 -> Accumulator
+
+" Decrement: High to decrement the address mux output
+
+" Carryin: When decrement is low, high to add 1 when Decrement is low
+" and low otherwise
+
+" WritebackSel: 0 to write the output of the incrementer / decrementer
+" to X-Register, 1 to write the output of the incrementer / decrementer
+" to the S-register.
+
+" Post: High when performing post-increment, low for pre-increment.
+
+" OffsetSel: High to add offset to the source select, low to add 0.
+
+" Load: Zeros the output of the pre / post-increment selecter when
+" performing a direct address load. High for direct load operations,
+" 0 otherwise.
+
+
+"Inputs
+Accum7..Accum0  			pin;
+Offset7..Offset0			pin;
+AccumMuxSel1..AccumMuxSel0  pin;
+Decrement  					pin;
+CarryIn                     pin;
+WriteBackSel   				pin;
+Post 						pin;
+OffsetSel					pin;
+Load 						pin;
+
+Clock					    pin;
+Reset  						pin;
+
+"Outputs
+
+DataAddr7..DataAddr0		pin ISTYPE 'REG';
+XReg7..XReg0				pin ISTYPE 'REG';
+SReg7..SReg0				pin ISTYPE 'REG';
+
+"Intermediate Variables
+AddressMuxOut7..AddressMuxOut0	node;
+IncDecOut7..IncDecOut0			node;
+Carry8..Carry0					node;
+AddendA7..AddendA0				node;
+IncDecCarry7..IncDecCarry0  node;
+AddendB7..AddendB0				node;
+AdderCarry7..AdderCarry0   node; " Carry bits for adder
+
+
+"Buses and Vectors
+Accum = [Accum7..Accum0];
+Offset = [Offset7..Offset0];
+DataAddr = [DataAddr7..DataAddr0];
+XReg = [XReg7..XReg0];
+SReg = [SReg7..SReg0];
+AddressMuxOut = [AddressMuxOut7..AddressMuxOut0];
+AddendA = [AddendA7..AddendA0];
+AddendB = [AddendB7..AddendB0];
+IncDecOut = [IncDecOut7..IncDecOut0];
+IncDecCarry = [IncDecCarry7..IncDecCarry0];
+AdderCarry = [AdderCarry7..AdderCarry0];
+
+"Constants
+ZEROS = [0, 0, 0, 0, 0, 0, 0, 0];
+ONE = [0, 0, 0, 0, 0, 0, 0, 1];
+NEGATIVEONE = [1, 1, 1, 1, 1, 1, 1, 1];
+
+EQUATIONS
+XReg.CLK   = Clock;
+DataAddr.CLK = Clock;
+SReg.CLK   = Clock;
+
+"Address mux decides what the input for the inc/dec is
+AddressMuxOut = (!AccumMuxSel0 & AccumMuxSel1 & XReg) #
+ 		(AccumMuxSel0 & !AccumMuxSel1 & SReg) #
+  		(AccumMuxSel0 & AccumMuxSel1 & Accum) #
+  		(!AccumMuxSel0 & !AccumMuxSel1 & ZEROS);
+"inc/dec increments or decrements the value (or neither)
+IncDecOut    = AddressMuxOut $ Decrement $ [IncDecCarry6..IncDecCarry0, CarryIn];
+IncDecCarry  = (AddressMuxOut & Decrement) 
+                    # ([IncDecCarry6..IncDecCarry0, CarryIn] 
+                      & (AddressMuxOut $ Decrement));
+"sets new values to XReg and SReg
+XReg        := Reset & ((!WriteBackSel & IncDecOut) # (WriteBackSel & XReg));
+SReg        := Reset & ((WriteBackSel & IncDecOut) # (!WriteBackSel & SReg));
+
+AddendA      = !Load & (!Post & IncDecOut) # (Post & AddressMuxOut);
+
+" OffsetSel low zeroes AddendB
+AddendB      = OffsetSel & Offset;
+AdderCarry   = (AddendA & AddendB) 
+               # ([AdderCarry6..AdderCarry0, 0] & (AddendA $ AddendB));
+               
+" Data Address adds the two addends
+DataAddr     = Reset & AddendA $ AddendB $ [AdderCarry6..AdderCarry0, 0];
+
+
+END DataAccess

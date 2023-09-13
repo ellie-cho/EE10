@@ -1,0 +1,19 @@
+JDF B
+// Created by Version 2.0 
+PROJECT test
+DESIGN test Normal
+DEVKIT LC4032V-10T44I
+ENTRY ABEL/Schematic
+MODULE \\131.215.138.127\Udrive\Vivek Bharadwaj\Final_CPU\Final_CPU\pau.abl
+MODSTYLE PAU Normal
+MODULE \\131.215.138.127\Udrive\Vivek Bharadwaj\Final_CPU\Final_CPU\cpu.abl
+MODSTYLE CPU Normal
+MODULE \\131.215.138.127\Udrive\Vivek Bharadwaj\Final_CPU\Final_CPU\dau.abl
+MODSTYLE DAU Normal
+MODULE \\131.215.138.127\Udrive\Vivek Bharadwaj\Final_CPU\Final_CPU\controlu.abl
+MODSTYLE ControlUnit Normal
+MODULE \\131.215.138.127\Udrive\Vivek Bharadwaj\Final_CPU\Final_CPU\alu.abl
+MODSTYLE ALU Normal
+SYNTHESIS_TOOL Synplify
+SIMULATOR_TOOL ActiveHDL
+TOPMODULE CPU
